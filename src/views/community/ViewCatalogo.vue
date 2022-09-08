@@ -38,6 +38,7 @@
                   <router-link :to="{ name: 'Cuenta', params: { slug: l.slug } }">
                     <h5 class="mb-1">{{ l.nombre_cuenta }}</h5>
                   </router-link>
+                  
                   <span class="me-2 mb-1" v-for="(r, index) in l.servicio" v-bind:key="index">
                     {{ r.rubro.nombre_rubro }}
                   </span>

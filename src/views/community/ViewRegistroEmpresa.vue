@@ -29,7 +29,7 @@
                         <!--Image-->
                         <div class="col-md-4 mb-4">
                             <input type="file" class="dropify" data-height="190" @change="setImg($event)"
-                                data-default-file="@/../img/assets/enterprise.png">
+                                data-default-file="@/../img/assets/shapex15.png">
                         </div>
                         <!--Company Name-->
                         <div class="col-md-4">

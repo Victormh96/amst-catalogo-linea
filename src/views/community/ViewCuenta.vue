@@ -8,46 +8,53 @@
     <!--Main-->
     <main v-if="(skeleton)" class="top">
 
-        <section id="perfil">
-            <div class="container">
+        <!--Section-->
+        <section id="cuenta">
+            <div class="container mt-5">
                 <div class="row">
+                    <!--Aside-->
+                    <aside class="col-xl-3 col-lg-4">
 
-                    <aside class="col-xl-3 col-lg-4 primary mt-5">
+                        <!--Img-->
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXyoIH0e-U7YoHkDnjq8r7os9rsBqXfx8wKQ&usqp=CAU"
                             alt="MDN">
-                        <div class="box_profile">
-                            <div class="informacion_profile">
-                                <small>Victor Hernandez</small>
-                                <h1>Doc Hernandez</h1>
-                            </div>
-                            <!--=====mapa=====-->
-                            <div>mapa</div>
 
-                            <div class="direccion">
-                                sadsadsad
+                        <!--Profile-->
+                        <div class="card">
+                            <div class="information ms-4 me-4">
+                                <small class="me-1">Jonathan Josué Laguán</small>
+                                <i class="fa-solid fa-mars-stroke"></i>
                             </div>
-                            <div class="quitar"></div>
-                            <div class="redes">
-                                <a href="/" target="blank"><i class="fab fa-facebook-square facebook1"></i></a>
-                                <a href="/" target="blank"><i class="fab fa-instagram instagram1"></i></a>
-                                <a href="/" target="blank"><i class="fab fa-twitter twitter1"></i></a>
-                                <a href="/" target="blank"><i class="fab fa-linkedin linkedin1"></i></a>
-                                <a href="`https://api.whatsapp.com/send?phone=. encontré su perfil en Monarka Health y me gustaría realizar una consulta.`"
-                                    target="blank"><i class="fab fa-whatsapp whatsapp1"></i></a>
-                                <a href=""><i class="fas fa-phone phone1"></i></a>
+
+                            <!--Tags-->
+                            <div class="tag ms-4 me-4">
+                                <span class="tag me-2 mb-1">Mecánico</span>
+                                <span class="tag me-2 mb-1">Músico</span>
+                                <span class="tag me-2 mb-1">Escritor</span>
                             </div>
-                            <!--=====Abierto-Cerrado=====-->
-                            <div>
-                                <div>
-                                    <p class="abierto">Abierto</p>
-                                </div>
+
+                            <!--Networks-->
+                            <div class="networks">
+                                <a href="/" target="blank"><i class="fab fa-facebook-square"></i></a>
+                                <a href="/" target="blank"><i class="fab fa-instagram"></i></a>
+                                <a href="/" target="blank"><i class="fab fa-twitter"></i></a>
+                                <a href="/" target="blank"><i class="fab fa-linkedin"></i></a>
+                                <a href="/"
+                                    target="blank"><i class="fab fa-whatsapp"></i></a>
+                                <a href="/"><i class="fa-solid fa-globe"></i></a>
+                                <a href="/"><i class="fa-solid fa-mobile-screen-button"></i></a>
+                                <a href="/"><i class="fas fa-phone"></i></a>
                             </div>
+
+                            <!--Delivery-->
+                            <p>Abierto</p>
                         </div>
-                        <!--=====publicidad=====-->
-                        <div>
-                            <div>Carrousel</div>
-                        </div>
+
+                        <!--advertising-->
+                        <div>Carrousel</div>
                     </aside>
+
+
                     <!--=====Formulario=====-->
                     <div class="col-xl-9 col-lg-8 secondary mt-5">
                         <div class="box_general_2">
@@ -163,7 +170,10 @@ export default {
             this.skeleton = true
         }, 950)
 
-        this.maps()
+        //Skeleton
+        setTimeout(() => {
+            this.maps()
+        }, 950)
     },
 
     components: {

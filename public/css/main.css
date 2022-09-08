@@ -77,7 +77,7 @@
   text-align: end;
 }
 
-#header .nav-menu > ul > li {
+#header .nav-menu>ul>li {
   position: relative;
   white-space: nowrap;
   display: inline-block;
@@ -232,12 +232,10 @@
 }
 
 #inscribete {
-  background: linear-gradient(
-    121deg,
-    rgba(20, 41, 78, 1) 2%,
-    rgba(27, 54, 101, 1) 29%,
-    rgba(62, 121, 194, 1) 91%
-  );
+  background: linear-gradient(121deg,
+      rgba(20, 41, 78, 1) 2%,
+      rgba(27, 54, 101, 1) 29%,
+      rgba(62, 121, 194, 1) 91%);
   padding: 60px 0;
 }
 
@@ -416,198 +414,82 @@
 }
 
 /*============================================================================================*/
-/* Perfil
+/* Cuenta
 /*============================================================================================*/
-
-#perfil .primary .foto {
-  background-size: cover;
-  background-position: center;
-  height: 190px;
-}
-
-#perfil .primary .box_profile {
-  background-color: #fff;
-  text-align: center;
-  padding: 0 15px 25px 15px;
-  margin-bottom: 35px;
-  border-radius: 5px 5px 0 0;
-}
-
-#perfil .primary .box_profile .informacion_profile {
-  padding: 10px 0 5px 0;
-  margin: 0 0 15px 0;
-  border-bottom: solid #ededed 2px;
-}
-
-#perfil .primary .box_profile .informacion_profile small {
-  text-transform: uppercase;
-  color: #999;
-  font-weight: 600;
-  font-size: 0.6rem;
-}
-
-#perfil .primary .box_profile .informacion_profile h1 {
-  font-size: 0.75rem;
-  width: 85%;
-  margin: 0 auto 0.5rem auto;
-}
-
-#perfil .primary .mapa {
+#cuenta aside img {
   width: 100%;
-  height: 130px;
-  position: relative;
+  height: 190px;
+  object-fit: cover;
 }
 
-#perfil .primary .mapa .waze1 {
-  color: #999;
+#cuenta aside .card {
+  background-color: #F2F6FB;
+  border-radius: 0 0 10px 10px;
+  text-align: center;
+}
+
+#cuenta aside .card .information {
+  padding: 10px 0;
+  border-bottom: solid #DCE2E9 2px;
+}
+
+#cuenta aside .card .information small {
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #13274A;
+  text-transform: uppercase;
+}
+
+#cuenta aside .card .information i {
+  font-size: 18px;
+  color: #407EC9;
+}
+
+#cuenta aside .card .tag {
+  padding: 10px 0;
+  border-bottom: solid #DCE2E9 2px;
+}
+
+#cuenta .card .tag span {
+  font-size: 0.6rem;
+  font-weight: 600;
+  background: #407ec9;
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+#cuenta aside .card .networks {
+  padding: 10px 0;
+}
+
+#cuenta aside .card .networks a {
   font-size: 20px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  z-index: 9999;
-  left: 0;
-  padding: 55px 8px;
-  background: #fff;
-  opacity: 0.87;
-  transition: all 0.6s;
+  color: #9CAABF;
 }
 
-#perfil .primary .mapa .map1 {
-  color: #999;
-  font-size: 17px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  z-index: 9999;
-  right: 0;
-  padding: 55px 8px;
-  background: #fff;
-  opacity: 0.87;
-  transition: all 0.6s;
-}
-
-#perfil .primary .mapa .map1:hover {
-  opacity: 1;
-  color: #dd4b3e;
-}
-
-#perfil .primary .mapa .waze1:hover {
-  color: #7ec0ee;
-  opacity: 1;
-}
-
-#perfil .primary .direccion {
-  margin: 5px auto 5px auto;
-  width: 85%;
-  padding: 0 0 15px 0;
-  font-size: 0.65rem;
-  border-bottom: solid #ededed 2px;
-  line-height: 1.6;
-}
-
-#perfil .primary .redes {
-  padding: 15px 0 0 0;
-}
-
-#perfil .primary .facebook1 {
-  color: #999;
-  font-size: 21px;
-  letter-spacing: 17px;
-  transition: all 0.6s;
-}
-
-#perfil .primary .facebook1:hover {
-  color: #3b5998;
-}
-
-#perfil .primary .instagram1 {
-  color: #999;
-  font-size: 21px;
-  letter-spacing: 17px;
-  transition: all 0.6s;
-}
-
-#perfil .primary .instagram1:hover {
-  color: #e1306c;
-}
-
-#perfil .primary .twitter1 {
-  color: #999;
-  font-size: 21px;
-  letter-spacing: 17px;
-  transition: all 0.6s;
-}
-
-#perfil .primary .twitter1:hover {
-  color: #00acee;
-}
-
-#perfil .primary .linkedin1 {
-  color: #999;
-  font-size: 21px;
-  letter-spacing: 17px;
-  transition: all 0.6s;
-}
-
-#perfil .primary .linkedin1:hover {
-  color: #0072b1;
-}
-
-#perfil .primary .explore1 {
-  color: #999;
-  font-size: 20px;
-  letter-spacing: 17px;
-  transition: all 0.6s;
-}
-
-#perfil .primary .explore1:hover {
-  color: #0072b1;
-}
-
-#perfil .primary .whatsapp1 {
-  color: #999;
-  font-size: 21px;
-  letter-spacing: 17px;
-  transition: all 0.6s;
-}
-
-#perfil .primary .whatsapp1:hover {
-  color: #4ac959;
-}
-
-#perfil .primary .phone1 {
-  color: #999;
-  font-size: 20px;
-  transition: all 0.6s;
-}
-
-#perfil .primary .phone1:hover {
-  color: #008f39;
-}
-
-#perfil .primary .cerrado {
+#cuenta aside .card p {
   margin: 20px 0 0 0;
-  background: #26718f;
-  color: #fff !important;
+  background: #13274A;
+  color: #fff;
   padding: 9px;
   border-radius: 3px;
   font-size: 0.85rem;
 }
 
-#perfil .primary .abierto {
-  margin: 20px 0 0 0;
-  background: #3fbcef;
-  color: #fff !important;
-  padding: 9px;
-  border-radius: 3px;
-  font-size: 0.85rem;
-}
 
-#perfil .primary .publicidad {
+#cuenta .publicidad {
   border-radius: 10px;
   padding: 7px;
   background: #fff;
 }
+
+
+
+
+
 
 #perfil .secondary .box_general_2 {
   background-color: #fff;
@@ -881,9 +763,10 @@ ul {
 }
 
 
-.swal2-styled.swal2-confirm{
+.swal2-styled.swal2-confirm {
   background-color: #407ec9
 }
+
 /* ============================================================*/
 /* Nosotros
 /* ============================================================*/
@@ -1046,9 +929,7 @@ html::-webkit-scrollbar-thumb,
   font-size: 13px !important;
 }
 
-.select2-container--default
-  .select2-selection--single
-  .select2-selection__rendered {
+.select2-container--default .select2-selection--single .select2-selection__rendered {
   color: #b0b4b7;
   line-height: 41px;
 }
@@ -1059,8 +940,7 @@ html::-webkit-scrollbar-thumb,
   background: #f2f6fb;
 }
 
-.select2-container--default
-  .select2-results__option--highlighted[aria-selected] {
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
   background-color: #407ec9;
 }
 
