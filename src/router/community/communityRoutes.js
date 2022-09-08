@@ -43,6 +43,13 @@ const communityRoutes = [
         name: 'Sobre-Nosotros',
         component: () => import("@/views/community/ViewSobreNosotros.vue"),
     },
+
+    {
+        path: '/servicios-completos',
+        name: 'servicios-completos',
+        component: () => import("@/views/community/viewServicios.vue"),
+        props: true
+    },
 ]
 
 // Exports

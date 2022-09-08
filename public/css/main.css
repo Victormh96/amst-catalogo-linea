@@ -880,9 +880,12 @@ ul {
   background-color: #407ec9;
 }
 
+.map{
+  min-height: 200px;
+}
 
 .swal2-styled.swal2-confirm{
-  background-color: #407ec9
+  background-color: #407ec9 !important;
 }
 /* ============================================================*/
 /* Nosotros

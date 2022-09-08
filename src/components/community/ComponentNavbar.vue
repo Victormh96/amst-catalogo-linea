@@ -34,12 +34,12 @@
     <header id="header" class="fixed-top">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-12 col-md-4 col-lg-6 col-xl-7 col-xxl-8">
+                <div class="col-12 col-md-4 col-lg-6 col-xl-7 col-xxl-7">
                     <router-link :to="{ name: 'Inicio' }">
                         <img src="@/../public/icon.png" alt="Alcaldia Municipal Santa Tecla" class="img-fluid">
                     </router-link>
                 </div>
-                <div class="col-12 col-md-8 col-lg-6 col-xl-5 col-xxl-4 d-none d-md-block">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5 col-xxl-5 d-none d-md-block">
                     <nav class="nav-menu">
                         <ul>
                             <li>
@@ -51,7 +51,7 @@
                             <li>
                                 <a v-bind:href="'/categoria/' + 'empresas'">Empresas</a>
                             </li>
-                            <li><a href="/">Inicia Sesión</a></li>
+                            <li><a href="/sobre-nosotros">Sobre Nosotros</a></li>
                         </ul>
                     </nav>
                 </div>

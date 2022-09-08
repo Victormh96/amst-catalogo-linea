@@ -26,7 +26,7 @@
                     <!--Search-->
                     <div class="col-md-5 m-auto mt-4">
                         <input type="text" class="form-control" placeholder="Doctor, Albañil, Farmacias, Pupuserias..."
-                            v-model="buscarTag">
+                            v-model="buscarTag" v-on:keyup.enter="verifyTag">
                             <ul v-if="searchTag.length" class="auto-completado">
                                 <li v-for="tag in searchTag" :key="tag.nombre_rubro" @click="selectTag(tag)"
                                     class="p-2 hover"> {{ tag.nombre_rubro }}
@@ -228,6 +228,15 @@ export default {
         async ClickCategoria(id) {
             await this.$store.dispatch("CategoriaClick", id)
         },
+
+        verifyTag(){
+            this.$router.push({
+                name: "servicios-completos",
+                params: { tagSerch: this.buscarTag }
+            });
+
+        }
+
     },
 };
 </script>

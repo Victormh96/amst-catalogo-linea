@@ -29,7 +29,7 @@
                         <!--Image-->
                         <div class="col-md-4 mb-4">
                             <input type="file" class="dropify" data-height="190" @change="setImg($event)"
-                                data-default-file="@/../img/assets/user.png" />
+                                data-default-file="@/../img/assets/shapex16.png" />
                         </div>
                         <!--Names-->
                         <div class="col-md-4">
@@ -404,8 +404,19 @@ export default {
                 footer: '<a href="/sobre-nosotros">Preguntas Frecuentes</a>'
             }).then(resultado => {
                 if (resultado.value) {
-                    router.go("registro-servicio")
+                    //router.go("registro-servicio")
                 }
+            })
+        },
+
+        showFailServicies() {
+            this.$swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No has registrado tus servicios',
+                confirmButtonText: "Aceptar",
+                allowOutsideClick: false,
+                allowEscapeKey: false,
             })
         },
 
@@ -449,22 +460,28 @@ export default {
         },
 
         async submit() {
-            var Form = new FormData()
-            for (var paramName in this.form) {
-                Form.append(paramName, this.form[paramName])
-            }
-            Form.append('latitud', localStorage.getItem('latitud'))
-            Form.append('longitud', localStorage.getItem('longitud'))
-            Form.append('servicios', JSON.stringify(this.cuentaServicios))
-
-            this.$store.dispatch("ClearServicio")
-            await this.$store.dispatch("RegistroServicio", Form).then(() => {
-                if (this.$store.state.community.registroservicio) {
-                    this.showSucces()
-                } else {
-                    this.showFail()
+            if (this.cuentaServicios.length > 0) {
+                var Form = new FormData()
+                for (var paramName in this.form) {
+                    Form.append(paramName, this.form[paramName])
                 }
-            })
+                Form.append('latitud', localStorage.getItem('latitud'))
+                Form.append('longitud', localStorage.getItem('longitud'))
+                Form.append('servicios', JSON.stringify(this.cuentaServicios))
+
+                this.$store.dispatch("ClearServicio")
+                await this.$store.dispatch("RegistroServicio", Form).then(() => {
+                    if (this.$store.state.community.registroservicio) {
+                        this.showSucces()
+                    } else {
+                        this.showFail()
+                    }
+                })
+            } else {
+                this.showFailServicies()
+            }
+
+
         },
 
         verifyService() {
