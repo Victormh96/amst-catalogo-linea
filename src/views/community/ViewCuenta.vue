@@ -96,6 +96,7 @@
                                     </div>
                                 </div>
                                 <hr>
+
                                 <div class="indent_title_in">
 
                                     <h3><i class="fa-solid fa-book-open-reader p-2"></i>Servicios</h3>
@@ -120,15 +121,16 @@
                                     </div>
                                 </div>
                                 <hr>
+
                                 <div class="indent_title_in">
                                     <h3> <i class="fa-solid fa-share-nodes mt-1 p-2"></i>  Compartir</h3>
                                 </div>
                                 <div class="wrapper_indent">
-                                    <a class="facebook3" href="javascript:void(0)"><i
+                                    <a class="facebook me-3" href="javascript:void(0)"><i
                                             class="fab fa-facebook-square"></i></a>
-                                    <a class="twitter3" href="javascript:void(0)"><i
+                                    <a class="twitter me-3" href="javascript:void(0)"><i
                                             class="fab fa-twitter-square"></i></a>
-                                    <a class="whatsapp3" target="_blank"
+                                    <a class="whatsapp" target="_blank"
                                         href="whatsapp://send?text=https://medicosdeguatemala.net/professional/"><i
                                             class="fab fa-whatsapp-square"></i></a>
                                 </div>

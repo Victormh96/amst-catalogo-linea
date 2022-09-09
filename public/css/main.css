@@ -749,6 +749,21 @@
   font-size: 0.8rem;
 }
 
+#cuenta .wrapper_indent .facebook{
+  font-size: 35px;
+    color: #475993;
+}
+
+#cuenta .wrapper_indent .twitter{
+  font-size: 35px;
+    color: #03A9F4;
+}
+
+#cuenta .wrapper_indent .whatsapp{
+  font-size: 35px;
+    color: #D33D95;
+}
+
 #perfil .galeria .galery {
   border-radius: 5px;
   width: 100%;
