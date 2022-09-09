@@ -89,34 +89,85 @@
                         <div class="card">
 
                             <!--Profile-->
-                            <div class="profile">
+                            <div id="profile" class="profile">
                                 <div class="review-box descripcion_container">
                                     <div class="descripcion_medico">
+                                        <p>Podrás encontrar los datos de contacto de los profesionales y las empresas,
+                                            Redes sociales Podrás encontrar los datos de contacto de los profesionales y
+                                            las empresas, Redes sociales.</p>
                                     </div>
-                                </div>
-                                <hr>
-                                <div class="indent_title_in">
-                                    <i class="fas fa-graduation-cap"></i>
-                                    <h3>Educación</h3>
-                                </div>
-                                <div class="wrapper_indent">
-                                    <p>
-                                        ssss
-                                    </p>
-                                    <h6>Experiencia Laboral</h6>
-                                    <p>
-                                        eee
-                                    </p>
                                 </div>
                                 <hr>
                                 <div class="indent_title_in">
                                     <i class="fas fa-briefcase-medical"></i>
                                     <h3>Servicios</h3>
                                 </div>
-                                <div class="wrapper_indent">
-                                    <p>
-                                        eeee
-                                    </p>
+                                <div class="wrapper_indent mt-1">
+                                    <div class="row m-1">
+                                        <!--v-for con los servicios-->
+                                        <div class="col-md-6 p-4">
+                                            <div class="row card-service p-4 ">
+                                                <div class="col-md-3">
+                                                    <img src="@/../public/img/assets/albañil.png"
+                                                        class="card-img mx-auto d-block" alt="Telefono AMST">
+                                                    <h4 class="mt-2">Hospital</h4>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <h5 class="text-end mb-3">Mas de 5 años</h5>
+                                                    <p class="text-center">Lorem ipsum es el texto que se usa
+                                                        habitualmente en diseño
+                                                        gráfico en demostraciones de tipografías.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 p-4">
+                                            <div class="row card-service p-4 ">
+                                                <div class="col-md-3">
+                                                    <img src="@/../public/img/assets/albañil.png"
+                                                        class="card-img mx-auto d-block" alt="Telefono AMST">
+                                                    <h4 class="mt-2">Hospital</h4>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <h5 class="text-end mb-3">Mas de 5 años</h5>
+                                                    <p class="text-center">Lorem ipsum es el texto que se usa
+                                                        habitualmente en diseño
+                                                        gráfico en demostraciones de tipografías.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 p-4">
+                                            <div class="row card-service p-4 ">
+                                                <div class="col-md-3">
+                                                    <img src="@/../public/img/assets/albañil.png"
+                                                        class="card-img mx-auto d-block" alt="Telefono AMST">
+                                                    <h4 class="mt-2">Hospital</h4>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <h5 class="text-end mb-3">Mas de 5 años</h5>
+                                                    <p class="text-center">Lorem ipsum es el texto que se usa
+                                                        habitualmente en diseño
+                                                        gráfico en demostraciones de tipografías.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 p-4">
+                                            <div class="row card-service p-4 ">
+                                                <div class="col-md-3">
+                                                    <img src="@/../public/img/assets/albañil.png"
+                                                        class="card-img mx-auto d-block" alt="Telefono AMST">
+                                                    <h4 class="mt-2">Hospital</h4>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <h5 class="text-end mb-3">Mas de 5 años</h5>
+                                                    <p class="text-center">Lorem ipsum es el texto que se usa
+                                                        habitualmente en diseño
+                                                        gráfico en demostraciones de tipografías.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <hr>
                                 <div class="indent_title_in">
@@ -162,59 +213,59 @@ import Navbar from "@/components/community/ComponentNavbar.vue"
 import Footer from "@/components/community/ComponentFooter.vue"
 
 export default {
-data() {
-return {
-buscar: '',
-lista: [],
-skeleton: false
-}
-},
+    data() {
+        return {
+            buscar: '',
+            lista: [],
+            skeleton: false
+        }
+    },
 
-async mounted() {
+    async mounted() {
 
-//Vuex
-await this.$store.dispatch("Cuenta", this.slug)
-this.lista = this.$store.state.community.cuenta[0]
+        //Vuex
+        await this.$store.dispatch("Cuenta", this.slug)
+        this.lista = this.$store.state.community.cuenta[0]
 
-//Skeleton
-setTimeout(() => {
-this.skeleton = true
-}, 950)
+        //Skeleton
+        setTimeout(() => {
+            this.skeleton = true
+        }, 950)
 
-//Skeleton
-setTimeout(() => {
-this.maps()
-}, 950)
-},
+        //Skeleton
+        setTimeout(() => {
+            this.maps()
+        }, 950)
+    },
 
-components: {
-Navbar,
-Footer,
-Swiper,
-SwiperSlide,
-},
+    components: {
+        Navbar,
+        Footer,
+        Swiper,
+        SwiperSlide,
+    },
 
-methods: {
-maps() {
-// Initial
-this.map = L.map('map', {
-zoomControl: false,
-dragging: false,
-scrollWheelZoom: false
-}).setView([13.675997400000004, -89.28905480533759], 15)
+    methods: {
+        maps() {
+            // Initial
+            this.map = L.map('map', {
+                zoomControl: false,
+                dragging: false,
+                scrollWheelZoom: false
+            }).setView([13.675997400000004, -89.28905480533759], 15)
 
-// Setting
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-zoom: 16,
+            // Setting
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                zoom: 16,
 
-}).addTo(this.map)
+            }).addTo(this.map)
 
-L.marker([13.675997400000004, -89.28905480533759],).bindPopup("asd").addTo(this.map)
-},
-},
+            L.marker([13.675997400000004, -89.28905480533759],).bindPopup("asd").addTo(this.map)
+        },
+    },
 
-props: ["slug"]
+    props: ["slug"]
 };
 </script>
   
