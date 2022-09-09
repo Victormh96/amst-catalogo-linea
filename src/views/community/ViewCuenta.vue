@@ -92,78 +92,28 @@
                             <div id="profile" class="profile">
                                 <div class="review-box descripcion_container">
                                     <div class="descripcion_medico">
-                                        <p>Podrás encontrar los datos de contacto de los profesionales y las empresas,
-                                            Redes sociales Podrás encontrar los datos de contacto de los profesionales y
-                                            las empresas, Redes sociales.</p>
+                                        <p class="descripcion">Descripción Personal: {{this.lista[0].descripcion}}</p>
                                     </div>
                                 </div>
                                 <hr>
                                 <div class="indent_title_in">
-                                    <i class="fas fa-briefcase-medical"></i>
-                                    <h3>Servicios</h3>
+
+                                    <h3><i class="fa-solid fa-book-open-reader p-2"></i>Servicios</h3>
                                 </div>
                                 <div class="wrapper_indent mt-1">
                                     <div class="row m-1">
                                         <!--v-for con los servicios-->
-                                        <div class="col-md-6 p-4">
+                                        <div v-for="(servicio, index) in this.lista[0].servicio" v-bind:key="index"
+                                            class="col-md-6 p-4">
                                             <div class="row card-service p-4 ">
                                                 <div class="col-md-3">
-                                                    <img src="@/../public/img/assets/albañil.png"
-                                                        class="card-img mx-auto d-block" alt="Telefono AMST">
-                                                    <h4 class="mt-2">Hospital</h4>
+                                                    <img :src="this.url + `/storage/${servicio.rubro.imagen}`"
+                                                        class="card-img mx-auto d-block">
+                                                    <h4 class="mt-2 text-center">{{servicio.rubro.nombre_rubro}}</h4>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <h5 class="text-end mb-3">Mas de 5 años</h5>
-                                                    <p class="text-center">Lorem ipsum es el texto que se usa
-                                                        habitualmente en diseño
-                                                        gráfico en demostraciones de tipografías.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6 p-4">
-                                            <div class="row card-service p-4 ">
-                                                <div class="col-md-3">
-                                                    <img src="@/../public/img/assets/albañil.png"
-                                                        class="card-img mx-auto d-block" alt="Telefono AMST">
-                                                    <h4 class="mt-2">Hospital</h4>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <h5 class="text-end mb-3">Mas de 5 años</h5>
-                                                    <p class="text-center">Lorem ipsum es el texto que se usa
-                                                        habitualmente en diseño
-                                                        gráfico en demostraciones de tipografías.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 p-4">
-                                            <div class="row card-service p-4 ">
-                                                <div class="col-md-3">
-                                                    <img src="@/../public/img/assets/albañil.png"
-                                                        class="card-img mx-auto d-block" alt="Telefono AMST">
-                                                    <h4 class="mt-2">Hospital</h4>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <h5 class="text-end mb-3">Mas de 5 años</h5>
-                                                    <p class="text-center">Lorem ipsum es el texto que se usa
-                                                        habitualmente en diseño
-                                                        gráfico en demostraciones de tipografías.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6 p-4">
-                                            <div class="row card-service p-4 ">
-                                                <div class="col-md-3">
-                                                    <img src="@/../public/img/assets/albañil.png"
-                                                        class="card-img mx-auto d-block" alt="Telefono AMST">
-                                                    <h4 class="mt-2">Hospital</h4>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <h5 class="text-end mb-3">Mas de 5 años</h5>
-                                                    <p class="text-center">Lorem ipsum es el texto que se usa
-                                                        habitualmente en diseño
-                                                        gráfico en demostraciones de tipografías.</p>
+                                                    <h5 class="text-end mb-3"><i class="fa-solid fa-bookmark ps-2 pe-2"></i>{{servicio.anios_experiencia}} de experiencia</h5>
+                                                    <p class="text-start">Descripción: {{servicio.descripcion}}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -171,8 +121,7 @@
                                 </div>
                                 <hr>
                                 <div class="indent_title_in">
-                                    <i class="fas fa-share-alt"></i>
-                                    <h3>Compartir</h3>
+                                    <h3> <i class="fa-solid fa-share-nodes mt-1 p-2"></i>  Compartir</h3>
                                 </div>
                                 <div class="wrapper_indent">
                                     <a class="facebook3" href="javascript:void(0)"><i
@@ -226,6 +175,8 @@ export default {
         //Vuex
         await this.$store.dispatch("Cuenta", this.slug)
         this.lista = this.$store.state.community.cuenta[0]
+
+        console.log(this.lista[0].servicio)
 
         //Skeleton
         setTimeout(() => {

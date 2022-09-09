@@ -20,7 +20,7 @@
 
                     <!--Search-->
                     <div class="col-12 col-md-7 col-lg-5 col-xl-5 col-xxl-4 mx-auto mb-4">
-                        <h6>No se encontro ninguna coincidencia con "{{text}}" pruebas con estas categorias</h6>
+                        <h6 v-if="cant===0">No se encontro ninguna coincidencia con "{{text}}" pruebas con estas categorias</h6>
                         <input type="text" class="form-control text-center"
                             placeholder="Albañil, Farmacias, Pupuserias..." v-model="buscar">
                     </div>
@@ -69,6 +69,7 @@ export default {
             buscar: '',
             skeleton: false,
             text: '',
+            cant:''
         }
     },
 
@@ -76,6 +77,7 @@ export default {
         //rubros
         const { input, cant } = this.$store.state.community.search
         this.text = input
+        this.cant = cant
         if (cant > 0) {
             await this.$store.dispatch("Tag")
             input ? this.buscar = input : this.buscar = '';
