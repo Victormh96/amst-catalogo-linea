@@ -243,19 +243,17 @@ export default {
             }
             );
 
+            const body = {
+                input: this.buscarTag,
+                cant: this.searchTag.length
+            }
+
             if (match != 1) {
-                this.$store.dispatch("Search", this.buscarTag)
+                this.$store.dispatch("Search", body)
                 this.$router.push({
                     name: 'servicios-completos',
                 });
             }
-
-
-
-
-
-
-
         }
 
     },

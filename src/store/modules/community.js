@@ -131,6 +131,17 @@ export default {
                 })
         },
 
+        async AllTag({ commit }) {
+            await axios
+                .get(Tag())
+                .then((response) => {
+                    commit('MutationTag', response.data[0])
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        },
+
         async Categoria({ commit }, body) {
             await axios
                 .get(Categoria() + body)
@@ -215,8 +226,8 @@ export default {
                 })
         },
 
-        Search({ commit },body) {
-            commit('MutationSearch',body)
+        Search({ commit }, body) {
+            commit('MutationSearch', body)
         },
 
         ClearServicio({ commit }) {
