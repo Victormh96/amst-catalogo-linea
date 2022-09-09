@@ -14,15 +14,17 @@
                 <div class="row">
 
                     <!--Title-->
-                    <div class="col-12 text-center mb-5 mt-5 mt-m-5">
+                    <div class="col-12 text-center mb-5 mt-5 mt-m-4">
                         <h3>TODOS LOS SERVICIOS</h3>
                     </div>
 
                     <!--Search-->
-                    <div class="col-12 col-md-7 col-lg-5 col-xl-5 col-xxl-4 mx-auto mb-5">
+                    <div class="col-12 col-md-7 col-lg-5 col-xl-5 col-xxl-4 mx-auto mb-4">
+                        <h6>No se encontro ninguna coincidencia con "{{text}}" pruebas con estas categorias</h6>
                         <input type="text" class="form-control text-center"
                             placeholder="Albañil, Farmacias, Pupuserias..." v-model="buscar">
                     </div>
+
 
                     <!--Tags-->
                     <div class="col-md-12 text-center" v-if="this.lista.length > 0">
@@ -65,16 +67,21 @@ export default {
     data() {
         return {
             buscar: '',
-            skeleton: false
+            skeleton: false,
+            text: '',
         }
     },
 
     async mounted() {
         //rubros
-        await this.$store.dispatch("Tag")
-
-        console.log(this.$store.state.community.search)
-        this.$store.state.community.search ? this.buscar = this.$store.state.community.search : this.buscar = '';
+        const { input, cant } = this.$store.state.community.search
+        this.text = input
+        if (cant > 0) {
+            await this.$store.dispatch("Tag")
+            input ? this.buscar = input : this.buscar = '';
+        } else {
+            await this.$store.dispatch("AllTag")
+        }
 
         //Skeleton
         setTimeout(() => {
@@ -105,6 +112,5 @@ export default {
         }
     },
 
-    props: ["tagname"]
 };
 </script>

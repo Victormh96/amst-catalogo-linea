@@ -77,7 +77,7 @@
   text-align: end;
 }
 
-#header .nav-menu>ul>li {
+#header .nav-menu > ul > li {
   position: relative;
   white-space: nowrap;
   display: inline-block;
@@ -232,10 +232,12 @@
 }
 
 #inscribete {
-  background: linear-gradient(121deg,
-      rgba(20, 41, 78, 1) 2%,
-      rgba(27, 54, 101, 1) 29%,
-      rgba(62, 121, 194, 1) 91%);
+  background: linear-gradient(
+    121deg,
+    rgba(20, 41, 78, 1) 2%,
+    rgba(27, 54, 101, 1) 29%,
+    rgba(62, 121, 194, 1) 91%
+  );
   padding: 60px 0;
 }
 
@@ -300,6 +302,14 @@
 
 #categoria .fa-beat-fade {
   animation-duration: 1.5s;
+}
+
+#categoria h6 {
+  font-weight: 400;
+  font-size: 13px;
+  text-align: center;
+  margin-bottom: 10px;
+  color: rgb(180, 6, 6);
 }
 
 /*============================================================================================*/
@@ -428,7 +438,7 @@
 }
 
 #cuenta aside .card {
-  background-color: #F2F6FB;
+  background-color: #f2f6fb;
   border-radius: 0 0 10px 10px;
   padding: 0 20px 20px 20px;
   text-align: center;
@@ -436,24 +446,24 @@
 
 #cuenta aside .card .information {
   padding: 10px 0;
-  border-bottom: solid #DCE2E9 2px;
+  border-bottom: solid #dce2e9 2px;
 }
 
 #cuenta aside .card .information small {
   font-size: 0.75rem;
   font-weight: bold;
-  color: #13274A;
+  color: #13274a;
   text-transform: uppercase;
 }
 
 #cuenta aside .card .information i {
   font-size: 18px;
-  color: #407EC9;
+  color: #407ec9;
 }
 
 #cuenta aside .card .tag {
   padding: 10px 0;
-  border-bottom: solid #DCE2E9 2px;
+  border-bottom: solid #dce2e9 2px;
 }
 
 #cuenta .card .tag span {
@@ -473,12 +483,12 @@
 
 #cuenta aside .card .networks a {
   font-size: 20px;
-  color: #9CAABF;
+  color: #9caabf;
 }
 
 #cuenta aside .card p {
   margin: 20px 0 0 0;
-  background: #13274A;
+  background: #13274a;
   color: #fff;
   padding: 9px;
   border-radius: 3px;
@@ -486,7 +496,7 @@
 }
 
 #cuenta article .card {
-  background-color: #F2F6FB;
+  background-color: #f2f6fb;
   border-radius: 10px;
   padding: 20px;
 }
@@ -496,10 +506,45 @@
   width: 100%;
 }
 
+#profile p {
+  color: #3C3C3B;
+  font-size: 13px;
+  font-weight: 400;
+}
 
+#profile h3 {
+  color: #13274a;
+  font-size: 21px;
+  font-weight: 800;
+}
 
+#profile h3::before {
+  content: none;
+}
 
+#profile h4 {
+  color: #13274a;
+  font-size: 15px;
+  font-weight: 800;
+}
 
+#profile h5 {
+  color: #407EC9;
+  font-size: 15px;
+  font-weight: 700;
+  margin-right: -5px;
+  margin-top: -5px;
+}
+
+.card-service{
+  background-color: #ffffff;
+  border-radius: 8px;
+
+}
+
+.card-img{
+  width: 55px;
+}
 
 #perfil .secondary .box_general_2 {
   background-color: #fff;
@@ -942,7 +987,9 @@ html::-webkit-scrollbar-thumb,
   font-size: 13px !important;
 }
 
-.select2-container--default .select2-selection--single .select2-selection__rendered {
+.select2-container--default
+  .select2-selection--single
+  .select2-selection__rendered {
   color: #b0b4b7;
   line-height: 41px;
 }
@@ -953,7 +1000,8 @@ html::-webkit-scrollbar-thumb,
   background: #f2f6fb;
 }
 
-.select2-container--default .select2-results__option--highlighted[aria-selected] {
+.select2-container--default
+  .select2-results__option--highlighted[aria-selected] {
   background-color: #407ec9;
 }
 
