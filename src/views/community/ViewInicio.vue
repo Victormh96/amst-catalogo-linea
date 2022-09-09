@@ -27,11 +27,11 @@
                     <div class="col-md-5 m-auto mt-4">
                         <input type="text" class="form-control" placeholder="Doctor, Albañil, Farmacias, Pupuserias..."
                             v-model="buscarTag" v-on:keyup.enter="verifyTag">
-                            <ul v-if="searchTag.length" class="auto-completado">
-                                <li v-for="tag in searchTag" :key="tag.nombre_rubro" @click="selectTag(tag)"
-                                    class="p-2 hover"> {{ tag.nombre_rubro }}
-                                </li>
-                            </ul>
+                        <ul v-if="searchTag.length" class="auto-completado">
+                            <li v-for="tag in searchTag" :key="tag.nombre_rubro" @click="selectTag(tag)"
+                                class="p-2 hover"> {{ tag.nombre_rubro }}
+                            </li>
+                        </ul>
 
                     </div>
                 </div>
@@ -217,6 +217,7 @@ export default {
 
         //rubros
         await this.$store.dispatch("Tag")
+        this.$store.dispatch("Search", '')
     },
 
     components: {
@@ -229,11 +230,31 @@ export default {
             await this.$store.dispatch("CategoriaClick", id)
         },
 
-        verifyTag(){
-            this.$router.push({
-                name: "servicios-completos",
-                params: { tagSerch: this.buscarTag }
-            });
+        verifyTag() {
+            let match = 0
+            this.$store.state.community.tag.forEach(elemento => {
+                if (elemento.nombre_rubro.toLowerCase() === this.buscarTag.toLowerCase()) {
+                    match = 1
+                    this.$router.push({
+                        name: "Catalogo",
+                        params: { slug: elemento.slug }
+                    });
+                }
+            }
+            );
+
+            if (match != 1) {
+                this.$store.dispatch("Search", this.buscarTag)
+                this.$router.push({
+                    name: 'servicios-completos',
+                });
+            }
+
+
+
+
+
+
 
         }
 

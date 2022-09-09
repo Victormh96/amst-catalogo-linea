@@ -72,8 +72,9 @@ export default {
     async mounted() {
         //rubros
         await this.$store.dispatch("Tag")
-console.log(this.tagSerch)
-        this.buscar.length>0 ? this.buscar = this.tagSerch: this.buscar='';
+
+        console.log(this.$store.state.community.search)
+        this.$store.state.community.search ? this.buscar = this.$store.state.community.search : this.buscar = '';
 
         //Skeleton
         setTimeout(() => {
@@ -104,6 +105,6 @@ console.log(this.tagSerch)
         }
     },
 
-    props: ["tagSerch"]
+    props: ["tagname"]
 };
 </script>

@@ -3,6 +3,7 @@ const communityRoutes = [
         path: '/',
         name: 'Inicio',
         component: () => import("@/views/community/ViewInicio.vue"),
+        props: true
     },
 
     {

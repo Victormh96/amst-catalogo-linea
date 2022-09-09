@@ -26,6 +26,7 @@ export default {
             cuenta: null,
             registroservicio: null,
             registroempresa: null,
+            search: null,
         }
     },
 
@@ -76,6 +77,9 @@ export default {
 
         MutationClearEmpresa(state) {
             state.registroempresa = false
+        },
+        MutationSearch(state, data) {
+            state.search = data
         }
     },
 
@@ -211,11 +215,15 @@ export default {
                 })
         },
 
-        async ClearServicio({ commit }) {
+        Search({ commit },body) {
+            commit('MutationSearch',body)
+        },
+
+        ClearServicio({ commit }) {
             commit('MutationClearServicio')
         },
 
-        async ClearEmpresa({ commit }) {
+        ClearEmpresa({ commit }) {
             commit('MutationClearEmpresa')
         },
     },
