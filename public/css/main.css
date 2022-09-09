@@ -762,9 +762,17 @@ ul {
   background-color: #407ec9;
 }
 
+.map{
+  min-height: 200px;
+}
 
+<<<<<<< HEAD
 .swal2-styled.swal2-confirm {
   background-color: #407ec9
+=======
+.swal2-styled.swal2-confirm{
+  background-color: #407ec9 !important;
+>>>>>>> 4578926fb5065b51a7dde81ff77b3437791ba403
 }
 
 /* ============================================================*/

@@ -105,12 +105,15 @@ export default {
                         let sinonimos = tag.tags.split(',')
                         sinonimos.forEach(nombre => {
                             const data = {
+                                id: tag.id,
                                 nombre_rubro: nombre,
-                                slug: tag.slug
+                                slug: tag.slug,
+                                imagen: tag.imagen
                             }
                             buscador.push(data)
                         })
                     })
+                    buscador.sort((a, b) => a.nombre_rubro.localeCompare(b.nombre_rubro));
                     commit('MutationTag', buscador)
                 })
                 .catch((err) => {

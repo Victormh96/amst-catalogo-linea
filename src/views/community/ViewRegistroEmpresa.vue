@@ -401,7 +401,16 @@ export default {
                 }
             })
         },
-
+        showFailServicies() {
+            this.$swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No has registrado tus servicios',
+                confirmButtonText: "Aceptar",
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+            })
+        },
         showSucces() {
             this.$swal.fire({
                 icon: 'success',
@@ -442,22 +451,26 @@ export default {
         },
 
         async submit() {
-            var Form = new FormData()
-            for (var paramName in this.form) {
-                Form.append(paramName, this.form[paramName])
-            }
-            Form.append('latitud', localStorage.getItem('latitud'))
-            Form.append('longitud', localStorage.getItem('longitud'))
-            Form.append('servicios', JSON.stringify(this.cuentaServicios))
-
-            this.$store.dispatch("ClearEmpresa")
-            await this.$store.dispatch("RegistroEmpresa", Form).then(() => {
-                if (this.$store.state.community.registroempresa) {
-                    this.showSucces()
-                } else {
-                    this.showFail()
+            if (this.cuentaServicios.length > 0) {
+                var Form = new FormData()
+                for (var paramName in this.form) {
+                    Form.append(paramName, this.form[paramName])
                 }
-            })
+                Form.append('latitud', localStorage.getItem('latitud'))
+                Form.append('longitud', localStorage.getItem('longitud'))
+                Form.append('servicios', JSON.stringify(this.cuentaServicios))
+
+                this.$store.dispatch("ClearEmpresa")
+                await this.$store.dispatch("RegistroEmpresa", Form).then(() => {
+                    if (this.$store.state.community.registroempresa) {
+                        this.showSucces()
+                    } else {
+                        this.showFail()
+                    }
+                })
+            } else {
+                this.showFailServicies()
+            }
         },
 
         verifyService() {
