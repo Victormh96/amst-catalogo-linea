@@ -8,8 +8,9 @@ import VueSweetalert2 from 'vue-sweetalert2';
 
 // Css
 import "../public/css/bootstrap.css"
+import "./registerServiceWorker"
 import "../public/css/main.css"
-import './registerServiceWorker'
+import 'swiper/css'
 
 // Initialization
 const app = createApp(App)

@@ -8,6 +8,7 @@ import {
     CategoriaDestacado,
     CategoriaClick,
     CatalogoCategoria,
+    Cuenta,
     RegistroServicio,
     RegistroEmpresa
 } from "../../services/paths"
@@ -22,6 +23,7 @@ export default {
             categoria: null,
             categoriadestacado: null,
             catalogocategoria: null,
+            cuenta: null,
             registroservicio: null,
             registroempresa: null,
         }
@@ -54,6 +56,10 @@ export default {
 
         MutationCatalogoCategoria(state, data) {
             state.catalogocategoria = data
+        },
+
+        MutationCuenta(state, data) {
+            state.cuenta = data
         },
 
         MutationRegistroServicio(state) {
@@ -159,6 +165,17 @@ export default {
                 .get(CatalogoCategoria() + body)
                 .then((response) => {
                     commit('MutationCatalogoCategoria', response.data)
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        },
+
+        async Cuenta({ commit }, body) {
+            await axios
+                .get(Cuenta() + body)
+                .then((response) => {
+                    commit('MutationCuenta', response.data)
                 })
                 .catch((err) => {
                     console.log(err)

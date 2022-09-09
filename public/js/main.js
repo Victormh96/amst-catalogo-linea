@@ -12,19 +12,6 @@ $(window).on("load", function () {
 })
 
 /* ============================================================*/
-/* Swiper
-/* ============================================================*/
-var swiper = new Swiper(".mySwiper", {
-    lazy: true,
-    loop: true,
-    simulateTouch: false,
-    autoplay: {
-        delay: 4500,
-        disableOnInteraction: true,
-    },
-})
-
-/* ============================================================*/
 /* Dropify
 /* ============================================================*/
 $(window).on("load", function () {
