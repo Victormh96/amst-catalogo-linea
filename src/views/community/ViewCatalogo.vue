@@ -83,7 +83,7 @@
           </div>
 
           <!--Maps-->
-          <div class="col-md-6">
+          <div class="col-md-6">  
             <div id="map"></div>
           </div>
         </div>

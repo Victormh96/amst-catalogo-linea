@@ -200,21 +200,23 @@ export default {
 
     methods: {
         maps() {
-            // Initial
-            this.map = L.map('map', {
-                zoomControl: false,
-                dragging: false,
-                scrollWheelZoom: false
-            }).setView([13.675997400000004, -89.28905480533759], 15)
+     // Initial
+     this.map = L.map('map').setView([13.675997400000004, -89.28905480533759], 15)
+      var map = this.map
+      var url = this.url
 
-            // Setting
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-                zoom: 16,
+      // Setting
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        zoom: 16,
+      }).addTo(this.map)
 
-            }).addTo(this.map)
-
-            L.marker([13.675997400000004, -89.28905480533759],).bindPopup("asd").addTo(this.map)
+       // Pin
+      this.lista.map(function (element) {
+        console.log(element)
+        L.marker([element.latitud, element.longitud],).bindPopup("<img src=" + url + "/storage/" + element.foto + "/>").addTo(map).openPopup();
+        map.setView([element.latitud, element.longitud], 18)
+      })
         },
     },
 
