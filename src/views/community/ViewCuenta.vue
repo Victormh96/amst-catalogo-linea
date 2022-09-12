@@ -12,6 +12,7 @@
         <section id="cuenta">
             <div class="container mt-5">
                 <div class="row">
+
                     <!--Aside-->
                     <aside class="col-3">
 
@@ -30,33 +31,30 @@
 
                             <!--Tags-->
                             <div class="tag ms-4 me-4">
-                                <span class="tag me-2 mb-1" v-for="(r, index) in this.lista.servicio"
-                                    v-bind:key="index">
+                                <span class="me-2 mb-1" v-for="(r, index) in this.lista.servicio" v-bind:key="index">
                                     {{ r.rubro.nombre_rubro }}
                                 </span>
                             </div>
 
                             <!--Networks-->
-                            <div class="networks">
+                            <div class="networks mb-2">
                                 <a v-for="(c, index) in this.lista.contacto" :key="index" :href="c.descripcion"
                                     target="blank" data-toggle="tooltip" data-placement="top"
                                     :title="c.detallecontacto.descripcion">
-                                    <i class="me-3" :class="c.detallecontacto.clase"></i>
+                                    <i class="ms-2 me-2" :class="c.detallecontacto.clase"></i>
                                 </a>
                             </div>
 
-                            <!--local-->
-                            <p v-if="this.lista.local === '1' && this.lista.servicio_domicilio === '0'">En el lugar</p>
                             <!--Delivery-->
-                            <p v-if="this.lista.servicio_domicilio === '1' && this.lista.local === '0'">Servicio a Domicilio</p>
-                            <!--Delivery and local-->
-                            <p v-if="this.lista.servicio_domicilio === '1' && this.lista.local === '1'">En el lugar y a Domicilio</p>
+                            <p v-if="this.lista.local === True">En Lugar</p>
+                            <p v-else>A Domicilio</p>
                         </div>
 
-                        <!--advertising-->
-                        <swiper :slides-per-view="1" :space-between="50" @swiper="onSwiper"
-                            @slideChange="onSlideChange">
-                            <swiper-slide><img src="https://i.ibb.co/MSqh0Z1/Rectangle-111.png" /></swiper-slide>
+                        <!--Advertising-->
+                        <swiper :slides-per-view="1" :space-between="50" :autoplay="{ delay: 5000 }" :modules="modules"
+                            :loop="true" :effect="'fade'">
+                            <swiper-slide><img src="@/../public/img/assets/shapex6.png" /></swiper-slide>
+                            <swiper-slide><img src="@/../public/img/assets/shapex17.jpg" /></swiper-slide>
                         </swiper>
                     </aside>
 
@@ -86,10 +84,12 @@
                                 </div>
                                 <hr>
 
+                                <!--Tittle-->
                                 <div class="indent_title_in">
-
                                     <h3><i class="fa-solid fa-book-open-reader p-2"></i>Servicios</h3>
                                 </div>
+
+                                <!--Description-->
                                 <div class="wrapper_indent mt-1">
                                     <div class="row m-1">
                                         <!--v-for con los servicios-->
@@ -113,9 +113,12 @@
                                 </div>
                                 <hr>
 
+                                <!--Tittle-->
                                 <div class="indent_title_in">
                                     <h3> <i class="fa-solid fa-share-nodes mt-1 p-2"></i> Compartir</h3>
                                 </div>
+
+                                <!--Networks-->
                                 <div class="wrapper_indent">
                                     <a class="facebook me-3" href="javascript:void(0)"><i
                                             class="fab fa-facebook-square"></i></a>
@@ -131,10 +134,6 @@
                             <div class="galery" v-else>
                                 <div>galeria</div>
                             </div>
-
-
-
-
                         </div>
                     </article>
                 </div>
@@ -154,7 +153,9 @@
 <!--=======Script=======-->
 <script>
 import L from 'leaflet'
-import { Swiper, SwiperSlide } from 'swiper/vue'
+import "swiper/css/effect-fade"
+import { Autoplay, EffectFade } from "swiper"
+import { Swiper, SwiperSlide } from "swiper/vue"
 import Navbar from "@/components/community/ComponentNavbar.vue"
 import Footer from "@/components/community/ComponentFooter.vue"
 
@@ -169,36 +170,44 @@ export default {
     },
 
     async mounted() {
-
-        //Vuex
+        // Vuex
         await this.$store.dispatch("Cuenta", this.slug)
         this.lista = this.$store.state.community.cuenta
-        console.log(this.lista)
 
-        //Skeleton
+        // Skeleton
         setTimeout(() => {
             this.skeleton = true
         }, 950)
 
-        //Skeleton
+        // Maps
         setTimeout(() => {
             this.maps()
         }, 950)
+    },
+
+    setup() {
+        // Modules
+        return {
+            modules: [Autoplay, EffectFade]
+        }
     },
 
     components: {
         Navbar,
         Footer,
         Swiper,
-        SwiperSlide,
+        SwiperSlide
     },
 
     methods: {
         maps() {
             // Initial
-            this.map = L.map('map').setView([13.675997400000004, -89.28905480533759], 15)
-            var map = this.map
-            var url = this.url
+            this.map = L.map('map', {
+                dragging: false,
+                zoomControl: false,
+                scrollWheelZoom: false,
+                closePopupOnClick: false
+            }).setView([13.675997400000004, -89.28905480533759], 15)
 
             // Setting
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -207,10 +216,8 @@ export default {
             }).addTo(this.map)
 
             // Pin
-
-            L.marker([this.lista.latitud, this.lista.longitud],).bindPopup("<img src=" + url + "/storage/" + this.lista.foto + "/>").addTo(map).openPopup();
-            map.setView([this.lista.latitud, this.lista.longitud], 18)
-
+            L.popup().setLatLng([this.lista.latitud, this.lista.longitud]).setContent("<p>" + this.lista.direccion + "</p>").openOn(this.map)
+            this.map.setView([this.lista.latitud, this.lista.longitud], 18)
         },
     },
 

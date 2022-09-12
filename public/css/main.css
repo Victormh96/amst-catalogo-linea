@@ -77,7 +77,7 @@
   text-align: end;
 }
 
-#header .nav-menu > ul > li {
+#header .nav-menu>ul>li {
   position: relative;
   white-space: nowrap;
   display: inline-block;
@@ -364,12 +364,10 @@
 }
 
 #inscribete {
-  background: linear-gradient(
-    121deg,
-    rgba(20, 41, 78, 1) 2%,
-    rgba(27, 54, 101, 1) 29%,
-    rgba(62, 121, 194, 1) 91%
-  );
+  background: linear-gradient(121deg,
+      rgba(20, 41, 78, 1) 2%,
+      rgba(27, 54, 101, 1) 29%,
+      rgba(62, 121, 194, 1) 91%);
   padding: 60px 0;
 }
 
@@ -559,17 +557,6 @@
   padding: 0 20px;
 }
 
-#cuenta a {
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: var(--dark-white);
-  margin: 0;
-}
-
-#cuenta .fa-venus {
-  color: #ef5a9e !important;
-}
-
 #cuenta aside img {
   width: 100%;
   height: 190px;
@@ -585,12 +572,12 @@
 }
 
 #cuenta aside .card .information {
-  padding: 10px 0;
+  padding: 12px 0;
   border-bottom: solid #dce2e9 2px;
 }
 
 #cuenta aside .card .information small {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: bold;
   color: #13274a;
   text-transform: uppercase;
@@ -601,8 +588,19 @@
   color: #407ec9;
 }
 
+#cuenta .card .information .fa-venus {
+  color: #ef5a9e !important;
+}
+
+#cuenta .card .information a {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--dark-white);
+  margin: 0;
+}
+
 #cuenta aside .card .tag {
-  padding: 10px 0;
+  padding: 12px 0;
   border-bottom: solid #dce2e9 2px;
 }
 
@@ -618,22 +616,40 @@
 }
 
 #cuenta aside .card .networks {
-  padding: 10px 0;
+  padding: 12px 0;
 }
 
 #cuenta aside .card .networks a {
   font-size: 20px;
   color: #9caabf;
+  transition: 0.3s;
+}
+
+#cuenta aside .card .networks a:hover {
+  color: var(--light-blue);
 }
 
 #cuenta aside .card p {
-  margin: 20px 0 0 0;
+  font-size: 0.8rem;
+  font-weight: 500;
   background: #13274a;
   color: #fff;
   padding: 9px;
   border-radius: 3px;
-  font-size: 0.85rem;
 }
+
+#cuenta article .card .leaflet-popup-content {
+  width: 150px !important;
+  text-align: center;
+}
+
+#cuenta article .card .leaflet-popup-content p {
+  font-size: .7rem;
+  font-weight: 600;
+  color: #13274a;
+  margin: 0;
+}
+
 
 #cuenta article .card {
   background-color: #f2f6fb;
@@ -644,254 +660,6 @@
 #cuenta article .leaflet-container {
   height: 200px;
   width: 100%;
-}
-
-#profile p {
-  color: #3c3c3b;
-  font-size: 13px;
-  font-weight: 400;
-}
-
-#profile h3 {
-  color: #13274a;
-  font-size: 21px;
-  font-weight: 800;
-}
-
-#profile h3::before {
-  content: none;
-}
-
-#profile h4 {
-  color: #13274a;
-  font-size: 14px;
-  font-weight: 800;
-  margin-left: -10px;
-}
-
-#profile h5 {
-  color: #407ec9;
-  font-size: 13px;
-  font-weight: 700;
-  margin-right: -15px;
-  margin-top: -10px;
-}
-
-#profile descripcion {
-  font-size: 15px;
-}
-
-.tabs {
-  cursor: pointer;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 10px!important;
-}
-
-.fa-book-open-reader {
-  color: #407ec9;
-  font-size: 28px;
-  padding-top: 7px;
-}
-
-.fa-share-nodes {
-  color: #407ec9;
-  font-size: 28px;
-}
-
-.card-service {
-  background-color: #ffffff;
-  border-radius: 8px;
-}
-
-.card-img {
-  width: 55px;
-}
-
-#perfil .secondary .box_general_2 {
-  background-color: #fff;
-  padding: 30px 30px 15px 30px;
-  border-radius: 5px;
-  margin: 0 0 25px 0;
-  border: 1px solid #e1e8ed;
-  text-align: center;
-}
-
-#perfil .secondary .mobile_enfermero {
-  background-size: cover;
-  height: 264px;
-}
-
-#perfil .secondary .enviar {
-  background: #26718f;
-  color: #fff;
-  padding: 12px;
-  font-size: 0.75rem;
-  border-radius: 3px;
-  border: none;
-}
-
-#perfil .secondary .tabs_styled_2 .nav-tabs .nav-item.show .nav-link,
-#perfil .secondary .tabs_styled_2 .nav-tabs .nav-link.active {
-  color: #333333;
-  background-color: #fff;
-  border-color: #e1e8ed;
-  border-bottom: 2px solid #3fbcef;
-}
-
-#perfil .secondary .tabs_styled_2 .nav-tabs .nav-link:focus,
-#perfil .secondary .tabs_styled_2 .nav-tabs .nav-link.active:hover {
-  border-color: #e1e8ed;
-  border-bottom: 2px solid #3fbcef;
-}
-
-#perfil .secondary .tabs_styled_2 .nav-tabs .nav-link:hover {
-  border-color: transparent;
-}
-
-#perfil .secondary .tabs_styled_2 .nav-tabs .nav-link {
-  border-radius: 0 3px 0 3px;
-  font-size: 0.8rem;
-  padding: 11px 30px;
-}
-
-#perfil .secondary .tabs_styled_2 .nav-tabs {
-  border-bottom: 1px solid #e1e8ed;
-}
-
-#perfil .secondary .table-striped tbody tr:nth-of-type(odd) {
-  background-color: #3fbcef;
-  color: #fff;
-}
-
-#perfil .secondary .tabs_styled_2 #general {
-  background-color: #fff;
-  padding: 30px 30px 20px 30px;
-  border: 1px solid #e1e8ed;
-  border-top: none;
-}
-
-#perfil .secondary .tabs_styled_2 .tab-pane hr {
-  margin: 30px 0 30px 0;
-  border-color: #ededed;
-  width: 100%;
-}
-
-#perfil .secondary .indent_title_in {
-  position: relative;
-  padding: 0 0 10px 60px;
-}
-
-#perfil .secondary .indent_title_in i {
-  font-size: 35px;
-  position: absolute;
-  left: 0;
-  color: #3fbcef;
-  top: -10px;
-}
-
-#perfil .secondary .indent_title_in h3 {
-  margin-bottom: 0;
-  margin-top: 0;
-  font-size: 1.1rem;
-}
-
-#perfil .secondary .wrapper_indent {
-  padding: 0 0 0 60px;
-}
-
-#perfil .secondary .wrapper_indent ul {
-  margin: 0;
-  padding: 0;
-  color: #555555 !important;
-}
-
-#perfil .secondary .wrapper_indent ul li {
-  margin: 0 0 6px 0;
-}
-
-#perfil .secondary .wrapper_indent p {
-  color: #555555 !important;
-  margin: 0;
-  padding: 0;
-  font-size: 0.7rem !important;
-}
-
-#perfil .secondary .wrapper_indent p span {
-  color: #555555 !important;
-  margin: 0;
-  padding: 0;
-  font-size: 0.77rem !important;
-}
-
-#perfil .secondary .facebook3 {
-  font-size: 35px;
-  padding-right: 30px;
-  color: #999;
-}
-
-#perfil .secondary .twitter3 {
-  padding-right: 30px;
-  font-size: 35px;
-  color: #999;
-}
-
-#perfil .secondary .whatsapp3 {
-  font-size: 36px;
-  color: #999;
-}
-
-#perfil .secondary .facebook3:hover,
-#perfil .secondary .facebook3:focus {
-  color: #3b5998;
-}
-
-#perfil .secondary .twitter3:hover,
-#perfil .secondary .twitter3:focus {
-  color: #00acee;
-}
-
-#perfil .secondary .whatsapp3:hover,
-#perfil .secondary .whatsapp3:focus {
-  color: #075e54;
-}
-
-#perfil .secondary .tabs_styled_2 #reviews {
-  background-color: #fff;
-  padding: 30px 40px 30px 40px;
-  border: 1px solid #e1e8ed;
-  border-top: none;
-}
-
-#perfil .secondary .horario {
-  margin: 0;
-}
-
-#perfil .secondary .galeria {
-  margin: 20px 0 0 0;
-}
-
-#perfil .secondary .imagen_clinicas {
-  width: 250px;
-  border-radius: 5px;
-}
-
-#perfil .secondary .tabla_doctor {
-  margin: 0;
-}
-
-#perfil .secondary .descripcion_medico {
-  padding: 15px;
-  font-size: 0.7rem;
-  background: #fafafa;
-  margin: 0;
-  border-radius: 5px;
-  font-weight: 400;
-}
-
-#perfil .secondary .table td,
-.table th {
-  font-size: 0.8rem;
 }
 
 #cuenta .wrapper_indent .facebook {
@@ -909,13 +677,6 @@
   color: #d33d95;
 }
 
-#perfil .galeria .galery {
-  border-radius: 5px;
-  width: 100%;
-  height: 130px;
-  background-size: cover;
-  margin: 0 0 10px 0;
-}
 
 /* ============================================================*/
 /* Banner
@@ -977,7 +738,6 @@
   height: 300px;
   object-fit: cover;
   filter: brightness(0.7);
-  border-radius: 5px;
 }
 
 /*===Phone===**/
@@ -1139,9 +899,7 @@ html::-webkit-scrollbar-thumb,
   font-size: 13px !important;
 }
 
-.select2-container--default
-  .select2-selection--single
-  .select2-selection__rendered {
+.select2-container--default .select2-selection--single .select2-selection__rendered {
   color: #b0b4b7;
   line-height: 41px;
 }
@@ -1152,8 +910,7 @@ html::-webkit-scrollbar-thumb,
   background: #f2f6fb;
 }
 
-.select2-container--default
-  .select2-results__option--highlighted[aria-selected] {
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
   background-color: #407ec9;
 }
 
@@ -1223,7 +980,7 @@ html::-webkit-scrollbar-thumb,
 }
 
 .swiper-slide img {
-  border-radius: 6px;
+  border-radius: 5px;
 }
 
 /* ============================================================*/
