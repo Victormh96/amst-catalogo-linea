@@ -14,23 +14,23 @@
                 <div class="row">
 
                     <!--Title-->
-                    <div class="col-12 text-center mb-5 mt-5 mt-m-4">
+                    <div class="col-12 text-center mb-5 mt-4 mt-sm-5">
                         <h3>TODOS LOS SERVICIOS</h3>
                     </div>
 
                     <!--Search-->
                     <div class="col-12 col-md-7 col-lg-5 col-xl-5 col-xxl-4 mx-auto mb-4">
-                        <h6 v-if="cant===0">No se encontro ninguna coincidencia con "{{text}}" pruebas con estas categorias</h6>
-                        <input type="text" class="form-control text-center"
+                        <input type="text" class="form-control text-center mb-2"
                             placeholder="Albañil, Farmacias, Pupuserias..." v-model="buscar">
+                        <h6 v-if="cant===0" class="mb-2">No se encontro ninguna coincidencia con "{{text}}" pruebas con
+                            estas categorias</h6>
                     </div>
-
 
                     <!--Tags-->
                     <div class="col-md-12 text-center" v-if="this.lista.length > 0">
                         <div class="row">
                             <div class="col-12 col-md-4 col-lg-3 col-xl-3 col-xxl-2 mb-5"
-                                v-for="(l, index) in this.lista" v-bind:key="index">.
+                                v-for="(l, index) in this.lista" v-bind:key="index">
                                 <router-link :to="{ name: 'Catalogo', params: { slug: l.slug } }"
                                     @click="clickcategoria(l.id)">
                                     <img :src="this.url + `/storage/${l.imagen}`">
@@ -67,14 +67,14 @@ export default {
     data() {
         return {
             buscar: '',
-            skeleton: false,
             text: '',
-            cant:''
+            cant: '',
+            skeleton: false
         }
     },
 
     async mounted() {
-        //rubros
+        // Filter
         const { input, cant } = this.$store.state.community.search
         this.text = input
         this.cant = cant
@@ -85,7 +85,7 @@ export default {
             await this.$store.dispatch("AllTag")
         }
 
-        //Skeleton
+        // Skeleton
         setTimeout(() => {
             this.skeleton = true
         }, 950)
@@ -97,22 +97,21 @@ export default {
     },
 
     methods: {
-        //Vuex
+        // Vuex
         async clickcategoria(id) {
             await this.$store.dispatch("CategoriaClick", id)
         },
     },
 
     computed: {
-        //Search
+        // Search
         lista() {
             return this.$store.state.community.tag.filter(categoria => {
-                return categoria.nombre_rubro.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
+                return categoria.tags.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
                     .toLowerCase().includes(this.buscar.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
                         .toLowerCase())
             })
         }
     },
-
 };
 </script>

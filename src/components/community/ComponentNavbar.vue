@@ -77,7 +77,7 @@
         <a v-bind:href="'/categoria/' + 'servicios-profesionales'">
             <i class="fa-solid fa-briefcase"></i>
         </a>
-        <a v-bind:href="'/categoria/' + 'empresas'" class="nav-link">
+        <a v-bind:href="'/categoria/' + 'empresas'">
             <i class="fa-solid fa-city"></i>
         </a>
         <a href="/">

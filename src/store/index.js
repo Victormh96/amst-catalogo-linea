@@ -1,8 +1,8 @@
-//Imports
+// Imports
 import { createStore, createLogger } from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
 
-//Community
+// Community
 import community from './modules/community'
 
 export default createStore({

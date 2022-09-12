@@ -1,4 +1,4 @@
-//Imports
+// Imports
 import axios from "axios"
 import {
     PortadaInicio,
@@ -13,7 +13,7 @@ import {
     RegistroEmpresa
 } from "../../services/paths"
 
-//Vuex
+// Vuex
 export default {
     state() {
         return {

@@ -14,7 +14,7 @@
                 <div class="row">
 
                     <!--Title-->
-                    <div class="col-12 text-center mb-5 mt-5 mt-m-5">
+                    <div class="col-12 text-center mb-5 mt-4 mt-sm-5">
                         <h3>{{ slug == 'empresas' ? "EMPRESAS" : "SERVICIOS PROFESIONALES" }}</h3>
                     </div>
 
@@ -28,7 +28,7 @@
                     <div class="col-md-12 text-center" v-if="this.lista.length > 0">
                         <div class="row">
                             <div class="col-12 col-md-4 col-lg-3 col-xl-3 col-xxl-2 mb-5"
-                                v-for="(l, index) in this.lista" v-bind:key="index">.
+                                v-for="(l, index) in this.lista" v-bind:key="index">
                                 <router-link :to="{ name: 'Catalogo', params: { slug: l.slug } }"
                                     @click="clickcategoria(l.id)">
                                     <img :src="this.url + `/storage/${l.imagen}`">
@@ -70,10 +70,10 @@ export default {
     },
 
     async mounted() {
-        //Vuex
+        // Vuex
         await this.$store.dispatch("Categoria", this.slug)
 
-        //Skeleton
+        // Skeleton
         setTimeout(() => {
             this.skeleton = true
         }, 950)
@@ -85,22 +85,19 @@ export default {
     },
 
     methods: {
-        //Vuex
+        // Vuex
         async clickcategoria(id) {
             await this.$store.dispatch("CategoriaClick", id)
         },
     },
 
     computed: {
-        //Search
+        // Search
         lista() {
             return this.$store.state.community.categoria[0].filter(categoria => {
-                return categoria.nombre_rubro.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
+                return categoria.tags.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
                     .toLowerCase().includes(this.buscar.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
-                        .toLowerCase()) ||
-                    categoria.tags.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
-                        .toLowerCase().includes(this.buscar.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
-                            .toLowerCase())
+                        .toLowerCase())
             })
         }
     },
