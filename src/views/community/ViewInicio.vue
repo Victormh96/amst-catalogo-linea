@@ -18,7 +18,7 @@
                     <div class="col-md-12 mb-4">
                         <h1>¿QUÉ BUSCAS?</h1>
                     </div>
-
+                    
                     <!--Description-->
                     <div class="col-lg-9 col-xl-8 m-auto mb-4 d-none d-md-none d-lg-block">
                         <p>La Alcaldía Municipal de Santa Tecla pone a tu disposición el catálogo de Servicios
@@ -233,7 +233,7 @@ export default {
             return store.state.community.tag.filter(tag => {
                 if (
                     tag.nombre_rubro.toLowerCase().includes(buscarTag.value.toLowerCase())
-                    && matches < 4
+                    && matches < 5
                 ) {
                     matches++
                     return tag

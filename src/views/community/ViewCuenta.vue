@@ -9,59 +9,48 @@
     <main v-if="(skeleton)" class="top">
 
         <!--Section-->
-        <section id="cuenta" v-for="(l, index) in this.lista" v-bind:key="index">
+        <section id="cuenta">
             <div class="container mt-5">
                 <div class="row">
                     <!--Aside-->
                     <aside class="col-3">
 
                         <!--Img-->
-                        <img :src="this.url + `/storage/${ l.foto }`" :alt="`${ l.slug }`" v-if="l.foto">
+                        <img :src="this.url + `/storage/${ this.lista.foto }`" :alt="`${ this.lista.slug }`"
+                            v-if="this.lista.foto">
 
                         <!--Profile-->
                         <div class="card mb-4">
                             <div class="information ms-4 me-4">
-                                <small class="me-1">{{ l.nombre_cuenta }}</small>
-                                <i class="fa-solid fa-mars-stroke"></i>
+                                <small class="me-1">{{ this.lista.nombre_cuenta }}</small>
+                                <i v-if="this.lista.genero.id === 1" class="fa-solid fa-mars-stroke"></i>
+                                <i v-else class="fa-solid fa-venus"></i>
+                                <a :href="'mailto:'+this.lista.email">{{this.lista.email}}</a>
                             </div>
 
                             <!--Tags-->
                             <div class="tag ms-4 me-4">
-                                <span class="tag me-2 mb-1" v-for="(r, index) in l.servicio" v-bind:key="index">
+                                <span class="tag me-2 mb-1" v-for="(r, index) in this.lista.servicio"
+                                    v-bind:key="index">
                                     {{ r.rubro.nombre_rubro }}
                                 </span>
                             </div>
 
                             <!--Networks-->
                             <div class="networks">
-                                <a href="/" target="blank">
-                                    <i class="fab fa-facebook-square me-3"></i>
-                                </a>
-                                <a href="/" target="blank">
-                                    <i class="fab fa-instagram me-3"></i>
-                                </a>
-                                <a href="/" target="blank">
-                                    <i class="fab fa-twitter me-3"></i>
-                                </a>
-                                <a href="/" target="blank">
-                                    <i class="fab fa-linkedin me-3"></i>
-                                </a>
-                                <a href="/" target="blank">
-                                    <i class="fab fa-whatsapp me-3"></i>
-                                </a>
-                                <a href="/">
-                                    <i class="fa-solid fa-globe me-3"></i>
-                                </a>
-                                <a href="/">
-                                    <i class="fa-solid fa-mobile-screen-button me-3 d-none"></i>
-                                </a>
-                                <a href="/">
-                                    <i class="fas fa-phone me-3 d-none"></i>
+                                <a v-for="(c, index) in this.lista.contacto" :key="index" :href="c.descripcion"
+                                    target="blank" data-toggle="tooltip" data-placement="top"
+                                    :title="c.detallecontacto.descripcion">
+                                    <i class="me-3" :class="c.detallecontacto.clase"></i>
                                 </a>
                             </div>
 
+                            <!--local-->
+                            <p v-if="this.lista.local === '1' && this.lista.servicio_domicilio === '0'">En el lugar</p>
                             <!--Delivery-->
-                            <p>En Lugar</p>
+                            <p v-if="this.lista.servicio_domicilio === '1' && this.lista.local === '0'">Servicio a Domicilio</p>
+                            <!--Delivery and local-->
+                            <p v-if="this.lista.servicio_domicilio === '1' && this.lista.local === '1'">En el lugar y a Domicilio</p>
                         </div>
 
                         <!--advertising-->
@@ -81,18 +70,18 @@
 
                         <!--Tabs-->
                         <div class="tabs">
-                            <a href="">MI PERFIL</a>
-                            <a href="">GALERIA</a>
+                            <span class="m-1 ps-3 pe-3" v-on:click="this.profile = true">MI PERFIL</span>
+                            <span class="m-1 ps-3 pe-3" v-on:click="this.profile = false">GALERIA</span>
                         </div>
 
                         <!--Card-->
                         <div class="card">
 
                             <!--Profile-->
-                            <div id="profile" class="profile">
+                            <div id="profile" class="profile" v-if="this.profile === true">
                                 <div class="review-box descripcion_container">
                                     <div class="descripcion_medico">
-                                        <p class="descripcion">Descripción Personal: {{this.lista[0].descripcion}}</p>
+                                        <p class="descripcion">Descripción Personal: {{this.lista.descripcion}}</p>
                                     </div>
                                 </div>
                                 <hr>
@@ -104,7 +93,7 @@
                                 <div class="wrapper_indent mt-1">
                                     <div class="row m-1">
                                         <!--v-for con los servicios-->
-                                        <div v-for="(servicio, index) in this.lista[0].servicio" v-bind:key="index"
+                                        <div v-for="(servicio, index) in this.lista.servicio" v-bind:key="index"
                                             class="col-md-6 p-4">
                                             <div class="row card-service p-4 ">
                                                 <div class="col-md-3">
@@ -113,7 +102,9 @@
                                                     <h4 class="mt-2 text-center">{{servicio.rubro.nombre_rubro}}</h4>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <h5 class="text-end mb-3"><i class="fa-solid fa-bookmark ps-2 pe-2"></i>{{servicio.anios_experiencia}} de experiencia</h5>
+                                                    <h5 class="text-end mb-3"><i
+                                                            class="fa-solid fa-bookmark ps-2 pe-2"></i>{{servicio.anios_experiencia}}
+                                                        de experiencia</h5>
                                                     <p class="text-start">Descripción: {{servicio.descripcion}}</p>
                                                 </div>
                                             </div>
@@ -123,7 +114,7 @@
                                 <hr>
 
                                 <div class="indent_title_in">
-                                    <h3> <i class="fa-solid fa-share-nodes mt-1 p-2"></i>  Compartir</h3>
+                                    <h3> <i class="fa-solid fa-share-nodes mt-1 p-2"></i> Compartir</h3>
                                 </div>
                                 <div class="wrapper_indent">
                                     <a class="facebook me-3" href="javascript:void(0)"><i
@@ -137,9 +128,13 @@
                             </div>
 
                             <!--Galery-->
-                            <div class="galery">
+                            <div class="galery" v-else>
                                 <div>galeria</div>
                             </div>
+
+
+
+
                         </div>
                     </article>
                 </div>
@@ -168,7 +163,8 @@ export default {
         return {
             buscar: '',
             lista: [],
-            skeleton: false
+            skeleton: false,
+            profile: true,
         }
     },
 
@@ -176,9 +172,8 @@ export default {
 
         //Vuex
         await this.$store.dispatch("Cuenta", this.slug)
-        this.lista = this.$store.state.community.cuenta[0]
-
-        console.log(this.lista[0].servicio)
+        this.lista = this.$store.state.community.cuenta
+        console.log(this.lista)
 
         //Skeleton
         setTimeout(() => {
@@ -200,23 +195,22 @@ export default {
 
     methods: {
         maps() {
-     // Initial
-     this.map = L.map('map').setView([13.675997400000004, -89.28905480533759], 15)
-      var map = this.map
-      var url = this.url
+            // Initial
+            this.map = L.map('map').setView([13.675997400000004, -89.28905480533759], 15)
+            var map = this.map
+            var url = this.url
 
-      // Setting
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        zoom: 16,
-      }).addTo(this.map)
+            // Setting
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                zoom: 16,
+            }).addTo(this.map)
 
-       // Pin
-      this.lista.map(function (element) {
-        console.log(element)
-        L.marker([element.latitud, element.longitud],).bindPopup("<img src=" + url + "/storage/" + element.foto + "/>").addTo(map).openPopup();
-        map.setView([element.latitud, element.longitud], 18)
-      })
+            // Pin
+
+            L.marker([this.lista.latitud, this.lista.longitud],).bindPopup("<img src=" + url + "/storage/" + this.lista.foto + "/>").addTo(map).openPopup();
+            map.setView([this.lista.latitud, this.lista.longitud], 18)
+
         },
     },
 

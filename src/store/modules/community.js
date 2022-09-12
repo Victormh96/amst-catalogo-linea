@@ -10,7 +10,8 @@ import {
     CatalogoCategoria,
     Cuenta,
     RegistroServicio,
-    RegistroEmpresa
+    RegistroEmpresa,
+    BusquedaFallida
 } from "../../services/paths"
 
 // Vuex
@@ -27,6 +28,7 @@ export default {
             registroservicio: null,
             registroempresa: null,
             search: null,
+            busqueda: null
         }
     },
 
@@ -57,6 +59,10 @@ export default {
 
         MutationCatalogoCategoria(state, data) {
             state.catalogocategoria = data
+        },
+
+        MutationBusqueda(state, data) {
+            state.busqueda = data
         },
 
         MutationCuenta(state, data) {
@@ -131,7 +137,7 @@ export default {
                 })
         },
 
-        async AllTag({ commit }) {
+        async CategoriasCompletas({ commit }) {
             await axios
                 .get(Tag())
                 .then((response) => {
@@ -190,7 +196,19 @@ export default {
             await axios
                 .get(Cuenta() + body)
                 .then((response) => {
-                    commit('MutationCuenta', response.data)
+                    commit('MutationCuenta', response.data[0][0])
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        },
+
+        
+        async BusquedaFallida({ commit }, body) {
+            await axios
+                .post(BusquedaFallida(), body)
+                .then((response) => {
+                    commit('MutationBusqueda', response.data[0])
                 })
                 .catch((err) => {
                     console.log(err)
@@ -201,7 +219,6 @@ export default {
             await axios
                 .post(RegistroServicio(), body)
                 .then(response => {
-                    console.log('soy la respuesta', response)
                     if (response.status === 200) {
                         commit('MutationRegistroServicio')
                     }
