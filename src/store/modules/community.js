@@ -197,7 +197,7 @@ export default {
             await axios
                 .get(Cuenta() + body)
                 .then((response) => {
-                    commit('MutationCuenta', response.data)
+                    commit('MutationCuenta', response.data[0][0])
                 })
                 .catch((err) => {
                     console.log(err)
