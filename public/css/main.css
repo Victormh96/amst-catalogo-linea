@@ -521,9 +521,7 @@
   margin: 0;
 }
 
-#catalogo .card ul li:nth-last-child(2):after,
-#catalogo .card ul li:nth-last-child(3):after,
-#catalogo .card ul li:nth-last-child(4):after {
+#catalogo .card ul li:not(:last-child):after {
   content: "|";
   font-weight: 400;
   margin: 0 10px;

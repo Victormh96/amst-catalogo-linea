@@ -28,7 +28,7 @@ export default {
             registroservicio: null,
             registroempresa: null,
             search: null,
-            busqueda: null
+            fallida: null
         }
     },
 
@@ -61,12 +61,12 @@ export default {
             state.catalogocategoria = data
         },
 
-        MutationBusqueda(state, data) {
-            state.busqueda = data
-        },
-
         MutationCuenta(state, data) {
             state.cuenta = data
+        },
+
+        MutationBusqueda(state, data) {
+            state.fallida = data
         },
 
         MutationRegistroServicio(state) {
@@ -197,14 +197,13 @@ export default {
             await axios
                 .get(Cuenta() + body)
                 .then((response) => {
-                    commit('MutationCuenta', response.data[0][0])
+                    commit('MutationCuenta', response.data)
                 })
                 .catch((err) => {
                     console.log(err)
                 })
         },
 
-        
         async BusquedaFallida({ commit }, body) {
             await axios
                 .post(BusquedaFallida(), body)
@@ -222,6 +221,7 @@ export default {
             await axios
                 .post(RegistroServicio(), body)
                 .then(response => {
+                    console.log('soy la respuesta', response)
                     if (response.status === 200) {
                         commit('MutationRegistroServicio')
                     }

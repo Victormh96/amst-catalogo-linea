@@ -137,7 +137,7 @@ export default {
 
   components: {
     Navbar,
-    Footer
+    Footer,
   },
 
   methods: {

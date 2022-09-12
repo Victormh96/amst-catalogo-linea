@@ -233,7 +233,7 @@ export default {
             return store.state.community.tag.filter(tag => {
                 if (
                     tag.nombre_rubro.toLowerCase().includes(buscarTag.value.toLowerCase())
-                    && matches < 5
+                    && matches < 4
                 ) {
                     matches++
                     return tag
