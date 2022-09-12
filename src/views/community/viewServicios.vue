@@ -78,17 +78,20 @@ export default {
         const { input, cant } = this.$store.state.community.search
         this.text = input
         this.cant = cant
+        await this.$store.dispatch("CategoriasCompletas")
+        console.log(cant)
         if (cant > 0) {
-            await this.$store.dispatch("Tag")
             input ? this.buscar = input : this.buscar = '';
-        } else {
-            await this.$store.dispatch("AllTag")
+        }else{
+            const body = {
+                busqueda: input
+            }
+            await this.$store.dispatch("BusquedaFallida", body)
         }
-
         // Skeleton
         setTimeout(() => {
             this.skeleton = true
-        }, 950)
+        }, 250)
     },
 
     components: {
