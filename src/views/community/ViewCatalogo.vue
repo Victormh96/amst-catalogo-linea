@@ -19,35 +19,37 @@
           </div>
         </div>
 
-        <!--Cards-->
+        <!--Div-->
         <div class="row">
           <div class="col-md-6">
             <div class="card mb-4" v-for="(l, index) in this.lista" v-bind:key="index">
+
               <!--Info-->
               <small class="delivery">ADOMICILIO</small>
               <div class="row">
+
+                <!--Img-->
                 <div class="col-md-2">
-                  <!--Img-->
                   <router-link :to="{ name: 'Cuenta', params: { slug: l.slug } }">
                     <img :src="this.url + `/storage/${ l.foto }`" :alt="`${ l.slug }`" v-if="l.foto">
                     <img src="@/../public/img/assets/shapex14.png" alt="default" v-else>
                   </router-link>
                 </div>
+
+                <!--Description-->
                 <div class="col-md-9">
-                  <!--Name-->
                   <router-link :to="{ name: 'Cuenta', params: { slug: l.slug } }">
                     <h5 class="mb-1">{{ l.nombre_cuenta }}</h5>
                   </router-link>
-                  
                   <span class="me-2 mb-1" v-for="(r, index) in l.servicio" v-bind:key="index">
                     {{ r.rubro.nombre_rubro }}
                   </span>
-                  <!--Description-->
                   <p class="descrpcion">
                     {{ l.descripcion }}
                   </p>
                 </div>
               </div>
+
               <!--Options-->
               <ul class="mt-2">
                 <li class="d-inline-flex">
@@ -83,7 +85,7 @@
           </div>
 
           <!--Maps-->
-          <div class="col-md-6">  
+          <div class="col-md-6">
             <div id="map"></div>
           </div>
         </div>
@@ -102,32 +104,32 @@
 
 <!--=======Script=======-->
 <script>
-import L from 'leaflet'
-import 'leaflet.locatecontrol'
+import L from "leaflet"
+import "leaflet.locatecontrol"
 import Navbar from "@/components/community/ComponentNavbar.vue"
 import Footer from "@/components/community/ComponentFooter.vue"
 
 export default {
   data() {
     return {
+      map: '',
       buscar: '',
       lista: [],
-      map: '',
       skeleton: false,
     }
   },
 
   async mounted() {
-    //Vuex
+    // Vuex
     await this.$store.dispatch("CatalogoCategoria", this.slug)
     this.lista = this.$store.state.community.catalogocategoria[0]
 
-    //Skeleton
+    // Skeleton
     setTimeout(() => {
       this.skeleton = true
     }, 950)
 
-    //Leaflet
+    // Leaflet
     setTimeout(() => {
       this.maps()
     }, 950)

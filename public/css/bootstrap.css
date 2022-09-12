@@ -256,6 +256,10 @@ button:disabled {
   border-radius: 3px;
 }
 
+.d-grid{
+  display: grid;
+}
+
 .fade-in {
   animation: fade-in-animation 2s;
 }

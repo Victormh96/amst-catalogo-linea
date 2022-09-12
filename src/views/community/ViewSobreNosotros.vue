@@ -8,22 +8,30 @@
     <!--Main-->
     <main v-if="(skeleton)" class="top">
 
-        <!--About us-->
-        <section id="nosotros" class="mb-5 mt-5 mt-m-5">
+        <!--Section-->
+        <section id="nosotros" class="mb-5 mt-4 mt-sm-5">
             <div class="container">
                 <div class="row ">
-                    <div class="col-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 mb-m-5">
-                        <img src="@/../public/img/assets/shapex6.png" alt="Busqueda AMST">
+
+                    <!--Img-->
+                    <div class="col-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 mb-m-5 d-grid mb-4 mb-lg-0">
+                        <swiper :slides-per-view="1" :space-between="50" :autoplay="{ delay: 5000 }" :modules="modules"
+                            :loop="true" :effect="'fade'">
+                            <swiper-slide><img src="@/../public/img/assets/shapex6.png" /></swiper-slide>
+                            <swiper-slide><img src="@/../public/img/assets/shapex17.jpg" /></swiper-slide>
+                        </swiper>
                     </div>
+
+                    <!--Description-->
                     <div class="col-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
-                        <h4 class="mb-3 ps-4 ps-m-0">SOBRE NOSOTROS</h4>
-                        <p class="mb-3 ps-4 ps-m-0">Lorem ipsum es el texto que se usa habitualmente en diseño gráfico
+                        <h3 class="mb-4 text-center">SOBRE NOSOTROS</h3>
+                        <p class="mb-4 ps-0 ps-sm-4">Lorem ipsum es el texto que se usa habitualmente en diseño gráfico
                             en
                             demostraciones
                             de
                             tipografías o
                             de borradores de diseño para probar el diseño visual antes de insertar el texto final.</p>
-                        <p class="ps-4 ps-m-0">
+                        <p class="ps-0 ps-sm-4">
                             Lorem ipsum es el texto que se usa habitualmente en diseño gráfico en demostraciones de
                             tipografías
                             o de borradores de diseño para probar el diseño visual antes de insertar el texto finales el
@@ -34,10 +42,12 @@
             </div>
         </section>
 
-        <!--Benefits-->
+        <!--Section-->
         <section id="beneficios">
             <div class="container">
                 <div class="row text-center">
+
+                    <!--Cards-->
                     <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mb-5">
                         <div class="tag">
                             <img src="@/../public/img/assets/shapex7.png" class="mx-auto d-block" alt="Busqueda AMST">
@@ -65,7 +75,7 @@
                                 tipografías o de borradores de diseño para probar</p>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mb-5">
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mb-5 mb-sm-0">
                         <div class="tag">
                             <img src="@/../public/img/assets/shapex10.png" class="mx-auto d-block" alt="Busqueda AMST">
                             <h6 class="mb-3 mt-3 mb-m-0">+ 1000 Empresas</h6>
@@ -74,7 +84,7 @@
                                 tipografías o de borradores de diseño para probar</p>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mb-5">
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mb-5 mb-sm-0">
                         <div class="tag">
                             <img src="@/../public/img/assets/shapex11.png" class="mx-auto d-block" alt="Busqueda AMST">
                             <h6 class="mb-3 mt-3 mb-m-0">+ 5000 Profesionales</h6>
@@ -96,27 +106,36 @@
             </div>
         </section>
 
-        <!--Sign Up-->
+        <!--Section-->
         <section id="inscribete">
             <div class="container">
                 <div class="row row d-flex align-items-center">
-                    <div class="col-12 col-md-12 col-lg-7 col-xl-6 col-xxl-6">
+
+                    <!--Description-->
+                    <div class="col-md-6">
                         <div class="row">
-                            <div class="col-md-12 mb-4 text-left">
+
+                            <!--title-->
+                            <div class="col-md-12 mb-3 text-left">
                                 <h2>¡QUE ESTAS ESPERANDO!</h2>
                             </div>
-                            <div class="col-md-12 mb-5 mb-m-7 text-left">
-                                <p>Unete al catálogo de Servicios Profesionales, Micro y pequeñas Empresas y se
-                                    reconocido
-                                    en todo Santa Tecla.</p>
+
+                            <!--Description-->
+                            <div class="col-md-12 mb-5 text-left d-none d-md-none d-lg-block">
+                                <p>Únete al catálogo de Servicios Profesionales, Micro y pequeñas Empresas y se
+                                    reconocido en todo Santa Tecla.</p>
                             </div>
-                            <div class="col-md-12 text-left">
-                                <a href="/registro-servicio" class="me-4 mb-m-4">INSCRIBE TUS SERVICIOS</a>
-                                <a href="/registro-empresa" class="white mb-m-6">INSCRIBE TU EMPRESA</a>
+
+                            <!--Button-->
+                            <div class="col-md-12 text-left mb-5 mb-sm-0">
+                                <a href="/registro-servicio" class="me-4 mb-3 mb-lg-0">INSCRIBE TUS SERVICIOS</a>
+                                <a href="/registro-empresa" class="white">INSCRIBE TU EMPRESA</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-12 col-lg-5 col-xl-6 col-xxl-6 text-center">
+
+                    <!--Img-->
+                    <div class="col-md-6 text-center">
                         <img src="@/../public/img/assets/shapex5.png" alt="Telefono AMST">
                     </div>
                 </div>
@@ -135,6 +154,9 @@
 
 <!--=======Script=======-->
 <script>
+import "swiper/css/effect-fade"
+import { Autoplay, EffectFade } from "swiper"
+import { Swiper, SwiperSlide } from "swiper/vue"
 import Navbar from "@/components/community/ComponentNavbar.vue"
 import Footer from "@/components/community/ComponentFooter.vue"
 
@@ -146,15 +168,24 @@ export default {
     },
 
     mounted() {
-        //Skeleton
+        // Skeleton
         setTimeout(() => {
             this.skeleton = true
         }, 950)
     },
 
+    setup() {
+        // Modules
+        return {
+            modules: [Autoplay, EffectFade]
+        }
+    },
+
     components: {
         Navbar,
-        Footer
+        Footer,
+        Swiper,
+        SwiperSlide,
     },
 };
 </script>
