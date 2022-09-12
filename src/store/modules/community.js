@@ -177,7 +177,7 @@ export default {
 
         async CatalogoCategoria({ commit }, body) {
             await axios
-                .get(CatalogoCategoria() + body)
+                .get(CatalogoCategoria() + body.slug + '?page=' + body.pagination)
                 .then((response) => {
                     commit('MutationCatalogoCategoria', response.data)
                 })

@@ -22,7 +22,7 @@
         <!--Div-->
         <div class="row">
           <div class="col-md-6">
-            <div class="card mb-4" v-for="(l, index) in this.lista" v-bind:key="index">
+            <div class="card mb-4" v-for="(l, index) in this.lista.data" v-bind:key="index">
 
               <!--Info-->
               <small class="delivery">ADOMICILIO</small>
@@ -74,7 +74,7 @@
                 <li class="d-inline-flex">
                   <div v-for="(c, index) in l.contacto" v-bind:key="index">
                     <a :href="`https://api.whatsapp.com/send?phone=503${ c.descripcion }&text=¡Hola ${ l.nombre_cuenta }! Quisiera mas información de sus servicios. 📢📢`"
-                      target="_blank" class="d-flex" v-if="c.id === 6">
+                      target="_blank" class="d-flex">
                       <i class="fa-brands fa-whatsapp"></i>
                       <p>Whatsapp</p>
                     </a>
@@ -82,6 +82,9 @@
                 </li>
               </ul>
             </div>
+
+            <!--Pagination-->
+            <Pagination :data="this.lista" @pagination-change-page="getResults" />
           </div>
 
           <!--Maps-->
@@ -104,6 +107,8 @@
 
 <!--=======Script=======-->
 <script>
+import Pagination from "laravel-vue-pagination"
+
 import L from "leaflet"
 import "leaflet.locatecontrol"
 import Navbar from "@/components/community/ComponentNavbar.vue"
@@ -120,8 +125,13 @@ export default {
   },
 
   async mounted() {
+    const data = {
+      slug: this.slug,
+      pagination: 1,
+    }
+
     // Vuex
-    await this.$store.dispatch("CatalogoCategoria", this.slug)
+    await this.$store.dispatch("CatalogoCategoria", data)
     this.lista = this.$store.state.community.catalogocategoria[0]
 
     // Skeleton
@@ -137,15 +147,14 @@ export default {
 
   components: {
     Navbar,
-    Footer
+    Footer,
+    Pagination
   },
 
   methods: {
     maps() {
       // Initial
       this.map = L.map('map').setView([13.675997400000004, -89.28905480533759], 15)
-      var map = this.map
-      var url = this.url
 
       // Setting
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -161,15 +170,35 @@ export default {
         }
       }).addTo(this.map)
 
+
+    },
+
+    pin() {
+      var map = this.map
+      var url = this.url
       // Pin
-      this.lista.map(function (element) {
+      this.lista.data.map(function (element) {
         L.marker([element.latitud, element.longitud],).bindPopup("<img src=" + url + "/storage/" + element.foto + "/>").addTo(map)
+        console.log(element.id)
       })
     },
 
     marker(lat, long) {
       // Move
       this.map.setView([lat, long], 18)
+    },
+
+    async getResults(page = 1) {
+
+      const data = {
+        slug: this.slug,
+        pagination: page,
+      }
+
+      // Vuex
+      await this.$store.dispatch("CatalogoCategoria", data)
+      this.lista = this.$store.state.community.catalogocategoria[0]
+
     }
   },
 
