@@ -1,8 +1,10 @@
 <template>
-    <!--Footer-->
+    <!--Div-->
     <footer id="footer">
         <div class="container">
             <div class="row">
+
+                <!--Tickets-->
                 <div class="col-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
                     <h5><i class="fa-solid fa-cog fa-spin"></i>ENTRADAS</h5>
                     <ul>
@@ -19,6 +21,8 @@
                         </li>
                     </ul>
                 </div>
+
+                <!--Services-->
                 <div class="col-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
                     <h5><i class="fa-solid fa-cog fa-spin"></i>Servicios</h5>
                     <ul>
@@ -29,6 +33,8 @@
                         <li><a href="/">Términos y condiciones</a></li>
                     </ul>
                 </div>
+
+                <!--Our Catalog-->
                 <div class="col-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
                     <h5><i class="fa-solid fa-cog fa-spin"></i>NUESTRO CATÁLOGO</h5>
                     <ul>
@@ -36,6 +42,8 @@
                         <li><a href="/">Todos los profesionales</a></li>
                     </ul>
                 </div>
+
+                <!--Follow Us-->
                 <div class="col-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3 redes">
                     <h5><i class="fa-solid fa-cog fa-spin"></i>SÍGUENOS</h5>
                     <ul>
@@ -59,7 +67,7 @@
         </div>
     </footer>
 
-    <!--Sub Footer-->
+    <!--Div-->
     <div id="sub-footer">
         <div class="container">
             <div class="row align-items-center">

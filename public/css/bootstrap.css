@@ -144,6 +144,13 @@ h1 {
   margin: 0;
 }
 
+/*===Phone===**/
+@media (max-width: 575.98px) {
+  h1 {
+    font-size: 2.8rem;
+  }
+}
+
 h2 {
   position: relative;
   font-size: 2.5rem;
@@ -8792,13 +8799,6 @@ fieldset:disabled .btn {
   margin-top: 3rem !important;
 }
 
-/*===Phone===**/
-@media (max-width: 575.98px) {
-  .mt-m-5 {
-    margin-top: 2rem !important;
-  }
-}
-
 .mt-auto {
   margin-top: auto !important;
 }
@@ -8832,14 +8832,7 @@ fieldset:disabled .btn {
 }
 
 .mb-0 {
-  margin-bottom: 0;
-}
-
-/*===Phone===**/
-@media (max-width: 575.98px) {
-  .mb-m-0 {
-    margin-bottom: 0rem !important;
-  }
+  margin-bottom: 0 !important;
 }
 
 .mb-1 {
@@ -8858,52 +8851,8 @@ fieldset:disabled .btn {
   margin-bottom: 1.5rem !important;
 }
 
-/*===Phone===**/
-@media (max-width: 575.98px) {
-  .mb-m-4 {
-    margin-bottom: 1.5rem !important;
-  }
-}
-
 .mb-5 {
-  margin-bottom: 3rem;
-}
-
-/*===Phone===**/
-@media (max-width: 575.98px) {
-  .mb-m-5 {
-    margin-bottom: 2rem !important;
-  }
-
-  .mb-m-6 {
-    margin-bottom: 4rem !important;
-  }
-
-  .mb-m-7 {
-    margin-bottom: 2rem !important;
-  }
-}
-
-/*===Phone Landscape===**/
-@media (max-width: 920px) and (orientation: landscape) {
-  .mb-m-5 {
-    margin-bottom: 2rem !important;
-  }
-
-  .mb-m-6 {
-    margin-bottom: 4rem !important;
-  }
-}
-
-/*===Ipad===**/
-@media (min-width: 559px) and (max-width: 991.98px) {
-  .mb-m-5 {
-    margin-bottom: 2rem !important;
-  }
-
-  .mb-m-6 {
-    margin-bottom: 4rem !important;
-  }
+  margin-bottom: 3rem !important;
 }
 
 .mb-auto {
@@ -9096,13 +9045,6 @@ fieldset:disabled .btn {
 
 .ps-0 {
   padding-left: 0 !important;
-}
-
-/*===Phone===**/
-@media (max-width: 575.98px) {
-  .ps-m-0 {
-    padding-left: 0rem !important;
-  }
 }
 
 .ps-1 {

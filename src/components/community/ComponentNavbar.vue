@@ -1,20 +1,26 @@
 <template>
-    <!--Sub Header-->
+    <!--Div-->
     <div id="sub-header" class="fixed-top d-flex align-items-center">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-2 col-lg-2 col-xl-2 col-xxl-1 d-none d-sm-none d-md-block">
+
+                <!--Phone-->
+                <div class="col-12 col-md-2 col-lg-2 col-xl-2 col-xxl-1 d-none d-sm-none d-md-block">
                     <a href="tel:+5032500-1300">
                         <i class="fa-solid fa-phone"></i>
                         <span>2500-1300</span>
                     </a>
                 </div>
-                <div class="col-md-4 col-lg-3 col-xl-3 col-xxl-2 d-none d-sm-none d-md-block">
+
+                <!--Email-->
+                <div class="col-12 col-md-4 col-lg-3 col-xl-3 col-xxl-2 d-none d-sm-none d-md-block">
                     <a href="mailto:info@sanatecla.gob.sv">
                         <i class="fa-solid fa-envelope"></i>
                         <span>info@sanatecla.gob.sv</span>
                     </a>
                 </div>
+
+                <!--Networks-->
                 <div class="col-4 col-md-2 col-lg-2 col-xl-4 col-xxl-4">
                     <a href="https://es-la.facebook.com/SantaTeclaSV" target="_blank">
                         <i class="fa-brands fa-facebook-f"></i>
@@ -30,15 +36,19 @@
         </div>
     </div>
 
-    <!--Header-->
+    <!--Div-->
     <header id="header" class="fixed-top">
         <div class="container">
             <div class="row align-items-center">
+
+                <!--Img-->
                 <div class="col-12 col-md-4 col-lg-6 col-xl-7 col-xxl-7">
                     <router-link :to="{ name: 'Inicio' }">
                         <img src="@/../public/icon.png" alt="Alcaldia Municipal Santa Tecla" class="img-fluid">
                     </router-link>
                 </div>
+
+                <!--Options-->
                 <div class="col-12 col-md-8 col-lg-6 col-xl-5 col-xxl-5 d-none d-md-block">
                     <nav class="nav-menu">
                         <ul>
@@ -51,7 +61,7 @@
                             <li>
                                 <a v-bind:href="'/categoria/' + 'empresas'">Empresas</a>
                             </li>
-                            <li><a href="/sobre-nosotros">Sobre Nosotros</a></li>
+                            <li><a href="/">Iniciar sesión</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -59,7 +69,7 @@
         </div>
     </header>
 
-    <!--Mobile-->
+    <!--Div-->
     <div id="mobile" class="d-block d-sm-block d-md-none">
         <router-link :to="{ name: 'Inicio' }">
             <i class="fa-solid fa-qrcode"></i>
@@ -67,7 +77,7 @@
         <a v-bind:href="'/categoria/' + 'servicios-profesionales'">
             <i class="fa-solid fa-briefcase"></i>
         </a>
-        <a v-bind:href="'/categoria/' + 'empresas'">
+        <a v-bind:href="'/categoria/' + 'empresas'" class="nav-link">
             <i class="fa-solid fa-city"></i>
         </a>
         <a href="/">
