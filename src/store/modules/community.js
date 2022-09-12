@@ -84,6 +84,7 @@ export default {
         MutationClearEmpresa(state) {
             state.registroempresa = false
         },
+
         MutationSearch(state, data) {
             state.search = data
         }
@@ -209,6 +210,8 @@ export default {
                 .post(BusquedaFallida(), body)
                 .then((response) => {
                     commit('MutationBusqueda', response.data[0])
+                    commit('MutationSearch', '')
+                    
                 })
                 .catch((err) => {
                     console.log(err)
