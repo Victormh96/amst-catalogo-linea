@@ -588,11 +588,11 @@
   color: #407ec9;
 }
 
-#cuenta .card .information .fa-venus {
+#cuenta aside .card .information .fa-venus {
   color: #ef5a9e !important;
 }
 
-#cuenta .card .information a {
+#cuenta aside .card .information a {
   font-size: 0.7rem;
   font-weight: 500;
   color: var(--dark-white);
@@ -604,7 +604,7 @@
   border-bottom: solid #dce2e9 2px;
 }
 
-#cuenta .card .tag span {
+#cuenta aside .card .tag span {
   font-size: 0.6rem;
   font-weight: 600;
   background: #407ec9;
@@ -638,6 +638,12 @@
   border-radius: 3px;
 }
 
+#cuenta article .card {
+  background-color: #f2f6fb;
+  border-radius: 10px;
+  padding: 15px;
+}
+
 #cuenta article .card .leaflet-popup-content {
   width: 150px !important;
   text-align: center;
@@ -650,33 +656,27 @@
   margin: 0;
 }
 
-
-#cuenta article .card {
-  background-color: #f2f6fb;
-  border-radius: 10px;
-  padding: 20px;
-}
-
 #cuenta article .leaflet-container {
-  height: 200px;
+  height: 160px;
   width: 100%;
 }
 
-#cuenta .wrapper_indent .facebook {
-  font-size: 35px;
-  color: #475993;
+#cuenta article .tabs span {
+  font-size: .85rem;
+  font-weight: 600;
+  background: var(--white);
+  color: var(--dark-blue);
+  padding: 10px 30px;
+  border-bottom: 3px solid var(--white);
+  display: inline-block;
+  cursor: pointer;
+  
 }
 
-#cuenta .wrapper_indent .twitter {
-  font-size: 35px;
-  color: #03a9f4;
+#cuenta article .tabs .activeClass {
+  background: var(--white-blue);
+  border-bottom: 3px solid var(--light-blue);
 }
-
-#cuenta .wrapper_indent .whatsapp {
-  font-size: 35px;
-  color: #d33d95;
-}
-
 
 /* ============================================================*/
 /* Banner

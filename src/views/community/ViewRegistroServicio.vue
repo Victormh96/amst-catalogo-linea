@@ -29,7 +29,7 @@
                         <!--Image-->
                         <div class="col-md-4 mb-4">
                             <input type="file" class="dropify" data-height="190" @change="setImg($event)"
-                                data-default-file="@/../img/assets/shapex16.png" />
+                                data-default-file="@/../img/assets/default.png" />
                         </div>
                         <!--Names-->
                         <div class="col-md-4">
@@ -65,12 +65,12 @@
                                     <div class="error-msg">{{ error.$message }}</div>
                                 </div>
                             </div>
-                            <!-- DUI -->
+                            <!-- Document -->
                             <div class="form-group mb-4">
                                 <input type="tel" class="form-control" placeholder="DUI*" v-mask="'########-#'"
-                                    v-model="v$.form.dui.$model">
+                                    v-model="v$.form.document.$model">
                                 <!--Error Message-->
-                                <div class="input-errors err" v-for="(error, index) of v$.form.dui.$errors"
+                                <div class="input-errors err" v-for="(error, index) of v$.form.document.$errors"
                                     :key="index">
                                     <div class="error-msg">{{ error.$message }}</div>
                                 </div>
@@ -80,9 +80,9 @@
                             <!--Surnames-->
                             <div class="form-group mb-4">
                                 <input type="text" class="form-control" placeholder="Apellidos*"
-                                    v-model="v$.form.lastName.$model">
+                                    v-model="v$.form.lastname.$model">
                                 <!--Error Message-->
-                                <div class="input-errors err" v-for="(error, index) of v$.form.lastName.$errors"
+                                <div class="input-errors err" v-for="(error, index) of v$.form.lastname.$errors"
                                     :key="index">
                                     <div class="error-msg">{{ error.$message }}</div>
                                 </div>
@@ -297,8 +297,8 @@ export default {
             form: {
                 imagen: '',
                 name: '',
-                lastName: '',
-                dui: '',
+                lastname: '',
+                documento: '',
                 fechaNacimiento: '',
                 telefono: '',
                 email: '',
@@ -348,10 +348,10 @@ export default {
                 name: {
                     requeridMessage,
                 },
-                lastName: {
+                lastname: {
                     requeridMessage,
                 },
-                dui: {
+                document: {
                     requeridMessage,
                     duiMessage,
                 },
@@ -397,7 +397,7 @@ export default {
             this.$swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: this.form.name + ' ' + this.form.lastName + ' tu formulario no pudo ser registrado',
+                text: this.form.name + ' ' + this.form.lastname + ' tu formulario no pudo ser registrado',
                 confirmButtonText: "Aceptar",
                 allowOutsideClick: false,
                 allowEscapeKey: false,
@@ -424,7 +424,7 @@ export default {
             this.$swal.fire({
                 icon: 'success',
                 title: 'Formulario Enviado',
-                text: this.form.name + ' ' + this.form.lastName + ' revisaremos tu solicitud y nos comunicaremos con tigo',
+                text: this.form.name + ' ' + this.form.lastname + ' revisaremos tu solicitud y nos comunicaremos con tigo',
                 confirmButtonText: "Aceptar",
                 allowOutsideClick: false,
                 allowEscapeKey: false,

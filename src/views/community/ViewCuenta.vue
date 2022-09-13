@@ -26,7 +26,7 @@
                                 <small class="me-1">{{ this.lista.nombre_cuenta }}</small>
                                 <i v-if="this.lista.genero.id === 1" class="fa-solid fa-mars-stroke"></i>
                                 <i v-else class="fa-solid fa-venus"></i>
-                                <a :href="'mailto:'+this.lista.email">{{this.lista.email}}</a>
+                                <a :href="'mailto:'+ this.lista.email">{{ this.lista.email }}</a>
                             </div>
 
                             <!--Tags-->
@@ -41,12 +41,12 @@
                                 <a v-for="(c, index) in this.lista.contacto" :key="index" :href="c.descripcion"
                                     target="blank" data-toggle="tooltip" data-placement="top"
                                     :title="c.detallecontacto.descripcion">
-                                    <i class="ms-2 me-2" :class="c.detallecontacto.clase"></i>
+                                    <i class="ms-2 me-2" :class="c.detallecontacto.icon"></i>
                                 </a>
                             </div>
 
                             <!--Delivery-->
-                            <p v-if="this.lista.local === True">En Lugar</p>
+                            <p v-if="this.lista.local === true">En Lugar</p>
                             <p v-else>A Domicilio</p>
                         </div>
 
@@ -68,18 +68,20 @@
 
                         <!--Tabs-->
                         <div class="tabs">
-                            <span class="m-1 ps-3 pe-3" v-on:click="this.profile = true">MI PERFIL</span>
-                            <span class="m-1 ps-3 pe-3" v-on:click="this.profile = false">GALERIA</span>
+                            <span :class="[this.profile === true ? 'activeClass' : '']"
+                                v-on:click="this.profile = true">MI PERFIL</span>
+                            <span :class="[this.profile === false ? 'activeClass' : '']"
+                                v-on:click="this.profile = false" v-if="this.lista.galeria != ''">GALERIA</span>
                         </div>
 
                         <!--Card-->
                         <div class="card">
 
                             <!--Profile-->
-                            <div id="profile" class="profile" v-if="this.profile === true">
+                            <div id="profile" v-if="this.profile === true">
                                 <div class="review-box descripcion_container">
                                     <div class="descripcion_medico">
-                                        <p class="descripcion">Descripción Personal: {{this.lista.descripcion}}</p>
+                                        <p class="descripcion">Descripción Personal: {{ this.lista.descripcion }}</p>
                                     </div>
                                 </div>
                                 <hr>
@@ -99,13 +101,14 @@
                                                 <div class="col-md-3">
                                                     <img :src="this.url + `/storage/${servicio.rubro.imagen}`"
                                                         class="card-img mx-auto d-block">
-                                                    <h4 class="mt-2 text-center">{{servicio.rubro.nombre_rubro}}</h4>
+                                                    <h4 class="mt-2 text-center">{{ servicio.rubro.nombre_rubro }}</h4>
                                                 </div>
                                                 <div class="col-md-9">
                                                     <h5 class="text-end mb-3"><i
-                                                            class="fa-solid fa-bookmark ps-2 pe-2"></i>{{servicio.anios_experiencia}}
+                                                            class="fa-solid fa-bookmark ps-2 pe-2"></i>{{
+                                                            servicio.anios_experiencia }}
                                                         de experiencia</h5>
-                                                    <p class="text-start">Descripción: {{servicio.descripcion}}</p>
+                                                    <p class="text-start">Descripción: {{ servicio.descripcion }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -132,7 +135,6 @@
 
                             <!--Galery-->
                             <div class="galery" v-else>
-                                <div>galeria</div>
                             </div>
                         </div>
                     </article>

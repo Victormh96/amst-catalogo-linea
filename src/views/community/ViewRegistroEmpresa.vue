@@ -29,7 +29,7 @@
                         <!--Image-->
                         <div class="col-md-4 mb-4">
                             <input type="file" class="dropify" data-height="190" @change="setImg($event)"
-                                data-default-file="@/../img/assets/shapex15.png">
+                                data-default-file="@/../img/assets/default.png">
                         </div>
                         <!--Company Name-->
                         <div class="col-md-4">
@@ -45,9 +45,9 @@
                             <!--NIT-->
                             <div class="form-group mb-4">
                                 <input type="tel" class="form-control" placeholder="NIT*" v-mask="'####-######-###-#'"
-                                    v-model="v$.form.nit.$model">
+                                    v-model="v$.form.document.$model">
                                 <!--Error Message-->
-                                <div class="input-errors err" v-for="(error, index) of v$.form.nit.$errors"
+                                <div class="input-errors err" v-for="(error, index) of v$.form.document.$errors"
                                     :key="index">
                                     <div class="error-msg">{{ error.$message }}</div>
                                 </div>
@@ -287,7 +287,7 @@ export default {
             form: {
                 imagen: '',
                 name: '',
-                nit: '',
+                document: '',
                 telefonoCelular: '',
                 email: '',
                 categoria: '',
@@ -327,7 +327,7 @@ export default {
                 name: {
                     requeridMessage,
                 },
-                nit: {
+                document: {
                     requeridMessage,
                     nitMessage,
                 },
