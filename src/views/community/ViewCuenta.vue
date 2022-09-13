@@ -10,11 +10,14 @@
 
         <!--Section-->
         <section id="cuenta">
-            <div class="container mt-5">
+            <div class="container mt-4 mt-sm-5">
                 <div class="row">
 
                     <!--Aside-->
-                    <aside class="col-3">
+                    <aside class="col-12 col-md-12 col-lg-3">
+
+                        <!--Verify-->
+                        <i class="fa-solid fa-award" v-if="this.lista.verificado == 1"></i>
 
                         <!--Img-->
                         <img :src="this.url + `/storage/${ this.lista.foto }`" :alt="`${ this.lista.slug }`"
@@ -27,6 +30,7 @@
                                 <i v-if="this.lista.genero.id === 1" class="fa-solid fa-mars-stroke"></i>
                                 <i v-else class="fa-solid fa-venus"></i>
                                 <a :href="'mailto:'+ this.lista.email">{{ this.lista.email }}</a>
+                                <a :href="'mailto:'+ this.lista.email">76962288</a>
                             </div>
 
                             <!--Tags-->
@@ -38,32 +42,42 @@
 
                             <!--Networks-->
                             <div class="networks mb-2">
-                                <a v-for="(c, index) in this.lista.contacto" :key="index" :href="c.descripcion"
-                                    target="blank" data-toggle="tooltip" data-placement="top"
-                                    :title="c.detallecontacto.descripcion">
-                                    <i class="ms-2 me-2" :class="c.detallecontacto.icon"></i>
-                                </a>
+                                <span v-for="(c, index) in this.lista.contacto" :key="index">
+                                    <a :href="`https://api.whatsapp.com/send?phone=503${ c.descripcion }&text=¡Hola ${ this.lista.nombre_cuenta }! Quisiera mas información de sus servicios. 📢📢`"
+                                        v-if="c.detallecontacto.id === 5" target="_blank">
+                                        <i class="ms-2 me-2" :class="c.detallecontacto.icon"></i>
+                                    </a>
+                                    <a :href="`tel:${ c.descripcion }`"
+                                        v-else-if="c.detallecontacto.id === 7 || c.detallecontacto.id === 8 ">
+                                        <i class="ms-2 me-2" :class="c.detallecontacto.icon"></i>
+                                    </a>
+                                    <a :href="c.descripcion" v-else>
+                                        <i class="ms-2 me-2" :class="c.detallecontacto.icon"></i>
+                                    </a>
+                                </span>
                             </div>
 
                             <!--Delivery-->
-                            <p v-if="this.lista.local === true">En Lugar</p>
+                            <p v-if="this.lista.local === true">En El Lugar</p>
                             <p v-else>A Domicilio</p>
                         </div>
 
                         <!--Advertising-->
-                        <swiper :slides-per-view="1" :space-between="50" :autoplay="{ delay: 5000 }" :modules="modules"
-                            :loop="true" :effect="'fade'">
-                            <swiper-slide><img src="@/../public/img/assets/shapex6.png" /></swiper-slide>
-                            <swiper-slide><img src="@/../public/img/assets/shapex17.jpg" /></swiper-slide>
-                        </swiper>
+                        <div class="d-grid mb-4">
+                            <swiper :slides-per-view="1" :space-between="50" :autoplay="{ delay: 5000 }"
+                                :modules="modules" :loop="true" :effect="'fade'">
+                                <swiper-slide><img src="@/../public/img/assets/shapex6.png" /></swiper-slide>
+                                <swiper-slide><img src="@/../public/img/assets/shapex17.jpg" /></swiper-slide>
+                            </swiper>
+                        </div>
                     </aside>
 
                     <!--Div-->
-                    <article class="col-9">
+                    <article class="col-12 col-md-12 col-lg-9">
 
                         <!--Maps-->
-                        <div class="card mb-4">
-                            <div id="map"></div>
+                        <div class="mb-4">
+                            <div id="map" :class="[this.lista.local == 0 ? 'disabledMap' : '']"></div>
                         </div>
 
                         <!--Tabs-->
@@ -75,57 +89,62 @@
                         </div>
 
                         <!--Card-->
-                        <div class="card">
+                        <div class="card mb-5">
 
                             <!--Profile-->
-                            <div id="profile" v-if="this.profile === true">
-                                <div class="review-box descripcion_container">
-                                    <div class="descripcion_medico">
-                                        <p class="descripcion">Descripción Personal: {{ this.lista.descripcion }}</p>
-                                    </div>
+                            <div class="profile" v-if="this.profile === true">
+                                <div class="box">
+                                    <p>{{ this.lista.descripcion }}</p>
                                 </div>
                                 <hr>
 
                                 <!--Tittle-->
-                                <div class="indent_title_in">
-                                    <h3><i class="fa-solid fa-book-open-reader p-2"></i>Servicios</h3>
+                                <div class="title mb-4">
+                                    <h4>
+                                        <i class="fa-solid fa-book-open-reader p-2 me-2"></i>
+                                        SERVICIOS
+                                    </h4>
                                 </div>
 
                                 <!--Description-->
-                                <div class="wrapper_indent mt-1">
-                                    <div class="row m-1">
-                                        <!--v-for con los servicios-->
-                                        <div v-for="(servicio, index) in this.lista.servicio" v-bind:key="index"
-                                            class="col-md-6 p-4">
-                                            <div class="row card-service p-4 ">
-                                                <div class="col-md-3">
+                                <div class="row items ms-0 ms-sm-4">
+                                    <div v-for="(servicio, index) in this.lista.servicio" v-bind:key="index"
+                                        class="col-12 col-md-12 col-lg-6 mb-4 ps-0 pe-0 ps-sm-2 pe-sm-2">
+                                        <div class="box">
+                                            <div class="row">
+                                                <div class="col-md-3 text-center">
                                                     <img :src="this.url + `/storage/${servicio.rubro.imagen}`"
-                                                        class="card-img mx-auto d-block">
-                                                    <h4 class="mt-2 text-center">{{ servicio.rubro.nombre_rubro }}</h4>
+                                                        class="mb-3 mb-sm-2">
+                                                    <span class="d-none d-sm-none d-md-block">
+                                                        {{ servicio.rubro.nombre_rubro }}
+                                                    </span>
                                                 </div>
-                                                <div class="col-md-9">
-                                                    <h5 class="text-end mb-3"><i
-                                                            class="fa-solid fa-bookmark ps-2 pe-2"></i>{{
-                                                            servicio.anios_experiencia }}
-                                                        de experiencia</h5>
-                                                    <p class="text-start">Descripción: {{ servicio.descripcion }}</p>
+
+                                                <div class="col-md-9 text-start">
+                                                    <h5 class="mb-2"><i class="fa-solid fa-bookmark me-2"></i>
+                                                        {{ servicio.anios_experiencia }}
+                                                    </h5>
+                                                    <small>{{ servicio.descripcion }}</small>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <hr>
+                                <hr class="mt-1">
 
                                 <!--Tittle-->
-                                <div class="indent_title_in">
-                                    <h3> <i class="fa-solid fa-share-nodes mt-1 p-2"></i> Compartir</h3>
+                                <div class="title mb-4">
+                                    <h4>
+                                        <i class="fa-solid fa-book-open-reader p-2 me-2"></i>
+                                        COMPARTIR
+                                    </h4>
                                 </div>
 
                                 <!--Networks-->
-                                <div class="wrapper_indent">
-                                    <a class="facebook me-3" href="javascript:void(0)"><i
+                                <div class="share ms-5">
+                                    <a class="facebook me-4" href="javascript:void(0)"><i
                                             class="fab fa-facebook-square"></i></a>
-                                    <a class="twitter me-3" href="javascript:void(0)"><i
+                                    <a class="twitter me-4" href="javascript:void(0)"><i
                                             class="fab fa-twitter-square"></i></a>
                                     <a class="whatsapp" target="_blank"
                                         href="whatsapp://send?text=https://medicosdeguatemala.net/professional/"><i
