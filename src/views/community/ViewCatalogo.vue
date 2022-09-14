@@ -156,7 +156,7 @@ export default {
       local: false,
       lista: [],
       listaPaginada: [],
-      elementosPorPagina: 2
+      elementosPorPagina: 4
     }
   },
 

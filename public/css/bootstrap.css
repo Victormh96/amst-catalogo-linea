@@ -377,6 +377,27 @@ a:not([href]):not([class]):hover {
   text-decoration: none;
 }
 
+/*===Phone===**/
+@media (max-width: 575.98px) {
+  a {
+    cursor: none;
+  }
+}
+
+/*===Phone Landscape===**/
+@media (max-width: 920px) and (orientation: landscape) {
+  a {
+    cursor: none;
+  }
+}
+
+/*===Ipad===**/
+@media (min-width: 559px) and (max-width: 991.98px) {
+  a {
+    cursor: none;
+  }
+}
+
 pre,
 code,
 kbd,

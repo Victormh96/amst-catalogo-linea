@@ -113,7 +113,6 @@
   font-size: 22px;
   color: var(--white);
   margin: 0 25px;
-  cursor: none;
   transition: all 0.3s;
 }
 
@@ -571,15 +570,39 @@
 /* Cuenta
 /*============================================================================================*/
 #cuenta aside {
+  position: relative;
   padding: 0 20px;
+}
+
+#cuenta aside .fa-award {
+  font-size: 28px;
+  color: #407EC9;
+  position: absolute;
+  top: -5px;
+  z-index: 999;
 }
 
 #cuenta aside img {
   width: 100%;
-  height: 190px;
+  height: 200px;
   object-fit: cover;
   object-position: top;
 }
+
+/*===Phone===**/
+@media (max-width: 575.98px) {
+  #cuenta aside img {
+    height: 230px;
+  }
+}
+
+/*===Ipad===**/
+@media (min-width: 559px) and (max-width: 991.98px) {
+  #cuenta aside img {
+    height: 250px;
+  }
+}
+
 
 #cuenta aside .card {
   background-color: #f2f6fb;
@@ -589,7 +612,7 @@
 }
 
 #cuenta aside .card .information {
-  padding: 12px 0;
+  padding: 14px 0;
   border-bottom: solid #dce2e9 2px;
 }
 
@@ -603,6 +626,7 @@
 #cuenta aside .card .information i {
   font-size: 18px;
   color: #407ec9;
+  position: absolute;
 }
 
 #cuenta aside .card .information .fa-venus {
@@ -613,11 +637,12 @@
   font-size: 0.7rem;
   font-weight: 500;
   color: var(--dark-white);
+  display: block;
   margin: 0;
 }
 
 #cuenta aside .card .tag {
-  padding: 12px 0;
+  padding: 14px 0 12px 0;
   border-bottom: solid #dce2e9 2px;
 }
 
@@ -633,11 +658,11 @@
 }
 
 #cuenta aside .card .networks {
-  padding: 12px 0;
+  padding: 14px 0;
 }
 
 #cuenta aside .card .networks a {
-  font-size: 20px;
+  font-size: 21px;
   color: #9caabf;
   transition: 0.3s;
 }
@@ -655,31 +680,70 @@
   border-radius: 3px;
 }
 
-#cuenta article .card {
-  background-color: #f2f6fb;
-  border-radius: 10px;
-  padding: 15px;
-}
-
-#cuenta article .card .leaflet-popup-content {
-  width: 150px !important;
+#cuenta aside .location {
+  background: #f2f6fb;
+  padding: 7px 0;
+  border-radius: 5px;
   text-align: center;
 }
 
-#cuenta article .card .leaflet-popup-content p {
+#cuenta aside .location a {
+  font-size: 21px;
+  color: #9caabf;
+  transition: 0.3s;
+}
+
+#cuenta aside .location a:hover {
+  color: var(--light-blue);
+}
+
+#cuenta article .profile hr {
+  margin: 30px 0;
+  border-color: #dce2e9;
+  border-block-width: 3px;
+  width: 100%;
+}
+
+#cuenta article .card {
+  background-color: #f2f6fb;
+  border-radius: 0 0 5px 5px;
+  padding: 15px 30px;
+}
+
+#cuenta article .card .leaflet-popup {
+  opacity: .6 !important;
+}
+
+#cuenta article .card .leaflet-popup-content {
+  width: max-content !important;
+  text-align: center;
+}
+
+#cuenta article .leaflet-popup-content p {
   font-size: .7rem;
-  font-weight: 600;
+  font-weight: 500;
   color: #13274a;
   margin: 0;
+}
+
+#cuenta article .disabledMap::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgb(19 39 74 / 60%);
+  z-index: 999;
 }
 
 #cuenta article .leaflet-container {
   height: 160px;
   width: 100%;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 #cuenta article .tabs span {
-  font-size: .85rem;
+  font-size: .8rem;
   font-weight: 600;
   background: var(--white);
   color: var(--dark-blue);
@@ -687,12 +751,60 @@
   border-bottom: 3px solid var(--white);
   display: inline-block;
   cursor: pointer;
-  
 }
 
 #cuenta article .tabs .activeClass {
   background: var(--white-blue);
   border-bottom: 3px solid var(--light-blue);
+}
+
+#cuenta article .profile .box {
+  background: var(--white);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+/*===Phone===**/
+@media (max-width: 575.98px) {
+  #cuenta article .profile .box {
+    padding: 16px;
+  }
+}
+
+#cuenta article .profile .box p {
+  font-size: .7rem;
+  font-weight: 400;
+  color: #7686A3;
+  line-height: 1.8;
+}
+
+#cuenta article .profile .title i {
+  font-size: 25px;
+  color: #ffffff;
+  background: #407EC9;
+  border-radius: 50px;
+}
+
+#cuenta article .profile .items img {
+  width: 50px;
+  height: 50px;
+}
+
+#cuenta article .profile .items span {
+  font-size: .8rem;
+  font-weight: 600;
+  color: #13274A;
+}
+
+#cuenta article .profile .items i {
+  color: #13274A;
+  font-size: 16px;
+}
+
+#cuenta article .profile .items small {
+  font-size: .65rem;
+  font-weight: 400;
+  color: #7686A3;
 }
 
 /* ============================================================*/
@@ -955,6 +1067,15 @@ html::-webkit-scrollbar-thumb,
 }
 
 /* ============================================================*/
+/* Disqui
+/* ============================================================*/
+#disqus_thread {
+  background: #f2f6fb;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+/* ============================================================*/
 /* Select2
 /* ============================================================*/
 .select2-container {
@@ -1016,17 +1137,6 @@ html::-webkit-scrollbar-thumb,
 
 .leaflet-popup-content-wrapper {
   border-radius: 5px;
-}
-
-.leaflet-popup-content {
-  width: 90px !important;
-  margin: 5px;
-}
-
-.leaflet-popup-content img {
-  width: 90px;
-  height: 50px;
-  object-fit: cover;
 }
 
 .leaflet-popup-close-button {
