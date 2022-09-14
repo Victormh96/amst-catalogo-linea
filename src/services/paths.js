@@ -22,4 +22,4 @@ export const RegistroServicio = () => `${url_base}/api/registro-servicio`
 
 export const RegistroEmpresa = () => `${url_base}/api/registro-empresa`
 
-export const BusquedaFallida = () => `${url_base}/api/busqueda-fallida/`
+export const BusquedaFallida = () => `${url_base}/api/busqueda-fallida`

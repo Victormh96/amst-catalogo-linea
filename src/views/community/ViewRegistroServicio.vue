@@ -80,9 +80,9 @@
                             <!--Surnames-->
                             <div class="form-group mb-4">
                                 <input type="text" class="form-control" placeholder="Apellidos*"
-                                    v-model="v$.form.lastname.$model">
+                                    v-model="v$.form.lastName.$model">
                                 <!--Error Message-->
-                                <div class="input-errors err" v-for="(error, index) of v$.form.lastname.$errors"
+                                <div class="input-errors err" v-for="(error, index) of v$.form.lastName.$errors"
                                     :key="index">
                                     <div class="error-msg">{{ error.$message }}</div>
                                 </div>
@@ -297,7 +297,7 @@ export default {
             form: {
                 imagen: '',
                 name: '',
-                lastname: '',
+                lastName: '',
                 documento: '',
                 fechaNacimiento: '',
                 telefono: '',
@@ -348,7 +348,7 @@ export default {
                 name: {
                     requeridMessage,
                 },
-                lastname: {
+                lastName: {
                     requeridMessage,
                 },
                 document: {
@@ -397,7 +397,7 @@ export default {
             this.$swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: this.form.name + ' ' + this.form.lastname + ' tu formulario no pudo ser registrado',
+                text: this.form.name + ' ' + this.form.lastName + ' tu formulario no pudo ser registrado',
                 confirmButtonText: "Aceptar",
                 allowOutsideClick: false,
                 allowEscapeKey: false,
@@ -424,7 +424,7 @@ export default {
             this.$swal.fire({
                 icon: 'success',
                 title: 'Formulario Enviado',
-                text: this.form.name + ' ' + this.form.lastname + ' revisaremos tu solicitud y nos comunicaremos con tigo',
+                text: this.form.name + ' ' + this.form.lastName + ' revisaremos tu solicitud y nos comunicaremos con tigo',
                 confirmButtonText: "Aceptar",
                 allowOutsideClick: false,
                 allowEscapeKey: false,
