@@ -663,6 +663,23 @@
   border-radius: 3px;
 }
 
+#cuenta aside .location {
+  background: #f2f6fb;
+  padding: 7px 0;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#cuenta aside .location a {
+  font-size: 21px;
+  color: #9caabf;
+  transition: 0.3s;
+}
+
+#cuenta aside .location a:hover {
+  color: var(--light-blue);
+}
+
 #cuenta article .profile hr {
   margin: 30px 0;
   border-color: #dce2e9;
@@ -771,16 +788,6 @@
   font-size: .65rem;
   font-weight: 400;
   color: #7686A3;
-}
-
-#cuenta article .profile .share a {
-  font-size: 32px;
-  color: #7686A3;
-  transition: all 0.3s;
-}
-
-#cuenta article .profile .share a:hover {
-  filter: brightness(0.8);
 }
 
 /* ============================================================*/
@@ -995,6 +1002,15 @@ html::-webkit-scrollbar-thumb,
 .select2-results__options::-webkit-scrollbar-thumb {
   border-radius: 3px;
   background-color: #13274a;
+}
+
+/* ============================================================*/
+/* Disqui
+/* ============================================================*/
+#disqus_thread {
+  background: #f2f6fb;
+  border-radius: 5px;
+  padding: 10px 20px;
 }
 
 /* ============================================================*/

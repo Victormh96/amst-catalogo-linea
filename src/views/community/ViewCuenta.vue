@@ -25,7 +25,7 @@
                         <div class="card mb-4">
                             <div class="information ms-4 me-4">
                                 <small class="me-1">{{ this.lista.nombre_cuenta }}</small>
-                                <i v-if="this.lista.genero.id === 1" class="fa-solid fa-mars-stroke"></i>
+                                <i v-if="this.lista.genero.id == 1" class="fa-solid fa-mars-stroke"></i>
                                 <i v-else class="fa-solid fa-venus"></i>
                                 <a :href="'mailto:'+ this.lista.email" class="mb-1 mt-1">{{ this.lista.email }}</a>
                                 <a :href="'mailto:'+ this.lista.email">76962288</a>
@@ -42,11 +42,11 @@
                             <div class="networks mb-2">
                                 <span v-for="(c, index) in this.lista.contacto" :key="index">
                                     <a :href="`https://api.whatsapp.com/send?phone=503${ c.descripcion }&text=¡Hola ${ this.lista.nombre_cuenta }! Quisiera mas información de tus servicios. 📢📢`"
-                                        v-if="c.detallecontacto.id === 5" target="_blank">
+                                        v-if="c.detallecontacto.id == 5" target="_blank">
                                         <i class="ms-2 me-2" :class="c.detallecontacto.icon"></i>
                                     </a>
                                     <a :href="`tel:${ c.descripcion }`"
-                                        v-else-if="c.detallecontacto.id === 7 || c.detallecontacto.id === 8 ">
+                                        v-else-if="c.detallecontacto.id == 7 || c.detallecontacto.id == 8 ">
                                         <i class="ms-2 me-2" :class="c.detallecontacto.icon"></i>
                                     </a>
                                     <a :href="c.descripcion" v-else>
@@ -56,8 +56,21 @@
                             </div>
 
                             <!--Delivery-->
-                            <p v-if="this.lista.local === true">En El Lugar</p>
+                            <p v-if="this.lista.local == 1">En El Lugar</p>
                             <p v-else>A Domicilio</p>
+                        </div>
+
+                        <!--Location-->
+                        <div class="location mb-4" v-if="this.lista.local == 1">
+                            <a :href="`https://www.waze.com/ul?ll=${ this.lista.latitud },${ this.lista.longitud }&navigate=yes&zoom=16`"
+                                target="_blank" class="me-4">
+                                <i class="fab fa-waze waze"></i>
+                            </a>
+
+                            <a :href="`https://www.google.com/maps/dir//${ this.lista.latitud },${ this.lista.longitud }`"
+                                target="_blank">
+                                <i class="fa-solid fa-street-view"></i>
+                            </a>
                         </div>
 
                         <!--Advertising-->
@@ -90,7 +103,7 @@
                         <div class="card mb-5">
 
                             <!--Profile-->
-                            <div class="profile" v-if="this.profile === true">
+                            <div class="profile" v-if="this.profile == true">
                                 <div class="box">
                                     <p>{{ this.lista.descripcion }}</p>
                                 </div>
@@ -127,26 +140,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <hr class="mt-1">
-
-                                <!--Tittle-->
-                                <div class="title mb-4">
-                                    <h4>
-                                        <i class="fa-solid fa-book-open-reader p-2 me-2"></i>
-                                        COMPARTIR
-                                    </h4>
-                                </div>
-
-                                <!--Networks-->
-                                <div class="share ms-5">
-                                    <a class="facebook me-4" href="javascript:void(0)"><i
-                                            class="fab fa-facebook-square"></i></a>
-                                    <a class="twitter me-4" href="javascript:void(0)"><i
-                                            class="fab fa-twitter-square"></i></a>
-                                    <a class="whatsapp" target="_blank"
-                                    href="whatsapp://send?text=https://medicosdeguatemala.net/professional/76962288"><i
-                                            class="fab fa-whatsapp-square"></i></a>
-                                </div>
                             </div>
 
                             <!--Galery-->
@@ -154,6 +147,9 @@
                             </div>
                         </div>
                     </article>
+
+                    <!--Comment-->
+                    <Disqus lang="es_MX" :pageConfig="pageConfig" shortname="promedicus724" class="mb-4" />
                 </div>
             </div>
         </section>
@@ -172,6 +168,7 @@
 <script>
 import L from 'leaflet'
 import "swiper/css/effect-fade"
+import { Disqus } from "vue-disqus"
 import { Autoplay, EffectFade } from "swiper"
 import { Swiper, SwiperSlide } from "swiper/vue"
 import Navbar from "@/components/community/ComponentNavbar.vue"
@@ -184,6 +181,9 @@ export default {
             lista: [],
             skeleton: false,
             profile: true,
+            pageConfig: {
+                identifier: this.$route.params.url
+            }
         }
     },
 
@@ -214,6 +214,7 @@ export default {
         Navbar,
         Footer,
         Swiper,
+        Disqus,
         SwiperSlide
     },
 
