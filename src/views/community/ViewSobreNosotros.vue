@@ -17,8 +17,10 @@
                     <div class="col-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 mb-m-5 d-grid mb-4 mb-lg-0">
                         <swiper :slides-per-view="1" :space-between="50" :autoplay="{ delay: 5000 }" :modules="modules"
                             :loop="true" :effect="'fade'">
-                            <swiper-slide><img src="@/../public/img/assets/shapex6.png" /></swiper-slide>
-                            <swiper-slide><img src="@/../public/img/assets/shapex17.jpg" /></swiper-slide>
+                            <swiper-slide v-for="(p, index) in this.portada" v-bind:key="index">
+                                <img :src="this.url + `/storage/${ p.imagen }`" alt="adsdasd" />
+
+                            </swiper-slide>
                         </swiper>
                     </div>
 
@@ -163,11 +165,14 @@ import Footer from "@/components/community/ComponentFooter.vue"
 export default {
     data() {
         return {
+            portada: [],
             skeleton: false,
         }
     },
 
-    mounted() {
+    async mounted() {
+        await this.$store.dispatch("PortadaNosotros")
+        this.portada = this.$store.state.community.portadanosotros
         // Skeleton
         setTimeout(() => {
             this.skeleton = true
