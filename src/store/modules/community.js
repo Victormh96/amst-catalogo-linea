@@ -11,7 +11,10 @@ import {
     Cuenta,
     RegistroServicio,
     RegistroEmpresa,
-    BusquedaFallida
+    BusquedaFallida,
+    Publicidad,
+    PublicidadClick,
+    PortadaNosotros
 } from "../../services/paths"
 
 // Vuex
@@ -20,6 +23,7 @@ export default {
         return {
             portadainicio: null,
             portadaregistro: null,
+            portadanosotros: null,
             tag: null,
             categoria: null,
             categoriadestacado: null,
@@ -28,7 +32,9 @@ export default {
             registroservicio: null,
             registroempresa: null,
             search: null,
-            fallida: null
+            fallida: null,
+            publicidad: null,
+            publicidadclick: null,
         }
     },
 
@@ -39,6 +45,14 @@ export default {
 
         MutationPortadaRegistro(state, data) {
             state.portadaregistro = data
+        },
+
+        MutationPortadaNosotros(state, data) {
+            state.portadanosotros = data
+        },
+
+        MutationPublicidad(state, data) {
+            state.publicidad = data
         },
 
         MutationTag(state, data) {
@@ -55,6 +69,10 @@ export default {
 
         MutationCategoriaClick(state) {
             state.categoriaclick = true
+        },
+
+        MutationPublicidadClick(state) {
+            state.publicidadclick = true
         },
 
         MutationCatalogoCategoria(state, data) {
@@ -102,11 +120,33 @@ export default {
                 })
         },
 
+        async Publicidad({ commit }) {
+            await axios
+                .get(Publicidad())
+                .then((response) => {
+                    commit('MutationPublicidad', response.data[0])
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        },
+
         async PortadaRegistro({ commit }) {
             await axios
                 .get(PortadaRegistro())
                 .then((response) => {
                     commit('MutationPortadaRegistro', response.data)
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        },
+
+        async PortadaNosotros({ commit }) {
+            await axios
+                .get(PortadaNosotros())
+                .then((response) => {
+                    commit('MutationPortadaNosotros', response.data[0])
                 })
                 .catch((err) => {
                     console.log(err)
@@ -182,6 +222,17 @@ export default {
                 })
         },
 
+        async PublicidadClick({ commit }, body) {
+            await axios
+                .post(PublicidadClick() + body)
+                .then(() => {
+                    commit('MutationPublicidadClick')
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        },
+
         async CatalogoCategoria({ commit }, body) {
             await axios
                 .get(CatalogoCategoria() + body)
@@ -210,7 +261,7 @@ export default {
                 .then((response) => {
                     commit('MutationBusqueda', response.data[0])
                     commit('MutationSearch', '')
-                    
+
                 })
                 .catch((err) => {
                     console.log(err)

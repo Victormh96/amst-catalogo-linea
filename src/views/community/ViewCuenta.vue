@@ -28,7 +28,11 @@
                                 <i v-if="this.lista.genero.id == 1" class="fa-solid fa-mars-stroke"></i>
                                 <i v-else class="fa-solid fa-venus"></i>
                                 <a :href="'mailto:'+ this.lista.email" class="mb-1 mt-1">{{ this.lista.email }}</a>
-                                <a :href="'mailto:'+ this.lista.email">76962288</a>
+                                <div v-for="(c, index) in this.lista.contacto" v-bind:key="index">
+                                    <a :href="'mailto:'+ c.descripcion"
+                                        v-if="c.id_detalle_contacto === '7'">{{c.descripcion}}</a>
+                                </div>
+
                             </div>
 
                             <!--Tags-->
@@ -77,8 +81,11 @@
                         <div class="d-grid mb-4">
                             <swiper :slides-per-view="1" :space-between="50" :autoplay="{ delay: 5000 }"
                                 :modules="modules" :loop="true" :effect="'fade'">
-                                <swiper-slide><img src="@/../public/img/assets/shapex6.png" /></swiper-slide>
-                                <swiper-slide><img src="@/../public/img/assets/shapex17.jpg" /></swiper-slide>
+                                <swiper-slide v-for="(p, index) in this.publicidad" v-bind:key="index">
+                                    <a :href="p.descripcion" target="_blank" v-on:click="click(p.id)"><img
+                                            :src="this.url + `/storage/${ p.imagen }`" alt="adsdasd" />
+                                    </a>
+                                </swiper-slide>
                             </swiper>
                         </div>
                     </aside>
@@ -93,12 +100,13 @@
 
                         <!--Tabs-->
                         <div class="tabs">
-                            <span :class="[this.profile === true ? 'activeClass' : '']"
-                                v-on:click="this.profile = true">MI PERFIL</span>
-                            <span :class="[this.profile === false ? 'activeClass' : '']"
-                                v-on:click="this.profile = false" v-if="this.lista.galeria != ''">GALERIA</span>
+                            <span :class="[this.profile === 1 ? 'activeClass' : '']" v-on:click="validar(1,0,0)">MI
+                                PERFIL</span>
+                            <span :class="[this.horario === 1 ? 'activeClass' : '']" v-on:click="validar(0,1,0)"
+                                v-if="this.lista.horario != null">HORARIO</span>
+                            <span :class="[this.galeria === 1 ? 'activeClass' : '']" v-on:click="validar(0,0,1)"
+                                v-if="this.lista.galeria != ''">GALERIA</span>
                         </div>
-
                         <!--Card-->
                         <div class="card mb-5">
 
@@ -141,9 +149,23 @@
                                     </div>
                                 </div>
                             </div>
+                            <!--Horario-->
+                            <div class="profile" v-if="this.horario == true">
+                                <!--Tittle-->
+                                <div class="title mb-4 mt-4">
+                                    <h4>
+                                        <i class="fa-solid fa-calendar-week me-2 p-2"></i>
+                                        HORARIO
+                                    </h4>
+                                    <div class="box mt-4">
+                                        <p>{{this.lista.horario}}</p>
+                                    </div>
+                                </div>
+                            </div>
 
                             <!--Galery-->
-                            <div class="galery" v-else>
+                            <div class="galery" v-if="this.galeria == true">
+                                <p>dsdsd</p>
                             </div>
                         </div>
                     </article>
@@ -179,8 +201,11 @@ export default {
         return {
             buscar: '',
             lista: [],
+            publicidad: [],
             skeleton: false,
-            profile: true,
+            profile: 1,
+            horario: 0,
+            galeria: 0,
             pageConfig: {
                 identifier: this.$route.params.url
             }
@@ -192,6 +217,8 @@ export default {
         await this.$store.dispatch("Cuenta", this.slug)
         this.lista = this.$store.state.community.cuenta
 
+        await this.$store.dispatch("Publicidad")
+        this.publicidad = this.$store.state.community.publicidad
         // Skeleton
         setTimeout(() => {
             this.skeleton = true
@@ -238,6 +265,16 @@ export default {
             L.popup().setLatLng([this.lista.latitud, this.lista.longitud]).setContent("<p>" + this.lista.direccion + "</p>").openOn(this.map)
             this.map.setView([this.lista.latitud, this.lista.longitud], 18)
         },
+
+        validar(profile, horario, galeria) {
+            this.profile = profile
+            this.horario = horario
+            this.galeria = galeria
+        },
+
+        async click(id) {
+            await this.$store.dispatch("PublicidadClick", id)
+        }
     },
 
     props: ["slug"]

@@ -798,6 +798,8 @@
   color: #7686A3;
 }
 
+
+
 /* ============================================================*/
 /* Banner
 /* ============================================================*/
@@ -885,6 +887,7 @@
   border-radius: 10px;
   padding: 25px 30px;
   margin: auto;
+  height: 100%;
 }
 
 /*===Phone===**/
@@ -900,7 +903,7 @@
 }
 
 #beneficios .tag p {
-  font-size: 0.75rem;
+  font-size: 0.90rem;
   font-weight: 400;
   color: var(--dark-blue);
   line-height: 1.6;

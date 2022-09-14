@@ -16,14 +16,12 @@
 
                     <!--Title-->
                     <div class="col-md-12 mb-4">
-                        <h1>¿QUÉ BUSCAS?</h1>
+                        <h1>¡Ubícalo en Tecla!</h1>
                     </div>
 
                     <!--Description-->
                     <div class="col-lg-9 col-xl-8 m-auto mb-4 d-none d-md-none d-lg-block">
-                        <p>La Alcaldía Municipal de Santa Tecla pone a tu disposición el catálogo de Servicios
-                            Profesionales,
-                            Micro y pequeñas Empresas Tecleñas.</p>
+                        <p>Mas de 1,000 Tecleños con espíritu emprendedor ofertan aquí sus productos y servicios, ¡ubícalos!</p>
                     </div>
 
                     <!--Search-->
