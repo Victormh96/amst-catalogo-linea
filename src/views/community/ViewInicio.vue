@@ -144,13 +144,12 @@
 
                             <!--title-->
                             <div class="col-md-12 mb-3 text-left">
-                                <h2>¡QUE ESTAS ESPERANDO!</h2>
+                                <h2>¿Quieres ubicar tu producto o servicio en Santa Tecla?</h2>
                             </div>
 
                             <!--Description-->
                             <div class="col-md-12 mb-5 text-left d-none d-md-none d-lg-block">
-                                <p>Únete al catálogo de Servicios Profesionales, Micro y pequeñas Empresas y se
-                                    reconocido en todo Santa Tecla.</p>
+                                <p>Inscríbete en la red más grande de servicios y empresas del municipio.</p>
                             </div>
 
                             <!--Button-->

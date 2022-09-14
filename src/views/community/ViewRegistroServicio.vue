@@ -10,8 +10,8 @@
         v-bind:style="[this.portadaregistro.imagen ? { 'background-image': 'url(' + this.url + '/storage/' + this.portadaregistro.imagen + ')' } : null]">
         <div class="container">
             <div class="row">
-                <div class="col-md-10 col-xl-5 m-auto text-center">
-                    <h2>¡ÚNETE A NUESTRO CATALOGO DE SERVICIOS!</h2>
+                <div class="col-md-10 col-xl-4 m-auto text-center">
+                    <h2>¡ÚNETE A NUESTRA RED DE SERVICIOS!</h2>
                 </div>
             </div>
         </div>
@@ -206,7 +206,7 @@
             <div class="row social">
                 <!--Title-->
                 <h6 class="mb-1">Perfil Social</h6>
-                <p class="mb-3 indicaciones">Ingresa el nombre de</p>
+                <p class="mb-3 indicaciones">Coloca en enlace de tus redes sociales </p>
                 <!--Facebook-->
                 <div class="col-md-4 mb-4">
                     <div class="input-group">
@@ -409,11 +409,11 @@ export default {
             })
         },
 
-        showFailServicies() {
+        showFailServicies(msg) {
             this.$swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'No has registrado tus servicios',
+                text: msg,
                 confirmButtonText: "Aceptar",
                 allowOutsideClick: false,
                 allowEscapeKey: false,
@@ -424,7 +424,7 @@ export default {
             this.$swal.fire({
                 icon: 'success',
                 title: 'Formulario Enviado',
-                text: this.form.name + ' ' + this.form.lastName + ' revisaremos tu solicitud y nos comunicaremos con tigo',
+                text: this.form.name + ' ' + this.form.lastName + ' revisaremos tu solicitud y nos comunicaremos contigo',
                 confirmButtonText: "Aceptar",
                 allowOutsideClick: false,
                 allowEscapeKey: false,
@@ -478,7 +478,7 @@ export default {
                     }
                 })
             } else {
-                this.showFailServicies()
+                this.showFailServicies('No has registrado tus servicios')
             }
 
 
@@ -501,19 +501,23 @@ export default {
         },
 
         addServices() {
-            const serv = {
-                idServicio: this.servicio,
-                experiencia: this.experiencia,
-                name: this.searchName(this.servicio),
-                descripcion: this.descripcion
+            if (this.cuentaServicios.length > 4) {
+                this.showFailServicies('Solo puedes registrar 5 servicios, elimina uno para agregarlo')
+            } else {
+                const serv = {
+                    idServicio: this.servicio,
+                    experiencia: this.experiencia,
+                    name: this.searchName(this.servicio),
+                    descripcion: this.descripcion
+                }
+
+                this.cuentaServicios.push(serv)
+
+                this.servicio = ''
+                this.experiencia = ''
+                this.descripcion = ''
+                this.errorServicio = true
             }
-
-            this.cuentaServicios.push(serv)
-
-            this.servicio = ''
-            this.experiencia = ''
-            this.descripcion = ''
-            this.errorServicio = true
         },
 
         async deleteServices(index) {
