@@ -27,18 +27,12 @@
                     <!--Description-->
                     <div class="col-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
                         <h3 class="mb-4 text-center">SOBRE NOSOTROS</h3>
-                        <p class="mb-4 ps-0 ps-sm-4">Lorem ipsum es el texto que se usa habitualmente en diseño gráfico
-                            en
-                            demostraciones
-                            de
-                            tipografías o
-                            de borradores de diseño para probar el diseño visual antes de insertar el texto final.</p>
-                        <p class="ps-0 ps-sm-4">
-                            Lorem ipsum es el texto que se usa habitualmente en diseño gráfico en demostraciones de
-                            tipografías
-                            o de borradores de diseño para probar el diseño visual antes de insertar el texto finales el
-                            texto
-                            que se usa habitualmente en diseño.</p>
+                        <p class="mb-4 ps-0 ps-sm-4">Es una iniciativa del gobierno municipal de Santa Tecla que busca
+                            potenciar la economía local, facilitando a la ciudadanía una herramienta tecnológica para
+                            ubicar a tecleños emprendedores que ofertan sus servicios y productos en el municipio. </p>
+                        <p class="ps-0 ps-sm-4">Con este proyecto se busca impulsar a más de 1,000 emprendedores
+                            tecleños en más de 200 categorías entre oficios y servicios profesionales, además de
+                            visibilizar a las empresas que cumplen con su responsabilidad social en la ciudad. </p>
                     </div>
                 </div>
             </div>
@@ -53,30 +47,31 @@
                     <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mb-5">
                         <div class="tag">
                             <img src="@/../public/img/assets/shapex7.png" class="mx-auto d-block" alt="Busqueda AMST">
-                            <h6 class="mb-3 mt-3 mb-m-0">+ 1000 Empresas</h6>
-                            <p class="d-none d-sm-none d-md-block">Lorem ipsum es el texto que se usa habitualmente en
-                                diseño gráfico en demostraciones de
-                                tipografías o de borradores de diseño para probar</p>
+                            <h6 class="mb-3 mt-3 mb-m-0">+ 1000 Empresas Responsables</h6>
+                            <p class="d-none d-sm-none d-md-block">Empresas establecidas en el municipio de Santa Tecla
+                                que se encuentran solventes con sus obligaciones y cumplen con su responsabilidad socia
+                            </p>
                         </div>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mb-5">
                         <div class="tag">
                             <img src="@/../public/img/assets/shapex8.png" class="mx-auto d-block" alt="Busqueda AMST">
-                            <h6 class="mb-3 mt-3 mb-m-0">+ 5000 Profesionales</h6>
-                            <p class="d-none d-sm-none d-md-block">Lorem ipsum es el texto que se usa habitualmente en
-                                diseño gráfico en demostraciones de
-                                tipografías o de borradores de diseño para probar</p>
+                            <h6 class="mb-3 mt-3 mb-m-0">+ 1000 Emprendedores</h6>
+                            <p class="d-none d-sm-none d-md-block">La red de emprendedores más grande en el municipio de
+                                Santa Tecla en la que podrás encontrar lo que necesites. </p>
                         </div>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mb-5">
                         <div class="tag">
                             <img src="@/../public/img/assets/shapex9.png" class="mx-auto d-block" alt="Busqueda AMST">
-                            <h6 class="mb-3 mt-3 mb-m-0">+ 8000 Categorías</h6>
-                            <p class="d-none d-sm-none d-md-block">Lorem ipsum es el texto que se usa habitualmente en
-                                diseño gráfico en demostraciones de
-                                tipografías o de borradores de diseño para probar</p>
+                            <h6 class="mb-3 mt-3 mb-m-0">+ 200 Categorías</h6>
+                            <p class="d-none d-sm-none d-md-block">productos como: artículos de
+                                primera necesidad, abarroterías, desechables, servicios de albañilería, fontanería,
+                                modistas, diseñadores, productores de calzado, floristerías, panaderías, cafeterías a
+                                domicilio, restaurantes, comercios, servicios de transporte, etc.</p>
                         </div>
                     </div>
+                    <!--
                     <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mb-5 mb-sm-0">
                         <div class="tag">
                             <img src="@/../public/img/assets/shapex10.png" class="mx-auto d-block" alt="Busqueda AMST">
@@ -104,6 +99,7 @@
                                 tipografías o de borradores de diseño para probar</p>
                         </div>
                     </div>
+Description-->
                 </div>
             </div>
         </section>
