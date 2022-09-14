@@ -531,16 +531,14 @@
   top: 0;
   padding: 10px;
   font-size: 0.6rem;
-  font-weight: 600;
+  font-weight: 500;
   background: #13274a;
   border-radius: 0 5px 0 5px;
   color: #fff;
 }
 
 #catalogo .leaflet-container {
-  height: 80vh;
-  position: sticky !important;
-  top: 120px;
+  height: 100vh;
   display: inline-block;
   border-radius: 10px;
 }
@@ -551,19 +549,12 @@
 
 #catalogo .form-check-label {
   color: #99a3b4;
-  font-size: 13px;
+  font-size: .8rem;
 }
 
 #catalogo .fa-triangle-exclamation {
   font-size: 120px;
   color: #13274a;
-}
-
-.separador:after {
-  content: "|";
-  font-weight: 400;
-  margin: 0 10px;
-  color: #99a3b4;
 }
 
 /*============================================================================================*/
@@ -772,7 +763,7 @@
 }
 
 #cuenta article .profile .box p {
-  font-size: .7rem;
+  font-size: .73rem;
   font-weight: 400;
   color: #7686A3;
   line-height: 1.8;
@@ -802,7 +793,7 @@
 }
 
 #cuenta article .profile .items small {
-  font-size: .65rem;
+  font-size: .7rem;
   font-weight: 400;
   color: #7686A3;
 }
@@ -1006,51 +997,6 @@
   margin: 0;
 }
 
-
-#paginacion .pagination-container {
-  background-color: #F2F6FB;
-  border-radius: 5px;
-  padding: 10px 0px;
-}
-#paginacion .paginate-buttons {
-  width: 40px;
-  height: 40px;
-  margin-inline: 5px;
-  cursor: pointer;
-  border: none;
-  background-color: transparent;
-  border-radius: 2px;
-}
-#paginacion .back-button {
-  width: 70px;
-}
-#paginacion .next-button {
-  width: 70px;
-}
-#paginacion .back-button svg {
-  transform: rotate(180deg);
-}
-#paginacion .active-page {
-  background-color: #407EC9;
-  color: #fff;
-}
-
-#paginacion .paginate-buttons:hover {
-  background-color: #e5e5e5;
-}
-#paginacion .active-page:hover {
-  background-color: #407EC9;
-  color: #fff;
-}
-#paginacion .back-button:active,
-#paginacion .next-button:active {
-  background-color: #dedede;
-}
-
-
-
-
-
 /* ============================================================*/
 /* ScrollBar
 /* ============================================================*/
@@ -1073,6 +1019,39 @@ html::-webkit-scrollbar-thumb,
   background: #f2f6fb;
   border-radius: 5px;
   padding: 10px 20px;
+}
+
+/* ============================================================*/
+/* Pagination
+/* ============================================================*/
+.pagination-container {
+  margin: 0;
+}
+
+.next-button {
+  border-radius: 0 3px 3px 0;
+}
+
+.back-button {
+  border-radius: 3px 0 0 3px;
+}
+
+.pagination-container button {
+  font-size: .85rem;
+  color: #ffffff;
+  background: #407ec9;
+  padding: 6px 14px;
+  margin: 0 0 0 8px;
+  border: none;
+  transition: all 0.3s;
+}
+
+.pagination-container button:hover {
+  background: #1B3665;
+}
+
+.active-page {
+  background: #1B3665 !important;
 }
 
 /* ============================================================*/
