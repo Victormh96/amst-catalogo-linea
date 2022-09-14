@@ -26,7 +26,7 @@
 
                     <!--Description-->
                     <div class="col-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
-                        <h3 class="mb-4 text-center">SOBRE NOSOTROS</h3>
+                        <h3 class="mb-4 text-center">Ubícalo en Tecla</h3>
                         <p class="mb-4 ps-0 ps-sm-4">Es una iniciativa del gobierno municipal de Santa Tecla que busca
                             potenciar la economía local, facilitando a la ciudadanía una herramienta tecnológica para
                             ubicar a tecleños emprendedores que ofertan sus servicios y productos en el municipio. </p>
@@ -65,10 +65,9 @@
                         <div class="tag">
                             <img src="@/../public/img/assets/shapex9.png" class="mx-auto d-block" alt="Busqueda AMST">
                             <h6 class="mb-3 mt-3 mb-m-0">+ 200 Categorías</h6>
-                            <p class="d-none d-sm-none d-md-block">productos como: artículos de
-                                primera necesidad, abarroterías, desechables, servicios de albañilería, fontanería,
-                                modistas, diseñadores, productores de calzado, floristerías, panaderías, cafeterías a
-                                domicilio, restaurantes, comercios, servicios de transporte, etc.</p>
+                            <p class="d-none d-sm-none d-md-block">Servicios de albañilería, fontanería,
+                                modistas, floristerías, panaderías, cafetería,
+                                restaurantes, comercios, servicios de transporte y mucho mas</p>
                         </div>
                     </div>
                     <!--
@@ -115,13 +114,12 @@ Description-->
 
                             <!--title-->
                             <div class="col-md-12 mb-3 text-left">
-                                <h2>¡QUE ESTAS ESPERANDO!</h2>
+                                <h2>¿Quieres ubicar tu producto o servicio en Santa Tecla?</h2>
                             </div>
 
                             <!--Description-->
                             <div class="col-md-12 mb-5 text-left d-none d-md-none d-lg-block">
-                                <p>Únete al catálogo de Servicios Profesionales, Micro y pequeñas Empresas y se
-                                    reconocido en todo Santa Tecla.</p>
+                                <p>Inscríbete en la red más grande de servicios y empresas del municipio.</p>
                             </div>
 
                             <!--Button-->
