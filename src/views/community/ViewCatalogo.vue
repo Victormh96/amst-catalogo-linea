@@ -10,29 +10,27 @@
 
     <!--Section-->
     <section id="catalogo">
-      <div class="container">
+      <div class="container mb-5">
         <div class="row">
 
           <!--Search-->
           <div class="col-12 col-md-7 col-lg-5 col-xl-5 col-xxl-4 mx-auto mb-5 mt-5 mt-m-5">
-            <input type="text" class="form-control text-center" placeholder="Albañil, Farmacias, Pupuserias..."
+            <input type="text" class="form-control text-center mb-2" placeholder="Albañil, Farmacias, Pupuserias..."
               v-model="buscar" @keyup="refresh(listaFiltrada)">
-
-            <div class="mt-1 ms-4">
-              <p class="d-inline me-3 form-check-label">Filtrar por:</p>
+            <div class="text-center">
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="checkbox" id="domicilio" v-model="this.domicilio"
                   @change="filtrar()">
                 <label class="form-check-label" for="domicilio">Servicio a domicilio</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="local" v-model="this.local"
-                  @change="filtrar()">
+                <input class="form-check-input" type="checkbox" id="local" v-model="this.local" @change="filtrar()">
                 <label class="form-check-label" for="local">En el lugar</label>
-              </div> 
+              </div>
             </div>
           </div>
         </div>
+
         <!--Div-->
         <div class="row">
 
@@ -56,7 +54,7 @@
                   <router-link :to="{ name: 'Cuenta', params: { slug: l.slug } }">
                     <h5 class="mb-1">{{ l.nombre_cuenta }}</h5>
                   </router-link>
-                  <span class="me-2 mb-1" v-for="(r, index) in l.servicio" v-bind:key="index">
+                  <span class="me-2 mb-2" v-for="(r, index) in l.servicio" v-bind:key="index">
                     {{ r.rubro.nombre_rubro }}
                   </span>
                   <p class="descrpcion">
@@ -86,30 +84,26 @@
                     <p>Waze</p>
                   </a>
                 </li>
-
-                <div v-for="(c, index) in l.contacto" v-bind:key="index" class="d-inline-flex">
-                  <li class="d-inline-flex " v-if="c.id_detalle_contacto === '5'">
-                    <a :href="`https://api.whatsapp.com/send?phone=503${ c.descripcion }&text=¡Hola ${ l.nombre_cuenta }! Quisiera mas información de sus servicios. 📢📢`"
-                      target="_blank" class="d-flex">
-                      <i class="fa-brands fa-whatsapp"></i>
-                      <p>Whatsapp</p>
-                    </a>
-                  </li>
-
-                  <li class="d-inline-flex separador"
-                    v-if="c.id_detalle_contacto === '7' && l.servicio_domicilio === '0'">
-                    <a :href="'tel:+503'+c.descripcion" target="_blank" class="d-flex">
-                      <i class="fa-solid fa-mobile-screen-button"></i>
-                      <p>{{c.descripcion}}</p>
-                    </a>
-                  </li>
-                </div>
+                <li class="d-inline-flex " v-for="(c, index) in l.contacto" v-bind:key="index">
+                  <a v-if="c.id_detalle_contacto === '5'"
+                    :href="`https://api.whatsapp.com/send?phone=503${ c.descripcion }&text=¡Hola ${ l.nombre_cuenta }! Quisiera mas información de tus servicios. 📢📢`"
+                    target="_blank" class="d-flex">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <p>Whatsapp</p>
+                  </a>
+                  <a v-if="c.id_detalle_contacto === '7' && l.servicio_domicilio === '0'"
+                    :href="'tel:+503'+c.descripcion" target="_blank" class="d-flex">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                    <p>{{c.descripcion}}</p>
+                  </a>
+                </li>
               </ul>
             </div>
 
+            <!--Pagination-->
             <div id="paginacion" class="paginacion" v-if="lista.length > elementosPorPagina">
-              <vue-awesome-paginate :total-items="lista.length" :on-click="onClickHandler" prev-button-content="<<<"
-                :current-page="1" :items-per-page="elementosPorPagina" :max-pages-shown="5" next-button-content=">>>">
+              <vue-awesome-paginate :total-items="lista.length" :on-click="onClickHandler" prev-button-content="Anterior"
+                :current-page="1" :items-per-page="elementosPorPagina" :max-pages-shown="5" next-button-content="Siguiente">
               </vue-awesome-paginate>
             </div>
           </div>
@@ -118,6 +112,7 @@
           <div class="col-6 mb-5 text-center mb-5" v-else>
             <i class="fa-solid fa-triangle-exclamation fa-beat-fade"></i>
           </div>
+
           <!--Maps-->
           <div class="col-md-6">
             <div id="map"></div>
@@ -144,17 +139,15 @@ import "leaflet.locatecontrol"
 import Navbar from "@/components/community/ComponentNavbar.vue"
 import Footer from "@/components/community/ComponentFooter.vue"
 
-
 export default {
-
   data() {
     return {
       map: '',
+      lista: [],
       buscar: '',
+      local: false,
       skeleton: false,
       domicilio: false,
-      local: false,
-      lista: [],
       listaPaginada: [],
       elementosPorPagina: 4
     }
@@ -165,6 +158,7 @@ export default {
     await this.$store.dispatch("CatalogoCategoria", this.slug)
     this.lista = this.$store.state.community.catalogocategoria
     this.onClickHandler(1)
+
     // Skeleton
     setTimeout(() => {
       this.skeleton = true
@@ -178,33 +172,25 @@ export default {
 
   components: {
     Navbar,
-    Footer,
-
-  },
-
-  computed: {
-    // Search
-    listaFiltrada() {
-      return this.$store.state.community.catalogocategoria.filter(categoria => {
-        return categoria.nombre_cuenta.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
-          .toLowerCase().includes(this.buscar.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
-            .toLowerCase())
-      })
-    }
+    Footer
   },
 
   methods: {
+    // Pagination
     onClickHandler(page) {
       this.listaPaginada = []
       var inicio = (page * this.elementosPorPagina) - this.elementosPorPagina
       var fin = (page * this.elementosPorPagina)
+
       for (let index = inicio; index < fin; index++) {
+
         if (this.lista[index]) {
           this.listaPaginada.push(this.lista[index])
         }
       }
     },
 
+    // Filter
     filtrar() {
       this.lista = this.$store.state.community.catalogocategoria
       if (this.domicilio === true) {
@@ -212,22 +198,25 @@ export default {
           return categoria.servicio_domicilio === '1'
         })
       }
+
       if (this.local === true) {
         this.lista = this.lista.filter(categoria => {
           return categoria.local === '1'
         })
       }
+
       this.map.remove()
       this.maps()
     },
 
+    // Refresh
     refresh(lista) {
       this.lista = lista
       this.map.remove()
       this.maps(lista)
-
     },
 
+    // Map
     maps(lista) {
       // Initial
       this.map = L.map('map').setView([13.675997400000004, -89.28905480533759], 15)
@@ -243,7 +232,8 @@ export default {
       // Setting
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        zoom: 16,
+        minZoom: 14,
+        Zoom: 16
       }).addTo(this.map)
 
       // Localization
@@ -254,20 +244,31 @@ export default {
         }
       }).addTo(this.map)
 
+      // Pin
       pines.map(function (element) {
         L.marker([element.latitud, element.longitud],).bindPopup("<img src=" + url + "/storage/" + element.foto + "/>").addTo(map)
       })
+
       this.onClickHandler(1)
     },
 
+    // Marker
     marker(lat, long) {
       // Move
       this.map.setView([lat, long], 18)
     }
-
   },
 
-
+  computed: {
+    // Search
+    listaFiltrada() {
+      return this.$store.state.community.catalogocategoria.filter(categoria => {
+        return categoria.nombre_cuenta.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
+          .toLowerCase().includes(this.buscar.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
+            .toLowerCase())
+      })
+    }
+  },
 
   props: ["slug"]
 };
