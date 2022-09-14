@@ -14,12 +14,10 @@
                 <div class="row">
 
                     <!--Aside-->
-                    <aside class="col-12 col-md-12 col-lg-3">
-
-                        <!--Verify-->
-                        <i class="fa-solid fa-award" v-if="this.lista.verificado == 1"></i>
+                    <aside class="col-12 col-md-5 col-lg-4 col-xl-4 col-xxl-3">
 
                         <!--Img-->
+                        <i class="fa-solid fa-award" v-if="this.lista.verificado == 1"></i>
                         <img :src="this.url + `/storage/${ this.lista.foto }`" :alt="`${ this.lista.slug }`"
                             v-if="this.lista.foto">
 
@@ -29,7 +27,7 @@
                                 <small class="me-1">{{ this.lista.nombre_cuenta }}</small>
                                 <i v-if="this.lista.genero.id === 1" class="fa-solid fa-mars-stroke"></i>
                                 <i v-else class="fa-solid fa-venus"></i>
-                                <a :href="'mailto:'+ this.lista.email">{{ this.lista.email }}</a>
+                                <a :href="'mailto:'+ this.lista.email" class="mb-1 mt-1">{{ this.lista.email }}</a>
                                 <a :href="'mailto:'+ this.lista.email">76962288</a>
                             </div>
 
@@ -43,7 +41,7 @@
                             <!--Networks-->
                             <div class="networks mb-2">
                                 <span v-for="(c, index) in this.lista.contacto" :key="index">
-                                    <a :href="`https://api.whatsapp.com/send?phone=503${ c.descripcion }&text=¡Hola ${ this.lista.nombre_cuenta }! Quisiera mas información de sus servicios. 📢📢`"
+                                    <a :href="`https://api.whatsapp.com/send?phone=503${ c.descripcion }&text=¡Hola ${ this.lista.nombre_cuenta }! Quisiera mas información de tus servicios. 📢📢`"
                                         v-if="c.detallecontacto.id === 5" target="_blank">
                                         <i class="ms-2 me-2" :class="c.detallecontacto.icon"></i>
                                     </a>
@@ -73,7 +71,7 @@
                     </aside>
 
                     <!--Div-->
-                    <article class="col-12 col-md-12 col-lg-9">
+                    <article class="col-12 col-md-7 col-lg-8 col-xl-8 col-xxl-9">
 
                         <!--Maps-->
                         <div class="mb-4">
@@ -109,17 +107,16 @@
                                 <!--Description-->
                                 <div class="row items ms-0 ms-sm-4">
                                     <div v-for="(servicio, index) in this.lista.servicio" v-bind:key="index"
-                                        class="col-12 col-md-12 col-lg-6 mb-4 ps-0 pe-0 ps-sm-2 pe-sm-2">
+                                        class="col-12 col-md-12 col-lg-12 col-xl-6 mb-4 ps-0 pe-0 ps-sm-2 pe-sm-2">
                                         <div class="box">
                                             <div class="row">
                                                 <div class="col-md-3 text-center">
                                                     <img :src="this.url + `/storage/${servicio.rubro.imagen}`"
                                                         class="mb-3 mb-sm-2">
-                                                    <span class="d-none d-sm-none d-md-block">
+                                                    <span class="d-none d-md-none d-lg-block">
                                                         {{ servicio.rubro.nombre_rubro }}
                                                     </span>
                                                 </div>
-
                                                 <div class="col-md-9 text-start">
                                                     <h5 class="mb-2"><i class="fa-solid fa-bookmark me-2"></i>
                                                         {{ servicio.anios_experiencia }}
@@ -147,7 +144,7 @@
                                     <a class="twitter me-4" href="javascript:void(0)"><i
                                             class="fab fa-twitter-square"></i></a>
                                     <a class="whatsapp" target="_blank"
-                                        href="whatsapp://send?text=https://medicosdeguatemala.net/professional/"><i
+                                    href="whatsapp://send?text=https://medicosdeguatemala.net/professional/76962288"><i
                                             class="fab fa-whatsapp-square"></i></a>
                                 </div>
                             </div>

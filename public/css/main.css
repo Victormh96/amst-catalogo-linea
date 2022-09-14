@@ -557,13 +557,6 @@
   padding: 0 20px;
 }
 
-/*===Ipad===**/
-@media (min-width: 559px) and (max-width: 991.98px) {
-  #cuenta aside {
-    padding: 0 150px;
-  }
-}
-
 #cuenta aside .fa-award {
   font-size: 28px;
   color: #407EC9;
@@ -652,7 +645,7 @@
 }
 
 #cuenta aside .card .networks a {
-  font-size: 20px;
+  font-size: 21px;
   color: #9caabf;
   transition: 0.3s;
 }
@@ -764,7 +757,7 @@
 }
 
 #cuenta article .profile .items span {
-  font-size: .85rem;
+  font-size: .8rem;
   font-weight: 600;
   color: #13274A;
 }
@@ -781,7 +774,7 @@
 }
 
 #cuenta article .profile .share a {
-  font-size: 35px;
+  font-size: 32px;
   color: #7686A3;
   transition: all 0.3s;
 }

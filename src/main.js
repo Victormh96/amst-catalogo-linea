@@ -4,7 +4,7 @@ import store from "./store"
 import router from "./router"
 import { createApp } from "vue"
 import VueTheMask from "vue-the-mask"
-import VueSweetalert2 from 'vue-sweetalert2';
+import VueSweetalert2 from 'vue-sweetalert2'
 
 // Css
 import "../public/css/bootstrap.css"

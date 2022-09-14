@@ -185,7 +185,7 @@ export default {
         Navbar,
         Footer,
         Swiper,
-        SwiperSlide,
+        SwiperSlide
     },
 };
 </script>

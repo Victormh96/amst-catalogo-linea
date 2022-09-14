@@ -18,7 +18,7 @@
                     <div class="col-md-12 mb-4">
                         <h1>¿QUÉ BUSCAS?</h1>
                     </div>
-                    
+
                     <!--Description-->
                     <div class="col-lg-9 col-xl-8 m-auto mb-4 d-none d-md-none d-lg-block">
                         <p>La Alcaldía Municipal de Santa Tecla pone a tu disposición el catálogo de Servicios
@@ -34,7 +34,7 @@
                             <ul v-if="searchTag.length">
                                 <li v-for="tag in searchTag" :key="tag.nombre_rubro"
                                     @click="selectTag(tag); ClickCategoria(tag.id)">
-                                    <img :src="this.url + `/storage/${tag.imagen}`" class="me-2">
+                                    <img :src="this.url + `/storage/${ tag.imagen }`" class="me-2">
                                     {{ tag.nombre_rubro }}
                                 </li>
                             </ul>
@@ -112,7 +112,7 @@
                             <div class="col-md-4 col-xl-2 mb-5" v-for="(s, index) in this.servicios" v-bind:key="index">
                                 <router-link :to="{ name: 'Catalogo', params: { slug: s.slug } }"
                                     @click="ClickCategoria(s.id)">
-                                    <img :src="this.url + `/storage/${s.imagen}`">
+                                    <img :src="this.url + `/storage/${ s.imagen }`">
                                     <p class="mt-3 mb-0">{{ s.nombre_rubro }}</p>
                                 </router-link>
                             </div>
@@ -125,7 +125,7 @@
                             <div class="col-md-4 col-xl-2 mb-5" v-for="(e, index) in this.empresas" v-bind:key="index">
                                 <router-link :to="{ name: 'Catalogo', params: { slug: e.slug } }"
                                     @click="ClickCategoria(e.id)">
-                                    <img :src="this.url + `/storage/${e.imagen}`">
+                                    <img :src="this.url + `/storage/${ e.imagen }`">
                                     <p class="mt-3 mb-0">{{ e.nombre_rubro }}</p>
                                 </router-link>
                             </div>

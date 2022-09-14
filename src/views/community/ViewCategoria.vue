@@ -31,7 +31,7 @@
                                 v-for="(l, index) in this.lista" v-bind:key="index">
                                 <router-link :to="{ name: 'Catalogo', params: { slug: l.slug } }"
                                     @click="clickcategoria(l.id)">
-                                    <img :src="this.url + `/storage/${l.imagen}`">
+                                    <img :src="this.url + `/storage/${ l.imagen }`">
                                     <p class="mt-3 mb-0">{{ l.nombre_rubro }}</p>
                                 </router-link>
                             </div>
