@@ -65,36 +65,31 @@
 
               <!--Options-->
               <ul class="mt-2">
-                <li class="d-inline-flex" v-if="l.servicio_domicilio === '1'">
+                <li class="d-inline-flex align-items-center" v-if="l.local == 1">
                   <button @click="marker(l.latitud, l.longitud)">
                     <i class="fas fa-map-marker-alt"></i>
                   </button>
                 </li>
-                <li class="d-inline-flex" v-if="l.servicio_domicilio === '1'">
+                <li class="d-inline-flex align-items-center" v-if="l.local == 1">
                   <a :href="`https://www.google.com/maps/dir//${ l.latitud },${ l.longitud }`" target="_blank"
                     class="d-flex">
                     <i class="fas fa-map-marked-alt maps"></i>
                     <p>Google</p>
                   </a>
                 </li>
-                <li class="d-inline-flex" v-if="l.servicio_domicilio === '1'">
+                <li class="d-inline-flex align-items-center" v-if="l.local == 1">
                   <a :href="`https://www.waze.com/ul?ll=${ l.latitud },${ l.longitud }&navigate=yes&zoom=16`"
                     target="_blank" class="d-flex">
                     <i class="fab fa-waze waze"></i>
                     <p>Waze</p>
                   </a>
                 </li>
-                <li class="d-inline-flex " v-for="(c, index) in l.contacto" v-bind:key="index">
-                  <a v-if="c.id_detalle_contacto === '5'"
+                <li class="d-inline-flex align-items-center" v-for="(c, index) in l.contacto" v-bind:key="index">
+                  <a v-if="c.id_detalle_contacto == 5"
                     :href="`https://api.whatsapp.com/send?phone=503${ c.descripcion }&text=¡Hola ${ l.nombre_cuenta }! Quisiera mas información de tus servicios. 📢📢`"
                     target="_blank" class="d-flex">
                     <i class="fa-brands fa-whatsapp"></i>
                     <p>Whatsapp</p>
-                  </a>
-                  <a v-if="c.id_detalle_contacto === '7' && l.servicio_domicilio === '0'"
-                    :href="'tel:+503'+c.descripcion" target="_blank" class="d-flex">
-                    <i class="fa-solid fa-mobile-screen-button"></i>
-                    <p>{{c.descripcion}}</p>
                   </a>
                 </li>
               </ul>
@@ -102,8 +97,9 @@
 
             <!--Pagination-->
             <div id="paginacion" class="paginacion" v-if="lista.length > elementosPorPagina">
-              <vue-awesome-paginate :total-items="lista.length" :on-click="onClickHandler" prev-button-content="Anterior"
-                :current-page="1" :items-per-page="elementosPorPagina" :max-pages-shown="5" next-button-content="Siguiente">
+              <vue-awesome-paginate :total-items="lista.length" :on-click="onClickHandler"
+                prev-button-content="Anterior" :current-page="1" :items-per-page="elementosPorPagina"
+                :max-pages-shown="5" next-button-content="Siguiente">
               </vue-awesome-paginate>
             </div>
           </div>
