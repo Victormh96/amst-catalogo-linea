@@ -282,8 +282,8 @@ import useVuelidate from '@vuelidate/core'
 import Navbar from "@/components/community/ComponentNavbar.vue"
 import Footer from "@/components/community/ComponentFooter.vue"
 import { helpers, required, email, minLength } from '@vuelidate/validators'
-import router from "@/router";
-import 'sweetalert2/dist/sweetalert2.min.css';
+import router from "@/router"
+import 'sweetalert2/dist/sweetalert2.min.css'
 
 //Message
 const requeridMessage = helpers.withMessage('Campo Obligatorio', required)

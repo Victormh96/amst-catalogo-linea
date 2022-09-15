@@ -48,8 +48,8 @@
                         <div class="tag">
                             <img src="@/../public/img/assets/shapex7.png" class="mx-auto d-block" alt="Busqueda AMST">
                             <h6 class="mb-3 mt-3 mb-m-0">+ 1000 Empresas Responsables</h6>
-                            <p class="d-none d-sm-none d-md-block">Empresas establecidas en el municipio de Santa Tecla
-                                que se encuentran solventes con sus obligaciones y cumplen con su responsabilidad socia
+                            <p class="d-none d-sm-none d-md-block">Empresas establecidas en el municipio de Santa Tecla,
+                                solventes y con responsabilidad social.
                             </p>
                         </div>
                     </div>
@@ -58,19 +58,18 @@
                             <img src="@/../public/img/assets/shapex8.png" class="mx-auto d-block" alt="Busqueda AMST">
                             <h6 class="mb-3 mt-3 mb-m-0">+ 1000 Emprendedores</h6>
                             <p class="d-none d-sm-none d-md-block">La red de emprendedores más grande en el municipio de
-                                Santa Tecla en la que podrás encontrar lo que necesites. </p>
+                                Santa Tecla donde podrás encontrar lo que necesites.</p>
                         </div>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mb-5">
                         <div class="tag">
                             <img src="@/../public/img/assets/shapex9.png" class="mx-auto d-block" alt="Busqueda AMST">
                             <h6 class="mb-3 mt-3 mb-m-0">+ 200 Categorías</h6>
-                            <p class="d-none d-sm-none d-md-block">Servicios de albañilería, fontanería,
-                                modistas, floristerías, panaderías, cafetería,
-                                restaurantes, comercios, servicios de transporte y mucho mas</p>
+                            <p class="d-none d-sm-none d-md-block">productos como: artículos de primera necesidad,
+                                abarroterías, desechables, servicios de albañilería, etc.</p>
                         </div>
                     </div>
-                    <!--
+                    <!--Description
                     <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mb-5 mb-sm-0">
                         <div class="tag">
                             <img src="@/../public/img/assets/shapex10.png" class="mx-auto d-block" alt="Busqueda AMST">
@@ -98,7 +97,7 @@
                                 tipografías o de borradores de diseño para probar</p>
                         </div>
                     </div>
-Description-->
+                -->
                 </div>
             </div>
         </section>

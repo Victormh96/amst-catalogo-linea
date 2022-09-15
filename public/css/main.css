@@ -459,6 +459,13 @@
   border-radius: 3px;
 }
 
+/*===Phone===**/
+@media (max-width: 575.98px) {
+  #catalogo .card img {
+    height: 120px;
+  }
+}
+
 #catalogo .card h3 {
   font-size: 0.85rem;
   display: inline-block;
@@ -511,7 +518,7 @@
 }
 
 #catalogo .card ul li p {
-  font-size: 0.8rem;
+  font-size: 0.83rem;
   font-weight: 500;
   color: #99a3b4;
   cursor: pointer;
@@ -543,6 +550,13 @@
   border-radius: 10px;
 }
 
+/*===Phone===**/
+@media (max-width: 575.98px) {
+  #catalogo .leaflet-container {
+    height: 70vh;
+  }
+}
+
 #catalogo .fa-fade {
   animation-duration: 2s;
 }
@@ -555,6 +569,15 @@
 #catalogo .fa-triangle-exclamation {
   font-size: 120px;
   color: #13274a;
+}
+#catalogo .leaflet-popup-content {
+  margin: 5px;
+}
+
+#catalogo .leaflet-popup-content img{
+  width: 80px;
+  height: 50px;
+  object-fit: cover;
 }
 
 /*============================================================================================*/

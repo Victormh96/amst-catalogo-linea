@@ -10,11 +10,11 @@
 
     <!--Section-->
     <section id="catalogo">
-      <div class="container mb-5">
+      <div class="container mb-4 mb-sm-5">
         <div class="row">
 
           <!--Search-->
-          <div class="col-12 col-md-7 col-lg-5 col-xl-5 col-xxl-4 mx-auto mb-5 mt-5 mt-m-5">
+          <div class="col-12 col-md-7 col-lg-5 col-xl-5 col-xxl-4 mx-auto mb-4 mb-sm-5 mt-4 mt-sm-5">
             <input type="text" class="form-control text-center mb-2" placeholder="Albañil, Farmacias, Pupuserias..."
               v-model="buscar" @keyup="refresh(listaFiltrada)">
             <div class="text-center">
@@ -34,7 +34,7 @@
         <!--Div-->
         <div class="row">
 
-          <div class="col-md-6" v-if="this.lista.length > 0">
+          <div class="col-12 col-md-12 col-lg-9 col-xl-6 mx-auto" v-if="this.lista.length > 0">
             <div class="card mb-4" v-for="(l, index) in this.listaPaginada" v-bind:key="index">
 
               <!--Info-->
@@ -42,7 +42,7 @@
               <div class="row">
 
                 <!--Img-->
-                <div class="col-md-2">
+                <div class="col-md-2 mb-2 mb-sm-0">
                   <router-link :to="{ name: 'Cuenta', params: { slug: l.slug } }">
                     <img :src="this.url + `/storage/${ l.foto }`" :alt="`${ l.slug }`" v-if="l.foto">
                     <img src="@/../public/img/assets/shapex14.png" alt="default" v-else>
@@ -105,12 +105,12 @@
           </div>
 
           <!--Error-->
-          <div class="col-6 mb-5 text-center mb-5" v-else>
+          <div class="col-12 col-md-12 col-lg-12 col-xl-6 mb-5 text-center" v-else>
             <i class="fa-solid fa-triangle-exclamation fa-beat-fade"></i>
           </div>
 
           <!--Maps-->
-          <div class="col-md-6">
+          <div class="col-12 col-md-12 col-lg-12 col-xl-6">
             <div id="map"></div>
           </div>
 
@@ -229,7 +229,8 @@ export default {
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         minZoom: 14,
-        Zoom: 16
+        Zoom: 16,
+        zoomAnimation: false
       }).addTo(this.map)
 
       // Localization
@@ -239,6 +240,16 @@ export default {
           maxZoom: 18
         }
       }).addTo(this.map)
+
+      // Fixed
+      L.Popup.prototype._animateZoom = function (e) {
+        if (!this._map) {
+          return
+        }
+        var pos = this._map._latLngToNewLayerPoint(this._latlng, e.zoom, e.center),
+          anchor = this._getAnchor()
+        L.DomUtil.setPosition(this._container, pos.add(anchor))
+      }
 
       // Pin
       pines.map(function (element) {
