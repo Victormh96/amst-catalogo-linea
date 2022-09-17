@@ -14,7 +14,8 @@ import {
     BusquedaFallida,
     Publicidad,
     PublicidadClick,
-    PortadaNosotros
+    PortadaNosotros,
+    Categoriallena
 } from "../../services/paths"
 
 // Vuex
@@ -200,11 +201,22 @@ export default {
                 })
         },
 
+        async CategoriaLlena({ commit }, body) {
+            await axios
+                .get(Categoriallena() + body)
+                .then((response) => {
+                    commit('MutationCategoria', response.data)
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        },
+
         async CategoriaDestacado({ commit }) {
             await axios
                 .get(CategoriaDestacado())
                 .then((response) => {
-                    commit('MutationCategoriaDestacado', response.data)
+                    commit('MutationCategoriaDestacado', response.data[0])
                 })
                 .catch((err) => {
                     console.log(err)

@@ -20,8 +20,8 @@
                     </div>
 
                     <!--Description-->
-                    <div class="col-lg-9 col-xl-8 m-auto mb-4 d-none d-md-none d-lg-block">
-                        <p>Mas de 1,000 Tecleños con espíritu emprendedor ofertan aquí sus productos y servicios, ¡ubícalos!</p>
+                    <div class="col-lg-8 col-xl-8 m-auto mb-4 d-none d-md-none d-lg-block">
+                        <p>Mas de 1,000 Tecleños con espíritu emprendedor ofertan aquí sus productos y servicios ¡ubícalos!</p>
                     </div>
 
                     <!--Search-->
@@ -101,30 +101,17 @@
 
                     <!--Title-->
                     <div class="col-md-12 mb-5">
-                        <h3>SERVICIOS MÁS BUSCADOS</h3>
+                        <h3>LO MÁS BUSCADO</h3>
                     </div>
 
                     <!--Heading-->
                     <div class="col-md-12 text-center">
                         <div class="row">
-                            <div class="col-md-4 col-xl-2 mb-5" v-for="(s, index) in this.servicios" v-bind:key="index">
+                            <div class="col-md-4 col-xl-2 mb-5" v-for="(s, index) in this.destacados" v-bind:key="index">
                                 <router-link :to="{ name: 'Catalogo', params: { slug: s.slug } }"
                                     @click="ClickCategoria(s.id)">
                                     <img :src="this.url + `/storage/${ s.imagen }`">
                                     <p class="mt-3 mb-0">{{ s.nombre_rubro }}</p>
-                                </router-link>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Business-->
-                    <div class="col-md-12 text-center">
-                        <div class="row">
-                            <div class="col-md-4 col-xl-2 mb-5" v-for="(e, index) in this.empresas" v-bind:key="index">
-                                <router-link :to="{ name: 'Catalogo', params: { slug: e.slug } }"
-                                    @click="ClickCategoria(e.id)">
-                                    <img :src="this.url + `/storage/${ e.imagen }`">
-                                    <p class="mt-3 mb-0">{{ e.nombre_rubro }}</p>
                                 </router-link>
                             </div>
                         </div>
@@ -189,8 +176,7 @@ import Footer from "@/components/community/ComponentFooter.vue"
 export default {
     data() {
         return {
-            empresas: [],
-            servicios: [],
+            destacados: [],
             skeleton: false,
             portadainicio: []
         }
@@ -203,8 +189,7 @@ export default {
 
         // Vuex
         await this.$store.dispatch("CategoriaDestacado")
-        this.empresas = this.$store.state.community.categoriadestacado[1]
-        this.servicios = this.$store.state.community.categoriadestacado[0]
+        this.destacados = this.$store.state.community.categoriadestacado
 
         // Vuex
         await this.$store.dispatch("Tag")

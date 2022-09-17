@@ -71,8 +71,11 @@ export default {
 
     async mounted() {
         // Vuex
-        await this.$store.dispatch("Categoria", this.slug)
+        //await this.$store.dispatch("Categoria", this.slug)
 
+        await this.$store.dispatch("CategoriaLlena", this.slug)
+
+        
         // Skeleton
         setTimeout(() => {
             this.skeleton = true
