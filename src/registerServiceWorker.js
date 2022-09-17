@@ -1,9 +1,6 @@
 /* eslint-disable no-console */
-
-import { register } from 'register-service-worker'
-
-if (process.env.NODE_ENV === 'production') {
-  register(`${process.env.BASE_URL}service-worker.js`, {
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register(`http://127.0.0.1:8080/service-worker.js`, {
     ready () {
       console.log(
         'App is being served from cache by a service worker.\n' +
@@ -15,7 +12,7 @@ if (process.env.NODE_ENV === 'production') {
     },
     cached () {
       console.log('Content has been cached for offline use.')
-    },
+    }, 
     updatefound () {
       console.log('New content is downloading.')
     },

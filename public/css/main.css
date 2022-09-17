@@ -459,6 +459,13 @@
   border-radius: 3px;
 }
 
+/*===Phone===**/
+@media (max-width: 575.98px) {
+  #catalogo .card img {
+    height: 120px;
+  }
+}
+
 #catalogo .card h3 {
   font-size: 0.85rem;
   display: inline-block;
@@ -496,22 +503,22 @@
 }
 
 #catalogo .card button {
-  font-size: 14px;
+  font-size: 13px;
   background: #407ec9;
   color: #fff;
   border-radius: 5px;
   border: none;
-  padding: 2px 15px;
+  padding: 3px 15px;
 }
 
 #catalogo .card ul li a i {
-  font-size: 16px;
+  font-size: 15px;
   color: #99a3b4;
   margin: 0 6px 0 0;
 }
 
 #catalogo .card ul li p {
-  font-size: 0.85rem;
+  font-size: 0.83rem;
   font-weight: 500;
   color: #99a3b4;
   cursor: pointer;
@@ -543,6 +550,13 @@
   border-radius: 10px;
 }
 
+/*===Phone===**/
+@media (max-width: 575.98px) {
+  #catalogo .leaflet-container {
+    height: 70vh;
+  }
+}
+
 #catalogo .fa-fade {
   animation-duration: 2s;
 }
@@ -555,6 +569,15 @@
 #catalogo .fa-triangle-exclamation {
   font-size: 120px;
   color: #13274a;
+}
+#catalogo .leaflet-popup-content {
+  margin: 5px;
+}
+
+#catalogo .leaflet-popup-content img{
+  width: 80px;
+  height: 50px;
+  object-fit: cover;
 }
 
 /*============================================================================================*/
@@ -1041,20 +1064,20 @@ html::-webkit-scrollbar-thumb,
 
 .pagination-container button {
   font-size: .85rem;
-  color: #ffffff;
-  background: #407ec9;
-  padding: 6px 14px;
+  color: var(--dark-blue);
+  background: #F2F6FB;
+  padding: 6px 12px;
   margin: 0 0 0 8px;
   border: none;
   transition: all 0.3s;
 }
 
 .pagination-container button:hover {
-  background: #1B3665;
+  background: #407ec9;
 }
 
 .active-page {
-  background: #1B3665 !important;
+  background: #407ec9 !important;
 }
 
 /* ============================================================*/
