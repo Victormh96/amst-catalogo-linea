@@ -20,6 +20,7 @@ const app = createApp(App)
 
 // Global
 app.config.globalProperties.url = process.env.VUE_APP_URL_BASE
+
 // Uses
 app.use(store)
     .use(router)

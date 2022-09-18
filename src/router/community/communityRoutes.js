@@ -3,7 +3,12 @@ const communityRoutes = [
         path: '/',
         name: 'Inicio',
         component: () => import("@/views/community/ViewInicio.vue"),
-        props: true
+    },
+
+    {
+        path: '/servicios-completos',
+        name: 'servicios-completos',
+        component: () => import("@/views/community/viewServicios.vue"),
     },
 
     {
@@ -43,13 +48,6 @@ const communityRoutes = [
         path: '/sobre-nosotros',
         name: 'Sobre-Nosotros',
         component: () => import("@/views/community/ViewSobreNosotros.vue"),
-    },
-
-    {
-        path: '/servicios-completos',
-        name: 'servicios-completos',
-        component: () => import("@/views/community/viewServicios.vue"),
-        props: true
     },
 ]
 

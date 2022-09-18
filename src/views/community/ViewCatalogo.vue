@@ -15,8 +15,12 @@
 
           <!--Search-->
           <div class="col-12 col-md-7 col-lg-5 col-xl-5 col-xxl-4 mx-auto mb-4 mb-sm-5 mt-4 mt-sm-5">
+
+            <!--Input-->
             <input type="text" class="form-control text-center mb-2" placeholder="Albañil, Farmacias, Pupuserias..."
               v-model="buscar" @keyup="refresh(listaFiltrada)">
+
+            <!--Checks-->
             <div class="text-center">
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="checkbox" id="domicilio" v-model="this.domicilio"
@@ -230,7 +234,6 @@ export default {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         minZoom: 14,
         Zoom: 16,
-        zoomAnimation: false
       }).addTo(this.map)
 
       // Localization

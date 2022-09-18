@@ -9,9 +9,9 @@
     <main v-if="(skeleton)" class="top">
 
         <!--Section-->
-        <section id="nosotros" class="mb-5 mt-4 mt-sm-5">
-            <div class="container">
-                <div class="row ">
+        <section id="nosotros">
+            <div class="container mb-5 mt-4 mt-sm-5">
+                <div class="row">
 
                     <!--Img-->
                     <div class="col-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 mb-m-5 d-grid mb-4 mb-lg-0">
@@ -44,7 +44,7 @@
                 <div class="row text-center">
 
                     <!--Cards-->
-                    <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mb-5">
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mb-5 mb-lg-0">
                         <div class="tag">
                             <img src="@/../public/img/assets/shapex7.png" class="mx-auto d-block" alt="Busqueda AMST">
                             <h6 class="mb-3 mt-3 mb-m-0">+ 1000 Empresas Responsables</h6>
@@ -53,7 +53,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mb-5">
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mb-5 mb-lg-0">
                         <div class="tag">
                             <img src="@/../public/img/assets/shapex8.png" class="mx-auto d-block" alt="Busqueda AMST">
                             <h6 class="mb-3 mt-3 mb-m-0">+ 1000 Emprendedores</h6>
@@ -61,7 +61,7 @@
                                 Santa Tecla donde podrás encontrar lo que necesites.</p>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mb-5">
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mb-0 mb-sm-0">
                         <div class="tag">
                             <img src="@/../public/img/assets/shapex9.png" class="mx-auto d-block" alt="Busqueda AMST">
                             <h6 class="mb-3 mt-3 mb-m-0">+ 200 Categorías</h6>
@@ -69,35 +69,6 @@
                                 abarroterías, desechables, servicios de albañilería, etc.</p>
                         </div>
                     </div>
-                    <!--Description
-                    <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mb-5 mb-sm-0">
-                        <div class="tag">
-                            <img src="@/../public/img/assets/shapex10.png" class="mx-auto d-block" alt="Busqueda AMST">
-                            <h6 class="mb-3 mt-3 mb-m-0">+ 1000 Empresas</h6>
-                            <p class="d-none d-sm-none d-md-block">Lorem ipsum es el texto que se usa habitualmente en
-                                diseño gráfico en demostraciones de
-                                tipografías o de borradores de diseño para probar</p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mb-5 mb-sm-0">
-                        <div class="tag">
-                            <img src="@/../public/img/assets/shapex11.png" class="mx-auto d-block" alt="Busqueda AMST">
-                            <h6 class="mb-3 mt-3 mb-m-0">+ 5000 Profesionales</h6>
-                            <p class="d-none d-sm-none d-md-block">Lorem ipsum es el texto que se usa habitualmente en
-                                diseño gráfico en demostraciones de
-                                tipografías o de borradores de diseño para probar</p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
-                        <div class="tag">
-                            <img src="@/../public/img/assets/shapex12.png" class="mx-auto d-block" alt="Busqueda AMST">
-                            <h6 class="mb-3 mt-3 mb-m-0">+ 8000 Categorías</h6>
-                            <p class="d-none d-sm-none d-md-block">Lorem ipsum es el texto que se usa habitualmente en
-                                diseño gráfico en demostraciones de
-                                tipografías o de borradores de diseño para probar</p>
-                        </div>
-                    </div>
-                -->
                 </div>
             </div>
         </section>
@@ -164,8 +135,10 @@ export default {
     },
 
     async mounted() {
+        // Vuex
         await this.$store.dispatch("PortadaNosotros")
         this.portada = this.$store.state.community.portadanosotros
+
         // Skeleton
         setTimeout(() => {
             this.skeleton = true

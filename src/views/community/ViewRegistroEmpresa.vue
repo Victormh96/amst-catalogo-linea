@@ -42,12 +42,12 @@
                                     <div class="error-msg">{{ error.$message }}</div>
                                 </div>
                             </div>
-                            <!--NIT-->
+                            <!--Documento-->
                             <div class="form-group mb-4">
                                 <input type="tel" class="form-control" placeholder="NIT*" v-mask="'####-######-###-#'"
-                                    v-model="v$.form.document.$model">
+                                    v-model="v$.form.documento.$model">
                                 <!--Error Message-->
-                                <div class="input-errors err" v-for="(error, index) of v$.form.document.$errors"
+                                <div class="input-errors err" v-for="(error, index) of v$.form.documento.$errors"
                                     :key="index">
                                     <div class="error-msg">{{ error.$message }}</div>
                                 </div>
@@ -126,9 +126,9 @@
                         <!--Company Description-->
                         <div class="col-md-6">
                             <textarea style="resize: none;" class="form-control" placeholder="Describe tu Empresa*"
-                                v-model="v$.form.descripcionEmpresa.$model" rows="3"></textarea>
+                                v-model="v$.form.descripcion.$model" rows="3"></textarea>
                             <!--Error Message-->
-                            <div class="input-errors err" v-for="(error, index) of v$.form.descripcionEmpresa.$errors"
+                            <div class="input-errors err" v-for="(error, index) of v$.form.descripcion.$errors"
                                 :key="index">
                                 <div class="error-msg">{{ error.$message }}</div>
                             </div>
@@ -287,14 +287,14 @@ export default {
             form: {
                 imagen: '',
                 name: '',
-                document: '',
+                documento: '',
                 telefonoCelular: '',
                 email: '',
                 categoria: '',
                 servicioDomicilio: '',
                 telefonoFijo: '',
                 direccion: '',
-                descripcionEmpresa: '',
+                descripcion: '',
                 horario: '',
                 facebook: '',
                 instagram: '',
@@ -327,7 +327,7 @@ export default {
                 name: {
                     requeridMessage,
                 },
-                document: {
+                documento: {
                     requeridMessage,
                     nitMessage,
                 },
@@ -352,7 +352,7 @@ export default {
                 direccion: {
                     requeridMessage,
                 },
-                descripcionEmpresa: {
+                descripcion: {
                     requeridMessage,
                 },
                 horario: {

@@ -12,8 +12,6 @@ export const Tag = () => `${url_base}/api/tag`
 
 export const Categoria = () => `${url_base}/api/categoria/`
 
-export const Categoriallena = () => `${url_base}/api/categoria-llena/`
-
 export const CategoriaDestacado = () => `${url_base}/api/categoria-destacado`
 
 export const CategoriaClick = () => `${url_base}/api/categoria-click/`
