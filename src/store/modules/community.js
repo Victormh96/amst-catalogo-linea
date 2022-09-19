@@ -111,7 +111,7 @@ export default {
 
         async BusquedaFallida({ commit }, body) {
             await axios
-                .post(BusquedaFallida(), body)
+                .get(BusquedaFallida() + body)
                 .then((response) => {
                     commit('MutationBusqueda', response.data[0])
                     commit('MutationSearch', '')
@@ -265,7 +265,7 @@ export default {
 
         async PublicidadClick({ commit }, body) {
             await axios
-                .post(PublicidadClick() + body)
+                .get(PublicidadClick() + body)
                 .then(() => {
                     commit('MutationPublicidadClick')
                 })

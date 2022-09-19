@@ -84,11 +84,9 @@ export default {
         if (cant > 0) {
             input ? this.buscar = input : this.buscar = '';
         } else {
-            const body = {
-                busqueda: input
-            }
+
             // Vuex
-            await this.$store.dispatch("BusquedaFallida", body)
+            await this.$store.dispatch("BusquedaFallida", input)
         }
 
         // Skeleton

@@ -4,7 +4,7 @@ const url_base = process.env.VUE_APP_URL_BASE
 // Routes Community
 export const Portada = () => `${url_base}/api/portada/`
 
-export const BusquedaFallida = () => `${url_base}/api/busqueda-fallida`
+export const BusquedaFallida = () => `${url_base}/api/busqueda-fallida/`
 
 export const Tag = () => `${url_base}/api/tag`
 
