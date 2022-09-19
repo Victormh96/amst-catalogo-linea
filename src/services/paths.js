@@ -2,6 +2,8 @@
 const url_base = process.env.VUE_APP_URL_BASE
 
 // Routes Community
+export const Portada = () => `${url_base}/api/portada/`
+
 export const PortadaInicio = () => `${url_base}/api/portada-inicio`
 
 export const PortadaRegistro = () => `${url_base}/api/portada-registro`

@@ -8,7 +8,7 @@ const communityRoutes = [
     {
         path: '/servicios-completos',
         name: 'Servicios-Completos',
-        component: () => import("@/views/community/ViewServicios.vue"),
+        component: () => import("@/views/community/viewServicios.vue"),
     },
 
     {

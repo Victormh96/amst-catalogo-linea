@@ -162,8 +162,8 @@ export default {
 
     async mounted() {
         // Vuex
-        await this.$store.dispatch("PortadaNosotros")
-        this.portada = this.$store.state.community.portadanosotros
+        await this.$store.dispatch("Portada", 'Nosotros')
+        this.portada= this.$store.state.community.portada
 
         // Skeleton
         setTimeout(() => {
