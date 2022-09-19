@@ -609,6 +609,15 @@
   object-fit: cover;
 }
 
+#catalogo .fa-award {
+  font-size: 26px;
+  color: #407EC9;
+  position: absolute;
+  top: -20px;
+  left: -12px;
+  z-index: 999;
+}
+
 /*============================================================================================*/
 /* Cuenta
 /*============================================================================================*/
@@ -1119,12 +1128,14 @@ html::-webkit-scrollbar-thumb,
 
 .swal2-styled.swal2-confirm {
   background-color: #407ec9 !important;
-  font-size: .9em !important;
+  font-size: .85em !important;
+  width: 150px !important;
 }
 
 .swal2-footer a {
   color: #407ec9 !important;
-  font-size: .9em !important;
+  font-size: .85em !important;
+  font-weight: 600 !important;
 }
 
 .swal2-styled.swal2-confirm:focus {

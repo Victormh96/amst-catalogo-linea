@@ -26,7 +26,7 @@
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="todos" name="delivery" v-model="this.domicilio"
                   @change="filtrar()" value="0" checked>
-                <label class="form-check-label" for="todos" >Todos</label>
+                <label class="form-check-label" for="todos">Todos</label>
               </div>
 
               <!--Delivery-->
@@ -58,7 +58,8 @@
               <div class="row">
 
                 <!--Img-->
-                <div class="col-md-2 mb-2 mb-sm-0">
+                <div class="col-md-2 mb-2 mb-sm-0 position-relative">
+                  <i class="fa-solid fa-award" v-if="l.verificado == 1"></i>
                   <router-link :to="{ name: 'Cuenta', params: { slug: l.slug } }">
                     <img :src="this.url + `/storage/${ l.foto }`" :alt="`${ l.slug }`" v-if="l.foto">
                     <img src="@/../public/img/assets/shapex14.png" alt="default" v-else>
@@ -230,13 +231,13 @@ export default {
           return categoria.servicio_domicilio == 1
         })
 
-      } 
+      }
       if (this.domicilio == 2) {
         this.lista = this.lista.filter(categoria => {
           return categoria.servicio_domicilio == 0
         })
 
-      } 
+      }
 
       // Methods
       this.map.remove()
@@ -251,13 +252,13 @@ export default {
           return categoria.servicio_domicilio == 1
         })
 
-      } 
+      }
       if (this.domicilio == 2) {
         this.lista = this.lista.filter(categoria => {
           return categoria.servicio_domicilio == 0
         })
 
-      } 
+      }
       this.map.remove()
       this.maps(lista)
     },
