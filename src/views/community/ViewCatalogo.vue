@@ -183,6 +183,7 @@ export default {
     await this.$store.dispatch("CatalogoCategoria", this.slug)
     this.lista = this.$store.state.community.catalogocategoria
 
+    // If
     if (this.lista.length < 1) {
       this.$router.push("/404")
     }
