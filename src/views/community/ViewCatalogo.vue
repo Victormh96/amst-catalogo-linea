@@ -175,7 +175,13 @@ export default {
     // Vuex
     await this.$store.dispatch("CatalogoCategoria", this.slug)
     this.lista = this.$store.state.community.catalogocategoria
+
+    if (this.lista.length < 1) {
+      this.$router.push("/404")
+    }
+
     this.onClickHandler(1)
+
 
     // Skeleton
     setTimeout(() => {
