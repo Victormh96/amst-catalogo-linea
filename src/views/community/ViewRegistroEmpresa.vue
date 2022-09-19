@@ -95,8 +95,8 @@
                                 <div class="form-group mb-4">
                                     <select class="form-control select2" v-model="v$.form.categoria.$model">
                                         <option disabled value="">Categoria*</option>
-                                        <option value="1">Micro Empresa</option>
-                                        <option value="2">Empresa</option>
+                                        <option value="3">Micro Empresa</option>
+                                        <option value="4">Empresa</option>
                                     </select>
 
                                     <!--Error Message-->

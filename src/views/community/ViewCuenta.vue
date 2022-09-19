@@ -30,7 +30,7 @@
 
                                 <!--Gender-->
                                 <i v-if="this.lista.genero.id == 1" class="fa-solid fa-mars-stroke"></i>
-                                <i v-else class="fa-solid fa-venus"></i>
+                                <i v-if="this.lista.genero.id == 2" class="fa-solid fa-venus"></i>
 
                                 <!--Info-->
                                 <a :href="'mailto:'+ this.lista.email" class="mb-1 mt-1">{{ this.lista.email }}</a>

@@ -7,7 +7,6 @@ import VueTheMask from "vue-the-mask"
 import VueSweetalert2 from 'vue-sweetalert2'
 import VueAwesomePaginate from "vue-awesome-paginate"
 
-
 // Css
 import "../public/css/bootstrap.css"
 import "./registerServiceWorker"

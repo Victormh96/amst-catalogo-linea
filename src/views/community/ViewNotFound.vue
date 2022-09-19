@@ -1,13 +1,16 @@
 <template>
-
     <!--Title-->
     <title>Página No Encontrada</title>
 
+    <!--Navbar-->
+    <Navbar />
+
     <!--Main-->
     <main v-if="(skeleton)" class="top">
+
         <!--Section-->
-        <section class="mt-2"  >
-            <img src="@/../public/img/assets/404.png" alt="404" class="mx-auto d-block">
+        <section class="d-flex align-items-center">
+            <img src="@/../public/img/assets/404.png" alt="404" class="mx-auto d-block img-fluid">
         </section>
     </main>
 
@@ -18,16 +21,18 @@
 
     <!--Footer-->
     <Footer />
-
 </template>
 
 <!--========Script========-->
 <script>
+import Navbar from "@/components/community/ComponentNavbar.vue"
+
 import Footer from "@/components/community/ComponentFooter.vue"
 
 export default {
     components: {
         Footer,
+        Navbar
     },
 
     data() {
@@ -47,7 +52,6 @@ export default {
         setTimeout(() => {
             this.skeleton = true
         }, 950)
-
     },
 };
 </script>

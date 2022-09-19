@@ -1127,6 +1127,10 @@ html::-webkit-scrollbar-thumb,
   font-size: .9em !important;
 }
 
+.swal2-styled.swal2-confirm:focus {
+  box-shadow: none !important;
+}
+
 /* ============================================================*/
 /* Pagination
 /* ============================================================*/

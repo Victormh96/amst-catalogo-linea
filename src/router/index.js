@@ -7,6 +7,11 @@ import { communityRoutes } from "@/router/community/communityRoutes"
 // Routes
 const routes = [
     ...communityRoutes,
+    {
+        path: "/:pathMatch(.*)*",
+        name: "Notfound",
+        component: () => import("@/views/community/ViewNotFound.vue")
+    }
 ]
 
 // Initialization
