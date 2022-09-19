@@ -9,7 +9,7 @@
     <main v-show="(skeleton)" class="top">
 
         <!--Section-->
-        <section id="banner" class="d-flex align-items-center mb-5"
+        <section id="banner" class="d-flex align-items-center mb-4 mb-sm-5"
             v-bind:style="[this.portadaregistro.imagen ? { 'background-image': 'url(' + this.url + '/storage/' + this.portadaregistro.imagen + ')' } : null]">
             <div class="container">
                 <div class="row">
@@ -140,7 +140,7 @@
 
                         <div class="row">
                             <!--Personal Description-->
-                            <div class="col-md-6">
+                            <div class="col-md-6 mb-4 mb-sm-0">
                                 <input type="text" class="form-control" placeholder="Descripción Personal*"
                                     v-model="v$.form.descripcion.$model">
 
@@ -172,7 +172,7 @@
                     </div>
 
                     <!--Maps-->
-                    <div class="col-md-12 col-xl-4 mx-auto">
+                    <div class="col-md-12 col-xl-4 mx-auto mt-4 mt-sm-0">
                         <div id="map" class="map mb-2"></div>
                         <p class="indicaciones text-center">Selecciona tu ubIcación en el mapa*</p>
                     </div>
@@ -185,7 +185,7 @@
                         servicio y agregalo a tu listado </p>
 
                     <!--Service-->
-                    <div class="col-md-3">
+                    <div class="col-md-3 mb-4 mb-sm-0">
                         <select class="form-control select2" v-model="this.servicio" @change="verifyService()">
                             <option disabled value="">Servicio*</option>
                             <option v-for="c in this.listaServicio" :value="c.id" v-bind:key="c.id">{{ c.nombre_rubro }}
@@ -199,7 +199,7 @@
                     </div>
 
                     <!--Experience-->
-                    <div class="col-md-3">
+                    <div class="col-md-3 mb-4 mb-sm-0">
                         <select class="form-control select2" v-model="this.experiencia" @change="verifyService()">
                             <option disabled value="">Experiencia*</option>
                             <option value="Menos de un año">Menos de un año</option>
@@ -216,13 +216,13 @@
                     </div>
 
                     <!--Add Service-->
-                    <div class="col-xs-2 col-md-2 m-auto">
+                    <div class="col-xs-2 col-md-2 m-auto mt-4 mt-sm-0">
                         <button type="button" class="btn-md" :disabled="errorServicio || nullServicio"
                             @click="addServices"><i class="fa-solid fa-plus"></i></button>
                     </div>
 
                     <!--List Services-->
-                    <div class="col-md-12 mt-3">
+                    <div class="col-md-12 mt-4 mt-sm-3">
                         <span class="tag mb-3 me-3" v-for="(servicio, index) in this.cuentaServicios"
                             data-toggle="tooltip" data-placement="top" v-bind:key="index"
                             :title="'Experiencia: ' + servicio.experiencia + ' Descripcion: ' + servicio.descripcion">
@@ -258,7 +258,7 @@
                     </div>
 
                     <!--WhatsApp-->
-                    <div class="col-md-4">
+                    <div class="col-md-4 mb-4 mb-sm-0">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa-brands fa-whatsapp"></i></span>
@@ -268,7 +268,7 @@
                     </div>
 
                     <!--Linkedin-->
-                    <div class="col-md-4">
+                    <div class="col-md-4 mb-4 mb-sm-0">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa-brands fa-linkedin-in"></i></span>
@@ -278,7 +278,7 @@
                     </div>
 
                     <!--Twitter-->
-                    <div class="col-md-4">
+                    <div class="col-md-4 mb-4 mb-sm-0">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa-brands fa-twitter"></i></span>
@@ -567,8 +567,8 @@ export default {
         // Add
         addServices() {
             // If
-            if (this.cuentaServicios.length > 4) {
-                this.showFailServicies('Solo puedes registrar 5 servicios, elimina uno para agregarlo')
+            if (this.cuentaServicios.length > 3) {
+                this.showFailServicies('Solo puedes registrar 4 servicios, elimina uno para agregarlo')
             } else {
                 const serv = {
                     idServicio: this.servicio,
