@@ -8,7 +8,7 @@ const communityRoutes = [
     {
         path: '/servicios-completos',
         name: 'Servicios-Completos',
-        component: () => import("@/views/community/ViewServicios.vue"),
+        component: () => import("@/views/community/ViewServicio.vue"),
     },
 
     {
@@ -16,7 +16,7 @@ const communityRoutes = [
         name: 'Categoria',
         component: () => import("@/views/community/ViewCategoria.vue"),
         props: true
-    }, 
+    },
 
     {
         path: '/catalogo/:slug',
