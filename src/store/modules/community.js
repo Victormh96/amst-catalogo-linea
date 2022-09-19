@@ -192,7 +192,7 @@ export default {
 
         async CategoriaClick({ commit }, body) {
             await axios
-                .post(CategoriaClick() + body)
+                .get(CategoriaClick() + body)
                 .then(() => {
                     commit('MutationCategoriaClick')
                 })
