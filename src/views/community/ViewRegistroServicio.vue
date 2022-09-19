@@ -380,7 +380,7 @@ export default {
         this.portadaregistro = this.$store.state.community.portada[0]
 
         //Categoria
-        await this.$store.dispatch("Categoria", "servicios-profesionales")
+        await this.$store.dispatch("CategoriaRegistro", '1')
         this.listaServicio = this.$store.state.community.categoria
 
         // Skeleton

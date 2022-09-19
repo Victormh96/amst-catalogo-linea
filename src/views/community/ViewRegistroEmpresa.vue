@@ -372,7 +372,7 @@ export default {
         this.portadaregistro = this.$store.state.community.portada[0]
 
         //Servicios
-        await this.$store.dispatch("Categoria", 'empresas')
+        await this.$store.dispatch("CategoriaRegistro", '2')
         this.listaServicio = this.$store.state.community.categoria
     },
 
