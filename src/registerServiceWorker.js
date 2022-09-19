@@ -1,6 +1,9 @@
 /* eslint-disable no-console */
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register(`http://127.0.0.1:8080/service-worker.js`, {
+
+import { register } from 'register-service-worker'
+
+if (process.env.NODE_ENV === 'production') {
+  register(`${process.env.VUE_APP_URL_WPA}/service-worker.js`, {
     ready() {
       console.log(
         'App is being served from cache by a service worker.\n' +
