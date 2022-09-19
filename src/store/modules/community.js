@@ -12,7 +12,8 @@ import {
     RegistroEmpresa,
     Publicidad,
     PublicidadClick,
-    Portada
+    Portada,
+    CategoriaRegistro
 } from "../../services/paths"
 
 // Vuex
@@ -159,6 +160,17 @@ export default {
         async Categoria({ commit }, body) {
             await axios
                 .get(Categoria() + body)
+                .then((response) => {
+                    commit('MutationCategoria', response.data[0])
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        },
+
+        async CategoriaRegistro({ commit }, body) {
+            await axios
+                .get(CategoriaRegistro() + body)
                 .then((response) => {
                     commit('MutationCategoria', response.data[0])
                 })
