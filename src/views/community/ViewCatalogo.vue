@@ -10,11 +10,11 @@
 
     <!--Section-->
     <section id="catalogo">
-      <div class="container mb-4 mb-sm-5">
+      <div class="container mb-4 mb-sm-5 mt-4 mt-sm-5">
         <div class="row">
 
           <!--Search-->
-          <div class="col-12 col-md-7 col-lg-5 col-xl-5 col-xxl-4 mx-auto mb-4 mb-sm-5 mt-4 mt-sm-5">
+          <div class="col-12 col-md-7 col-lg-5 col-xl-5 col-xxl-4 mx-auto mb-4 mb-sm-5">
 
             <!--Input-->
             <input type="text" class="form-control text-center mb-2" placeholder="Albañil, Farmacias, Pupuserias..."
@@ -22,13 +22,18 @@
 
             <!--Checks-->
             <div class="text-center">
+
+              <!--Delivery-->
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="domicilio" v-model="this.domicilio"
-                  @change="filtrar()">
+                <input class="form-check-input" type="radio" id="domicilio" name="delivery" v-model="this.domicilio"
+                  @change="filtrar()" value="1">
                 <label class="form-check-label" for="domicilio">Servicio a domicilio</label>
               </div>
+
+              <!--Place-->
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="local" v-model="this.local" @change="filtrar()">
+                <input class="form-check-input" type="radio" id="local" name="delivery" v-model="this.domicilio"
+                  @change="filtrar()" value="0">
                 <label class="form-check-label" for="local">En el lugar</label>
               </div>
             </div>
@@ -38,11 +43,12 @@
         <!--Div-->
         <div class="row">
 
+          <!--Cards-->
           <div class="col-12 col-md-12 col-lg-9 col-xl-6 mx-auto" v-if="this.lista.length > 0">
             <div class="card mb-4" v-for="(l, index) in this.listaPaginada" v-bind:key="index">
 
               <!--Info-->
-              <small class="delivery">{{l.servicio_domicilio === '1' ? 'A DOMICILIO' : 'EN EL LUGAR'}}</small>
+              <small class="delivery">{{ l.servicio_domicilio == 1 ? 'A DOMICILIO' : 'EN EL LUGAR' }}</small>
               <div class="row">
 
                 <!--Img-->
@@ -55,12 +61,18 @@
 
                 <!--Description-->
                 <div class="col-md-9">
+
+                  <!--Title-->
                   <router-link :to="{ name: 'Cuenta', params: { slug: l.slug } }">
                     <h5 class="mb-1">{{ l.nombre_cuenta }}</h5>
                   </router-link>
+
+                  <!--Service-->
                   <span class="me-2 mb-2" v-for="(r, index) in l.servicio" v-bind:key="index">
                     {{ r.rubro.nombre_rubro }}
                   </span>
+
+                  <!--Info-->
                   <p class="descrpcion">
                     {{ l.descripcion }}
                   </p>
@@ -69,11 +81,15 @@
 
               <!--Options-->
               <ul class="mt-2">
+
+                <!--Map-->
                 <li class="d-inline-flex align-items-center" v-if="l.local == 1">
                   <button @click="marker(l.latitud, l.longitud)">
                     <i class="fas fa-map-marker-alt"></i>
                   </button>
                 </li>
+
+                <!--Google-->
                 <li class="d-inline-flex align-items-center" v-if="l.local == 1">
                   <a :href="`https://www.google.com/maps/dir//${ l.latitud },${ l.longitud }`" target="_blank"
                     class="d-flex">
@@ -81,6 +97,8 @@
                     <p>Google</p>
                   </a>
                 </li>
+
+                <!--Waze-->
                 <li class="d-inline-flex align-items-center" v-if="l.local == 1">
                   <a :href="`https://www.waze.com/ul?ll=${ l.latitud },${ l.longitud }&navigate=yes&zoom=16`"
                     target="_blank" class="d-flex">
@@ -88,6 +106,8 @@
                     <p>Waze</p>
                   </a>
                 </li>
+
+                <!--Whatsapp-->
                 <li class="d-inline-flex align-items-center" v-for="(c, index) in l.contacto" v-bind:key="index">
                   <a v-if="c.id_detalle_contacto == 5"
                     :href="`https://api.whatsapp.com/send?phone=503${ c.descripcion }&text=¡Hola ${ l.nombre_cuenta }! Quisiera mas información de tus servicios. 📢📢`"
@@ -100,7 +120,7 @@
             </div>
 
             <!--Pagination-->
-            <div id="paginacion" class="paginacion" v-if="lista.length > elementosPorPagina">
+            <div id="paginacion" class="paginacion text-center mb-4 mb-xl-0" v-if="lista.length > elementosPorPagina">
               <vue-awesome-paginate :total-items="lista.length" :on-click="onClickHandler"
                 prev-button-content="Anterior" :current-page="1" :items-per-page="elementosPorPagina"
                 :max-pages-shown="5" next-button-content="Siguiente">
@@ -109,7 +129,7 @@
           </div>
 
           <!--Error-->
-          <div class="col-12 col-md-12 col-lg-12 col-xl-6 mb-5 text-center" v-else>
+          <div class="col-12 col-md-12 col-lg-12 col-xl-6 mb-4 mb-sm-5 text-center" v-else>
             <i class="fa-solid fa-triangle-exclamation fa-beat-fade"></i>
           </div>
 
@@ -117,7 +137,6 @@
           <div class="col-12 col-md-12 col-lg-12 col-xl-6">
             <div id="map"></div>
           </div>
-
         </div>
       </div>
     </section>
@@ -145,7 +164,6 @@ export default {
       map: '',
       lista: [],
       buscar: '',
-      local: false,
       skeleton: false,
       domicilio: false,
       listaPaginada: [],
@@ -182,8 +200,10 @@ export default {
       var inicio = (page * this.elementosPorPagina) - this.elementosPorPagina
       var fin = (page * this.elementosPorPagina)
 
+      // Foreach
       for (let index = inicio; index < fin; index++) {
 
+        // If
         if (this.lista[index]) {
           this.listaPaginada.push(this.lista[index])
         }
@@ -193,18 +213,20 @@ export default {
     // Filter
     filtrar() {
       this.lista = this.$store.state.community.catalogocategoria
-      if (this.domicilio === true) {
+
+      // If
+      if (this.domicilio == 1) {
         this.lista = this.lista.filter(categoria => {
-          return categoria.servicio_domicilio === '1'
+          return categoria.servicio_domicilio == 1
+        })
+
+      } else {
+        this.lista = this.lista.filter(categoria => {
+          return categoria.servicio_domicilio == 0
         })
       }
 
-      if (this.local === true) {
-        this.lista = this.lista.filter(categoria => {
-          return categoria.local === '1'
-        })
-      }
-
+      // Methods
       this.map.remove()
       this.maps()
     },
@@ -256,9 +278,10 @@ export default {
 
       // Pin
       pines.map(function (element) {
-        L.marker([element.latitud, element.longitud],).bindPopup("<img src=" + url + "/storage/" + element.foto + "/>").addTo(map)
+        L.marker([element.latitud, element.longitud],).bindPopup("<a href=/cuenta/" + element.slug + "><img src=" + url + "/storage/" + element.foto + "/></a>").addTo(map)
       })
 
+      // Methods
       this.onClickHandler(1)
     },
 
@@ -266,6 +289,12 @@ export default {
     marker(lat, long) {
       // Move
       this.map.setView([lat, long], 18)
+
+      // Scroll
+      window.scrollTo({
+        top: document.getElementById("map").offsetTop - 120,
+        behavior: "smooth",
+      });
     }
   },
 

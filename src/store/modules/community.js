@@ -3,6 +3,8 @@ import axios from "axios"
 import {
     PortadaInicio,
     PortadaRegistro,
+    PortadaNosotros,
+    BusquedaFallida,
     Tag,
     Categoria,
     CategoriaDestacado,
@@ -11,11 +13,8 @@ import {
     Cuenta,
     RegistroServicio,
     RegistroEmpresa,
-    BusquedaFallida,
     Publicidad,
-    PublicidadClick,
-    PortadaNosotros,
-    Categoriallena
+    PublicidadClick
 } from "../../services/paths"
 
 // Vuex
@@ -25,6 +24,7 @@ export default {
             portadainicio: null,
             portadaregistro: null,
             portadanosotros: null,
+            fallida: null,
             tag: null,
             categoria: null,
             categoriadestacado: null,
@@ -33,7 +33,6 @@ export default {
             registroservicio: null,
             registroempresa: null,
             search: null,
-            fallida: null,
             publicidad: null,
             publicidadclick: null,
         }
@@ -52,8 +51,12 @@ export default {
             state.portadanosotros = data
         },
 
-        MutationPublicidad(state, data) {
-            state.publicidad = data
+        MutationSearch(state, data) {
+            state.search = data
+        },
+
+        MutationBusqueda(state, data) {
+            state.fallida = data
         },
 
         MutationTag(state, data) {
@@ -72,20 +75,12 @@ export default {
             state.categoriaclick = true
         },
 
-        MutationPublicidadClick(state) {
-            state.publicidadclick = true
-        },
-
         MutationCatalogoCategoria(state, data) {
             state.catalogocategoria = data
         },
 
         MutationCuenta(state, data) {
             state.cuenta = data
-        },
-
-        MutationBusqueda(state, data) {
-            state.fallida = data
         },
 
         MutationRegistroServicio(state) {
@@ -104,8 +99,12 @@ export default {
             state.registroempresa = false
         },
 
-        MutationSearch(state, data) {
-            state.search = data
+        MutationPublicidad(state, data) {
+            state.publicidad = data
+        },
+
+        MutationPublicidadClick(state) {
+            state.publicidadclick = true
         }
     },
 
@@ -115,17 +114,6 @@ export default {
                 .get(PortadaInicio())
                 .then((response) => {
                     commit('MutationPortadaInicio', response.data)
-                })
-                .catch((err) => {
-                    console.log(err)
-                })
-        },
-
-        async Publicidad({ commit }) {
-            await axios
-                .get(Publicidad())
-                .then((response) => {
-                    commit('MutationPublicidad', response.data[0])
                 })
                 .catch((err) => {
                     console.log(err)
@@ -148,6 +136,19 @@ export default {
                 .get(PortadaNosotros())
                 .then((response) => {
                     commit('MutationPortadaNosotros', response.data[0])
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        },
+
+        async BusquedaFallida({ commit }, body) {
+            await axios
+                .post(BusquedaFallida(), body)
+                .then((response) => {
+                    commit('MutationBusqueda', response.data[0])
+                    commit('MutationSearch', '')
+
                 })
                 .catch((err) => {
                     console.log(err)
@@ -194,18 +195,7 @@ export default {
             await axios
                 .get(Categoria() + body)
                 .then((response) => {
-                    commit('MutationCategoria', response.data)
-                })
-                .catch((err) => {
-                    console.log(err)
-                })
-        },
-
-        async CategoriaLlena({ commit }, body) {
-            await axios
-                .get(Categoriallena() + body)
-                .then((response) => {
-                    commit('MutationCategoria', response.data)
+                    commit('MutationCategoria', response.data[0])
                 })
                 .catch((err) => {
                     console.log(err)
@@ -234,17 +224,6 @@ export default {
                 })
         },
 
-        async PublicidadClick({ commit }, body) {
-            await axios
-                .post(PublicidadClick() + body)
-                .then(() => {
-                    commit('MutationPublicidadClick')
-                })
-                .catch((err) => {
-                    console.log(err)
-                })
-        },
-
         async CatalogoCategoria({ commit }, body) {
             await axios
                 .get(CatalogoCategoria() + body)
@@ -261,19 +240,6 @@ export default {
                 .get(Cuenta() + body)
                 .then((response) => {
                     commit('MutationCuenta', response.data[0])
-                })
-                .catch((err) => {
-                    console.log(err)
-                })
-        },
-
-        async BusquedaFallida({ commit }, body) {
-            await axios
-                .post(BusquedaFallida(), body)
-                .then((response) => {
-                    commit('MutationBusqueda', response.data[0])
-                    commit('MutationSearch', '')
-
                 })
                 .catch((err) => {
                     console.log(err)
@@ -319,6 +285,28 @@ export default {
 
         ClearEmpresa({ commit }) {
             commit('MutationClearEmpresa')
+        },
+
+        async Publicidad({ commit }) {
+            await axios
+                .get(Publicidad())
+                .then((response) => {
+                    commit('MutationPublicidad', response.data[0])
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        },
+
+        async PublicidadClick({ commit }, body) {
+            await axios
+                .post(PublicidadClick() + body)
+                .then(() => {
+                    commit('MutationPublicidadClick')
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
         },
     },
 };

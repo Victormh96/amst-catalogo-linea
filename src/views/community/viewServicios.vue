@@ -10,11 +10,11 @@
 
         <!--Section-->
         <section id="categoria">
-            <div class="container">
+            <div class="container mt-4 mt-sm-5">
                 <div class="row">
 
                     <!--Title-->
-                    <div class="col-12 text-center mb-5 mt-4 mt-sm-5">
+                    <div class="col-12 text-center mb-5">
                         <h3>TODOS LOS SERVICIOS</h3>
                     </div>
 
@@ -22,13 +22,12 @@
                     <div class="col-12 col-md-7 col-lg-5 col-xl-5 col-xxl-4 mx-auto mb-4">
                         <input type="text" class="form-control text-center mb-2"
                             placeholder="Albañil, Farmacias, Pupuserias..." v-model="buscar">
-                        <h6 v-if="cant === 0" class="mb-2">No se encontro ninguna coincidencia con "{{ text }}", prueba
-                            con
-                            estas categorias</h6>
+                        <h6 v-if="cant == 0" class="mb-2">No se encontro ninguna coincidencia con "{{ text }}", prueba
+                            con estas categorias</h6>
                     </div>
 
                     <!--Tags-->
-                    <div class="col-md-12 text-center" v-if="this.lista.length > 0">
+                    <div class="col-md-12 text-center mb--5" v-if="this.lista.length > 0">
                         <div class="row">
                             <div class="col-12 col-md-4 col-lg-3 col-xl-3 col-xxl-2 mb-5"
                                 v-for="(l, index) in this.lista" v-bind:key="index">
@@ -42,7 +41,7 @@
                     </div>
 
                     <!--Error-->
-                    <div class="col-12 mb-5 text-center mb-5" v-else>
+                    <div class="col-12 text-center mb-5" v-else>
                         <i class="fa-solid fa-triangle-exclamation fa-beat-fade"></i>
                     </div>
                 </div>
@@ -67,9 +66,9 @@ import Footer from "@/components/community/ComponentFooter.vue"
 export default {
     data() {
         return {
-            buscar: '',
-            text: '',
             cant: '',
+            text: '',
+            buscar: '',
             skeleton: false
         }
     },
@@ -80,13 +79,15 @@ export default {
         this.text = input
         this.cant = cant
         await this.$store.dispatch("CategoriasCompletas")
-        console.log(cant)
+
+        // If
         if (cant > 0) {
             input ? this.buscar = input : this.buscar = '';
         } else {
             const body = {
                 busqueda: input
             }
+            // Vuex
             await this.$store.dispatch("BusquedaFallida", body)
         }
 

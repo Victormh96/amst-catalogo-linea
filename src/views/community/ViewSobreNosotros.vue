@@ -26,7 +26,11 @@
 
                     <!--Description-->
                     <div class="col-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
+
+                        <!--Title-->
                         <h3 class="mb-4 text-center">Ubícalo en Tecla</h3>
+
+                        <!--Info-->
                         <p class="mb-4 ps-0 ps-sm-4">Es una iniciativa del gobierno municipal de Santa Tecla que busca
                             potenciar la economía local, facilitando a la ciudadanía una herramienta tecnológica para
                             ubicar a tecleños emprendedores que ofertan sus servicios y productos en el municipio. </p>
@@ -43,28 +47,50 @@
             <div class="container">
                 <div class="row text-center">
 
-                    <!--Cards-->
+                    <!--Cards #1-->
                     <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mb-5 mb-lg-0">
                         <div class="tag">
+
+                            <!--Img-->
                             <img src="@/../public/img/assets/shapex7.png" class="mx-auto d-block" alt="Busqueda AMST">
+
+                            <!--Title-->
                             <h6 class="mb-3 mt-3 mb-m-0">+ 1000 Empresas Responsables</h6>
+
+                            <!--Info-->
                             <p class="d-none d-sm-none d-md-block">Empresas establecidas en el municipio de Santa Tecla,
                                 solventes y con responsabilidad social.
                             </p>
                         </div>
                     </div>
+
+                    <!--Cards #2-->
                     <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mb-5 mb-lg-0">
                         <div class="tag">
+
+                            <!--Img-->
                             <img src="@/../public/img/assets/shapex8.png" class="mx-auto d-block" alt="Busqueda AMST">
+
+                            <!--Title-->
                             <h6 class="mb-3 mt-3 mb-m-0">+ 1000 Emprendedores</h6>
+
+                            <!--Info-->
                             <p class="d-none d-sm-none d-md-block">La red de emprendedores más grande en el municipio de
                                 Santa Tecla donde podrás encontrar lo que necesites.</p>
                         </div>
                     </div>
+
+                    <!--Cards #3-->
                     <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mb-0 mb-sm-0">
                         <div class="tag">
+
+                            <!--Img-->
                             <img src="@/../public/img/assets/shapex9.png" class="mx-auto d-block" alt="Busqueda AMST">
+
+                            <!--Title-->
                             <h6 class="mb-3 mt-3 mb-m-0">+ 200 Categorías</h6>
+
+                            <!--Info-->
                             <p class="d-none d-sm-none d-md-block">productos como: artículos de primera necesidad,
                                 abarroterías, desechables, servicios de albañilería, etc.</p>
                         </div>

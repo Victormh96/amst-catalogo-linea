@@ -8,6 +8,8 @@ export const PortadaRegistro = () => `${url_base}/api/portada-registro`
 
 export const PortadaNosotros = () => `${url_base}/api/portada-nosotros`
 
+export const BusquedaFallida = () => `${url_base}/api/busqueda-fallida`
+
 export const Tag = () => `${url_base}/api/tag`
 
 export const Categoria = () => `${url_base}/api/categoria/`
@@ -23,8 +25,6 @@ export const Cuenta = () => `${url_base}/api/cuenta/`
 export const RegistroServicio = () => `${url_base}/api/registro-servicio`
 
 export const RegistroEmpresa = () => `${url_base}/api/registro-empresa`
-
-export const BusquedaFallida = () => `${url_base}/api/busqueda-fallida`
 
 export const Publicidad = () => `${url_base}/api/publicidad`
 

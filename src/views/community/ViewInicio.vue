@@ -21,14 +21,19 @@
 
                     <!--Description-->
                     <div class="col-lg-8 col-xl-8 m-auto mb-4 d-none d-md-none d-lg-block">
-                        <p>Mas de 1,000 Tecleños con espíritu emprendedor ofertan aquí sus productos y servicios ¡ubícalos!</p>
+                        <p>Mas de 1,000 Tecleños con espíritu emprendedor ofertan aquí sus productos y servicios
+                            ¡ubícalos!</p>
                     </div>
 
                     <!--Search-->
                     <div class="col-12 col-md-6 col-lg-5 m-auto">
                         <div class="position-relative">
+
+                            <!--Input-->
                             <input type="text" class="form-control" placeholder="Albañil, Farmacias, Pupuserias..."
                                 v-model="buscarTag" v-on:keyup.enter="verifyTag">
+
+                            <!--Result-->
                             <ul v-if="searchTag.length">
                                 <li v-for="tag in searchTag" :key="tag.nombre_rubro"
                                     @click="selectTag(tag); ClickCategoria(tag.id)">
@@ -64,8 +69,14 @@
                     <!--Step-->
                     <div class="col-12 col-md-6 col-xl-4 mb-5 mb-xl-0-0">
                         <div class="card arrow">
+
+                            <!--Img-->
                             <img src="@/../public/img/assets/shapex2.png" class="mb-3" alt="Busqueda AMST">
+
+                            <!--Title-->
                             <h4 class="mb-3">BUSCA TU SERVICIO</h4>
+
+                            <!--Info-->
                             <span>En el buscador escribe el oficio, el servicio o palabras claves de lo que necesitas
                                 buscar.</span>
                         </div>
@@ -74,8 +85,14 @@
                     <!--Step-->
                     <div class="col-12 col-md-6 col-xl-4 mb-5 mb-xl-0">
                         <div class="card arrow">
+
+                            <!--Img-->
                             <img src="@/../public/img/assets/shapex3.png" class="mb-3" alt="Perfil AMST">
+
+                            <!--Title-->
                             <h4 class="mb-3">REVISA SU PERFIL</h4>
+
+                            <!--Info-->
                             <span>Puedes verificar el listado con la información relacionada a los servicios que
                                 ofrecen.</span>
                         </div>
@@ -84,8 +101,14 @@
                     <!--Step-->
                     <div class="col-12 col-md-6 col-xl-4 mx-auto">
                         <div class="card">
+
+                            <!--Img-->
                             <img src="@/../public/img/assets/shapex4.png" class="mb-3" alt="Contacto AMST">
+
+                            <!--Title-->
                             <h4 class="mb-3">PONTE EN CONTÁCTO</h4>
+
+                            <!--Info-->
                             <span>Podrás encontrar los datos de contacto de los profesionales y las empresas, Redes
                                 sociales.</span>
                         </div>
@@ -107,7 +130,8 @@
                     <!--Heading-->
                     <div class="col-md-12 text-center">
                         <div class="row">
-                            <div class="col-md-4 col-xl-2 mb-5" v-for="(s, index) in this.destacados" v-bind:key="index">
+                            <div class="col-md-4 col-xl-2 mb-5" v-for="(s, index) in this.destacados"
+                                v-bind:key="index">
                                 <router-link :to="{ name: 'Catalogo', params: { slug: s.slug } }"
                                     @click="ClickCategoria(s.id)">
                                     <img :src="this.url + `/storage/${ s.imagen }`">
@@ -130,7 +154,7 @@
                         <div class="row">
 
                             <!--title-->
-                            <div class="col-md-12 mb-3 text-left">
+                            <div class="col-md-12 mb-3 text-left d-none d-md-none d-lg-block">
                                 <h2>¿Quieres ubicar tu producto o servicio en Santa Tecla?</h2>
                             </div>
 
@@ -208,11 +232,14 @@ export default {
 
         // Filter
         const searchTag = computed(() => {
+
+            // If
             if (buscarTag.value === '') {
                 return []
             }
             let matches = 0
             return store.state.community.tag.filter(tag => {
+                // If
                 if (
                     tag.nombre_rubro.toLowerCase().includes(buscarTag.value.toLowerCase())
                     && matches < 4
@@ -257,6 +284,7 @@ export default {
 
             // Filter
             this.$store.state.community.tag.forEach(elemento => {
+                // If
                 if (elemento.nombre_rubro.toLowerCase() === this.buscarTag.toLowerCase()) {
                     match = 1
                     this.$router.push({
@@ -276,8 +304,8 @@ export default {
             if (match != 1) {
                 this.$store.dispatch("Search", body)
                 this.$router.push({
-                    name: 'servicios-completos',
-                });
+                    name: 'Servicios-Completos',
+                })
             }
         }
     },

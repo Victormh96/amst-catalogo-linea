@@ -10,11 +10,11 @@
 
         <!--Section-->
         <section id="categoria">
-            <div class="container">
+            <div class="container mt-4 mt-sm-5">
                 <div class="row">
 
                     <!--Title-->
-                    <div class="col-12 text-center mb-5 mt-4 mt-sm-5">
+                    <div class="col-12 text-center mb-5">
                         <h3>{{ slug == 'empresas' ? "EMPRESAS" : "SERVICIOS PROFESIONALES" }}</h3>
                     </div>
 
@@ -25,7 +25,7 @@
                     </div>
 
                     <!--Tags-->
-                    <div class="col-md-12 text-center" v-if="this.lista.length > 0">
+                    <div class="col-md-12 text-center mb--5" v-if="this.lista.length > 0">
                         <div class="row">
                             <div class="col-12 col-md-4 col-lg-3 col-xl-3 col-xxl-2 mb-5"
                                 v-for="(l, index) in this.lista" v-bind:key="index">
@@ -39,7 +39,7 @@
                     </div>
 
                     <!--Error-->
-                    <div class="col-12 mb-5 text-center mb-5" v-else>
+                    <div class="col-12 text-center mb-5" v-else>
                         <i class="fa-solid fa-triangle-exclamation fa-beat-fade"></i>
                     </div>
                 </div>
@@ -71,11 +71,8 @@ export default {
 
     async mounted() {
         // Vuex
-        //await this.$store.dispatch("Categoria", this.slug)
+        await this.$store.dispatch("Categoria", this.slug)
 
-        await this.$store.dispatch("CategoriaLlena", this.slug)
-
-        
         // Skeleton
         setTimeout(() => {
             this.skeleton = true
@@ -97,7 +94,7 @@ export default {
     computed: {
         // Search
         lista() {
-            return this.$store.state.community.categoria[0].filter(categoria => {
+            return this.$store.state.community.categoria.filter(categoria => {
                 return categoria.tags.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
                     .toLowerCase().includes(this.buscar.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
                         .toLowerCase())

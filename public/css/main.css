@@ -133,28 +133,28 @@
 /*===Phone===**/
 @media (max-width: 575.98px) {
   #portada {
-    height: calc(100vh - 216px);
+    height: calc(100vh - 213px);
   }
 }
 
 /*===Phone Landscape===**/
 @media (max-width: 920px) and (orientation: landscape) {
   #portada {
-    height: calc(100vh - 115px) !important;
+    height: calc(100vh - 112px) !important;
   }
 }
 
 /*===Ipad===**/
 @media (min-width: 559px) and (max-width: 991.98px) {
   #portada {
-    height: calc(100vh - 165px);
+    height: calc(100vh - 162px);
   }
 }
 
 /*===Ipad Pro===**/
 @media (min-width: 992px) and (max-width: 1199.98px) {
   #portada {
-    height: calc(100vh - 165px);
+    height: calc(100vh - 162px);
   }
 }
 
@@ -312,20 +312,20 @@
 }
 
 #destacado {
-  padding: 90px 0 100px 0;
+  padding: 90px 0 50px 0;
 }
 
 /*===Phone===**/
 @media (max-width: 575.98px) {
   #destacado {
-    padding: 60px 0 70px 0;
+    padding: 60px 0 20px 0;
   }
 }
 
 /*===Ipad===**/
 @media (min-width: 559px) and (max-width: 991.98px) {
   #destacado {
-    padding: 60px 0 70px 0;
+    padding: 60px 0 20px 0;
   }
 }
 
@@ -462,7 +462,7 @@
 /*===Phone===**/
 @media (max-width: 575.98px) {
   #catalogo .card img {
-    height: 120px;
+    height: 140px;
   }
 }
 
@@ -515,6 +515,7 @@
   font-size: 15px;
   color: #99a3b4;
   margin: 0 6px 0 0;
+  transition: 0.3s;
 }
 
 #catalogo .card ul li p {
@@ -523,6 +524,12 @@
   color: #99a3b4;
   cursor: pointer;
   margin: 0;
+  transition: 0.3s;
+}
+
+#catalogo .card ul li a:hover i,
+#catalogo .card ul li a:hover p {
+  color: #407ec9;
 }
 
 #catalogo .card ul li:not(:last-child):after {
@@ -554,6 +561,27 @@
 @media (max-width: 575.98px) {
   #catalogo .leaflet-container {
     height: 70vh;
+  }
+}
+
+/*===Phone Landscape===**/
+@media (max-width: 920px) and (orientation: landscape) {
+  #catalogo .leaflet-container {
+    height: 100vh !important;
+  }
+}
+
+/*===Ipad===**/
+@media (min-width: 559px) and (max-width: 991.98px) {
+  #catalogo .leaflet-container {
+    height: 60vh;
+  }
+}
+
+/*===Ipad Pro===**/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  #catalogo .leaflet-container {
+    height: 60vh;
   }
 }
 
@@ -750,7 +778,7 @@
 }
 
 #cuenta article .leaflet-container {
-  height: 160px;
+  height: 170px;
   width: 100%;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
@@ -1076,10 +1104,12 @@ html::-webkit-scrollbar-thumb,
 }
 
 .pagination-container button:hover {
+  color: #ffffff;
   background: #407ec9;
 }
 
 .active-page {
+  color: #ffffff !important;
   background: #407ec9 !important;
 }
 

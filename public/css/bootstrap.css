@@ -7703,6 +7703,13 @@ fieldset:disabled .btn {
   margin-bottom: 3rem !important;
 }
 
+/*===Phone===**/
+@media (max-width: 575.98px) {
+  .mb--5{
+    margin-bottom: -1.5rem;
+  }
+}
+
 .mb-auto {
   margin-bottom: auto !important;
 }
