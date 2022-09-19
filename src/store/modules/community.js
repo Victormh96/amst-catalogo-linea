@@ -1,9 +1,6 @@
 // Imports
 import axios from "axios"
 import {
-    PortadaInicio,
-    PortadaRegistro,
-    PortadaNosotros,
     BusquedaFallida,
     Tag,
     Categoria,
@@ -14,16 +11,15 @@ import {
     RegistroServicio,
     RegistroEmpresa,
     Publicidad,
-    PublicidadClick
+    PublicidadClick,
+    Portada
 } from "../../services/paths"
 
 // Vuex
 export default {
     state() {
         return {
-            portadainicio: null,
-            portadaregistro: null,
-            portadanosotros: null,
+            portada: null,
             fallida: null,
             tag: null,
             categoria: null,
@@ -39,16 +35,8 @@ export default {
     },
 
     mutations: {
-        MutationPortadaInicio(state, data) {
-            state.portadainicio = data
-        },
-
-        MutationPortadaRegistro(state, data) {
-            state.portadaregistro = data
-        },
-
-        MutationPortadaNosotros(state, data) {
-            state.portadanosotros = data
+        MutationPortada(state, data) {
+            state.portada = data
         },
 
         MutationSearch(state, data) {
@@ -109,33 +97,11 @@ export default {
     },
 
     actions: {
-        async PortadaInicio({ commit }) {
+        async Portada({ commit }, body) {
             await axios
-                .get(PortadaInicio())
+                .get(Portada() + body)
                 .then((response) => {
-                    commit('MutationPortadaInicio', response.data[0])
-                })
-                .catch((err) => {
-                    console.log(err)
-                })
-        },
-
-        async PortadaRegistro({ commit }) {
-            await axios
-                .get(PortadaRegistro())
-                .then((response) => {
-                    commit('MutationPortadaRegistro', response.data[0])
-                })
-                .catch((err) => {
-                    console.log(err)
-                })
-        },
-
-        async PortadaNosotros({ commit }) {
-            await axios
-                .get(PortadaNosotros())
-                .then((response) => {
-                    commit('MutationPortadaNosotros', response.data[0])
+                    commit('MutationPortada', response.data[0])
                 })
                 .catch((err) => {
                     console.log(err)

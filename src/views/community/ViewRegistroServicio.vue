@@ -376,8 +376,8 @@ export default {
 
     async mounted() {
         //Portada
-        await this.$store.dispatch("PortadaRegistro")
-        this.portadaregistro = this.$store.state.community.portadaregistro
+        await this.$store.dispatch("Portada", 'Registro')
+        this.portadaregistro = this.$store.state.community.portada[0]
 
         //Categoria
         await this.$store.dispatch("Categoria", "servicios-profesionales")

@@ -368,8 +368,8 @@ export default {
 
     async created() {
         //Portada
-        await this.$store.dispatch("PortadaRegistro")
-        this.portadaregistro = this.$store.state.community.portadaregistro
+        await this.$store.dispatch("Portada", 'Registro')
+        this.portadaregistro = this.$store.state.community.portada[0]
 
         //Servicios
         await this.$store.dispatch("Categoria", 'empresas')
