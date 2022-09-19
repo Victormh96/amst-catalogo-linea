@@ -19,9 +19,15 @@
             <!--Input-->
             <input type="text" class="form-control text-center mb-2" placeholder="Albañil, Farmacias, Pupuserias..."
               v-model="buscar" @keyup="refresh(listaFiltrada)">
-
             <!--Checks-->
             <div class="text-center">
+
+              <!--All-->
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="todos" name="delivery" v-model="this.domicilio"
+                  @change="filtrar()" value="0" checked>
+                <label class="form-check-label" for="todos" >Todos</label>
+              </div>
 
               <!--Delivery-->
               <div class="form-check form-check-inline">
@@ -33,7 +39,7 @@
               <!--Place-->
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" id="local" name="delivery" v-model="this.domicilio"
-                  @change="filtrar()" value="0">
+                  @change="filtrar()" value="2">
                 <label class="form-check-label" for="local">En el lugar</label>
               </div>
             </div>
@@ -182,7 +188,6 @@ export default {
 
     this.onClickHandler(1)
 
-
     // Skeleton
     setTimeout(() => {
       this.skeleton = true
@@ -220,17 +225,18 @@ export default {
     filtrar() {
       this.lista = this.$store.state.community.catalogocategoria
 
-      // If
       if (this.domicilio == 1) {
         this.lista = this.lista.filter(categoria => {
           return categoria.servicio_domicilio == 1
         })
 
-      } else {
+      } 
+      if (this.domicilio == 2) {
         this.lista = this.lista.filter(categoria => {
           return categoria.servicio_domicilio == 0
         })
-      }
+
+      } 
 
       // Methods
       this.map.remove()
@@ -240,6 +246,18 @@ export default {
     // Refresh
     refresh(lista) {
       this.lista = lista
+      if (this.domicilio == 1) {
+        this.lista = this.lista.filter(categoria => {
+          return categoria.servicio_domicilio == 1
+        })
+
+      } 
+      if (this.domicilio == 2) {
+        this.lista = this.lista.filter(categoria => {
+          return categoria.servicio_domicilio == 0
+        })
+
+      } 
       this.map.remove()
       this.maps(lista)
     },
