@@ -369,11 +369,11 @@ export default {
     async created() {
         //Portada
         await this.$store.dispatch("PortadaRegistro")
-        this.portadaregistro = this.$store.state.community.portadaregistro[0][0]
+        this.portadaregistro = this.$store.state.community.portadaregistro
 
         //Servicios
         await this.$store.dispatch("Categoria", 'empresas')
-        this.listaServicio = this.$store.state.community.categoria[0]
+        this.listaServicio = this.$store.state.community.categoria
     },
 
     components: {

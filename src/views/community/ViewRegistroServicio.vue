@@ -335,53 +335,53 @@ export default {
     data() {
         return {
             form: {
-                imagen: '',
                 name: '',
-                lastName: '',
-                documento: '',
-                fechaNacimiento: '',
-                telefono: '',
                 email: '',
+                local: '',
+                imagen: '',
                 genero: '',
-                servicioDomicilio: '',
+                pagweb: '',
+                twitter: '',
+                lastName: '',
+                facebook: '',
+                telefono: '',
+                whatsapp: '',
+                linkedin: '',
+                instagram: '',
+                documento: '',
                 direccion: '',
                 descripcion: '',
-                local: '',
-                facebook: '',
-                instagram: '',
-                whatsapp: '',
-                pagweb: '',
-                linkedin: '',
-                twitter: '',
+                fechaNacimiento: '',
+                servicioDomicilio: ''
             },
 
             // Others
-            cuentaServicios: [],
-            portadaregistro: [],
-            listaServicio: [],
+            map: '',
+            name: '',
+            error: '',
+            rubros: [],
+            latitud: '',
+            longitud: '',
             servicio: '',
             experiencia: '',
             descripcion: '',
-            name: '',
-            errorServicio: 'true',
-            nullServicio: 'true',
-            error: '',
-            latitud: '',
-            longitud: '',
-            rubros: [],
             skeleton: false,
-            map: ''
+            listaServicio: [],
+            portadaregistro: [],
+            cuentaServicios: [],
+            nullServicio: 'true',
+            errorServicio: 'true'
         }
     },
 
     async mounted() {
         //Portada
         await this.$store.dispatch("PortadaRegistro")
-        this.portadaregistro = this.$store.state.community.portadaregistro[0][0]
+        this.portadaregistro = this.$store.state.community.portadaregistro
 
         //Categoria
         await this.$store.dispatch("Categoria", "servicios-profesionales")
-        this.listaServicio = this.$store.state.community.categoria[0]
+        this.listaServicio = this.$store.state.community.categoria
 
         // Skeleton
         setTimeout(() => {
@@ -445,7 +445,7 @@ export default {
             this.$swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: this.form.name + ' ' + this.form.lastName + ' tu formulario no pudo ser registrado',
+                text: this.form.name + ' ' + this.form.lastName + ' tu formulario no pudo ser registrado.',
                 confirmButtonText: "Aceptar",
                 allowOutsideClick: false,
                 allowEscapeKey: false,
@@ -472,7 +472,7 @@ export default {
             this.$swal.fire({
                 icon: 'success',
                 title: 'Formulario Enviado',
-                text: this.form.name + ' ' + this.form.lastName + ' revisaremos tu solicitud y nos comunicaremos contigo',
+                text: this.form.name + ' ' + this.form.lastName + ' revisaremos tu solicitud y nos comunicaremos contigo.',
                 confirmButtonText: "Aceptar",
                 allowOutsideClick: false,
                 allowEscapeKey: false,
@@ -528,6 +528,8 @@ export default {
                 // Vuex
                 this.$store.dispatch("ClearServicio")
                 await this.$store.dispatch("RegistroServicio", Form).then(() => {
+
+                    // If
                     if (this.$store.state.community.registroservicio) {
                         this.showSucces()
                     } else {
@@ -544,7 +546,7 @@ export default {
             this.error = ''
             this.errorServicio = false
 
-            // Verify
+            // If
             if (this.servicio === '' || this.experiencia === '' || this.descripcion === '') {
                 this.nullServicio = true
             } else {
@@ -553,6 +555,8 @@ export default {
 
             // Foreach
             this.cuentaServicios.forEach(element => {
+
+                // If
                 if (element.idServicio === this.servicio) {
                     this.error = 'Ya cuentas con un registro de ' + this.searchName(this.servicio)
                     this.errorServicio = true
@@ -562,7 +566,7 @@ export default {
 
         // Add
         addServices() {
-            // Count
+            // If
             if (this.cuentaServicios.length > 4) {
                 this.showFailServicies('Solo puedes registrar 5 servicios, elimina uno para agregarlo')
             } else {
@@ -590,6 +594,8 @@ export default {
         // Search
         searchName(id) {
             this.listaServicio.forEach(elemento => {
+
+                // If
                 if (elemento.id === id) {
                     this.name = elemento.nombre_rubro;
                 }

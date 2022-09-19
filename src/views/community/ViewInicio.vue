@@ -209,7 +209,7 @@ export default {
     async mounted() {
         // Vuex
         await this.$store.dispatch("PortadaInicio")
-        this.portadainicio = this.$store.state.community.portadainicio[0][0]
+        this.portadainicio = this.$store.state.community.portadainicio
 
         // Vuex
         await this.$store.dispatch("CategoriaDestacado")

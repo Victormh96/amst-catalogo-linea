@@ -879,7 +879,7 @@
   color: #ffffff;
   width: max-content;
   border-radius: 3px;
-  padding: 7px 38px;
+  padding: 8px 30px;
   display: inline-block;
 }
 
@@ -1076,6 +1076,27 @@ html::-webkit-scrollbar-thumb,
   background: #f2f6fb;
   border-radius: 5px;
   padding: 10px 20px;
+}
+
+/* ============================================================*/
+/* Sweet Alert
+/* ============================================================*/
+.swal2-html-container {
+  font-size: .9em !important;
+}
+
+.swal2-title {
+  font-size: 1.6em !important;
+}
+
+.swal2-styled.swal2-confirm {
+  background-color: #407ec9 !important;
+  font-size: .9em !important;
+}
+
+.swal2-footer a {
+  color: #407ec9 !important;
+  font-size: .9em !important;
 }
 
 /* ============================================================*/

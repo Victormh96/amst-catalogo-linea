@@ -75,13 +75,13 @@
             <i class="fa-solid fa-qrcode"></i>
         </router-link>
         <a v-bind:href="'/categoria/' + 'servicios-profesionales'">
-            <i class="fa-solid fa-briefcase"></i>
+            <i class="fa-solid fa-wrench"></i>
         </a>
         <a v-bind:href="'/categoria/' + 'empresas'">
-            <i class="fa-solid fa-city"></i>
+            <i class="fa-solid fa-shop"></i>
         </a>
         <a href="/">
-            <i class="fa-regular fa-circle-user"></i>
+            <i class="fa-solid fa-circle-user"></i>
         </a>
     </div>
 </template>

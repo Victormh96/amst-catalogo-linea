@@ -113,7 +113,7 @@ export default {
             await axios
                 .get(PortadaInicio())
                 .then((response) => {
-                    commit('MutationPortadaInicio', response.data)
+                    commit('MutationPortadaInicio', response.data[0])
                 })
                 .catch((err) => {
                     console.log(err)
@@ -124,7 +124,7 @@ export default {
             await axios
                 .get(PortadaRegistro())
                 .then((response) => {
-                    commit('MutationPortadaRegistro', response.data)
+                    commit('MutationPortadaRegistro', response.data[0])
                 })
                 .catch((err) => {
                     console.log(err)
@@ -148,7 +148,6 @@ export default {
                 .then((response) => {
                     commit('MutationBusqueda', response.data[0])
                     commit('MutationSearch', '')
-
                 })
                 .catch((err) => {
                     console.log(err)
@@ -275,18 +274,6 @@ export default {
                 })
         },
 
-        Search({ commit }, body) {
-            commit('MutationSearch', body)
-        },
-
-        ClearServicio({ commit }) {
-            commit('MutationClearServicio')
-        },
-
-        ClearEmpresa({ commit }) {
-            commit('MutationClearEmpresa')
-        },
-
         async Publicidad({ commit }) {
             await axios
                 .get(Publicidad())
@@ -307,6 +294,18 @@ export default {
                 .catch((err) => {
                     console.log(err)
                 })
+        },
+
+        Search({ commit }, body) {
+            commit('MutationSearch', body)
+        },
+
+        ClearServicio({ commit }) {
+            commit('MutationClearServicio')
+        },
+
+        ClearEmpresa({ commit }) {
+            commit('MutationClearEmpresa')
         },
     },
 };
