@@ -259,7 +259,7 @@
 
                     <!--WhatsApp-->
                     <div class="col-md-4 mb-4 mb-sm-0">
-                        <div class="input-group">
+                        <div class="input-group"> 
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa-brands fa-whatsapp"></i></span>
                             </div>
