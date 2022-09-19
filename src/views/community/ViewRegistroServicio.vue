@@ -13,7 +13,7 @@
             v-bind:style="[this.portadaregistro.imagen ? { 'background-image': 'url(' + this.url + '/storage/' + this.portadaregistro.imagen + ')' } : null]">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-10 col-xl-4 m-auto text-center">
+                    <div class="col-12 col-md-7 col-xl-5 col-xxl-4 m-auto text-center">
                         <h2>¡ÚNETE A NUESTRA RED DE SERVICIOS!</h2>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
         <!--Section-->
         <section id="registro">
             <div class="container mb-4 mb-sm-5">
-                <div class="row mb-5">
+                <div class="row mb-4 mb-xl-5">
 
                     <!--Title-->
                     <h6 class="mb-1">Datos Generales</h6>
@@ -172,13 +172,13 @@
                     </div>
 
                     <!--Maps-->
-                    <div class="col-md-12 col-xl-4 mx-auto mt-4 mt-sm-0">
+                    <div class="col-md-12 col-xl-4 mx-auto mt-4 mt-xl-0">
                         <div id="map" class="map mb-2"></div>
                         <p class="indicaciones text-center">Selecciona tu ubIcación en el mapa*</p>
                     </div>
                 </div>
 
-                <div class="row mb-4">
+                <div class="row mb-0 mb-sm-4">
                     <!--Title-->
                     <h6 class="mb-1">Servicios a Brindar</h6>
                     <p class="mb-3 indicaciones">Busca un servicio luego elige la experiencia que posees, describe tu
@@ -223,7 +223,7 @@
 
                     <!--List Services-->
                     <div class="col-md-12 mt-4 mt-sm-3">
-                        <span class="tag mb-3 me-3" v-for="(servicio, index) in this.cuentaServicios"
+                        <span class="tag mb-4 mb-sm-3 me-3" v-for="(servicio, index) in this.cuentaServicios"
                             data-toggle="tooltip" data-placement="top" v-bind:key="index"
                             :title="'Experiencia: ' + servicio.experiencia + ' Descripcion: ' + servicio.descripcion">
                             {{ servicio.name }}<i class="fa-solid fa-xmark" @click="deleteServices(index)"></i>
@@ -242,7 +242,13 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa-brands fa-facebook-f"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Facebook" v-model="this.form.facebook">
+                            <input type="text" class="form-control" placeholder="Facebook"
+                                v-model="v$.form.facebook.$model">
+                        </div>
+
+                        <!--Error Message-->
+                        <div class="input-errors err" v-for="(error, index) of v$.form.facebook.$errors" :key="index">
+                            <div class="error-msg">{{ error.$message }}</div>
                         </div>
                     </div>
 
@@ -253,17 +259,28 @@
                                 <span class="input-group-text"><i class="fa-brands fa-instagram "></i></span>
                             </div>
                             <input type="text" class="form-control" placeholder="Instagram"
-                                v-model="this.form.instagram">
+                                v-model="v$.form.instagram.$model">
+                        </div>
+
+                        <!--Error Message-->
+                        <div class="input-errors err" v-for="(error, index) of v$.form.instagram.$errors" :key="index">
+                            <div class="error-msg">{{ error.$message }}</div>
                         </div>
                     </div>
 
                     <!--WhatsApp-->
-                    <div class="col-md-4 mb-4 mb-sm-0">
-                        <div class="input-group"> 
+                    <div class="col-md-4 mb-4">
+                        <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa-brands fa-whatsapp"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="WhatsApp" v-model="this.form.whatsapp">
+                            <input type="text" class="form-control" placeholder="WhatsApp" v-mask="'####-####'"
+                                v-model="v$.form.whatsapp.$model">
+                        </div>
+
+                        <!--Error Message-->
+                        <div class="input-errors err" v-for="(error, index) of v$.form.whatsapp.$errors" :key="index">
+                            <div class="error-msg">{{ error.$message }}</div>
                         </div>
                     </div>
 
@@ -273,7 +290,13 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa-brands fa-linkedin-in"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Linkedin" v-model="this.form.linkedin">
+                            <input type="text" class="form-control" placeholder="Linkedin"
+                                v-model="v$.form.linkedin.$model">
+                        </div>
+
+                        <!--Error Message-->
+                        <div class="input-errors err" v-for="(error, index) of v$.form.linkedin.$errors" :key="index">
+                            <div class="error-msg">{{ error.$message }}</div>
                         </div>
                     </div>
 
@@ -283,7 +306,13 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa-brands fa-twitter"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Twitter" v-model="this.form.twitter">
+                            <input type="text" class="form-control" placeholder="Twitter"
+                                v-model="v$.form.twitter.$model">
+                        </div>
+
+                        <!--Error Message-->
+                        <div class="input-errors err" v-for="(error, index) of v$.form.twitter.$errors" :key="index">
+                            <div class="error-msg">{{ error.$message }}</div>
                         </div>
                     </div>
 
@@ -293,7 +322,13 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa-solid fa-globe"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Página Web" v-model="this.form.pagweb">
+                            <input type="text" class="form-control" placeholder="Página Web"
+                                v-model="v$.form.pagweb.$model">
+                        </div>
+
+                        <!--Error Message-->
+                        <div class="input-errors err" v-for="(error, index) of v$.form.pagweb.$errors" :key="index">
+                            <div class="error-msg">{{ error.$message }}</div>
                         </div>
                     </div>
                 </div>
@@ -323,13 +358,14 @@ import useVuelidate from "@vuelidate/core"
 import "sweetalert2/dist/sweetalert2.min.css"
 import Navbar from "@/components/community/ComponentNavbar.vue"
 import Footer from "@/components/community/ComponentFooter.vue"
-import { helpers, required, email, minLength } from "@vuelidate/validators"
+import { helpers, required, email, minLength, url } from "@vuelidate/validators"
 
 // Message
 const requeridMessage = helpers.withMessage('Campo Obligatorio', required)
 const phoneMessage = helpers.withMessage('Teléfono invalido', minLength(8))
 const duiMessage = helpers.withMessage('DUI invalido', minLength(10))
 const emailMessage = helpers.withMessage('Correo invalido', email)
+const urlMessage = helpers.withMessage('Url invalida', url)
 
 export default {
     data() {
@@ -417,6 +453,9 @@ export default {
                     requeridMessage,
                     phoneMessage
                 },
+                whatsapp: {
+                    phoneMessage
+                },
                 email: {
                     emailMessage,
                     requeridMessage,
@@ -430,6 +469,21 @@ export default {
                 descripcion: {
                     requeridMessage,
                 },
+                facebook: {
+                    urlMessage,
+                },
+                instagram: {
+                    urlMessage,
+                },
+                linkedin: {
+                    urlMessage,
+                },
+                twitter: {
+                    urlMessage,
+                },
+                pagweb: {
+                    urlMessage,
+                }
             }
         }
     },

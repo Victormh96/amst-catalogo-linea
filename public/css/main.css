@@ -910,7 +910,28 @@
 @media (max-width: 575.98px) {
   #registro .leaflet-container {
     height: 200px;
+  }
 }
+
+/*===Phone Landscape===**/
+@media (max-width: 920px) and (orientation: landscape) {
+  #registro .leaflet-container {
+    height: 200px !important;
+  }
+}
+
+/*===Ipad===**/
+@media (min-width: 559px) and (max-width: 991.98px) {
+  #registro .leaflet-container {
+    height: 200px;
+  }
+}
+
+/*===Ipad Pro===**/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  #registro .leaflet-container {
+    height: 200px;
+  }
 }
 
 /* ============================================================*/

@@ -185,7 +185,8 @@ p {
 /* Custom
 /* ============================================================*/
 .err {
-  font-size: 11px;
+  position: absolute;
+  font-size: 0.65rem;
   color: rgb(180, 6, 6);
   margin-top: 0.2rem;
 }
@@ -234,7 +235,7 @@ button:disabled {
   border-radius: 3px;
 }
 
-.d-grid{
+.d-grid {
   display: grid;
 }
 
@@ -252,7 +253,7 @@ button:disabled {
   }
 }
 
-.input-group-append{
+.input-group-append {
   font-size: 18px;
   background: var(--light-blue);
   color: var(--white);
@@ -788,9 +789,10 @@ progress {
 
 
 @media (min-width: 576px) {
-  .auto-completado{
+  .auto-completado {
     width: 516px !important;
   }
+
   .container-sm,
   .container {
     max-width: 540px;
@@ -798,7 +800,7 @@ progress {
 }
 
 @media (min-width: 768px) {
-  .auto-completado{
+  .auto-completado {
     width: 276px !important;
   }
 
@@ -810,7 +812,7 @@ progress {
 }
 
 @media (min-width: 992px) {
-  .auto-completado{
+  .auto-completado {
     width: 376px !important;
   }
 
@@ -823,7 +825,7 @@ progress {
 }
 
 @media (min-width: 1200px) {
-  .auto-completado{
+  .auto-completado {
     width: 452px !important;
   }
 
@@ -837,9 +839,10 @@ progress {
 }
 
 @media (min-width: 1400px) {
-  .auto-completado{
+  .auto-completado {
     width: 526px !important;
   }
+
   .container-xxl,
   .container-xl,
   .container-lg,
@@ -7705,7 +7708,7 @@ fieldset:disabled .btn {
 
 /*===Phone===**/
 @media (max-width: 575.98px) {
-  .mb--5{
+  .mb--5 {
     margin-bottom: -1.5rem;
   }
 }
