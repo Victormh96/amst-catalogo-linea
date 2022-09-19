@@ -58,13 +58,13 @@
                                     </a>
 
                                     <!--Phone-->
-                                    <a :href="`tel:${ c.descripcion }`"
+                                    <a :href="`tel:${ c.descripcion }`" target="_blank"
                                         v-else-if="c.detallecontacto.id == 7 || c.detallecontacto.id == 8 ">
                                         <i class="ms-2 me-2" :class="c.detallecontacto.icon"></i>
                                     </a>
 
                                     <!--Others-->
-                                    <a :href="c.descripcion" v-else>
+                                    <a :href="c.descripcion" v-else target="_blank">
                                         <i class="ms-2 me-2" :class="c.detallecontacto.icon"></i>
                                     </a>
                                 </span>
