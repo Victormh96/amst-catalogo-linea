@@ -169,7 +169,7 @@
 #portada p {
   font-size: 1.1rem;
   font-weight: 500;
-  color: #ffffff;
+  color: var(--white);
   text-align: center;
 }
 
@@ -210,7 +210,7 @@
 }
 
 #pasos {
-  background: #f1f6fb;
+  background: var(--white-blue);
   padding: 90px 0 100px 0;
 }
 
@@ -231,7 +231,7 @@
 #pasos p {
   font-size: 0.95rem;
   font-weight: 500;
-  color: #3c3c3b;
+  color: var(--dark-white);
 }
 
 #pasos img {
@@ -240,7 +240,7 @@
 }
 
 #pasos .card {
-  background-color: #ffffff;
+  background-color: var(--white);
   padding: 50px 25px;
   margin: 0 40px;
   position: relative;
@@ -274,8 +274,8 @@
   font-size: 40px;
   font-weight: 900;
   content: "\f04b";
-  color: #407ec9;
-  background: #ffffff;
+  color: var(--light-blue);
+  background: var(--white);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -308,7 +308,7 @@
 #pasos span {
   font-size: 0.85rem;
   font-weight: 400;
-  color: #3c3c3b;
+  color: var(--dark-white);
 }
 
 #destacado {
@@ -336,7 +336,7 @@
 
 #destacado i {
   font-size: 120px;
-  color: #13274a;
+  color: var(--dark-blue);
 }
 
 #destacado a {
@@ -345,17 +345,17 @@
   margin: auto;
   font-size: 0.9rem;
   font-weight: 600;
-  color: #3c3c3b;
-  background: #f1f6fb;
+  color: var(--dark-white);
+  background: var(--white-blue);
   padding: 18px 30px;
   border-radius: 10px;
   transition: 0.3s;
 }
 
 #destacado a:hover {
-  color: #ffffff;
-  background: #407ec9;
-  border-color: #407ec9;
+  color: var(--white);
+  background: var(--light-blue);
+  border-color: var(--light-blue);
 }
 
 #destacado a:hover img {
@@ -381,15 +381,15 @@
 #inscribete p {
   font-size: 1rem;
   font-weight: 500;
-  color: #ffffff;
+  color: var(--white);
   text-align: left;
 }
 
 #inscribete a {
   font-size: 0.9rem;
   font-weight: 600;
-  background: #407ec9;
-  color: #ffffff;
+  background: var(--light-blue);
+  color: var(--white);
   padding: 15px 25px;
   border-radius: 5px;
   display: inline-block;
@@ -405,7 +405,7 @@
 
 #categoria i {
   font-size: 120px;
-  color: #13274a;
+  color: var(--dark-blue);
 }
 
 #categoria a {
@@ -414,17 +414,17 @@
   margin: auto;
   font-size: 0.9rem;
   font-weight: 600;
-  color: #3c3c3b;
-  background: #f1f6fb;
+  color: var(--dark-white);
+  background: var(--white-blue);
   padding: 18px 30px;
   border-radius: 10px;
   transition: 0.3s;
 }
 
 #categoria a:hover {
-  color: #ffffff;
-  background: #407ec9;
-  border-color: #407ec9;
+  color: var(--white);
+  background: var(--light-blue);
+  border-color: var(--light-blue);
 }
 
 #categoria a:hover img {
@@ -477,8 +477,8 @@
 #catalogo .card span {
   font-size: 0.6rem;
   font-weight: 600;
-  background: #407ec9;
-  color: #ffffff;
+  background: var(--light-blue);
+  color: var(--white);
   padding: 3px 10px;
   border-radius: 3px;
   text-transform: uppercase;
@@ -506,8 +506,8 @@
 
 #catalogo .card button {
   font-size: 13px;
-  background: #407ec9;
-  color: #fff;
+  background: var(--light-blue);
+  color: var(--white);
   border-radius: 5px;
   border: none;
   padding: 3px 15px;
@@ -531,7 +531,7 @@
 
 #catalogo .card ul li a:hover i,
 #catalogo .card ul li a:hover p {
-  color: #407ec9;
+  color: var(--light-blue);
 }
 
 #catalogo .card ul li:not(:last-child):after {
@@ -548,9 +548,9 @@
   padding: 10px;
   font-size: 0.6rem;
   font-weight: 500;
-  background: #13274a;
+  background: var(--dark-blue);
   border-radius: 0 5px 0 5px;
-  color: #fff;
+  color: var(--white);
 }
 
 #catalogo .leaflet-container {
@@ -598,7 +598,7 @@
 
 #catalogo .fa-triangle-exclamation {
   font-size: 120px;
-  color: #13274a;
+  color: var(--dark-blue);
 }
 
 #catalogo .leaflet-popup-content {
@@ -613,7 +613,7 @@
 
 #catalogo .fa-circle-check {
   font-size: 26px;
-  color: #407ec9;
+  color: var(--light-blue);
   position: absolute;
   top: -25px;
   left: -14px;
@@ -675,13 +675,13 @@
 #cuenta aside .card .information small {
   font-size: 0.8rem;
   font-weight: bold;
-  color: #13274a;
+  color: var(--dark-blue);
   text-transform: uppercase;
 }
 
 #cuenta aside .card .information i {
   font-size: 18px;
-  color: #407ec9;
+  color: var(--light-blue);
   position: absolute;
 }
 
@@ -705,8 +705,8 @@
 #cuenta aside .card .tag span {
   font-size: 0.6rem;
   font-weight: 600;
-  background: #407ec9;
-  color: #ffffff;
+  background: var(--light-blue);
+  color: var(--white);
   padding: 5px 15px;
   border-radius: 3px;
   text-transform: uppercase;
@@ -730,8 +730,8 @@
 #cuenta aside .card p {
   font-size: 0.8rem;
   font-weight: 500;
-  background: #13274a;
-  color: #fff;
+  background: var(--dark-blue);
+  color: var(--white);
   padding: 9px;
   border-radius: 3px;
 }
@@ -778,7 +778,7 @@
 #cuenta article .leaflet-popup-content p {
   font-size: 0.7rem;
   font-weight: 500;
-  color: #13274a;
+  color: var(--dark-blue);
   margin: 0;
 }
 
@@ -815,7 +815,7 @@
 }
 
 #cuenta article .profile .box {
-  background: var(--white);
+  background: #ffffffd1;
   padding: 20px;
   border-radius: 5px;
 }
@@ -836,8 +836,8 @@
 
 #cuenta article .profile .title i {
   font-size: 25px;
-  color: #ffffff;
-  background: #407ec9;
+  color: var(--white);
+  background: var(--light-blue);
   border-radius: 50px;
 }
 
@@ -849,11 +849,11 @@
 #cuenta article .profile .items span {
   font-size: 0.8rem;
   font-weight: 600;
-  color: #13274a;
+  color: var(--dark-blue);
 }
 
 #cuenta article .profile .items i {
-  color: #13274a;
+  color: var(--dark-blue);
   font-size: 16px;
 }
 
@@ -883,14 +883,14 @@
 }
 
 #registro .social i {
-  color: #13274a;
+  color: var(--dark-blue);
   font-size: 16px;
 }
 
 #registro .tag {
   font-size: 0.8rem;
-  background: #407ec9;
-  color: #ffffff;
+  background: var(--light-blue);
+  color: var(--white);
   width: max-content;
   border-radius: 3px;
   padding: 8px 30px;
@@ -904,7 +904,7 @@
 
 #registro h6 {
   font-size: 20px;
-  color: #13274a;
+  color: var(--dark-blue);
 }
 
 #registro .input-group input {
@@ -1011,9 +1011,9 @@
 /* ============================================================*/
 #footer {
   position: relative;
-  background-color: #fff;
+  background-color: var(--white);
   padding: 35px 0 20px 0;
-  border-top: solid #ededed 1px;
+  border-top: solid var(--border) 1px;
 }
 
 #footer:after {
@@ -1034,7 +1034,7 @@
   font-size: 0.85rem;
   font-weight: 600;
   text-transform: uppercase;
-  color: #13274a;
+  color: var(--dark-blue);
   margin: 0 0 20px 0;
 }
 
@@ -1059,13 +1059,13 @@
 }
 
 #footer ul li a:hover {
-  color: #407ec9;
+  color: var(--light-blue);
 }
 
 #footer .redes a {
   font-size: 18px;
-  background: #407ec9;
-  color: #ffffff;
+  background: var(--light-blue);
+  color: var(--white);
   width: 34px;
   height: 34px;
   border-radius: 50%;
@@ -1073,25 +1073,25 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  border: #407ec9 solid 2px;
+  border: var(--light-blue) solid 2px;
   transition: all 0.6s;
 }
 
 #footer .redes a:hover {
-  background: #ffffff;
-  color: #407ec9;
+  background: var(--white);
+  color: var(--light-blue);
 }
 
 /* ============================================================*/
 /* Sub Footer
 /* ============================================================*/
 #sub-footer {
-  background: #13274a;
+  background: var(--dark-blue);
 }
 
 #sub-footer p {
   font-size: 0.73rem;
-  color: #ffffff;
+  color: var(--white);
   padding: 8px 0;
   margin: 0;
 }
@@ -1102,13 +1102,13 @@
 html::-webkit-scrollbar,
 .select2-results__options::-webkit-scrollbar {
   width: 10px;
-  background-color: #ffffff;
+  background-color: var(--white);
 }
 
 html::-webkit-scrollbar-thumb,
 .select2-results__options::-webkit-scrollbar-thumb {
   border-radius: 3px;
-  background-color: #13274a;
+  background-color: var(--dark-blue);
 }
 
 /* ============================================================*/
@@ -1132,14 +1132,14 @@ html::-webkit-scrollbar-thumb,
 }
 
 .swal2-styled.swal2-confirm {
-  background-color: #407ec9 !important;
-  font-size: 0.85em !important;
+  background-color: var(--light-blue) !important;
+  font-size: .85em !important;
   width: 150px !important;
 }
 
 .swal2-footer a {
-  color: #407ec9 !important;
-  font-size: 0.85em !important;
+  color: var(--light-blue) !important;
+  font-size: .85em !important;
   font-weight: 600 !important;
 }
 
@@ -1173,13 +1173,13 @@ html::-webkit-scrollbar-thumb,
 }
 
 .pagination-container button:hover {
-  color: #ffffff;
-  background: #407ec9;
+  color: var(--white);
+  background: var(--light-blue);
 }
 
 .active-page {
-  color: #ffffff !important;
-  background: #407ec9 !important;
+  color: var(--white) !important;
+  background: var(--light-blue) !important;
 }
 
 /* ============================================================*/
@@ -1199,17 +1199,16 @@ html::-webkit-scrollbar-thumb,
 
 .select2-container--default .select2-selection--single {
   height: 42.7px;
-  border: 1px solid #ced4da;
+  border: 1px solid var(--white-bone);
   background: #f2f6fb;
 }
 
-.select2-container--default
-  .select2-results__option--highlighted[aria-selected] {
-  background-color: #407ec9;
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  background-color: var(--light-blue);
 }
 
 .select2-container--default .select2-search--dropdown .select2-search__field {
-  border: 1px solid #ced4da;
+  border: 1px solid var(--white-bone);
 }
 
 .select2:focus-visible,
@@ -1239,11 +1238,11 @@ html::-webkit-scrollbar-thumb,
 }
 
 .leaflet-control-locate a .leaflet-control-locate-location-arrow {
-  background-color: #13274a;
+  background-color: var(--dark-blue);
 }
 
 .leaflet-control-locate.following a .leaflet-control-locate-location-arrow {
-  background-color: #407ec9;
+  background-color: var(--light-blue);
 }
 
 .leaflet-popup-content-wrapper {
