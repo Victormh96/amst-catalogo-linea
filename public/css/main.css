@@ -77,7 +77,7 @@
   text-align: end;
 }
 
-#header .nav-menu > ul > li {
+#header .nav-menu>ul>li {
   position: relative;
   white-space: nowrap;
   display: inline-block;
@@ -128,18 +128,21 @@
   height: calc(100vh - 115px);
   background-position: center;
   background-size: cover;
+  background-color: var(--dark-blue);
 }
 
 /*===Phone===**/
 @media (max-width: 575.98px) {
   #portada {
-    height: calc(100vh - 213px);
+    min-height: 450px;
+    height: calc(100vh - 212px);
   }
 }
 
 /*===Phone Landscape===**/
 @media (max-width: 920px) and (orientation: landscape) {
   #portada {
+    min-height: 450px !important;
     height: calc(100vh - 112px) !important;
   }
 }
@@ -147,14 +150,16 @@
 /*===Ipad===**/
 @media (min-width: 559px) and (max-width: 991.98px) {
   #portada {
-    height: calc(100vh - 162px);
+    min-height: 600px;
+    height: calc(100vh - 140px);
   }
 }
 
 /*===Ipad Pro===**/
 @media (min-width: 992px) and (max-width: 1199.98px) {
   #portada {
-    height: calc(100vh - 162px);
+    min-height: 600px;
+    height: calc(100vh - 140px);
   }
 }
 
@@ -363,12 +368,10 @@
 }
 
 #inscribete {
-  background: linear-gradient(
-    121deg,
-    rgba(20, 41, 78, 1) 2%,
-    rgba(27, 54, 101, 1) 29%,
-    rgba(62, 121, 194, 1) 91%
-  );
+  background: linear-gradient(121deg,
+      rgba(20, 41, 78, 1) 2%,
+      rgba(27, 54, 101, 1) 29%,
+      rgba(62, 121, 194, 1) 91%);
   padding: 60px 0;
 }
 
@@ -551,6 +554,7 @@
   background: var(--dark-blue);
   border-radius: 0 5px 0 5px;
   color: var(--white);
+  z-index: 999;
 }
 
 #catalogo .leaflet-container {
@@ -612,12 +616,8 @@
 }
 
 #catalogo .fa-circle-check {
-  font-size: 26px;
+  font-size: 16px;
   color: var(--light-blue);
-  position: absolute;
-  top: -25px;
-  left: -14px;
-  z-index: 999;
 }
 
 /*============================================================================================*/
@@ -626,17 +626,6 @@
 #cuenta aside {
   position: relative;
   padding: 0 20px;
-}
-
-#cuenta aside .fa-circle-check {
-  font-size: 30px;
-  color: #407ec9;
-  border-radius: 50%;
-  background-color: #ffffff;
-  position: absolute;
-  top: -10px;
-  left: 10px;
-  z-index: 999;
 }
 
 #cuenta aside img {
@@ -680,13 +669,8 @@
 }
 
 #cuenta aside .card .information i {
-  font-size: 18px;
+  font-size: 16px;
   color: var(--light-blue);
-  position: absolute;
-}
-
-#cuenta aside .card .information .fa-venus {
-  color: #ef5a9e !important;
 }
 
 #cuenta aside .card .information a {
@@ -993,6 +977,28 @@
   }
 }
 
+/*===Phone Landscape===**/
+@media (max-width: 920px) and (orientation: landscape) {
+  #beneficios .tag {
+    width: 100%;
+  }
+}
+
+/*===Ipad===**/
+@media (min-width: 559px) and (max-width: 991.98px) {
+  #beneficios .tag {
+    width: 90%;
+  }
+}
+
+/*===Ipad Pro===**/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  #beneficios .tag {
+    width: 100%;
+  }
+}
+
+
 #beneficios .tag img {
   width: 70px;
   height: 70px;
@@ -1190,9 +1196,7 @@ html::-webkit-scrollbar-thumb,
   width: 100% !important;
 }
 
-.select2-container--default
-  .select2-selection--single
-  .select2-selection__rendered {
+.select2-container--default .select2-selection--single .select2-selection__rendered {
   color: #b0b4b7;
   line-height: 41px;
 }

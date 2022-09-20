@@ -58,11 +58,9 @@
               <div class="row">
 
                 <!--Img-->
-                <div class="col-md-2 mb-2 mb-sm-0 position-relative">
-                  <i class="fa-solid fa-circle-check" v-if="l.verificado == 1" data-toggle="tooltip" data-placement="top" title="Perfil Verificado"></i>
+                <div class="col-md-2 mb-2 mb-sm-0">
                   <router-link :to="{ name: 'Cuenta', params: { slug: l.slug } }">
-                    <img :src="this.url + `/storage/${ l.foto }`" :alt="`${ l.slug }`" v-if="l.foto">
-                    <img src="@/../public/img/assets/shapex14.png" alt="default" v-else>
+                    <img :src="this.url + `/storage/${ l.foto }`" :alt="`${ l.slug }`">
                   </router-link>
                 </div>
 
@@ -71,7 +69,10 @@
 
                   <!--Title-->
                   <router-link :to="{ name: 'Cuenta', params: { slug: l.slug } }">
-                    <h5 class="mb-1">{{ l.nombre_cuenta }}</h5>
+                    <h5 class="mb-1">
+                      {{ l.nombre_cuenta }}
+                      <i class="fa-solid fa-circle-check ms-1" v-if="l.verificado == 1"></i>
+                    </h5>
                   </router-link>
 
                   <!--Service-->

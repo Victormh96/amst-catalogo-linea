@@ -220,7 +220,7 @@
                     </div>
 
                     <!--Add Service-->
-                    <div class="col-xs-2 col-md-2 m-auto mt-4 mt-sm-0">
+                    <div class="col-xs-2 col-md-2 mt-4 mt-sm-0 d-flex align-items-center">
                         <button type="button" class="btn-md" :disabled="errorServicio || nullServicio"
                             @click="addServices"><i class="fa-solid fa-plus"></i></button>
                     </div>

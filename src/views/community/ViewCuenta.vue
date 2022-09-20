@@ -17,7 +17,6 @@
                     <aside class="col-12 col-md-5 col-lg-4 col-xl-4 col-xxl-3">
 
                         <!--Img-->
-                        <i class="fa-solid fa-circle-check " v-if="this.lista.verificado == 1" data-toggle="tooltip" data-placement="top" title="Perfil Verificado"></i>
                         <img :src="this.url + `/storage/${ this.lista.foto }`" :alt="`${ this.lista.slug }`"
                             v-if="this.lista.foto">
 
@@ -26,7 +25,10 @@
                             <div class="information ms-4 me-4">
 
                                 <!--Title-->
-                                <small class="me-1">{{ this.lista.nombre_cuenta }}</small>
+                                <small>
+                                    {{ this.lista.nombre_cuenta }}
+                                    <i class="fa-solid fa-circle-check ms-1" v-if="this.lista.verificado == 1"></i>
+                                </small>
 
                                 <!--Info-->
                                 <a v-if="this.lista.verificado == true" :href="'mailto:'+ this.lista.email"
