@@ -59,7 +59,7 @@
 
                 <!--Img-->
                 <div class="col-md-2 mb-2 mb-sm-0 position-relative">
-                  <i class="fa-solid fa-award" v-if="l.verificado == 1"></i>
+                  <i class="fa-solid fa-circle-check" v-if="l.verificado == 1" data-toggle="tooltip" data-placement="top" title="Perfil Verificado"></i>
                   <router-link :to="{ name: 'Cuenta', params: { slug: l.slug } }">
                     <img :src="this.url + `/storage/${ l.foto }`" :alt="`${ l.slug }`" v-if="l.foto">
                     <img src="@/../public/img/assets/shapex14.png" alt="default" v-else>
@@ -87,7 +87,7 @@
               </div>
 
               <!--Options-->
-              <ul class="mt-2">
+              <ul class="mt-2" v-if="l.verificado == true">
 
                 <!--Map-->
                 <li class="d-inline-flex align-items-center" v-if="l.local == 1">
@@ -174,7 +174,7 @@ export default {
       skeleton: false,
       domicilio: false,
       listaPaginada: [],
-      elementosPorPagina: 4
+      elementosPorPagina: 5
     }
   },
 
@@ -185,7 +185,9 @@ export default {
 
     // If
     if (this.lista.length < 1) {
-      this.$router.push("/404")
+      this.$router.push({
+        name: 'Servicios-Completos',
+      })
     }
 
     this.onClickHandler(1)

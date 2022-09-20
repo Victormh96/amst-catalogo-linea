@@ -17,7 +17,7 @@
                     <aside class="col-12 col-md-5 col-lg-4 col-xl-4 col-xxl-3">
 
                         <!--Img-->
-                        <i class="fa-solid fa-award" v-if="this.lista.verificado == 1"></i>
+                        <i class="fa-solid fa-circle-check " v-if="this.lista.verificado == 1" data-toggle="tooltip" data-placement="top" title="Perfil Verificado"></i>
                         <img :src="this.url + `/storage/${ this.lista.foto }`" :alt="`${ this.lista.slug }`"
                             v-if="this.lista.foto">
 
@@ -28,27 +28,24 @@
                                 <!--Title-->
                                 <small class="me-1">{{ this.lista.nombre_cuenta }}</small>
 
-                                <!--Gender-->
-                                <i v-if="this.lista.genero.id == 1" class="fa-solid fa-mars-stroke"></i>
-                                <i v-if="this.lista.genero.id == 2" class="fa-solid fa-venus"></i>
-
                                 <!--Info-->
-                                <a :href="'mailto:'+ this.lista.email" class="mb-1 mt-1">{{ this.lista.email }}</a>
+                                <a v-if="this.lista.verificado == true" :href="'mailto:'+ this.lista.email"
+                                    class="mb-1 mt-1">{{ this.lista.email }}</a>
                                 <div v-for="(c, index) in this.lista.contacto" v-bind:key="index">
                                     <a :href="'mailto:'+ c.descripcion"
-                                        v-if="c.id_detalle_contacto === '7'">{{c.descripcion}}</a>
+                                        v-if="c.id_detalle_contacto === '7' && this.lista.verificado == true">{{c.descripcion}}</a>
                                 </div>
                             </div>
 
                             <!--Tags-->
-                            <div class="tag ms-4 me-4">
+                            <div class="tag ms-4 me-4" v-if="this.lista.verificado == true">
                                 <span class="me-2 mb-1" v-for="(r, index) in this.lista.servicio" v-bind:key="index">
                                     {{ r.rubro.nombre_rubro }}
                                 </span>
                             </div>
 
                             <!--Networks-->
-                            <div class="networks mb-2">
+                            <div class="networks mb-2" v-if="this.lista.verificado == true">
                                 <span v-for="(c, index) in this.lista.contacto" :key="index">
 
                                     <!--Whatsapp-->
@@ -71,12 +68,15 @@
                             </div>
 
                             <!--Delivery-->
-                            <p v-if="this.lista.servicio_domicilio == 1">A Domicilio</p>
-                            <p v-else>En El Lugar</p>
+                            <span v-if="this.lista.verificado == true">
+                                <p v-if="this.lista.servicio_domicilio == 1">A Domicilio</p>
+                                <p v-else>En El Lugar</p>
+                            </span>
+
                         </div>
 
                         <!--Location-->
-                        <div class="location mb-4" v-if="this.lista.local == 1">
+                        <div class="location mb-4" v-if="this.lista.local == 1 && this.lista.verificado == true">
 
                             <!--Waze-->
                             <a :href="`https://www.waze.com/ul?ll=${ this.lista.latitud },${ this.lista.longitud }&navigate=yes&zoom=16`"

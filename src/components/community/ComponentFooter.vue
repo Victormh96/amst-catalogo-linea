@@ -9,16 +9,15 @@
                     <h5><i class="fa-solid fa-cog fa-spin"></i>ENTRADAS</h5>
                     <ul>
                         <li>
-                            <a href="https://www.santatecla.gob.sv/atencionciudadana/" target="_blank">Atención
-                                ciudadana</a>
-                        </li>
-                        <li>
-                            <a href="https://www.santatecla.gob.sv/transparencia/" target="_blank">Portal
-                                transparencia</a>
+                            <a href="/" target="_blank">Inicio</a>
                         </li>
                         <li>
                             <a href="https://www.santatecla.gob.sv/" target="_blank">Alcaldia municipal santa tecla</a>
                         </li>
+                        <li>
+                            <a href="https://www.santatecla.gob.sv/noticias" target="_blank">Noticias</a>
+                        </li>
+
                     </ul>
                 </div>
 
@@ -38,8 +37,7 @@
                 <div class="col-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
                     <h5><i class="fa-solid fa-cog fa-spin"></i>NUESTRO CATÁLOGO</h5>
                     <ul>
-                        <li><a href="/">Todas las empresas</a></li>
-                        <li><a href="/">Todos los profesionales</a></li>
+                        <li><a href="/servicios-completos">Todas los servicios</a></li>
                     </ul>
                 </div>
 
