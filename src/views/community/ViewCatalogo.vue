@@ -17,8 +17,8 @@
           <div class="col-12 col-md-7 col-lg-5 col-xl-5 col-xxl-4 mx-auto mb-4 mb-sm-5">
 
             <!--Input-->
-            <input type="text" class="form-control text-center mb-3 mb-sm-2" placeholder="Albañil, Farmacias, Pupuserias..."
-              v-model="buscar" @keyup="refresh(listaFiltrada)">
+            <input type="text" class="form-control text-center mb-3 mb-sm-2"
+              placeholder="Albañil, Farmacias, Pupuserias..." v-model="buscar" @keyup="refresh(listaFiltrada)">
             <!--Checks-->
             <div class="text-center">
 
@@ -71,7 +71,7 @@
                   <router-link :to="{ name: 'Cuenta', params: { slug: l.slug } }">
                     <h5 class="mb-1">
                       {{ l.nombre_cuenta }}
-                      <i class="fa-solid fa-circle-check ms-1" v-if="l.verificado == 1"></i>
+                      <i class="fa-solid fa-square-check ms-1" v-if="l.verificado == 1"></i>
                     </h5>
                   </router-link>
 
@@ -113,12 +113,17 @@
                   </a>
                 </li>
 
-                <!--Whatsapp-->
+                <!--Whatsapp Or Mobile-->
                 <li class="d-inline-flex align-items-center" v-for="(c, index) in l.contacto" v-bind:key="index">
                   <a v-if="c.id_detalle_contacto == 5"
                     :href="`https://api.whatsapp.com/send?phone=503${ c.descripcion }&text=¡Hola ${ l.nombre_cuenta }! Quisiera mas información de tus servicios. 📢📢`"
                     target="_blank" class="d-flex">
                     <i class="fa-brands fa-whatsapp others"></i>
+                  </a>
+
+                  <!--Or-->
+                  <a v-if="c.id_detalle_contacto == 7" :href="`tel:${ c.descripcion }`" class="d-flex">
+                    <i class="fa-solid fa-mobile-screen-button phones"></i>
                   </a>
                 </li>
               </ul>

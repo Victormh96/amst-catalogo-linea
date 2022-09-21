@@ -21,21 +21,24 @@
                             v-if="this.lista.foto">
 
                         <!--Profile-->
-                        <div class="card mb-4">
+                        <div class="card mb-5 mb-sm-4">
                             <div class="information ms-4 me-4">
 
                                 <!--Title-->
                                 <small>
                                     {{ this.lista.nombre_cuenta }}
-                                    <i class="fa-solid fa-circle-check ms-1" v-if="this.lista.verificado == 1"></i>
+                                    <i class="fa-solid fa-square-check ms-1" v-if="this.lista.verificado == 1"></i>
                                 </small>
 
                                 <!--Info-->
                                 <a v-if="this.lista.verificado == true" :href="'mailto:'+ this.lista.email"
                                     class="mb-1 mt-1">{{ this.lista.email }}</a>
+
                                 <div v-for="(c, index) in this.lista.contacto" v-bind:key="index">
-                                    <a :href="'mailto:'+ c.descripcion"
-                                        v-if="c.id_detalle_contacto === '7' && this.lista.verificado == true">{{c.descripcion}}</a>
+                                    <a :href="'tel:'+ c.descripcion"
+                                        v-if="(c.id_detalle_contacto == 7 || c.id_detalle_contacto == 8) && this.lista.verificado == true">
+                                        {{c.descripcion}}
+                                    </a>
                                 </div>
                             </div>
 
@@ -78,7 +81,8 @@
                         </div>
 
                         <!--Location-->
-                        <div class="location mb-4" v-if="this.lista.local == 1 && this.lista.verificado == true">
+                        <div class="location mb-5 mb-sm-4"
+                            v-if="this.lista.local == 1 && this.lista.verificado == true">
 
                             <!--Waze-->
                             <a :href="`https://www.waze.com/ul?ll=${ this.lista.latitud },${ this.lista.longitud }&navigate=yes&zoom=16`"
@@ -94,7 +98,7 @@
                         </div>
 
                         <!--Advertising-->
-                        <div class="d-grid mb-4">
+                        <div class="d-grid mb-5 mb-sm-4">
                             <swiper :slides-per-view="1" :space-between="50" :autoplay="{ delay: 5000 }"
                                 :modules="modules" :loop="true" :effect="'fade'">
                                 <swiper-slide v-for="(p, index) in this.publicidad" v-bind:key="index">
@@ -110,7 +114,7 @@
                     <article class="col-12 col-md-7 col-lg-8 col-xl-8 col-xxl-9">
 
                         <!--Maps-->
-                        <div class="mb-4">
+                        <div class="mb-5 mb-sm-4">
                             <div id="map" :class="[this.lista.local == 0 ? 'disabledMap' : '']"></div>
                         </div>
 
@@ -191,7 +195,7 @@
 
                             <!--Galery-->
                             <div class="galery" v-if="this.galeria == true">
-                                <h3>Proximamente</h3>
+                                <h4>Proximamente</h4>
                             </div>
                         </div>
                     </article>
