@@ -21,7 +21,7 @@
 
                     <!--Description-->
                     <div class="col-lg-8 col-xl-8 m-auto mb-4">
-                        <p>Mas de 1,000 Tecleños con espíritu emprendedor ofertan aquí sus productos y servicios
+                        <p>Más de 1,000 Tecleños con espíritu emprendedor ofertan aquí sus productos y servicios
                             ¡ubícalos!</p>
                     </div>
 
