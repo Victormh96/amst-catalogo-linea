@@ -10,7 +10,7 @@
 
         <!--Section-->
         <section id="portada" class="d-flex align-items-center"
-            v-bind:style="[this.portadainicio.imagen ? { 'background-image': 'url(' + this.url + '/storage/' + this.portadainicio.imagen + ')' } : null]">
+            v-bind:style="[this.portadainicio ? { 'background-image': 'url(' + this.url + '/storage/' + this.portadainicio.imagen + ')' } : null]">
             <div class="container z-index">
                 <div class="row">
 
