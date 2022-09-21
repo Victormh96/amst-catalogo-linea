@@ -14,11 +14,11 @@
         <div class="row">
 
           <!--Search-->
-          <div class="col-12 col-md-7 col-lg-5 col-xl-5 col-xxl-4 mx-auto mb-4 mb-sm-5">
+          <div class="col-12 col-md-7 col-lg-5 col-xl-5 col-xxl-4 mx-auto mb-4 mb-xxl-5">
 
             <!--Input-->
-            <input type="text" class="form-control text-center mb-2" placeholder="Albañil, Farmacias, Pupuserias..."
-              v-model="buscar" @keyup="refresh(listaFiltrada)">
+            <input type="text" class="form-control text-center mb-3 mb-xl-2"
+              placeholder="Albañil, Farmacias, Pupuserias..." v-model="buscar" @keyup="refresh(listaFiltrada)">
             <!--Checks-->
             <div class="text-center">
 
@@ -58,11 +58,9 @@
               <div class="row">
 
                 <!--Img-->
-                <div class="col-md-2 mb-2 mb-sm-0 position-relative">
-                  <i class="fa-solid fa-circle-check" v-if="l.verificado == 1" data-toggle="tooltip" data-placement="top" title="Perfil Verificado"></i>
+                <div class="col-md-2 mb-2 mb-sm-0">
                   <router-link :to="{ name: 'Cuenta', params: { slug: l.slug } }">
-                    <img :src="this.url + `/storage/${ l.foto }`" :alt="`${ l.slug }`" v-if="l.foto">
-                    <img src="@/../public/img/assets/shapex14.png" alt="default" v-else>
+                    <img :src="this.url + `/storage/${ l.foto }`" :alt="`${ l.slug }`">
                   </router-link>
                 </div>
 
@@ -71,7 +69,10 @@
 
                   <!--Title-->
                   <router-link :to="{ name: 'Cuenta', params: { slug: l.slug } }">
-                    <h5 class="mb-1">{{ l.nombre_cuenta }}</h5>
+                    <h5 class="mb-1">
+                      {{ l.nombre_cuenta }}
+                      <i class="fa-solid fa-square-check ms-1" v-if="l.verificado == 1"></i>
+                    </h5>
                   </router-link>
 
                   <!--Service-->
@@ -92,7 +93,7 @@
                 <!--Map-->
                 <li class="d-inline-flex align-items-center" v-if="l.local == 1">
                   <button @click="marker(l.latitud, l.longitud)">
-                    <i class="fas fa-map-marker-alt"></i>
+                    <i class="fa-solid fa-location-crosshairs"></i>
                   </button>
                 </li>
 
@@ -100,8 +101,7 @@
                 <li class="d-inline-flex align-items-center" v-if="l.local == 1">
                   <a :href="`https://www.google.com/maps/dir//${ l.latitud },${ l.longitud }`" target="_blank"
                     class="d-flex">
-                    <i class="fas fa-map-marked-alt maps"></i>
-                    <p>Google</p>
+                    <i class="fa-brands fa-google"></i>
                   </a>
                 </li>
 
@@ -109,25 +109,28 @@
                 <li class="d-inline-flex align-items-center" v-if="l.local == 1">
                   <a :href="`https://www.waze.com/ul?ll=${ l.latitud },${ l.longitud }&navigate=yes&zoom=16`"
                     target="_blank" class="d-flex">
-                    <i class="fab fa-waze waze"></i>
-                    <p>Waze</p>
+                    <i class="fab fa-waze waze others"></i>
                   </a>
                 </li>
 
-                <!--Whatsapp-->
+                <!--Whatsapp Or Mobile-->
                 <li class="d-inline-flex align-items-center" v-for="(c, index) in l.contacto" v-bind:key="index">
                   <a v-if="c.id_detalle_contacto == 5"
                     :href="`https://api.whatsapp.com/send?phone=503${ c.descripcion }&text=¡Hola ${ l.nombre_cuenta }! Quisiera mas información de tus servicios. 📢📢`"
                     target="_blank" class="d-flex">
-                    <i class="fa-brands fa-whatsapp"></i>
-                    <p>Whatsapp</p>
+                    <i class="fa-brands fa-whatsapp others"></i>
+                  </a>
+
+                  <!--Or-->
+                  <a v-if="c.id_detalle_contacto == 7" :href="`tel:${ c.descripcion }`" class="d-flex">
+                    <i class="fa-solid fa-mobile-screen-button phones"></i>
                   </a>
                 </li>
               </ul>
             </div>
 
             <!--Pagination-->
-            <div id="paginacion" class="paginacion text-center mb-4 mb-xl-0" v-if="lista.length > elementosPorPagina">
+            <div id="paginacion" class="paginacion text-center mb-4 mb-xxl-0" v-if="lista.length > elementosPorPagina">
               <vue-awesome-paginate :total-items="lista.length" :on-click="onClickHandler"
                 prev-button-content="Anterior" :current-page="1" :items-per-page="elementosPorPagina"
                 :max-pages-shown="5" next-button-content="Siguiente">
@@ -141,7 +144,7 @@
           </div>
 
           <!--Maps-->
-          <div class="col-12 col-md-12 col-lg-12 col-xl-6">
+          <div class="col-12 col-md-12 col-lg-12 col-xl-6 mt-4 mt-xxl-0">
             <div id="map"></div>
           </div>
         </div>
@@ -322,7 +325,7 @@ export default {
       window.scrollTo({
         top: document.getElementById("map").offsetTop - 120,
         behavior: "smooth",
-      });
+      })
     }
   },
 

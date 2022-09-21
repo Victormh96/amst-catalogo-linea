@@ -81,7 +81,7 @@
                     </div>
 
                     <!--Cards #3-->
-                    <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mb-0 mb-sm-0">
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mb-0 mb-sm-0 mx-auto">
                         <div class="tag">
 
                             <!--Img-->
@@ -109,7 +109,7 @@
                         <div class="row">
 
                             <!--title-->
-                            <div class="col-md-12 mb-3 text-left">
+                            <div class="col-md-12 mb-3 text-left d-none d-md-none d-lg-block">
                                 <h2>¿Quieres ubicar tu producto o servicio en Santa Tecla?</h2>
                             </div>
 

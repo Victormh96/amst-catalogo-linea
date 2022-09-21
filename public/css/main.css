@@ -77,7 +77,7 @@
   text-align: end;
 }
 
-#header .nav-menu > ul > li {
+#header .nav-menu>ul>li {
   position: relative;
   white-space: nowrap;
   display: inline-block;
@@ -110,7 +110,7 @@
 }
 
 #mobile a {
-  font-size: 22px;
+  font-size: 21px;
   color: var(--white);
   margin: 0 25px;
   transition: all 0.3s;
@@ -128,33 +128,38 @@
   height: calc(100vh - 115px);
   background-position: center;
   background-size: cover;
+  background-color: var(--dark-blue);
 }
 
 /*===Phone===**/
 @media (max-width: 575.98px) {
   #portada {
-    height: calc(100vh - 213px);
+    min-height: 450px;
+    height: calc(100vh - 210px);
   }
 }
 
 /*===Phone Landscape===**/
 @media (max-width: 920px) and (orientation: landscape) {
   #portada {
-    height: calc(100vh - 112px) !important;
+    min-height: 450px !important;
+    height: calc(100vh - 110px) !important;
   }
 }
 
 /*===Ipad===**/
 @media (min-width: 559px) and (max-width: 991.98px) {
   #portada {
-    height: calc(100vh - 162px);
+    min-height: 600px;
+    height: calc(100vh - 140px);
   }
 }
 
 /*===Ipad Pro===**/
 @media (min-width: 992px) and (max-width: 1199.98px) {
   #portada {
-    height: calc(100vh - 162px);
+    min-height: 600px;
+    height: calc(100vh - 140px);
   }
 }
 
@@ -217,14 +222,21 @@
 /*===Phone===**/
 @media (max-width: 575.98px) {
   #pasos {
-    padding: 60px 0 70px 0;
+    padding: 50px 0 60px 0;
   }
 }
 
 /*===Ipad===**/
 @media (min-width: 559px) and (max-width: 991.98px) {
   #pasos {
-    padding: 60px 0 70px 0;
+    padding: 50px 0 60px 0;
+  }
+}
+
+/*===Ipad Pro===**/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  #pasos {
+    padding: 50px 0 60px 0;
   }
 }
 
@@ -318,14 +330,21 @@
 /*===Phone===**/
 @media (max-width: 575.98px) {
   #destacado {
-    padding: 60px 0 20px 0;
+    padding: 50px 0 10px 0;
   }
 }
 
 /*===Ipad===**/
 @media (min-width: 559px) and (max-width: 991.98px) {
   #destacado {
-    padding: 60px 0 20px 0;
+    padding: 50px 0 10px 0;
+  }
+}
+
+/*===Ipad Pro===**/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  #destacado {
+    padding: 50px 0 10px 0;
   }
 }
 
@@ -363,12 +382,10 @@
 }
 
 #inscribete {
-  background: linear-gradient(
-    121deg,
-    rgba(20, 41, 78, 1) 2%,
-    rgba(27, 54, 101, 1) 29%,
-    rgba(62, 121, 194, 1) 91%
-  );
+  background: linear-gradient(121deg,
+      rgba(20, 41, 78, 1) 2%,
+      rgba(27, 54, 101, 1) 29%,
+      rgba(62, 121, 194, 1) 91%);
   padding: 60px 0;
 }
 
@@ -455,7 +472,7 @@
 
 #catalogo .card img {
   width: 100%;
-  height: 90px;
+  height: 80px;
   object-fit: cover;
   object-position: center;
   border-radius: 3px;
@@ -505,39 +522,38 @@
 }
 
 #catalogo .card button {
-  font-size: 13px;
+  font-size: 14px;
   background: var(--light-blue);
   color: var(--white);
-  border-radius: 5px;
+  border-radius: 3px;
   border: none;
-  padding: 3px 15px;
+  padding: 4px 12px;
+  display: flex;
 }
 
 #catalogo .card ul li a i {
   font-size: 15px;
   color: #99a3b4;
-  margin: 0 6px 0 0;
   transition: 0.3s;
 }
 
-#catalogo .card ul li p {
-  font-size: 0.83rem;
-  font-weight: 500;
-  color: #99a3b4;
-  cursor: pointer;
-  margin: 0;
-  transition: 0.3s;
+#catalogo .card ul li a .phones {
+  font-size: 17px;
 }
 
-#catalogo .card ul li a:hover i,
-#catalogo .card ul li a:hover p {
+#catalogo .card ul li a .others {
+  font-size: 18px;
+}
+
+#catalogo .card ul li a:hover i {
   color: var(--light-blue);
 }
 
 #catalogo .card ul li:not(:last-child):after {
-  content: "|";
-  font-weight: 400;
-  margin: 0 10px;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f142";
+  margin: 0 12px;
   color: #99a3b4;
 }
 
@@ -551,10 +567,11 @@
   background: var(--dark-blue);
   border-radius: 0 5px 0 5px;
   color: var(--white);
+  z-index: 999;
 }
 
 #catalogo .leaflet-container {
-  height: 100vh;
+  height: 100%;
   display: inline-block;
   border-radius: 10px;
 }
@@ -606,18 +623,14 @@
 }
 
 #catalogo .leaflet-popup-content img {
-  width: 80px;
-  height: 50px;
+  width: 110px;
+  height: 70px;
   object-fit: cover;
 }
 
-#catalogo .fa-circle-check {
-  font-size: 26px;
+#catalogo .fa-square-check {
+  font-size: 16px;
   color: var(--light-blue);
-  position: absolute;
-  top: -25px;
-  left: -14px;
-  z-index: 999;
 }
 
 /*============================================================================================*/
@@ -626,17 +639,6 @@
 #cuenta aside {
   position: relative;
   padding: 0 20px;
-}
-
-#cuenta aside .fa-circle-check {
-  font-size: 30px;
-  color: #407ec9;
-  border-radius: 50%;
-  background-color: #ffffff;
-  position: absolute;
-  top: -10px;
-  left: 10px;
-  z-index: 999;
 }
 
 #cuenta aside img {
@@ -656,7 +658,7 @@
 /*===Ipad===**/
 @media (min-width: 559px) and (max-width: 991.98px) {
   #cuenta aside img {
-    height: 250px;
+    height: 210px;
   }
 }
 
@@ -680,13 +682,8 @@
 }
 
 #cuenta aside .card .information i {
-  font-size: 18px;
+  font-size: 16px;
   color: var(--light-blue);
-  position: absolute;
-}
-
-#cuenta aside .card .information .fa-venus {
-  color: #ef5a9e !important;
 }
 
 #cuenta aside .card .information a {
@@ -923,28 +920,28 @@
 /*===Phone===**/
 @media (max-width: 575.98px) {
   #registro .leaflet-container {
-    height: 200px;
+    height: 230px;
   }
 }
 
 /*===Phone Landscape===**/
 @media (max-width: 920px) and (orientation: landscape) {
   #registro .leaflet-container {
-    height: 200px !important;
+    height: 230px !important;
   }
 }
 
 /*===Ipad===**/
 @media (min-width: 559px) and (max-width: 991.98px) {
   #registro .leaflet-container {
-    height: 200px;
+    height: 230px;
   }
 }
 
 /*===Ipad Pro===**/
 @media (min-width: 992px) and (max-width: 1199.98px) {
   #registro .leaflet-container {
-    height: 200px;
+    height: 230px;
   }
 }
 
@@ -992,6 +989,28 @@
     width: 100%;
   }
 }
+
+/*===Phone Landscape===**/
+@media (max-width: 920px) and (orientation: landscape) {
+  #beneficios .tag {
+    width: 100%;
+  }
+}
+
+/*===Ipad===**/
+@media (min-width: 559px) and (max-width: 991.98px) {
+  #beneficios .tag {
+    width: 90%;
+  }
+}
+
+/*===Ipad Pro===**/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  #beneficios .tag {
+    width: 100%;
+  }
+}
+
 
 #beneficios .tag img {
   width: 70px;
@@ -1201,9 +1220,7 @@ html::-webkit-scrollbar-thumb,
   width: 100% !important;
 }
 
-.select2-container--default
-  .select2-selection--single
-  .select2-selection__rendered {
+.select2-container--default .select2-selection--single .select2-selection__rendered {
   color: #b0b4b7;
   line-height: 41px;
 }
