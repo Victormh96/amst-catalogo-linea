@@ -67,7 +67,7 @@
                 <div class="row">
 
                     <!--Step-->
-                    <div class="col-12 col-md-6 col-xl-4 mb-5 mb-xl-0-0">
+                    <div class="col-12 col-md-6 col-xl-4 mb-5 mb-xl-0">
                         <div class="card arrow">
 
                             <!--Img-->

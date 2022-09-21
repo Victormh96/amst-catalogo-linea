@@ -14,10 +14,10 @@
         <div class="row">
 
           <!--Search-->
-          <div class="col-12 col-md-7 col-lg-5 col-xl-5 col-xxl-4 mx-auto mb-4 mb-sm-5">
+          <div class="col-12 col-md-7 col-lg-5 col-xl-5 col-xxl-4 mx-auto mb-4 mb-xxl-5">
 
             <!--Input-->
-            <input type="text" class="form-control text-center mb-3 mb-sm-2"
+            <input type="text" class="form-control text-center mb-3 mb-xl-2"
               placeholder="Albañil, Farmacias, Pupuserias..." v-model="buscar" @keyup="refresh(listaFiltrada)">
             <!--Checks-->
             <div class="text-center">
@@ -130,7 +130,7 @@
             </div>
 
             <!--Pagination-->
-            <div id="paginacion" class="paginacion text-center mb-xl-0 mb-4" v-if="lista.length > elementosPorPagina">
+            <div id="paginacion" class="paginacion text-center mb-4 mb-xxl-0" v-if="lista.length > elementosPorPagina">
               <vue-awesome-paginate :total-items="lista.length" :on-click="onClickHandler"
                 prev-button-content="Anterior" :current-page="1" :items-per-page="elementosPorPagina"
                 :max-pages-shown="5" next-button-content="Siguiente">
@@ -144,7 +144,7 @@
           </div>
 
           <!--Maps-->
-          <div class="col-12 col-md-12 col-lg-12 col-xl-6 mt-4">
+          <div class="col-12 col-md-12 col-lg-12 col-xl-6 mt-4 mt-xxl-0">
             <div id="map"></div>
           </div>
         </div>
@@ -325,7 +325,7 @@ export default {
       window.scrollTo({
         top: document.getElementById("map").offsetTop - 120,
         behavior: "smooth",
-      });
+      })
     }
   },
 
