@@ -17,7 +17,7 @@
           <div class="col-12 col-md-7 col-lg-5 col-xl-5 col-xxl-4 mx-auto mb-4 mb-sm-5">
 
             <!--Input-->
-            <input type="text" class="form-control text-center mb-2" placeholder="Albañil, Farmacias, Pupuserias..."
+            <input type="text" class="form-control text-center mb-3 mb-sm-2" placeholder="Albañil, Farmacias, Pupuserias..."
               v-model="buscar" @keyup="refresh(listaFiltrada)">
             <!--Checks-->
             <div class="text-center">
@@ -93,7 +93,7 @@
                 <!--Map-->
                 <li class="d-inline-flex align-items-center" v-if="l.local == 1">
                   <button @click="marker(l.latitud, l.longitud)">
-                    <i class="fas fa-map-marker-alt"></i>
+                    <i class="fa-solid fa-location-crosshairs"></i>
                   </button>
                 </li>
 
@@ -101,8 +101,7 @@
                 <li class="d-inline-flex align-items-center" v-if="l.local == 1">
                   <a :href="`https://www.google.com/maps/dir//${ l.latitud },${ l.longitud }`" target="_blank"
                     class="d-flex">
-                    <i class="fas fa-map-marked-alt maps"></i>
-                    <p>Google</p>
+                    <i class="fa-brands fa-google"></i>
                   </a>
                 </li>
 
@@ -110,8 +109,7 @@
                 <li class="d-inline-flex align-items-center" v-if="l.local == 1">
                   <a :href="`https://www.waze.com/ul?ll=${ l.latitud },${ l.longitud }&navigate=yes&zoom=16`"
                     target="_blank" class="d-flex">
-                    <i class="fab fa-waze waze"></i>
-                    <p>Waze</p>
+                    <i class="fab fa-waze waze others"></i>
                   </a>
                 </li>
 
@@ -120,15 +118,14 @@
                   <a v-if="c.id_detalle_contacto == 5"
                     :href="`https://api.whatsapp.com/send?phone=503${ c.descripcion }&text=¡Hola ${ l.nombre_cuenta }! Quisiera mas información de tus servicios. 📢📢`"
                     target="_blank" class="d-flex">
-                    <i class="fa-brands fa-whatsapp"></i>
-                    <p>Whatsapp</p>
+                    <i class="fa-brands fa-whatsapp others"></i>
                   </a>
                 </li>
               </ul>
             </div>
 
             <!--Pagination-->
-            <div id="paginacion" class="paginacion text-center mb-4 mb-xl-0" v-if="lista.length > elementosPorPagina">
+            <div id="paginacion" class="paginacion text-center mb-xl-0 mb-4" v-if="lista.length > elementosPorPagina">
               <vue-awesome-paginate :total-items="lista.length" :on-click="onClickHandler"
                 prev-button-content="Anterior" :current-page="1" :items-per-page="elementosPorPagina"
                 :max-pages-shown="5" next-button-content="Siguiente">
@@ -142,7 +139,7 @@
           </div>
 
           <!--Maps-->
-          <div class="col-12 col-md-12 col-lg-12 col-xl-6">
+          <div class="col-12 col-md-12 col-lg-12 col-xl-6 mt-4">
             <div id="map"></div>
           </div>
         </div>
