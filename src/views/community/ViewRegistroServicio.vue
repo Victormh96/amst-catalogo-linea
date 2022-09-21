@@ -231,7 +231,7 @@
                     </div>
                 </div>
 
-                <div class="row social">
+                <div class="row social justify-content-center">
                     <!--Title-->
                     <h6 class="mb-1">Perfil Social</h6>
                     <p class="mb-3 indicaciones">Coloca en enlace de tus redes sociales </p>
@@ -331,8 +331,19 @@
                             <div class="error-msg">{{ error.$message }}</div>
                         </div>
                     </div>
+                    <!--Terminos-->
+                    <div id="terminos" class="col-md-9 mt-4 ">
+                        <p class="m-1 text-center">Terminos y Condiciones</p>
+                        <textarea readonly style="resize: none;" class="form-control m-1"
+                            rows="5">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum. Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, 
+                            
+                            sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.</textarea>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="terms" v-model="this.terminos">
+                            <label class="form-check-label" for="terms">Acepto Los terminos y Condiciones*</label>
+                        </div>
+                    </div>
                 </div>
-
                 <!--Submit-->
                 <div class="col-md-12 text-center mt-4">
                     <button type="button" class="btn-lg" :disabled="v$.form.$invalid" @click="submit">Unirme</button>
@@ -388,7 +399,7 @@ export default {
                 direccion: '',
                 descripcion: '',
                 fechaNacimiento: '',
-                servicioDomicilio: ''
+                servicioDomicilio: '',
             },
 
             // Others
@@ -405,8 +416,9 @@ export default {
             listaServicio: [],
             portadaregistro: [],
             cuentaServicios: [],
-            nullServicio: 'true',
-            errorServicio: 'true'
+            nullServicio: true,
+            errorServicio: true,
+            terminos: false
         }
     },
 
@@ -483,7 +495,7 @@ export default {
                 },
                 pagweb: {
                     urlMessage,
-                }
+                },
             }
         }
     },
@@ -566,12 +578,12 @@ export default {
 
         // Send
         async submit() {
-            if (this.cuentaServicios.length > 0) {
+            if (this.cuentaServicios.length > 0 && this.terminos == true) {
                 var Form = new FormData()
 
                 // Foreach
                 for (var paramName in this.form) {
-                   Form.append(paramName, this.form[paramName])
+                    Form.append(paramName, this.form[paramName])
                 }
 
                 // Add
@@ -591,7 +603,11 @@ export default {
                     }
                 })
             } else {
-                this.showFailServicies('No has registrado tus servicios')
+                if (this.terminos === false) {
+                    this.showFailServicies('Acepta los terminos y condiciones')
+                } else {
+                    this.showFailServicies('No has registrado tus servicios')
+                }
             }
         },
 
