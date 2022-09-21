@@ -572,6 +572,7 @@
 
 #catalogo .leaflet-container {
   height: 100%;
+  min-height: 80vh;
   display: inline-block;
   border-radius: 10px;
 }
@@ -580,6 +581,7 @@
 @media (max-width: 575.98px) {
   #catalogo .leaflet-container {
     height: 70vh;
+    min-height: 70vh;
   }
 }
 
@@ -587,6 +589,7 @@
 @media (max-width: 920px) and (orientation: landscape) {
   #catalogo .leaflet-container {
     height: 100vh !important;
+    min-height: 100vh !important;
   }
 }
 
@@ -594,6 +597,7 @@
 @media (min-width: 559px) and (max-width: 991.98px) {
   #catalogo .leaflet-container {
     height: 60vh;
+    min-height: 60vh;
   }
 }
 
@@ -601,6 +605,7 @@
 @media (min-width: 992px) and (max-width: 1199.98px) {
   #catalogo .leaflet-container {
     height: 60vh;
+    min-height: 60vh;
   }
 }
 

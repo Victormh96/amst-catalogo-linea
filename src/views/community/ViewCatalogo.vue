@@ -144,7 +144,7 @@
           </div>
 
           <!--Maps-->
-          <div class="col-12 col-md-12 col-lg-12 col-xl-6 mt-4 mt-xxl-0">
+          <div class="col-12 col-md-12 col-lg-12 col-xl-6 mt-4 mt-xl-0">
             <div id="map"></div>
           </div>
         </div>
