@@ -58,14 +58,14 @@
               <div class="row">
 
                 <!--Img-->
-                <div class="col-md-2 mb-2 mb-sm-0">
+                <div class="col-md-4 mb-2 mb-sm-0">
                   <router-link :to="{ name: 'Cuenta', params: { slug: l.slug } }">
                     <img :src="this.url + `/storage/${ l.foto }`" :alt="`${ l.slug }`">
                   </router-link>
                 </div>
 
                 <!--Description-->
-                <div class="col-md-9">
+                <div class="col-md-8">
 
                   <!--Title-->
                   <router-link :to="{ name: 'Cuenta', params: { slug: l.slug } }">
