@@ -50,7 +50,7 @@
         <div class="row">
 
           <!--Cards-->
-          <div class="col-12 col-md-12 col-lg-9 col-xl-6 mx-auto" v-if="this.lista.length > 0">
+          <div class="col-12 col-md-12 col-lg-9 col-xl-5 mx-auto" v-if="this.lista.length > 0">
             <div class="card mb-4" v-for="(l, index) in this.listaPaginada" v-bind:key="index">
 
               <!--Info-->
@@ -139,12 +139,12 @@
           </div>
 
           <!--Error-->
-          <div class="col-12 col-md-12 col-lg-12 col-xl-6 mb-4 mb-sm-5 text-center" v-else>
+          <div class="col-12 col-md-12 col-lg-12 col-xl-5 mb-4 mb-sm-5 text-center" v-else>
             <i class="fa-solid fa-triangle-exclamation fa-beat-fade"></i>
           </div>
 
           <!--Maps-->
-          <div class="col-12 col-md-12 col-lg-12 col-xl-6 mt-4 mt-xl-0">
+          <div class="col-12 col-md-12 col-lg-12 col-xl-7 mt-4 mt-xl-0">
             <div id="map"></div>
           </div>
         </div>

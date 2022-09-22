@@ -467,6 +467,7 @@ export default {
                 lastName: '',
                 facebook: '',
                 telefonoCelular: '',
+                telefonofijo: '',
                 whatsapp: '',
                 linkedin: '',
                 instagram: '',
