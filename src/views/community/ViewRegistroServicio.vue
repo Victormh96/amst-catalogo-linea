@@ -33,7 +33,9 @@
 
                     <!--Div-->
                     <div class="col-md-12 col-xl-12 mb-5">
+
                         <div class="row ">
+
                             <!--Image-->
                             <div class="col-md-3 mb-4 mb-sm-0">
                                 <input type="file" class="dropify" data-height="170" @change="setImg($event)"
@@ -83,6 +85,7 @@
 
                             <!--Div-->
                             <div class="col-md-3">
+
                                 <!--Surnames-->
                                 <div class="form-group mb-4">
                                     <input type="text" class="form-control" placeholder="Apellidos*"
@@ -113,7 +116,6 @@
                                     <input type="tel" class="form-control" placeholder="Télefono Fijo"
                                         v-mask="'####-####'" v-model="this.form.telefonoFijo">
                                 </div>
-
                             </div>
 
                             <!--Div-->
@@ -152,18 +154,24 @@
                         </div>
                     </div>
 
-                    <!--Maps-->
+                    <!--Div-->
                     <div class="col-md-12 col-xl-12 mx-auto mt-4 mt-xl-0">
-                        <p class="indicaciones text-center mb-2">Selecciona tu ubIcación en el mapa*</p>
+
+                        <!--Tittle-->
+                        <p class="indicaciones text-center mb-2">Posiciona tu ubIcación en el mapa*</p>
+
+                        <!--Map-->
                         <div id="map" class="map"></div>
                     </div>
                 </div>
 
                 <!--About-->
                 <div class="mb-1 mb-sm-4">
+
                     <!--Title-->
                     <h6 class="mb-1">Sobre la Marca</h6>
                     <p class="mb-3">completa la información relacionada a tu comercio </p>
+
                     <!--Div-->
                     <div class="col-md-12 col-xl-12">
                         <div class="row">
@@ -173,6 +181,8 @@
                                 <input type="file" class="dropify" data-height="120" @change="setLogo($event)"
                                     data-default-file="@/../img/assets/logo.png" />
                             </div>
+
+                            <!--Brand Name-->
                             <div class="col-md-4 mt-1">
                                 <div class="form-group mb-4">
                                     <input type="text" class="form-control" placeholder="Nombre de la marca o negocio*"
@@ -183,11 +193,14 @@
                                         :key="index">
                                         <div class="error-msg">{{ error.$message }}</div>
                                     </div>
-
                                 </div>
+
                                 <!--Checks-->
                                 <div class="form-group mb-3">
+
+                                    <!--Title-->
                                     <p class="mb-1">¿Donde brindas tus servicios? *</p>
+
                                     <!--All-->
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" id="todos" name="delivery"
@@ -209,11 +222,13 @@
                                         <label class="form-check-label" for="local">Ambos</label>
                                     </div>
                                 </div>
-
                             </div>
+
                             <!--Personal Description-->
                             <div class="col-md-5 mt-1 mb-4 mb-sm-0">
                                 <div class="form-group mb-3">
+
+                                    <!--Company Description-->
                                     <textarea style="resize: none;" class="form-control"
                                         placeholder="Describe tu empresa*" v-model="v$.form.descripcion.$model"
                                         rows="5"></textarea>
@@ -225,13 +240,13 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
 
                 <!--Services-->
                 <div class="row mb-5">
+
                     <!--Title-->
                     <h6 class="mb-1">Servicios a Brindar</h6>
                     <p class="mb-3 indicaciones">Busca un servicio luego elige la experiencia que posees, describe tu
@@ -286,6 +301,7 @@
 
                 <!--Social-->
                 <div class="row social mb-5">
+
                     <!--Title-->
                     <h6 class="mb-1">Perfil Social</h6>
                     <p class="mb-3 indicaciones">Coloca en enlace de tus redes sociales </p>
@@ -418,10 +434,16 @@
                 <!--Terminos-->
                 <div class="row justify-content-center">
                     <div id="terminos" class="col-md-9">
+
+                        <!--Title-->
                         <p class="text-center mb-2">Terminos y Condiciones</p>
+
+                        <!--Terms and Conditions-->
                         <textarea readonly style="resize: none;" class="form-control mb-2"
                             rows="5">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum. Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, 
                             sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.</textarea>
+
+                        <!--Accept-->
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="terms" v-model="this.terminos">
                             <label class="form-check-label" for="terms">Acepto Los terminos y Condiciones*</label>
@@ -450,6 +472,7 @@
 <script>
 import L from "leaflet"
 import router from "@/router"
+import "leaflet.locatecontrol"
 import useVuelidate from "@vuelidate/core"
 import "sweetalert2/dist/sweetalert2.min.css"
 import Navbar from "@/components/community/ComponentNavbar.vue"
@@ -498,8 +521,8 @@ export default {
             name: '',
             error: '',
             rubros: [],
-            latitud: '',
-            longitud: '',
+            latitud: 0,
+            longitud: 0,
             servicio: '',
             experiencia: '',
             descripcion: '',
@@ -661,6 +684,14 @@ export default {
                 Zoom: 16,
             }).addTo(this.map)
 
+            // Controller
+            L.control.locate({
+                showPopup: false,
+                locateOptions: {
+                    maxZoom: 18
+                }
+            }).addTo(this.map)
+
             // Localization
             const dinamicMarker = L.marker([0, 0], {
                 draggable: true,
@@ -683,9 +714,11 @@ export default {
 
         // Send
         async submit() {
+            // If
             if (this.cuentaServicios.length > 0 && this.terminos == true && this.form.imagen != false) {
                 var Form = new FormData()
                 var tag = ''
+
                 // Foreach
                 for (var paramName in this.form) {
                     Form.append(paramName, this.form[paramName])
@@ -768,6 +801,7 @@ export default {
             this.cuentaServicios.splice(index, 1)
         },
 
+        // Add
         verifyTag() {
             if (this.tag == '') {
                 this.nullTag = true
@@ -775,6 +809,7 @@ export default {
                 this.nullTag = false
             }
         },
+
         // Add
         addTag() {
             // If
@@ -808,6 +843,7 @@ export default {
         setImg(event) {
             this.form.imagen = event.target.files[0]
         },
+
         // Img
         setLogo(event) {
             this.form.logo = event.target.files[0]
