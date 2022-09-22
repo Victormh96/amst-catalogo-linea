@@ -335,7 +335,10 @@ export default {
       return this.$store.state.community.catalogocategoria.filter(categoria => {
         return categoria.nombre_cuenta.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
           .toLowerCase().includes(this.buscar.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
-            .toLowerCase())
+            .toLowerCase()) ||
+          categoria.tags.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
+            .toLowerCase().includes(this.buscar.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
+              .toLowerCase())
       })
     }
   },
