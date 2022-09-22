@@ -26,7 +26,7 @@
 
                 <!--Personal data-->
                 <div class="row mb-4 mb-xl-5">
-                    
+
                     <!--Title-->
                     <h6 class="mb-1">Datos Personales</h6>
                     <p class="mb-3 indicaciones">Completa la información de tu perfil personal</p>
@@ -98,7 +98,7 @@
                                 <!--Date Birth-->
                                 <div class="form-group mb-4">
                                     <input type="date" class="form-control" placeholder="Fecha de Nacimiento*"
-                                    data-toggle="tooltip" data-placement="top" title="Fecha de Nacimiento"
+                                        data-toggle="tooltip" data-placement="top" title="Fecha de Nacimiento"
                                         v-model="v$.form.fechaNacimiento.$model">
 
                                     <!--Error Message-->
