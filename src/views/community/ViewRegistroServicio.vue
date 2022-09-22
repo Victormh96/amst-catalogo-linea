@@ -23,24 +23,23 @@
         <!--Section-->
         <section id="registro">
             <div class="container mb-4 mb-sm-5">
+                <!--Personal data-->
                 <div class="row mb-4 mb-xl-5">
-
                     <!--Title-->
-                    <h6 class="mb-1">Datos Generales</h6>
-                    <p class="mb-3 indicaciones">Completa tu perfil personal</p>
+                    <h6 class="mb-1">Datos Personales</h6>
+                    <p class="mb-3 indicaciones">Completa la información de tu perfil personal</p>
 
                     <!--Div-->
-                    <div class="col-md-12 col-xl-8">
+                    <div class="col-md-12 col-xl-12">
                         <div class="row ">
-
                             <!--Image-->
-                            <div class="col-md-4 mb-4">
-                                <input type="file" class="dropify" data-height="190" @change="setImg($event)"
-                                    data-default-file="@/../img/assets/default.png" />
+                            <div class="col-md-3 mb-4">
+                                <input type="file" class="dropify" data-height="170" @change="setImg($event)"
+                                    data-default-file="@/../img/assets/perfil.png" />
                             </div>
 
                             <!--Names-->
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group mb-4">
                                     <input type="text" class="form-control" placeholder="Nombres*"
                                         v-model="v$.form.name.$model">
@@ -67,25 +66,13 @@
                                     </div>
                                 </div>
 
-                                <!--Email-->
+                                <!--Phone-->
                                 <div class="form-group mb-4">
-                                    <input type="email" class="form-control" placeholder="Correo*"
-                                        v-model="v$.form.email.$model">
+                                    <input type="tel" class="form-control" placeholder="Télefono celular*" v-mask="'####-####'"
+                                        v-model="v$.form.telefonoCelular.$model">
 
                                     <!--Error Message-->
-                                    <div class="input-errors err" v-for="(error, index) of v$.form.email.$errors"
-                                        :key="index">
-                                        <div class="error-msg">{{ error.$message }}</div>
-                                    </div>
-                                </div>
-
-                                <!-- Document -->
-                                <div class="form-group mb-4">
-                                    <input type="tel" class="form-control" placeholder="DUI*" v-mask="'########-#'"
-                                        v-model="v$.form.documento.$model">
-
-                                    <!--Error Message-->
-                                    <div class="input-errors err" v-for="(error, index) of v$.form.documento.$errors"
+                                    <div class="input-errors err" v-for="(error, index) of v$.form.telefonoCelular.$errors"
                                         :key="index">
                                         <div class="error-msg">{{ error.$message }}</div>
                                     </div>
@@ -93,7 +80,7 @@
                             </div>
 
                             <!--Div-->
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <!--Surnames-->
                                 <div class="form-group mb-4">
                                     <input type="text" class="form-control" placeholder="Apellidos*"
@@ -120,11 +107,34 @@
 
                                 <!--Phone-->
                                 <div class="form-group mb-4">
-                                    <input type="tel" class="form-control" placeholder="Télefono*" v-mask="'####-####'"
-                                        v-model="v$.form.telefono.$model">
+                                    <input type="tel" class="form-control" placeholder="Télefono Fijo" v-mask="'####-####'"
+                                        v-model="this.form.telefonoFijo">
+                                </div>
+
+                            </div>
+
+                            <!--Div-->
+                            <div class="col-md-3">
+
+                                <!-- Document -->
+                                <div class="form-group mb-4">
+                                    <input type="tel" class="form-control" placeholder="DUI*" v-mask="'########-#'"
+                                        v-model="v$.form.documento.$model">
 
                                     <!--Error Message-->
-                                    <div class="input-errors err" v-for="(error, index) of v$.form.telefono.$errors"
+                                    <div class="input-errors err" v-for="(error, index) of v$.form.documento.$errors"
+                                        :key="index">
+                                        <div class="error-msg">{{ error.$message }}</div>
+                                    </div>
+                                </div>
+
+                                <!--Email-->
+                                <div class="form-group mb-4">
+                                    <input type="email" class="form-control" placeholder="Correo*"
+                                        v-model="v$.form.email.$model">
+
+                                    <!--Error Message-->
+                                    <div class="input-errors err" v-for="(error, index) of v$.form.email.$errors"
                                         :key="index">
                                         <div class="error-msg">{{ error.$message }}</div>
                                     </div>
@@ -137,47 +147,84 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="row">
-                            <!--Personal Description-->
-                            <div class="col-md-6 mb-4 mb-sm-0">
-                                <input type="text" class="form-control" placeholder="Descripción Personal*"
-                                    v-model="v$.form.descripcion.$model">
-
-                                <!--Error Message-->
-                                <div class="input-errors err" v-for="(error, index) of v$.form.descripcion.$errors"
-                                    :key="index">
-                                    <div class="error-msg">{{ error.$message }}</div>
-                                </div>
-                            </div>
-
-                            <!--Home service-->
-                            <div class="col-md-3 align-self-center">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="servicioDomicilio"
-                                        v-model="this.form.servicioDomicilio">
-                                    <label class="form-check-label" for="servicioDomicilio">Servicio a Domicilio</label>
-                                </div>
-                            </div>
-
-                            <!--I have Place-->
-                            <div class="col-md-3 align-self-center">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="local"
-                                        v-model="this.form.local">
-                                    <label class="form-check-label" for="local">Cuento con local</label>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     <!--Maps-->
-                    <div class="col-md-12 col-xl-4 mx-auto mt-4 mt-xl-0">
-                        <div id="map" class="map mb-2"></div>
+                    <div class="col-md-12 col-xl-12 mx-auto mt-4 mt-xl-0">
                         <p class="indicaciones text-center">Selecciona tu ubIcación en el mapa*</p>
+                        <div id="map" class="map"></div>
                     </div>
                 </div>
+                <!--About-->
+                <div class="mb-1 mb-sm-4">
+                    <!--Title-->
+                    <h6 class="mb-1">Sobre la Marca</h6>
+                    <p class="mb-3">completa la información relacionada a tu comercio </p>
+                    <!--Div-->
+                    <div class="col-md-12 col-xl-12">
+                        <div class="row">
+                            <!--Image-->
+                            <div class="col-md-3 mb-4">
+                                <input type="file" class="dropify" data-height="120" @change="setLogo($event)"
+                                    data-default-file="@/../img/assets/logo.png" />
+                            </div>
+                            <div class="col-md-4 mt-1">
+                                <div class="form-group mb-4">
+                                    <input type="text" class="form-control" placeholder="Nombre de la marca o negocio*"
+                                        v-model="v$.form.marca.$model">
 
+                                    <!--Error Message-->
+                                    <div class="input-errors err" v-for="(error, index) of v$.form.marca.$errors"
+                                        :key="index">
+                                        <div class="error-msg">{{ error.$message }}</div>
+                                    </div>
+
+                                </div>
+                                <!--Checks-->
+                                <div class="form-group mb-3">
+                                    <p class="mb-1">¿Donde brindas tus servicios? *</p>
+                                    <!--All-->
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="todos" name="delivery"
+                                            v-model="v$.form.tipoServicio.$model" @change="setTipoServicio()" value="0">
+                                        <label class="form-check-label" for="todos">A domicilio</label>
+                                    </div>
+
+                                    <!--Delivery-->
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="domicilio" name="delivery"
+                                            v-model="v$.form.tipoServicio.$model" @change="setTipoServicio()" value="1">
+                                        <label class="form-check-label" for="domicilio">Cuento con local</label>
+                                    </div>
+
+                                    <!--Place-->
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="local" name="delivery"
+                                            v-model="v$.form.tipoServicio.$model" @change="setTipoServicio()" value="2">
+                                        <label class="form-check-label" for="local">Ambos</label>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!--Personal Description-->
+                            <div class="col-md-5 mt-1 mb-4 mb-sm-0">
+                                <div class="form-group mb-3">
+                                    <textarea style="resize: none;" class="form-control"
+                                        placeholder="Describe tu marca*" v-model="v$.form.descripcion.$model"
+                                        rows="5"></textarea>
+
+                                    <!--Error Message-->
+                                    <div class="input-errors err" v-for="(error, index) of v$.form.descripcion.$errors"
+                                        :key="index">
+                                        <div class="error-msg">{{ error.$message }}</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!--Services-->
                 <div class="row mb-0 mb-sm-4">
                     <!--Title-->
                     <h6 class="mb-1">Servicios a Brindar</h6>
@@ -230,8 +277,8 @@
                         </span>
                     </div>
                 </div>
-
-                <div class="row social justify-content-center">
+                <!--Social-->
+                <div class="row social mb-4">
                     <!--Title-->
                     <h6 class="mb-1">Perfil Social</h6>
                     <p class="mb-3 indicaciones">Coloca en enlace de tus redes sociales </p>
@@ -331,6 +378,32 @@
                             <div class="error-msg">{{ error.$message }}</div>
                         </div>
                     </div>
+
+                </div>
+
+                <div class="row mb-4 mb-xl-4">
+                    <!--Title-->
+                    <h6 class="mb-1 mt-2">¿Cómo podemos encontrarte?</h6>
+                    <p class="mb-3">Escribe palabras claves que faciliten encontrar tu perfil</p>
+                    <!--Div-->
+
+                    <div class="col-md-3 mb-4 mb-sm-0 form-group mb-3">
+                        <input type="text" class="form-control" placeholder="Palabra Clave" @keyup="verifyTag()"
+                            v-model="this.tag">
+                    </div>
+                    <!--Add Service-->
+                    <div class="col-xs-2 col-md-1 mt-4 mt-sm-0 d-flex align-items-center">
+                        <button type="button" class="btn-md" @click="addTag" :disabled="nullTag"><i
+                                class="fa-solid fa-plus"></i></button>
+                    </div>
+                    <!--List tags-->
+                    <div class="col-md-8 ">
+                        <span class="tag mb-4 mb-sm-3 me-3" v-for="(tag, index) in this.listTag" v-bind:key="index">
+                            {{ tag }}<i class="fa-solid fa-xmark" @click="deleteTag(index)"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
                     <!--Terminos-->
                     <div id="terminos" class="col-md-9 mt-4 ">
                         <p class="m-1 text-center">Terminos y Condiciones</p>
@@ -344,6 +417,7 @@
                         </div>
                     </div>
                 </div>
+
                 <!--Submit-->
                 <div class="col-md-12 text-center mt-4">
                     <button type="button" class="btn-lg" :disabled="v$.form.$invalid" @click="submit">Unirme</button>
@@ -385,13 +459,14 @@ export default {
                 name: '',
                 email: '',
                 local: '',
-                imagen: '',
+                imagen: false,
+                logo: '',
                 genero: '',
                 pagweb: '',
                 twitter: '',
                 lastName: '',
                 facebook: '',
-                telefono: '',
+                telefonoCelular: '',
                 whatsapp: '',
                 linkedin: '',
                 instagram: '',
@@ -400,10 +475,14 @@ export default {
                 descripcion: '',
                 fechaNacimiento: '',
                 servicioDomicilio: '',
+                marca: '',
+                tipoServicio: ''
             },
 
             // Others
             map: '',
+            tag: '',
+            listTag: [],
             name: '',
             error: '',
             rubros: [],
@@ -417,8 +496,10 @@ export default {
             portadaregistro: [],
             cuentaServicios: [],
             nullServicio: true,
+            nullTag: true,
             errorServicio: true,
-            terminos: false
+            terminos: false,
+
         }
     },
 
@@ -457,11 +538,14 @@ export default {
                 lastName: {
                     requeridMessage,
                 },
+                marca: {
+                    requeridMessage,
+                },
                 documento: {
                     requeridMessage,
                     duiMessage,
                 },
-                telefono: {
+                telefonoCelular: {
                     requeridMessage,
                     phoneMessage
                 },
@@ -473,6 +557,9 @@ export default {
                     requeridMessage,
                 },
                 genero: {
+                    requeridMessage,
+                },
+                tipoServicio: {
                     requeridMessage,
                 },
                 fechaNacimiento: {
@@ -578,23 +665,24 @@ export default {
 
         // Send
         async submit() {
-            if (this.cuentaServicios.length > 0 && this.terminos == true) {
+            if (this.cuentaServicios.length > 0 && this.terminos == true && this.form.imagen != false) {
                 var Form = new FormData()
-
+                var tag = ''
                 // Foreach
                 for (var paramName in this.form) {
                     Form.append(paramName, this.form[paramName])
                 }
+                this.listTag.forEach(t => tag = tag + ',' + t);
 
                 // Add
                 Form.append('latitud', localStorage.getItem('latitud'))
                 Form.append('longitud', localStorage.getItem('longitud'))
                 Form.append('servicios', JSON.stringify(this.cuentaServicios))
+                Form.append('tags', tag)
 
                 // Vuex
                 this.$store.dispatch("ClearServicio")
                 await this.$store.dispatch("RegistroServicio", Form).then(() => {
-
                     // If
                     if (this.$store.state.community.registroservicio) {
                         this.showSucces()
@@ -605,6 +693,8 @@ export default {
             } else {
                 if (this.terminos === false) {
                     this.showFailServicies('Acepta los terminos y condiciones')
+                } else if (this.form.imagen == false) {
+                    this.showFailServicies('Agrega la foto de tu perfil')
                 } else {
                     this.showFailServicies('No has registrado tus servicios')
                 }
@@ -655,15 +745,40 @@ export default {
             }
         },
 
+        verifyTag() {
+            if (this.tag == '') {
+                this.nullTag = true
+            } else {
+                this.nullTag = false
+            }
+        },
+
         // Delete
         async deleteServices(index) {
             this.cuentaServicios.splice(index, 1)
         },
 
+        // Add
+        addTag() {
+            // If
+            if (this.listTag.length > 4) {
+                this.showFailServicies('Solo puedes registrar 5 etiquetas, elimina uno para agregarlo')
+            } else {
+                // Push
+                this.listTag.push(this.tag)
+                this.tag = ''
+                this.nullTag = true
+            }
+        },
+
+        // Delete
+        async deleteTag(index) {
+            this.listTag.splice(index, 1)
+        },
+
         // Search
         searchName(id) {
             this.listaServicio.forEach(elemento => {
-
                 // If
                 if (elemento.id === id) {
                     this.name = elemento.nombre_rubro;
@@ -675,6 +790,23 @@ export default {
         // Img
         setImg(event) {
             this.form.imagen = event.target.files[0]
+        },
+        // Img
+        setLogo(event) {
+            this.form.logo = event.target.files[0]
+        },
+
+        setTipoServicio() {
+            if (this.form.tipoServicio === '0') {
+                this.form.servicioDomicilio = true
+                this.form.local = false
+            } else if (this.form.tipoServicio === '1') {
+                this.form.servicioDomicilio = false
+                this.form.local = true
+            } else {
+                this.form.servicioDomicilio = true
+                this.form.local = true
+            }
         }
     },
 };
