@@ -19,7 +19,6 @@
                             :loop="true" :effect="'fade'">
                             <swiper-slide v-for="(p, index) in this.portada" v-bind:key="index">
                                 <img :src="this.url + `/storage/${ p.imagen }`" alt="adsdasd" />
-
                             </swiper-slide>
                         </swiper>
                     </div>
@@ -48,7 +47,7 @@
                 <div class="row text-center">
 
                     <!--Cards #1-->
-                    <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mb-5 mb-lg-0">
+                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 mb-5 mb-md-0">
                         <div class="tag">
 
                             <!--Img-->
@@ -58,14 +57,14 @@
                             <h6 class="mb-3 mt-3 mb-m-0">+ 1000 Empresas Responsables</h6>
 
                             <!--Info-->
-                            <p class="d-none d-sm-none d-md-block">Empresas establecidas en el municipio de Santa Tecla,
+                            <p class="d-none d-sm-none d-lg-block">Empresas establecidas en el municipio de Santa Tecla,
                                 solventes y con responsabilidad social.
                             </p>
                         </div>
                     </div>
 
                     <!--Cards #2-->
-                    <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mb-5 mb-lg-0">
+                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 mb-5 mb-md-0">
                         <div class="tag">
 
                             <!--Img-->
@@ -75,23 +74,23 @@
                             <h6 class="mb-3 mt-3 mb-m-0">+ 1000 Emprendedores</h6>
 
                             <!--Info-->
-                            <p class="d-none d-sm-none d-md-block">La red de emprendedores más grande en el municipio de
+                            <p class="d-none d-sm-none d-lg-block">La red de emprendedores más grande en el municipio de
                                 Santa Tecla donde podrás encontrar lo que necesites.</p>
                         </div>
                     </div>
 
                     <!--Cards #3-->
-                    <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mb-0 mb-sm-0 mx-auto">
+                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 mb-0 mb-sm-0 mx-auto">
                         <div class="tag">
 
                             <!--Img-->
                             <img src="@/../public/img/assets/shapex9.png" class="mx-auto d-block" alt="Busqueda AMST">
 
                             <!--Title-->
-                            <h6 class="mb-3 mt-3 mb-m-0">+ 200 Categorías</h6>
+                            <h6 class="mb-3 mt-3 mb-m-0 espacio">+ 200 Categorías</h6>
 
                             <!--Info-->
-                            <p class="d-none d-sm-none d-md-block">productos como: artículos de primera necesidad,
+                            <p class="d-none d-sm-none d-lg-block">productos como: artículos de primera necesidad,
                                 abarroterías, desechables, servicios de albañilería, etc.</p>
                         </div>
                     </div>
@@ -110,7 +109,7 @@
 
                             <!--title-->
                             <div class="col-md-12 mb-3 text-left">
-                                <h2>¿Quieres ubicar tu producto o servicio en Santa Tecla?</h2>
+                                <h2>¿Quieres ubicar tu producto, servicio en Santa Tecla?</h2>
                             </div>
 
                             <!--Description-->

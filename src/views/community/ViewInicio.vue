@@ -20,19 +20,18 @@
                     </div>
 
                     <!--Description-->
-                    <div class="col-lg-8 col-xl-8 m-auto mb-4 d-none d-md-none d-lg-block">
+                    <div class="col-lg-8 col-xl-8 m-auto mb-4">
                         <p>Más de 1,000 Tecleños con espíritu emprendedor ofertan aquí sus productos y servicios
                             ¡ubícalos!</p>
                     </div>
 
                     <!--Search-->
-                    <div class="col-12 col-md-6 col-lg-5 m-auto">
+                    <div class="col-12 col-12 col-md-7 col-lg-5 m-auto">
                         <div class="position-relative">
 
                             <!--Input-->
-                            <input type="text" class="form-control"
-                                placeholder="Busca: Albañil, Farmacias, Pupuserias..." v-model="buscarTag"
-                                v-on:keyup.enter="verifyTag">
+                            <input type="text" class="form-control" placeholder="Albañil, Farmacias, Pupuserias..."
+                                v-model="buscarTag" v-on:keyup.enter="verifyTag">
 
                             <!--Result-->
                             <ul v-if="searchTag.length">
@@ -68,7 +67,7 @@
                 <div class="row">
 
                     <!--Step-->
-                    <div class="col-12 col-md-6 col-xl-4 mb-5 mb-xl-0">
+                    <div class="col-12 col-md-4 col-xl-4 mb-5 mb-sm-0">
                         <div class="card arrow">
 
                             <!--Img-->
@@ -84,7 +83,7 @@
                     </div>
 
                     <!--Step-->
-                    <div class="col-12 col-md-6 col-xl-4 mb-5 mb-xl-0">
+                    <div class="col-12 col-md-4 col-xl-4 mb-5 mb-sm-0">
                         <div class="card arrow">
 
                             <!--Img-->
@@ -100,7 +99,7 @@
                     </div>
 
                     <!--Step-->
-                    <div class="col-12 col-md-6 col-xl-4 mx-auto">
+                    <div class="col-12 col-md-4 col-xl-4 mx-auto">
                         <div class="card">
 
                             <!--Img-->
@@ -110,8 +109,8 @@
                             <h4 class="mb-3">PONTE EN CONTÁCTO</h4>
 
                             <!--Info-->
-                            <span>Podrás encontrar los datos de contacto de los profesionales y las empresas, Redes
-                                sociales.</span>
+                            <span>Podrás encontrar los datos de contacto de los profesionales y las empresas
+                                afiliadas.</span>
                         </div>
                     </div>
                 </div>
@@ -156,7 +155,7 @@
 
                             <!--title-->
                             <div class="col-md-12 mb-3 text-left">
-                                <h2>¿Quieres ubicar tu producto o servicio en Santa Tecla?</h2>
+                                <h2>¿Quieres ubicar tu producto, servicio en Santa Tecla?</h2>
                             </div>
 
                             <!--Description-->

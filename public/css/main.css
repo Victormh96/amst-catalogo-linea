@@ -216,7 +216,7 @@
 
 #pasos {
   background: var(--white-blue);
-  padding: 90px 0 100px 0;
+  padding: 80px 0 90px 0;
 }
 
 /*===Phone===**/
@@ -229,7 +229,7 @@
 /*===Ipad===**/
 @media (min-width: 559px) and (max-width: 991.98px) {
   #pasos {
-    padding: 50px 0 60px 0;
+    padding: 50px 0 70px 0;
   }
 }
 
@@ -253,7 +253,7 @@
 
 #pasos .card {
   background-color: var(--white);
-  padding: 50px 25px;
+  padding: 45px 25px;
   margin: 0 40px;
   position: relative;
   border-radius: 5px;
@@ -272,6 +272,13 @@
 @media (min-width: 559px) and (max-width: 991.98px) {
   #pasos .card {
     margin: 0;
+  }
+}
+
+/*===Ipad Pro===**/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  #pasos .card {
+    margin: 0 10px;
   }
 }
 
@@ -324,7 +331,7 @@
 }
 
 #destacado {
-  padding: 90px 0 50px 0;
+  padding: 80px 0 40px 0;
 }
 
 /*===Phone===**/
@@ -874,7 +881,7 @@
   position: relative;
   background-position: center;
   background-size: cover;
-  padding: 60px 0;
+  padding: 50px 0;
 }
 
 /* ============================================================*/
@@ -925,8 +932,9 @@
 }
 
 #registro .map {
-height: 280px;
+  height: 280px;
 }
+
 /*===Phone===**/
 @media (max-width: 575.98px) {
   #registro .leaflet-container {
@@ -953,6 +961,16 @@ height: 280px;
   #registro .leaflet-container {
     height: 230px;
   }
+}
+
+#terminos p {
+  font-weight: 600;
+  color: var(--dark-blue);
+}
+
+#terminos .form-check-label {
+  color: #212529;
+  font-size: 0.8rem;
 }
 
 /* ============================================================*/
@@ -1021,7 +1039,6 @@ height: 280px;
   }
 }
 
-
 #beneficios .tag img {
   width: 70px;
   height: 70px;
@@ -1035,15 +1052,12 @@ height: 280px;
   opacity: 0.6;
 }
 
-
-#terminos p {
-  font-weight: 600;
-  color: var(--dark-blue);
-}
-
-#terminos .form-check-label {
-  color: #212529;
-  font-size: 0.8rem;
+/*===Ipad===**/
+@media (min-width: 559px) and (max-width: 991.98px) {
+  #beneficios .espacio {
+    width: 90%;
+    margin: auto;
+  }
 }
 
 /* ============================================================*/

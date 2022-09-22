@@ -23,17 +23,19 @@
         <!--Section-->
         <section id="registro">
             <div class="container mb-4 mb-sm-5">
+
                 <!--Personal data-->
                 <div class="row mb-4 mb-xl-5">
+                    
                     <!--Title-->
                     <h6 class="mb-1">Datos Personales</h6>
                     <p class="mb-3 indicaciones">Completa la información de tu perfil personal</p>
 
                     <!--Div-->
-                    <div class="col-md-12 col-xl-12">
+                    <div class="col-md-12 col-xl-12 mb-5">
                         <div class="row ">
                             <!--Image-->
-                            <div class="col-md-3 mb-4">
+                            <div class="col-md-3 mb-4 mb-sm-0">
                                 <input type="file" class="dropify" data-height="170" @change="setImg($event)"
                                     data-default-file="@/../img/assets/perfil.png" />
                             </div>
@@ -67,13 +69,13 @@
                                 </div>
 
                                 <!--Phone-->
-                                <div class="form-group mb-4">
-                                    <input type="tel" class="form-control" placeholder="Télefono celular*" v-mask="'####-####'"
-                                        v-model="v$.form.telefonoCelular.$model">
+                                <div class="form-group mb-4 mb-sm-0">
+                                    <input type="tel" class="form-control" placeholder="Télefono celular*"
+                                        v-mask="'####-####'" v-model="v$.form.telefonoCelular.$model">
 
                                     <!--Error Message-->
-                                    <div class="input-errors err" v-for="(error, index) of v$.form.telefonoCelular.$errors"
-                                        :key="index">
+                                    <div class="input-errors err"
+                                        v-for="(error, index) of v$.form.telefonoCelular.$errors" :key="index">
                                         <div class="error-msg">{{ error.$message }}</div>
                                     </div>
                                 </div>
@@ -106,9 +108,9 @@
                                 </div>
 
                                 <!--Phone-->
-                                <div class="form-group mb-4">
-                                    <input type="tel" class="form-control" placeholder="Télefono Fijo" v-mask="'####-####'"
-                                        v-model="this.form.telefonoFijo">
+                                <div class="form-group mb-4 mb-sm-0">
+                                    <input type="tel" class="form-control" placeholder="Télefono Fijo"
+                                        v-mask="'####-####'" v-model="this.form.telefonoFijo">
                                 </div>
 
                             </div>
@@ -141,7 +143,7 @@
                                 </div>
 
                                 <!--Address-->
-                                <div class="form-group mb-4">
+                                <div class="form-group mb-4 mb-sm-0">
                                     <input type="text" class="form-control" placeholder="N° de casa / Local / Piso"
                                         v-model="this.form.direccion">
                                 </div>
@@ -151,10 +153,11 @@
 
                     <!--Maps-->
                     <div class="col-md-12 col-xl-12 mx-auto mt-4 mt-xl-0">
-                        <p class="indicaciones text-center">Selecciona tu ubIcación en el mapa*</p>
+                        <p class="indicaciones text-center mb-2">Selecciona tu ubIcación en el mapa*</p>
                         <div id="map" class="map"></div>
                     </div>
                 </div>
+
                 <!--About-->
                 <div class="mb-1 mb-sm-4">
                     <!--Title-->
@@ -163,6 +166,7 @@
                     <!--Div-->
                     <div class="col-md-12 col-xl-12">
                         <div class="row">
+
                             <!--Image-->
                             <div class="col-md-3 mb-4">
                                 <input type="file" class="dropify" data-height="120" @change="setLogo($event)"
@@ -224,8 +228,9 @@
                         </div>
                     </div>
                 </div>
+
                 <!--Services-->
-                <div class="row mb-0 mb-sm-4">
+                <div class="row mb-5">
                     <!--Title-->
                     <h6 class="mb-1">Servicios a Brindar</h6>
                     <p class="mb-3 indicaciones">Busca un servicio luego elige la experiencia que posees, describe tu
@@ -277,8 +282,9 @@
                         </span>
                     </div>
                 </div>
+
                 <!--Social-->
-                <div class="row social mb-4">
+                <div class="row social mb-5">
                     <!--Title-->
                     <h6 class="mb-1">Perfil Social</h6>
                     <p class="mb-3 indicaciones">Coloca en enlace de tus redes sociales </p>
@@ -381,21 +387,25 @@
 
                 </div>
 
-                <div class="row mb-4 mb-xl-4">
-                    <!--Title-->
-                    <h6 class="mb-1 mt-2">¿Cómo podemos encontrarte?</h6>
-                    <p class="mb-3">Escribe palabras claves que faciliten encontrar tu perfil</p>
-                    <!--Div-->
+                <!--Tags-->
+                <div class="row mb-xl-4 mb-5">
 
+                    <!--Title-->
+                    <h6 class="mb-1">¿Cómo podemos encontrarte?</h6>
+                    <p class="mb-3">Escribe palabras claves que faciliten encontrar tu perfil</p>
+
+                    <!--Div-->
                     <div class="col-md-3 mb-4 mb-sm-0 form-group mb-3">
                         <input type="text" class="form-control" placeholder="Palabra Clave" @keyup="verifyTag()"
                             v-model="this.tag">
                     </div>
+
                     <!--Add Service-->
                     <div class="col-xs-2 col-md-1 mt-4 mt-sm-0 d-flex align-items-center">
                         <button type="button" class="btn-md" @click="addTag" :disabled="nullTag"><i
                                 class="fa-solid fa-plus"></i></button>
                     </div>
+
                     <!--List tags-->
                     <div class="col-md-8 ">
                         <span class="tag mb-4 mb-sm-3 me-3" v-for="(tag, index) in this.listTag" v-bind:key="index">
@@ -403,13 +413,13 @@
                         </span>
                     </div>
                 </div>
+
+                <!--Terminos-->
                 <div class="row justify-content-center">
-                    <!--Terminos-->
-                    <div id="terminos" class="col-md-9 mt-4 ">
-                        <p class="m-1 text-center">Terminos y Condiciones</p>
-                        <textarea readonly style="resize: none;" class="form-control m-1"
+                    <div id="terminos" class="col-md-9">
+                        <p class="text-center mb-2">Terminos y Condiciones</p>
+                        <textarea readonly style="resize: none;" class="form-control mb-2"
                             rows="5">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum. Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, 
-                            
                             sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.</textarea>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="terms" v-model="this.terminos">
@@ -651,11 +661,17 @@ export default {
             }).addTo(this.map)
 
             // Localization
-            L.marker([13.675997400000004, -89.28905480533759], {
+            const dinamicMarker = L.marker([0, 0], {
                 draggable: true,
                 autoPan: true
-            },).addTo(this.map)
-                .on("dragend", dragedMaker);
+            }).addTo(this.map).on("dragend", dragedMaker);
+
+            this.map.on('click', function (e) {
+                const { lat = 0, lng = 0 } = e.latlng
+                localStorage.setItem('latitud', lat)
+                localStorage.setItem('longitud', lng)
+                dinamicMarker.setLatLng([lat, lng])
+            });
 
             // Assing
             function dragedMaker() {
