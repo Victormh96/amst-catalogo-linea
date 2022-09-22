@@ -924,6 +924,9 @@
   font-size: 0.8rem;
 }
 
+#registro .map {
+height: 280px;
+}
 /*===Phone===**/
 @media (max-width: 575.98px) {
   #registro .leaflet-container {
