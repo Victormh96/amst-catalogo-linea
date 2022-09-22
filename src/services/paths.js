@@ -26,4 +26,6 @@ export const RegistroEmpresa = () => `${url_base}/api/registro-empresa`
 
 export const Publicidad = () => `${url_base}/api/publicidad`
 
+export const Entidades = () => `${url_base}/api/entidades`
+
 export const PublicidadClick = () => `${url_base}/api/publicidad-click/`

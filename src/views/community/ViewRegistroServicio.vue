@@ -96,6 +96,7 @@
                                 <!--Date Birth-->
                                 <div class="form-group mb-4">
                                     <input type="date" class="form-control" placeholder="Fecha de Nacimiento*"
+                                    data-toggle="tooltip" data-placement="top" title="Fecha de Nacimiento"
                                         v-model="v$.form.fechaNacimiento.$model">
 
                                     <!--Error Message-->
@@ -210,7 +211,7 @@
                             <div class="col-md-5 mt-1 mb-4 mb-sm-0">
                                 <div class="form-group mb-3">
                                     <textarea style="resize: none;" class="form-control"
-                                        placeholder="Describe tu marca*" v-model="v$.form.descripcion.$model"
+                                        placeholder="Describe tu empresa*" v-model="v$.form.descripcion.$model"
                                         rows="5"></textarea>
 
                                     <!--Error Message-->
@@ -746,6 +747,11 @@ export default {
             }
         },
 
+        // Delete
+        async deleteServices(index) {
+            this.cuentaServicios.splice(index, 1)
+        },
+
         verifyTag() {
             if (this.tag == '') {
                 this.nullTag = true
@@ -753,12 +759,6 @@ export default {
                 this.nullTag = false
             }
         },
-
-        // Delete
-        async deleteServices(index) {
-            this.cuentaServicios.splice(index, 1)
-        },
-
         // Add
         addTag() {
             // If
