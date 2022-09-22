@@ -10,12 +10,12 @@
 
         <!--Section-->
         <section id="portada" class="d-flex align-items-center"
-            v-bind:style="[this.portadainicio.imagen ? { 'background-image': 'url(' + this.url + '/storage/' + this.portadainicio.imagen + ')' } : null]">
+            v-bind:style="[this.portadainicio ? { 'background-image': 'url(' + this.url + '/storage/' + this.portadainicio.imagen + ')' } : null]">
             <div class="container z-index">
                 <div class="row">
 
                     <!--Title-->
-                    <div class="col-md-12 mb-4">
+                    <div class="col-md-12 mb-3 mb-xxl-4">
                         <h1>¡Ubícalo en Tecla!</h1>
                     </div>
 
@@ -30,8 +30,9 @@
                         <div class="position-relative">
 
                             <!--Input-->
-                            <input type="text" class="form-control" placeholder="Albañil, Farmacias, Pupuserias..."
-                                v-model="buscarTag" v-on:keyup.enter="verifyTag">
+                            <input type="text" class="form-control"
+                                placeholder="Busca: Albañil, Farmacias, Pupuserias..." v-model="buscarTag"
+                                v-on:keyup.enter="verifyTag">
 
                             <!--Result-->
                             <ul v-if="searchTag.length">
@@ -154,7 +155,7 @@
                         <div class="row">
 
                             <!--title-->
-                            <div class="col-md-12 mb-3 text-left d-none d-md-none d-lg-block">
+                            <div class="col-md-12 mb-3 text-left">
                                 <h2>¿Quieres ubicar tu producto o servicio en Santa Tecla?</h2>
                             </div>
 
