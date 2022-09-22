@@ -30,23 +30,36 @@
                     <p class="mb-3 indicaciones">Completa tu perfil personal</p>
 
                     <!--Div-->
-                    <div class="col-md-12 col-xl-8">
+                    <div class="col-md-12 mb-2">
                         <div class="row ">
 
                             <!--Image-->
-                            <div class="col-md-4 mb-4">
-                                <input type="file" class="dropify" data-height="190" @change="setImg($event)"
-                                    data-default-file="@/../img/assets/default.png">
+                            <div class="col-md-3 mb-4">
+                                <input type="file" class="dropify" data-height="170" @change="setImg($event)"
+                                    data-default-file="@/../img/assets/store.png">
                             </div>
 
                             <!--Company Name-->
-                            <div class="col-md-4">
+                            <div class="col-md-3">
+                                <!--Company Name-->
                                 <div class="form-group mb-4">
                                     <input type="text" class="form-control" placeholder="Nombre de la Empresa*"
                                         v-model="v$.form.name.$model">
 
                                     <!--Error Message-->
                                     <div class="input-errors err" v-for="(error, index) of v$.form.name.$errors"
+                                        :key="index">
+                                        <div class="error-msg">{{ error.$message }}</div>
+                                    </div>
+                                </div>
+
+                                <!--Email-->
+                                <div class="form-group mb-4">
+                                    <input type="email" class="form-control" placeholder="Correo*"
+                                        v-model="v$.form.email.$model">
+
+                                    <!--Error Message-->
+                                    <div class="input-errors err" v-for="(error, index) of v$.form.email.$errors"
                                         :key="index">
                                         <div class="error-msg">{{ error.$message }}</div>
                                     </div>
@@ -64,6 +77,23 @@
                                     </div>
                                 </div>
 
+                            </div>
+
+                            <!--Div-->
+                            <div class="col-md-3">
+                                <!--Company Name-->
+                                <div class="form-group mb-4">
+                                    <input type="text" class="form-control" placeholder="Representante*"
+                                        v-model="v$.form.representante.$model">
+
+                                    <!--Error Message-->
+                                    <div class="input-errors err"
+                                        v-for="(error, index) of v$.form.representante.$errors" :key="index">
+                                        <div class="error-msg">{{ error.$message }}</div>
+                                    </div>
+                                </div>
+
+
                                 <!--Cell Phone-->
                                 <div class="form-group mb-4">
                                     <input type="tel" step=any class="form-control" placeholder="Teléfono celular*"
@@ -76,47 +106,33 @@
                                     </div>
                                 </div>
 
-                                <!--Email-->
+                                <!--Date Birth-->
                                 <div class="form-group mb-4">
-                                    <input type="email" class="form-control" placeholder="Correo*"
-                                        v-model="v$.form.email.$model">
+                                    <input type="date" class="form-control" placeholder="Fecha de Nacimiento*"
+                                        data-toggle="tooltip" data-placement="top" title="Fecha de Fundación"
+                                        v-model="v$.form.fechaNacimiento.$model">
 
                                     <!--Error Message-->
-                                    <div class="input-errors err" v-for="(error, index) of v$.form.email.$errors"
-                                        :key="index">
+                                    <div class="input-errors err"
+                                        v-for="(error, index) of v$.form.fechaNacimiento.$errors" :key="index">
                                         <div class="error-msg">{{ error.$message }}</div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!--Div-->
-                            <div class="col-md-4">
+                            <!--Company Name-->
+                            <div class="col-md-3">
                                 <!--Category-->
                                 <div class="form-group mb-4">
-                                    <select class="form-control select2" v-model="v$.form.categoria.$model">
+                                    <select class="form-control select2" v-model="v$.form.entidad.$model">
                                         <option disabled value="">Categoria*</option>
-                                        <option value="3">Micro Empresa</option>
-                                        <option value="4">Empresa</option>
+                                        <option v-for="(e, index) of this.entidades" :key="index"
+                                            :value="e.id">{{e.nombre_entidad}}</option>
                                     </select>
 
                                     <!--Error Message-->
-                                    <div class="input-errors err" v-for="(error, index) of v$.form.categoria.$errors"
+                                    <div class="input-errors err" v-for="(error, index) of v$.form.entidad.$errors"
                                         :key="index">
-                                        <div class="error-msg">{{ error.$message }}</div>
-                                    </div>
-                                </div>
-
-                                <!--Home service-->
-                                <div class="form-group mb-4">
-                                    <select class="form-control select2" v-model="v$.form.servicioDomicilio.$model">
-                                        <option disabled value="">Servicio a domicilio*</option>
-                                        <option value="1">Si</option>
-                                        <option value="0">No</option>
-                                    </select>
-
-                                    <!--Error Message-->
-                                    <div class="input-errors err"
-                                        v-for="(error, index) of v$.form.servicioDomicilio.$errors" :key="index">
                                         <div class="error-msg">{{ error.$message }}</div>
                                     </div>
                                 </div>
@@ -133,6 +149,7 @@
                                     </div>
                                 </div>
 
+
                                 <!--Address-->
                                 <div class="form-group mb-4">
                                     <input type="text" class="form-control" placeholder="N° de casa / Local / Piso*"
@@ -145,40 +162,83 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="row">
-
-                            <!--Company Description-->
-                            <div class="col-md-6 mb-4 mb-sm-0">
-                                <textarea style="resize: none;" class="form-control" placeholder="Describe tu Empresa*"
-                                    v-model="v$.form.descripcion.$model" rows="3"></textarea>
-
-                                <!--Error Message-->
-                                <div class="input-errors err" v-for="(error, index) of v$.form.descripcion.$errors"
-                                    :key="index">
-                                    <div class="error-msg">{{ error.$message }}</div>
-                                </div>
-                            </div>
-
-                            <!--Business Hours-->
-                            <div class="col-md-6">
-                                <textarea style="resize: none;" class="form-control" v-model="v$.form.horario.$model"
-                                    placeholder="Horarios de Atención*" rows="3"></textarea>
-
-                                <!--Error Message-->
-                                <div class="input-errors err" v-for="(error, index) of v$.form.horario.$errors"
-                                    :key="index">
-                                    <div class="error-msg">{{ error.$message }}</div>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
                     <!--Maps-->
-                    <div class="col-md-12 col-xl-4 mx-auto mt-4 mt-xl-0">
-                        <div id="map" class="map mb-2"></div>
+                    <div class="col-md-12 col-xl-12 mx-auto mt-2 mt-xl-0">
                         <p class="indicaciones text-center">Selecciona tu ubIcación en el mapa*</p>
+                        <div id="map" class="map"></div>
+                    </div>
+                </div>
+                <!--About-->
+                <div class="mb-1 mb-sm-4">
+                    <!--Title-->
+                    <h6 class="mb-1">Sobre la empresa</h6>
+                    <p class="mb-3">completa la información relacionada a tu comercio </p>
+                    <!--Div-->
+                    <div class="col-md-12 col-xl-12">
+                        <div class="row">
+                            <!--Image-->
+                            <div class="col-md-3 mb-4">
+                                <input type="file" class="dropify" data-height="120" @change="setLogo($event)"
+                                    data-default-file="@/../img/assets/logo.png" />
+                            </div>
+                            <div class="col-md-4 mt-1">
+                                <div class="form-group mb-4">
+                                    <input type="text" class="form-control" placeholder="Horarios de Atención*"
+                                        v-model="v$.form.horario.$model">
+
+                                    <!--Error Message-->
+                                    <div class="input-errors err" v-for="(error, index) of v$.form.horario.$errors"
+                                        :key="index">
+                                        <div class="error-msg">{{ error.$message }}</div>
+                                    </div>
+
+                                </div>
+                                <!--Checks-->
+                                <div class="form-group mb-3">
+                                    <p class="mb-1">¿Donde brindas tus servicios? *</p>
+                                    <!--All-->
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="todos" name="delivery"
+                                            v-model="v$.form.tipoServicio.$model" @change="setTipoServicio()" value="0">
+                                        <label class="form-check-label" for="todos">A domicilio</label>
+                                    </div>
+
+                                    <!--Delivery-->
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="domicilio" name="delivery"
+                                            v-model="v$.form.tipoServicio.$model" @change="setTipoServicio()" value="1">
+                                        <label class="form-check-label" for="domicilio">Cuento con local</label>
+                                    </div>
+
+                                    <!--Place-->
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="local" name="delivery"
+                                            v-model="v$.form.tipoServicio.$model" @change="setTipoServicio()" value="2">
+                                        <label class="form-check-label" for="local">Ambos</label>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!--Personal Description-->
+                            <div class="col-md-5 mt-1 mb-4 mb-sm-0">
+                                <div class="form-group mb-3">
+                                    <textarea style="resize: none;" class="form-control"
+                                        placeholder="Describe tu empresa*" v-model="v$.form.descripcion.$model"
+                                        rows="5"></textarea>
+
+                                    <!--Error Message-->
+                                    <div class="input-errors err" v-for="(error, index) of v$.form.descripcion.$errors"
+                                        :key="index">
+                                        <div class="error-msg">{{ error.$message }}</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
 
@@ -235,7 +295,7 @@
                     </div>
                 </div>
 
-                <div class="row social">
+                <div class="row social mb-4">
                     <!--Title-->
                     <h6 class="mb-1">Perfil Social</h6>
                     <p class="mb-3 indicaciones">Coloca en enlace de tus redes sociales </p>
@@ -336,16 +396,40 @@
                         </div>
                     </div>
                 </div>
-                <!--Terminos-->
-                <div id="terminos" class="col-md-9 mt-4 ">
-                    <p class="m-1 text-center">Terminos y Condiciones</p>
-                    <textarea readonly style="resize: none;" class="form-control m-1"
-                        rows="5">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum. Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, 
+                <div class="row mb-4  mb-xl-4">
+                    <!--Title-->
+                    <h6 class="mb-1 mt-2">¿Cómo podemos encontrarte?</h6>
+                    <p class="mb-3">Escribe palabras claves que faciliten encontrar tu perfil</p>
+                    <!--Div-->
+
+                    <div class="col-md-3 mb-4 mb-sm-0 form-group mb-3">
+                        <input type="text" class="form-control" placeholder="Palabra Clave" @keyup="verifyTag()"
+                            v-model="this.tag">
+                    </div>
+                    <!--Add Service-->
+                    <div class="col-xs-2 col-md-1 mt-4 mt-sm-0 d-flex align-items-center">
+                        <button type="button" class="btn-md" @click="addTag" :disabled="nullTag"><i
+                                class="fa-solid fa-plus"></i></button>
+                    </div>
+                    <!--List tags-->
+                    <div class="col-md-8 ">
+                        <span class="tag mb-4 mb-sm-3 me-3" v-for="(tag, index) in this.listTag" v-bind:key="index">
+                            {{ tag }}<i class="fa-solid fa-xmark" @click="deleteTag(index)"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <!--Terminos-->
+                    <div id="terminos" class="col-md-9 mt-4 ">
+                        <p class="m-1 text-center">Terminos y Condiciones</p>
+                        <textarea readonly style="resize: none;" class="form-control m-1"
+                            rows="5">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum. Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, 
                             
                             sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.</textarea>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="terms" v-model="this.terminos">
-                        <label class="form-check-label" for="terms">Acepto Los terminos y Condiciones*</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="terms" v-model="this.terminos">
+                            <label class="form-check-label" for="terms">Acepto Los terminos y Condiciones*</label>
+                        </div>
                     </div>
                 </div>
                 <!--Submit-->
@@ -395,7 +479,7 @@ export default {
                 facebook: '',
                 whatsapp: '',
                 linkedin: '',
-                categoria: '',
+                entidad: '',
                 direccion: '',
                 documento: '',
                 instagram: '',
@@ -403,13 +487,19 @@ export default {
                 telefonoFijo: '',
                 telefonoCelular: '',
                 servicioDomicilio: '',
+                tipoServicio: '',
+                fechaNacimiento: '',
+                representante: ''
             },
 
             // Others
             map: '',
             name: '',
+            tag: '',
+            listTag: [],
             error: '',
             rubros: [],
+            entidades: [],
             latitud: '',
             longitud: '',
             servicio: '',
@@ -419,8 +509,9 @@ export default {
             listaServicio: [],
             portadaregistro: [],
             cuentaServicios: [],
-            nullServicio: 'true',
-            errorServicio: 'true',
+            nullServicio: true,
+            nullTag: true,
+            errorServicio: true,
             terminos: false
         }
     },
@@ -433,6 +524,10 @@ export default {
         //Servicios
         await this.$store.dispatch("CategoriaRegistro", '2')
         this.listaServicio = this.$store.state.community.categoria
+
+        //entidades
+        await this.$store.dispatch("Entidades")
+        this.entidades = this.$store.state.community.entidades
 
         // Skeleton
         setTimeout(() => {
@@ -456,6 +551,9 @@ export default {
                 name: {
                     requeridMessage,
                 },
+                representante: {
+                    requeridMessage,
+                },
                 documento: {
                     requeridMessage,
                     nitMessage,
@@ -468,6 +566,9 @@ export default {
                     requeridMessage,
                     phoneMessage
                 },
+                fechaNacimiento: {
+                    requeridMessage,
+                },
                 whatsapp: {
                     phoneMessage
                 },
@@ -475,7 +576,7 @@ export default {
                     emailMessage,
                     requeridMessage,
                 },
-                categoria: {
+                entidad: {
                     requeridMessage,
                 },
                 servicioDomicilio: {
@@ -488,6 +589,9 @@ export default {
                     requeridMessage,
                 },
                 horario: {
+                    requeridMessage,
+                },
+                tipoServicio: {
                     requeridMessage,
                 },
                 facebook: {
@@ -587,19 +691,19 @@ export default {
 
         // Send
         async submit() {
-            if (this.cuentaServicios.length > 0 && this.terminos == true) {
+            if (this.cuentaServicios.length > 0 && this.terminos == true && this.form.imagen != false) {
                 var Form = new FormData()
-
+                var tag = ''
                 // Foreach
                 for (var paramName in this.form) {
                     Form.append(paramName, this.form[paramName])
                 }
-
+                this.listTag.forEach(t => tag = tag + ',' + t);
                 // Add
                 Form.append('latitud', localStorage.getItem('latitud'))
                 Form.append('longitud', localStorage.getItem('longitud'))
                 Form.append('servicios', JSON.stringify(this.cuentaServicios))
-
+                Form.append('tags', tag)
 
                 // Vuex
                 this.$store.dispatch("ClearEmpresa")
@@ -613,7 +717,9 @@ export default {
             } else {
                 if (this.terminos === false) {
                     this.showFailServicies('Acepta los terminos y condiciones')
-                } else {
+                } else if (this.form.imagen == false) {
+                    this.showFailServicies('Agrega la foto de tu perfil')
+                }else {
                     this.showFailServicies('No has registrado tus servicios')
                 }
             }
@@ -670,6 +776,32 @@ export default {
             this.cuentaServicios.splice(index, 1)
         },
 
+        verifyTag() {
+            if (this.tag == '') {
+                this.nullTag = true
+            } else {
+                this.nullTag = false
+            }
+        },
+        // Add
+        addTag() {
+            // If
+            if (this.listTag.length > 4) {
+                this.showFailServicies('Solo puedes registrar 5 etiquetas, elimina uno para agregarlo')
+            } else {
+                // Push
+                this.listTag.push(this.tag)
+                this.tag = ''
+                this.nullTag = true
+            }
+        },
+
+        // Delete
+        async deleteTag(index) {
+            this.listTag.splice(index, 1)
+        },
+
+
         // Search
         searchName(id) {
             this.listaServicio.forEach(elemento => {
@@ -685,7 +817,25 @@ export default {
         // Img
         setImg(event) {
             this.form.imagen = event.target.files[0]
+        },
+
+        setLogo(event) {
+            this.form.logo = event.target.files[0]
+        },
+
+        setTipoServicio() {
+            if (this.form.tipoServicio === '0') {
+                this.form.servicioDomicilio = true
+                this.form.local = false
+            } else if (this.form.tipoServicio === '1') {
+                this.form.servicioDomicilio = false
+                this.form.local = true
+            } else {
+                this.form.servicioDomicilio = true
+                this.form.local = true
+            }
         }
+
     },
 }
 </script>

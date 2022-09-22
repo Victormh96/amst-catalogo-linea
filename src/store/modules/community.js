@@ -13,7 +13,8 @@ import {
     Publicidad,
     PublicidadClick,
     Portada,
-    CategoriaRegistro
+    CategoriaRegistro,
+    Entidades
 } from "../../services/paths"
 
 // Vuex
@@ -32,6 +33,7 @@ export default {
             search: null,
             publicidad: null,
             publicidadclick: null,
+            entidades: null,
         }
     },
 
@@ -90,6 +92,10 @@ export default {
 
         MutationPublicidad(state, data) {
             state.publicidad = data
+        },
+
+        MutationEntidad(state, data) {
+            state.entidades = data
         },
 
         MutationPublicidadClick(state) {
@@ -151,6 +157,17 @@ export default {
                 .get(Tag())
                 .then((response) => {
                     commit('MutationTag', response.data[0])
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        },
+
+        async Entidades({ commit }) {
+            await axios
+                .get(Entidades())
+                .then((response) => {
+                    commit('MutationEntidad', response.data[0])
                 })
                 .catch((err) => {
                     console.log(err)
