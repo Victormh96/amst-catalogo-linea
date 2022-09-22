@@ -289,7 +289,7 @@ export default {
         Zoom: 16,
       }).addTo(this.map)
 
-      // Localization
+      // Controller
       L.control.locate({
         showPopup: false,
         locateOptions: {
