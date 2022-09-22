@@ -27,7 +27,8 @@
                                 <!--Title-->
                                 <small>
                                     {{ this.lista.nombre_cuenta }}
-                                    <i class="fa-solid fa-square-check ms-1" v-if="this.lista.verificado == 1"></i>
+                                    <img src="@/../public/img/assets/shapex15.png" class="ms-1 verify"
+                                        v-if="this.lista.verificado == 1">
                                 </small>
 
                                 <!--Info-->

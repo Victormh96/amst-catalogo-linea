@@ -71,7 +71,7 @@
                   <router-link :to="{ name: 'Cuenta', params: { slug: l.slug } }">
                     <h5 class="mb-1">
                       {{ l.nombre_cuenta }}
-                      <i class="fa-solid fa-square-check ms-1" v-if="l.verificado == 1"></i>
+                      <img src="@/../public/img/assets/shapex15.png" class="ms-1 verify" v-if="l.verificado == 1">
                     </h5>
                   </router-link>
 
@@ -81,7 +81,7 @@
                   </span>
 
                   <!--Info-->
-                  <p class="descrpcion">
+                  <p class="descripcion">
                     {{ l.descripcion }}
                   </p>
                 </div>

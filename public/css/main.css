@@ -491,6 +491,12 @@
   margin: 0 10px 5px 0;
 }
 
+#catalogo .card .verify {
+  width: 17px;
+  height: 17px;
+  padding: 0 0 1px 0;
+}
+
 #catalogo .card span {
   font-size: 0.6rem;
   font-weight: 600;
@@ -502,7 +508,7 @@
   display: inline-block;
 }
 
-#catalogo .card .descrpcion {
+#catalogo .card .descripcion {
   font-size: 0.7rem;
   color: #7183a1;
   max-height: 30px;
@@ -633,11 +639,6 @@
   object-fit: cover;
 }
 
-#catalogo .fa-square-check {
-  font-size: 16px;
-  color: var(--light-blue);
-}
-
 /*============================================================================================*/
 /* Cuenta
 /*============================================================================================*/
@@ -686,9 +687,10 @@
   text-transform: uppercase;
 }
 
-#cuenta aside .card .information i {
-  font-size: 16px;
-  color: var(--light-blue);
+#cuenta aside .card .information img {
+  width: 17px;
+  height: 17px;
+  padding: 0 0 1px 0;
 }
 
 #cuenta aside .card .information a {
@@ -1031,9 +1033,9 @@
 }
 
 
-#terminos p{
+#terminos p {
   font-weight: 600;
-    color: var(--dark-blue);
+  color: var(--dark-blue);
 }
 
 #terminos .form-check-label {
