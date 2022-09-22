@@ -404,32 +404,65 @@
 
                 </div>
 
-                <!--Tags-->
-                <div class="row mb-xl-4 mb-5">
+                <div class="row">
+                    <!--About-->
+                    <div class="col-md-6 mb-1 mb-sm-4">
 
-                    <!--Title-->
-                    <h6 class="mb-1">¿Cómo podemos encontrarte?</h6>
-                    <p class="mb-3">Escribe palabras claves que faciliten encontrar tu perfil</p>
+                        <!--Title-->
+                        <h6 class="mb-1">Documentos</h6>
+                        <p class="mb-3">Verifica tu identidad</p>
 
-                    <!--Div-->
-                    <div class="col-md-3 mb-4 mb-sm-0 form-group mb-3">
-                        <input type="text" class="form-control" placeholder="Palabra Clave" @keyup="verifyTag()"
-                            v-model="this.tag">
+                        <!--Div-->
+                        <div class="col-md-12 col-xl-12">
+                            <div class="row">
+
+                                <!--Image-->
+                                <div class="col-md-6 mb-4">
+                                    <input type="file" class="dropify" data-height="150" @change="setDoc1($event)"
+                                        data-default-file="@/../img/assets/logo.png" />
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <input type="file" class="dropify" data-height="150" @change="setDoc2($event)"
+                                        data-default-file="@/../img/assets/logo.png" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <!--Add Service-->
-                    <div class="col-xs-2 col-md-1 mt-4 mt-sm-0 d-flex align-items-center">
-                        <button type="button" class="btn-md" @click="addTag" :disabled="nullTag"><i
-                                class="fa-solid fa-plus"></i></button>
+                    <div class="col-md-6 mb-1 mb-sm-4">
+                        <!--Tags-->
+                        <div class="row mb-xl-4 mb-5">
+
+                            <!--Title-->
+                            <h6 class="mb-1">¿Cómo podemos encontrarte?</h6>
+                            <p class="mb-3">Escribe palabras claves que faciliten encontrar tu perfil</p>
+
+                            <!--Div-->
+                            <div class="col-md-8 mb-4 mb-sm-0 form-group mb-3">
+                                <input type="text" class="form-control" placeholder="Palabra Clave" @keyup="verifyTag()"
+                                    v-model="this.tag">
+                            </div>
+
+                            <!--Add Service-->
+                            <div class="col-xs-2 col-md-1 mt-4 mt-sm-0 d-flex align-items-center">
+                                <button type="button" class="btn-md" @click="addTag" :disabled="nullTag"><i
+                                        class="fa-solid fa-plus"></i></button>
+                            </div>
+
+                            <!--List tags-->
+                            <div class="col-md-12 ">
+                                <span class="tag mb-4 mb-sm-3 me-3" v-for="(tag, index) in this.listTag"
+                                    v-bind:key="index">
+                                    {{ tag }}<i class="fa-solid fa-xmark" @click="deleteTag(index)"></i>
+                                </span>
+                            </div>
+                        </div>
                     </div>
 
-                    <!--List tags-->
-                    <div class="col-md-8 ">
-                        <span class="tag mb-4 mb-sm-3 me-3" v-for="(tag, index) in this.listTag" v-bind:key="index">
-                            {{ tag }}<i class="fa-solid fa-xmark" @click="deleteTag(index)"></i>
-                        </span>
-                    </div>
                 </div>
+
+
+
 
                 <!--Terminos-->
                 <div class="row justify-content-center">
@@ -511,7 +544,9 @@ export default {
                 fechaNacimiento: '',
                 servicioDomicilio: '',
                 marca: '',
-                tipoServicio: ''
+                tipoServicio: '',
+                doc1: '',
+                doc2: '',
             },
 
             // Others
@@ -847,6 +882,14 @@ export default {
         // Img
         setLogo(event) {
             this.form.logo = event.target.files[0]
+        },
+        // Img
+        setDoc1(event) {
+            this.form.doc1 = event.target.files[0]
+        },
+        // Img
+        setDoc2(event) {
+            this.form.doc2 = event.target.files[0]
         },
 
         setTipoServicio() {
