@@ -134,9 +134,19 @@
 
                             <!--Profile-->
                             <div class="profile" v-if="this.profile == true">
-                                <div class="box">
-                                    <p>{{ this.lista.descripcion }}</p>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <small>
+                                            <img v-if="this.lista.logo" class="img-fluid rounded mx-auto d-block" :src="this.url + `/storage/${ this.lista.logo }`"
+                                                :alt="`${ this.lista.slug }`">
+                                        </small>
+                                    </div>
+                                    <div class="col-md-8 box">
+                                        <h6 class="mb-2" v-if="this.lista.marca">{{ this.lista.marca }}</h6>
+                                        <p>{{ this.lista.descripcion }}</p>
+                                    </div>
                                 </div>
+
                                 <hr>
 
                                 <!--Tittle-->
