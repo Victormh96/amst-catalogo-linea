@@ -421,6 +421,8 @@
                                     <input type="file" class="dropify" data-height="150" @change="setDoc1($event)"
                                         data-default-file="@/../img/assets/dui-frontal.png" />
                                 </div>
+
+                                <!--Image-->
                                 <div class="col-md-6 mb-4">
                                     <input type="file" class="dropify" data-height="150" @change="setDoc2($event)"
                                         data-default-file="@/../img/assets/dui-dorso.png" />
@@ -430,9 +432,9 @@
                     </div>
 
                     <div class="col-md-6 mb-1 mb-sm-4">
+
                         <!--Tags-->
-                        <div class="row ps-5
-                         mb-xl-4 mb-5">
+                        <div class="row ps-5 mb-xl-4 mb-5">
 
                             <!--Title-->
                             <h6 class="mb-1">¿Cómo podemos encontrarte?</h6>
