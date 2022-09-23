@@ -409,8 +409,8 @@
                     <div class="col-md-6 mb-1 mb-sm-4">
 
                         <!--Title-->
-                        <h6 class="mb-1">Documentos</h6>
-                        <p class="mb-3">Verifica tu identidad</p>
+                        <h6 class="mb-1">Verifica Tu Identidad</h6>
+                        <p class="mb-3">Para poder verificarte adjunta las fotos de tu dui</p>
 
                         <!--Div-->
                         <div class="col-md-12 col-xl-12">
