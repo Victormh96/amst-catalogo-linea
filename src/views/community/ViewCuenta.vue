@@ -82,9 +82,9 @@
                         </div>
 
                         <!--Location-->
-                        <div class="location mb-5 mb-sm-4"
+                        <div id="location" class="location mb-5 mb-sm-4"
                             v-if="this.lista.local == 1 && this.lista.verificado == true">
-
+                           
                             <!--Waze-->
                             <a :href="`https://www.waze.com/ul?ll=${ this.lista.latitud },${ this.lista.longitud }&navigate=yes&zoom=16`"
                                 target="_blank" class="me-4">
@@ -96,6 +96,7 @@
                                 target="_blank">
                                 <i class="fa-solid fa-street-view"></i>
                             </a>
+                            <p >Como llegar</p>
                         </div>
 
                         <!--Advertising-->
@@ -137,7 +138,8 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <small>
-                                            <img v-if="this.lista.logo" class="img-fluid rounded mx-auto d-block" :src="this.url + `/storage/${ this.lista.logo }`"
+                                            <img v-if="this.lista.logo" class="img-fluid rounded mx-auto d-block"
+                                                :src="this.url + `/storage/${ this.lista.logo }`"
                                                 :alt="`${ this.lista.slug }`">
                                         </small>
                                     </div>
