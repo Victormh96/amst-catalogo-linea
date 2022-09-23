@@ -461,10 +461,6 @@
                     </div>
 
                 </div>
-
-
-
-
                 <!--Terminos-->
                 <div class="row justify-content-center">
                     <div id="terminos" class="col-md-9">
@@ -528,7 +524,7 @@ export default {
                 email: '',
                 local: '',
                 imagen: false,
-                logo: '',
+                logo:  false,
                 genero: '',
                 pagweb: '',
                 twitter: '',

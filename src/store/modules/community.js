@@ -74,16 +74,16 @@ export default {
             state.cuenta = data
         },
 
-        MutationRegistroServicio(state) {
-            state.registroservicio = true
+        MutationRegistroServicio(state,data) {
+            state.registroservicio = data
         },
 
         MutationRegistroEmpresa(state) {
             state.registroempresa = true
         },
 
-        MutationClearServicio(state) {
-            state.registroservicio = false
+        MutationClearServicio(state, data ) {
+            state.registroservicio = data
         },
 
         MutationClearEmpresa(state) {
@@ -246,12 +246,12 @@ export default {
                 .then(response => {
                     console.log('soy la respuesta', response)
                     if (response.status === 200) {
-                        commit('MutationRegistroServicio')
+                        commit('MutationRegistroServicio',response)
                     }
                 })
                 .catch((err) => {
-                    commit('MutationClearServicio')
-                    console.log('fallo', err)
+                   commit('MutationClearServicio',err.response.data)
+                    console.log('fallo', err.response)
                 })
         },
 

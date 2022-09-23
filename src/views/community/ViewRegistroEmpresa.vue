@@ -509,7 +509,8 @@ export default {
             form: {
                 name: '',
                 email: '',
-                imagen: '',
+                imagen: false,
+                logo: false,
                 pagweb: '',
                 horario: '',
                 twitter: '',
@@ -527,8 +528,8 @@ export default {
                 tipoServicio: '',
                 fechaNacimiento: '',
                 representante: '',
-                doc1: '',
-                doc2: '',
+                doc1: false,
+                doc2: false,
             },
 
             // Others
