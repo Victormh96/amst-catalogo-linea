@@ -25,7 +25,7 @@
             <div class="container mb-4 mb-sm-5">
 
                 <!--Personal data-->
-                <div class="row mb-4 mb-xl-5">
+                <div class="row mb-5">
 
                     <!--Title-->
                     <h6 class="mb-1">Datos Personales</h6>
@@ -46,7 +46,7 @@
                             <div class="col-md-3">
                                 <div class="form-group mb-4">
                                     <input type="text" class="form-control" placeholder="Nombres*"
-                                        v-model="v$.form.name.$model">
+                                        v-model="v$.form.name.$model" tabindex="1">
 
                                     <!--Error Message-->
                                     <div class="input-errors err" v-for="(error, index) of v$.form.name.$errors"
@@ -57,7 +57,7 @@
 
                                 <!--Gender-->
                                 <div class="form-group mb-4">
-                                    <select class="form-control select2" v-model="v$.form.genero.$model">
+                                    <select class="form-control select2" v-model="v$.form.genero.$model" tabindex="4">
                                         <option disabled value="">Genero*</option>
                                         <option value="1">Masculino</option>
                                         <option value="2">Femenino</option>
@@ -73,7 +73,7 @@
                                 <!--Phone-->
                                 <div class="form-group mb-4 mb-sm-0">
                                     <input type="tel" class="form-control" placeholder="Télefono celular*"
-                                        v-mask="'####-####'" v-model="v$.form.telefonoCelular.$model">
+                                        v-mask="'####-####'" v-model="v$.form.telefonoCelular.$model" tabindex="7">
 
                                     <!--Error Message-->
                                     <div class="input-errors err"
@@ -89,7 +89,7 @@
                                 <!--Surnames-->
                                 <div class="form-group mb-4">
                                     <input type="text" class="form-control" placeholder="Apellidos*"
-                                        v-model="v$.form.lastName.$model">
+                                        v-model="v$.form.lastName.$model" tabindex="2">
 
                                     <!--Error Message-->
                                     <div class="input-errors err" v-for="(error, index) of v$.form.lastName.$errors"
@@ -102,7 +102,7 @@
                                 <div class="form-group mb-4">
                                     <input type="date" class="form-control" placeholder="Fecha de Nacimiento*"
                                         data-toggle="tooltip" data-placement="top" title="Fecha de Nacimiento"
-                                        v-model="v$.form.fechaNacimiento.$model">
+                                        v-model="v$.form.fechaNacimiento.$model" tabindex="5">
 
                                     <!--Error Message-->
                                     <div class="input-errors err"
@@ -114,7 +114,7 @@
                                 <!--Phone-->
                                 <div class="form-group mb-4 mb-sm-0">
                                     <input type="tel" class="form-control" placeholder="Télefono Fijo"
-                                        v-mask="'####-####'" v-model="this.form.telefonoFijo">
+                                        v-mask="'####-####'" v-model="this.form.telefonoFijo" tabindex="8">
                                 </div>
                             </div>
 
@@ -124,7 +124,7 @@
                                 <!-- Document -->
                                 <div class="form-group mb-4">
                                     <input type="tel" class="form-control" placeholder="DUI*" v-mask="'########-#'"
-                                        v-model="v$.form.documento.$model">
+                                        v-model="v$.form.documento.$model" tabindex="3">
 
                                     <!--Error Message-->
                                     <div class="input-errors err" v-for="(error, index) of v$.form.documento.$errors"
@@ -136,7 +136,7 @@
                                 <!--Email-->
                                 <div class="form-group mb-4">
                                     <input type="email" class="form-control" placeholder="Correo*"
-                                        v-model="v$.form.email.$model">
+                                        v-model="v$.form.email.$model" tabindex="6">
 
                                     <!--Error Message-->
                                     <div class="input-errors err" v-for="(error, index) of v$.form.email.$errors"
@@ -148,14 +148,14 @@
                                 <!--Address-->
                                 <div class="form-group mb-4 mb-sm-0">
                                     <input type="text" class="form-control" placeholder="N° de casa / Local / Piso"
-                                        v-model="this.form.direccion">
+                                        v-model="this.form.direccion" tabindex="9">
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!--Div-->
-                    <div class="col-md-12 col-xl-12 mx-auto mt-4 mt-xl-0">
+                    <div class="col-md-12 col-xl-12">
 
                         <!--Tittle-->
                         <p class="indicaciones text-center mb-2">Posiciona tu ubIcación en el mapa*</p>
@@ -186,7 +186,7 @@
                             <div class="col-md-4 mt-1">
                                 <div class="form-group mb-4">
                                     <input type="text" class="form-control" placeholder="Nombre de la marca o negocio*"
-                                        v-model="v$.form.marca.$model">
+                                        v-model="v$.form.marca.$model" tabindex="10">
 
                                     <!--Error Message-->
                                     <div class="input-errors err" v-for="(error, index) of v$.form.marca.$errors"
@@ -204,21 +204,21 @@
                                     <!--All-->
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" id="todos" name="delivery"
-                                            v-model="v$.form.tipoServicio.$model" @change="setTipoServicio()" value="0">
+                                            v-model="v$.form.tipoServicio.$model" @change="setTipoServicio()" value="0" tabindex="11">
                                         <label class="form-check-label" for="todos">A domicilio</label>
                                     </div>
 
                                     <!--Delivery-->
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" id="domicilio" name="delivery"
-                                            v-model="v$.form.tipoServicio.$model" @change="setTipoServicio()" value="1">
+                                            v-model="v$.form.tipoServicio.$model" @change="setTipoServicio()" value="1" tabindex="12">
                                         <label class="form-check-label" for="domicilio">Cuento con local</label>
                                     </div>
 
                                     <!--Place-->
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" id="local" name="delivery"
-                                            v-model="v$.form.tipoServicio.$model" @change="setTipoServicio()" value="2">
+                                            v-model="v$.form.tipoServicio.$model" @change="setTipoServicio()" value="2" tabindex="13">
                                         <label class="form-check-label" for="local">Ambos</label>
                                     </div>
                                 </div>
@@ -231,7 +231,7 @@
                                     <!--Company Description-->
                                     <textarea style="resize: none;" class="form-control"
                                         placeholder="Describe tu empresa*" v-model="v$.form.descripcion.$model"
-                                        rows="5"></textarea>
+                                        rows="5" tabindex="14"></textarea>
 
                                     <!--Error Message-->
                                     <div class="input-errors err" v-for="(error, index) of v$.form.descripcion.$errors"
@@ -254,7 +254,7 @@
 
                     <!--Service-->
                     <div class="col-md-3 mb-4 mb-sm-0">
-                        <select class="form-control select2" v-model="this.servicio" @change="verifyService()">
+                        <select class="form-control select2" v-model="this.servicio" @change="verifyService()" tabindex="15">
                             <option disabled value="">Servicio*</option>
                             <option v-for="c in this.listaServicio" :value="c.id" v-bind:key="c.id">{{ c.nombre_rubro }}
                             </option>
@@ -268,7 +268,7 @@
 
                     <!--Experience-->
                     <div class="col-md-3 mb-4 mb-sm-0">
-                        <select class="form-control select2" v-model="this.experiencia" @change="verifyService()">
+                        <select class="form-control select2" v-model="this.experiencia" @change="verifyService()" tabindex="16">
                             <option disabled value="">Experiencia*</option>
                             <option value="Menos de un año">Menos de un año</option>
                             <option value="De uno a tres años">De uno a tres años</option>
@@ -280,7 +280,7 @@
                     <!--Description-->
                     <div class="col-xs-10 col-md-4">
                         <input type="text" class="form-control" placeholder="Describe tu Servicio*"
-                            v-model="this.descripcion" @keyup="verifyService()">
+                            v-model="this.descripcion" @keyup="verifyService()" tabindex="17">
                     </div>
 
                     <!--Add Service-->
@@ -405,6 +405,7 @@
                 </div>
 
                 <div class="row">
+
                     <!--About-->
                     <div class="col-md-6 mb-1 mb-sm-4">
 
@@ -431,6 +432,7 @@
                         </div>
                     </div>
 
+                    <!--Div-->
                     <div class="col-md-6 mb-1 mb-sm-4">
 
                         <!--Tags-->
@@ -461,14 +463,12 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-
-
-
 
                 <!--Terminos-->
                 <div class="row justify-content-center">
+
+                    <!--Div-->
                     <div id="terminos" class="col-md-9">
 
                         <!--Title-->
@@ -527,52 +527,51 @@ export default {
         return {
             form: {
                 name: '',
+                logo: '',
                 email: '',
                 local: '',
-                imagen: false,
-                logo: '',
+                marca: '',
                 genero: '',
                 pagweb: '',
                 twitter: '',
+                doc1: false,
+                doc2: false,
                 lastName: '',
                 facebook: '',
-                telefonoCelular: '',
-                telefonofijo: '',
                 whatsapp: '',
                 linkedin: '',
                 instagram: '',
+                imagen: false,
                 documento: '',
                 direccion: '',
                 descripcion: '',
+                tipoServicio: '',
+                telefonofijo: '',
+                telefonoCelular: '',
                 fechaNacimiento: '',
                 servicioDomicilio: '',
-                marca: '',
-                tipoServicio: '',
-                doc1: false,
-                doc2: false,
             },
 
             // Others
             map: '',
             tag: '',
-            listTag: [],
             name: '',
             error: '',
             rubros: [],
             latitud: 0,
             longitud: 0,
+            listTag: [],
             servicio: '',
+            nullTag: true,
             experiencia: '',
             descripcion: '',
+            terminos: false,
             skeleton: false,
             listaServicio: [],
+            nullServicio: true,
             portadaregistro: [],
             cuentaServicios: [],
-            nullServicio: true,
-            nullTag: true,
             errorServicio: true,
-            terminos: false,
-
         }
     },
 
@@ -704,6 +703,7 @@ export default {
                 allowEscapeKey: false,
                 footer: '<a href="/sobre-nosotros">Preguntas Frecuentes</a>'
             }).then(resultado => {
+                // If
                 if (resultado.value) {
                     router.push("/")
                 }
@@ -736,6 +736,7 @@ export default {
                 autoPan: true
             }).addTo(this.map).on("dragend", dragedMaker);
 
+            // Localization
             this.map.on('click', function (e) {
                 const { lat = 0, lng = 0 } = e.latlng
                 localStorage.setItem('latitud', lat)
@@ -888,6 +889,7 @@ export default {
         setLogo(event) {
             this.form.logo = event.target.files[0]
         },
+
         // Img
         setDoc1(event) {
             this.form.doc1 = event.target.files[0]
