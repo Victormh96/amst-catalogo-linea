@@ -419,11 +419,11 @@
                                 <!--Image-->
                                 <div class="col-md-6 mb-4">
                                     <input type="file" class="dropify" data-height="150" @change="setDoc1($event)"
-                                        data-default-file="@/../img/assets/logo.png" />
+                                        data-default-file="@/../img/assets/dui-frontal.png" />
                                 </div>
                                 <div class="col-md-6 mb-4">
                                     <input type="file" class="dropify" data-height="150" @change="setDoc2($event)"
-                                        data-default-file="@/../img/assets/logo.png" />
+                                        data-default-file="@/../img/assets/dui-dorso.png" />
                                 </div>
                             </div>
                         </div>
@@ -431,7 +431,8 @@
 
                     <div class="col-md-6 mb-1 mb-sm-4">
                         <!--Tags-->
-                        <div class="row mb-xl-4 mb-5">
+                        <div class="row ps-5
+                         mb-xl-4 mb-5">
 
                             <!--Title-->
                             <h6 class="mb-1">¿Cómo podemos encontrarte?</h6>
@@ -450,7 +451,7 @@
                             </div>
 
                             <!--List tags-->
-                            <div class="col-md-12 ">
+                            <div class="col-md-8 mt-2">
                                 <span class="tag mb-4 mb-sm-3 me-3" v-for="(tag, index) in this.listTag"
                                     v-bind:key="index">
                                     {{ tag }}<i class="fa-solid fa-xmark" @click="deleteTag(index)"></i>
@@ -545,8 +546,8 @@ export default {
                 servicioDomicilio: '',
                 marca: '',
                 tipoServicio: '',
-                doc1: '',
-                doc2: '',
+                doc1: false,
+                doc2: false,
             },
 
             // Others
@@ -750,7 +751,7 @@ export default {
         // Send
         async submit() {
             // If
-            if (this.cuentaServicios.length > 0 && this.terminos == true && this.form.imagen != false) {
+            if (this.cuentaServicios.length > 0 && this.terminos == true && this.form.imagen != false && this.form.doc1 != false && this.form.doc2 != false) {
                 var Form = new FormData()
                 var tag = ''
 
@@ -780,6 +781,8 @@ export default {
                 if (this.terminos === false) {
                     this.showFailServicies('Acepta los terminos y condiciones')
                 } else if (this.form.imagen == false) {
+                    this.showFailServicies('Agrega la foto de tu perfil')
+                } else if (this.form.doc1 == false || this.form.doc2 == false) {
                     this.showFailServicies('Agrega la foto de tu perfil')
                 } else {
                     this.showFailServicies('No has registrado tus servicios')
@@ -848,8 +851,8 @@ export default {
         // Add
         addTag() {
             // If
-            if (this.listTag.length > 4) {
-                this.showFailServicies('Solo puedes registrar 5 etiquetas, elimina uno para agregarlo')
+            if (this.listTag.length > 3) {
+                this.showFailServicies('Solo puedes registrar 4 etiquetas, elimina uno para agregarlo')
             } else {
                 // Push
                 this.listTag.push(this.tag)

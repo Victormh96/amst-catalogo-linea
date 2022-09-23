@@ -126,8 +126,8 @@
                                 <div class="form-group mb-4">
                                     <select class="form-control select2" v-model="v$.form.entidad.$model">
                                         <option disabled value="">Categoria*</option>
-                                        <option v-for="(e, index) of this.entidades" :key="index"
-                                            :value="e.id">{{e.nombre_entidad}}</option>
+                                        <option v-for="(e, index) of this.entidades" :key="index" :value="e.id">
+                                            {{e.nombre_entidad}}</option>
                                     </select>
 
                                     <!--Error Message-->
@@ -396,28 +396,65 @@
                         </div>
                     </div>
                 </div>
-                <div class="row mb-4  mb-xl-4">
-                    <!--Title-->
-                    <h6 class="mb-1 mt-2">¿Cómo podemos encontrarte?</h6>
-                    <p class="mb-3">Escribe palabras claves que faciliten encontrar tu perfil</p>
-                    <!--Div-->
 
-                    <div class="col-md-3 mb-4 mb-sm-0 form-group mb-3">
-                        <input type="text" class="form-control" placeholder="Palabra Clave" @keyup="verifyTag()"
-                            v-model="this.tag">
+                <div class="row">
+                    <!--About-->
+                    <div class="col-md-6 mb-1 mb-sm-4">
+
+                        <!--Title-->
+                        <h6 class="mb-1">Documentos</h6>
+                        <p class="mb-3">Verifica tu identidad</p>
+
+                        <!--Div-->
+                        <div class="col-md-12 col-xl-12">
+                            <div class="row">
+
+                                <!--Image-->
+                                <div class="col-md-6 mb-4">
+                                    <input type="file" class="dropify" data-height="150" @change="setDoc1($event)"
+                                        data-default-file="@/../img/assets/dui-frontal.png" />
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <input type="file" class="dropify" data-height="150" @change="setDoc2($event)"
+                                        data-default-file="@/../img/assets/dui-dorso.png" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <!--Add Service-->
-                    <div class="col-xs-2 col-md-1 mt-4 mt-sm-0 d-flex align-items-center">
-                        <button type="button" class="btn-md" @click="addTag" :disabled="nullTag"><i
-                                class="fa-solid fa-plus"></i></button>
+
+                    <div class="col-md-6 mb-1 ps-2 mb-sm-4">
+                        <!--Tags-->
+                        <div class="row ps-5 mb-xl-4 mb-5">
+
+                            <!--Title-->
+                            <h6 class="mb-1">¿Cómo podemos encontrarte?</h6>
+                            <p class="mb-3">Escribe palabras claves que faciliten encontrar tu perfil</p>
+
+                            <!--Div-->
+                            <div class="col-md-8 mb-4 mb-sm-0 form-group mb-3">
+                                <input type="text" class="form-control" placeholder="Palabra Clave" @keyup="verifyTag()"
+                                    v-model="this.tag">
+                            </div>
+
+                            <!--Add Service-->
+                            <div class="col-xs-2 col-md-1 mt-4 mt-sm-0 d-flex align-items-center">
+                                <button type="button" class="btn-md" @click="addTag" :disabled="nullTag"><i
+                                        class="fa-solid fa-plus"></i></button>
+                            </div>
+
+                            <!--List tags-->
+                            <div class="col-md-8 mt-2">
+                                <span class="tag mb-4 mb-sm-3 me-3" v-for="(tag, index) in this.listTag"
+                                    v-bind:key="index">
+                                    {{ tag }}<i class="fa-solid fa-xmark" @click="deleteTag(index)"></i>
+                                </span>
+                            </div>
+                        </div>
                     </div>
-                    <!--List tags-->
-                    <div class="col-md-8 ">
-                        <span class="tag mb-4 mb-sm-3 me-3" v-for="(tag, index) in this.listTag" v-bind:key="index">
-                            {{ tag }}<i class="fa-solid fa-xmark" @click="deleteTag(index)"></i>
-                        </span>
-                    </div>
+
                 </div>
+
+
                 <div class="row justify-content-center">
                     <!--Terminos-->
                     <div id="terminos" class="col-md-9 mt-4 ">
@@ -489,7 +526,9 @@ export default {
                 servicioDomicilio: '',
                 tipoServicio: '',
                 fechaNacimiento: '',
-                representante: ''
+                representante: '',
+                doc1: '',
+                doc2: '',
             },
 
             // Others
@@ -719,7 +758,7 @@ export default {
                     this.showFailServicies('Acepta los terminos y condiciones')
                 } else if (this.form.imagen == false) {
                     this.showFailServicies('Agrega la foto de tu perfil')
-                }else {
+                } else {
                     this.showFailServicies('No has registrado tus servicios')
                 }
             }
@@ -821,6 +860,14 @@ export default {
 
         setLogo(event) {
             this.form.logo = event.target.files[0]
+        },
+        // Img
+        setDoc1(event) {
+            this.form.doc1 = event.target.files[0]
+        },
+        // Img
+        setDoc2(event) {
+            this.form.doc2 = event.target.files[0]
         },
 
         setTipoServicio() {
