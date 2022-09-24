@@ -111,7 +111,7 @@
                                         <div class="error-msg">{{ error.$message }}</div>
                                     </div>
                                 </div>
-
+                                                
                                 <!--Phone-->
                                 <div class="form-group mb-4 mb-sm-0">
                                     <input type="tel" class="form-control" placeholder="Télefono Fijo"
