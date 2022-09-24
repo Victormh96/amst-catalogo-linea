@@ -37,6 +37,7 @@
                             <div class="col-md-3 mb-4">
                                 <input type="file" class="dropify" data-height="170" @change="setImg($event)"
                                     data-default-file="@/../img/assets/store.png">
+                                    <p class="text-center">Foto empresa *</p>
                             </div>
 
                             <!--Company Name-->
@@ -184,6 +185,7 @@
                             <div class="col-md-3 mb-4">
                                 <input type="file" class="dropify" data-height="120" @change="setLogo($event)"
                                     data-default-file="@/../img/assets/logo.png" />
+                                    <p class="text-center">Logo de la empresa *</p>
                             </div>
                             <div class="col-md-4 mt-1">
                                 <div class="form-group mb-4">
@@ -413,10 +415,12 @@
                                 <div class="col-md-6 mb-4">
                                     <input type="file" class="dropify" data-height="150" @change="setDoc1($event)"
                                         data-default-file="@/../img/assets/dui-frontal.png" />
+                                        <p class="text-center">Documento 1</p>
                                 </div>
                                 <div class="col-md-6 mb-4">
                                     <input type="file" class="dropify" data-height="150" @change="setDoc2($event)"
                                         data-default-file="@/../img/assets/dui-dorso.png" />
+                                        <p class="text-center">Documento 2</p>
                                 </div>
                             </div>
                         </div>
@@ -731,7 +735,7 @@ export default {
 
         // Send
         async submit() {
-            if (this.cuentaServicios.length > 0 && this.terminos == true && this.form.imagen != false) {
+            if (this.cuentaServicios.length > 0 && this.terminos == true && this.form.imagen != false && this.form.doc1 != false && this.form.doc2 != false) {
                 var Form = new FormData()
                 var tag = ''
                 // Foreach
@@ -759,7 +763,9 @@ export default {
                     this.showFailServicies('Acepta los terminos y condiciones')
                 } else if (this.form.imagen == false) {
                     this.showFailServicies('Agrega la foto de tu perfil')
-                } else {
+                } else if (this.form.doc1 == false || this.form.doc2 == false) {
+                    this.showFailServicies('Agrega la foto de tus documentos')
+                }else {
                     this.showFailServicies('No has registrado tus servicios')
                 }
             }

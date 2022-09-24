@@ -40,6 +40,7 @@
                             <div class="col-md-3 mb-4 mb-sm-0">
                                 <input type="file" class="dropify" data-height="170" @change="setImg($event)"
                                     data-default-file="@/../img/assets/perfil.png" />
+                                    <p class="text-center">Foto perfil *</p>
                             </div>
 
                             <!--Names-->
@@ -180,6 +181,7 @@
                             <div class="col-md-3 mb-4">
                                 <input type="file" class="dropify" data-height="120" @change="setLogo($event)"
                                     data-default-file="@/../img/assets/logo.png" />
+                                    <p class="text-center">Logo</p>
                             </div>
 
                             <!--Brand Name-->
@@ -411,7 +413,7 @@
 
                         <!--Title-->
                         <h6 class="mb-1">Verifica Tu Identidad</h6>
-                        <p class="mb-3">Para poder verificarte adjunta las fotos de tu dui</p>
+                        <p class="mb-3">Para poder verificarte adjunta las fotos de tu DUI</p>
 
                         <!--Div-->
                         <div class="col-md-12 col-xl-12">
@@ -421,12 +423,14 @@
                                 <div class="col-md-6 mb-4">
                                     <input type="file" class="dropify" data-height="150" @change="setDoc1($event)"
                                         data-default-file="@/../img/assets/dui-frontal.png" />
+                                        <p class="text-center">DUI parte frontal *</p>
                                 </div>
 
                                 <!--Image-->
                                 <div class="col-md-6 mb-4">
                                     <input type="file" class="dropify" data-height="150" @change="setDoc2($event)"
                                         data-default-file="@/../img/assets/dui-dorso.png" />
+                                        <p class="text-center">DUI parte trasera *</p>
                                 </div>
                             </div>
                         </div>
@@ -785,7 +789,7 @@ export default {
                 } else if (this.form.imagen == false) {
                     this.showFailServicies('Agrega la foto de tu perfil')
                 } else if (this.form.doc1 == false || this.form.doc2 == false) {
-                    this.showFailServicies('Agrega la foto de tu perfil')
+                    this.showFailServicies('Agrega la foto de tu DUI')
                 } else {
                     this.showFailServicies('No has registrado tus servicios')
                 }
