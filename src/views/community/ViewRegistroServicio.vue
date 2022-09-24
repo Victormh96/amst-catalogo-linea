@@ -679,7 +679,7 @@ export default {
             this.$swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: this.form.name + ' ' + this.form.lastName + ' tu formulario no pudo ser registrado.',
+                text: this.form.name + ' ' + this.form.lastName + ' tu formulario no pudo ser registrado.' + ' Error linea' + this.$store.state.community.registroservicio.line + 'Error linea' + this.$store.state.community.registroservicio.message,
                 confirmButtonText: "Aceptar",
                 allowOutsideClick: false,
                 allowEscapeKey: false,
@@ -783,7 +783,7 @@ export default {
                 this.$store.dispatch("ClearServicio")
                 await this.$store.dispatch("RegistroServicio", Form).then(() => {
                     // If
-                    if (this.$store.state.community.registroservicio) {
+                    if (this.$store.state.community.errorregistro) {
                         this.showSucces()
                     } else {
                         this.showFail()

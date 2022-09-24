@@ -29,6 +29,7 @@ export default {
             catalogocategoria: null,
             cuenta: null,
             registroservicio: null,
+            errorregistro: null,
             registroempresa: null,
             search: null,
             publicidad: null,
@@ -76,6 +77,7 @@ export default {
 
         MutationRegistroServicio(state,data) {
             state.registroservicio = data
+            state.errorregistro = false
         },
 
         MutationRegistroEmpresa(state) {
@@ -84,6 +86,7 @@ export default {
 
         MutationClearServicio(state, data ) {
             state.registroservicio = data
+            state.errorregistro = true
         },
 
         MutationClearEmpresa(state) {
