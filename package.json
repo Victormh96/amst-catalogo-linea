@@ -11,6 +11,7 @@
     "@vuelidate/core": "^2.0.0-alpha.44",
     "@vuelidate/validators": "^2.0.0-alpha.31",
     "axios": "^0.27.2",
+    "compressorjs": "^1.1.1",
     "core-js": "^3.8.3",
     "leaflet": "^1.8.0",
     "leaflet-control-geocoder": "^2.4.0",

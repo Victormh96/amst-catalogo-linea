@@ -517,6 +517,7 @@ import "sweetalert2/dist/sweetalert2.min.css"
 import Navbar from "@/components/community/ComponentNavbar.vue"
 import Footer from "@/components/community/ComponentFooter.vue"
 import { helpers, required, email, minLength, url } from "@vuelidate/validators"
+import Compressor from 'compressorjs';
 
 // Message
 const requeridMessage = helpers.withMessage('Campo Obligatorio', required)
@@ -886,6 +887,18 @@ export default {
         // Img
         setImg(event) {
             this.form.imagen = event.target.files[0]
+            console.log(event.target.files[0]);
+            const file = event.target.files[0];
+                
+            new Compressor(file, {
+                    quality: 0.6,
+                success(result) {
+                    console.log(result);
+    },error(err) {
+      console.log(err.message);
+    },
+
+});
         },
 
         // Img
