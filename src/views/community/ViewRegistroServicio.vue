@@ -58,7 +58,8 @@
 
                                 <!--Gender-->
                                 <div class="form-group mb-4">
-                                    <select class="form-control select2" v-model="v$.form.genero.$model" tabindex="4">
+                                    <select class="form-control select2" v-model="v$.form.genero.$model" tabindex="4"
+                                        required>
                                         <option disabled value="">Genero*</option>
                                         <option value="1">Masculino</option>
                                         <option value="2">Femenino</option>
@@ -102,8 +103,7 @@
                                 <!--Date Birth-->
                                 <div class="form-group mb-4">
                                     <input type="date" class="form-control" placeholder="Fecha de Nacimiento*"
-                                        data-toggle="tooltip" data-placement="top" title="Fecha de Nacimiento"
-                                        v-model="v$.form.fechaNacimiento.$model" tabindex="5">
+                                        v-model="v$.form.fechaNacimiento.$model" tabindex="5" required>
 
                                     <!--Error Message-->
                                     <div class="input-errors err"
@@ -111,7 +111,7 @@
                                         <div class="error-msg">{{ error.$message }}</div>
                                     </div>
                                 </div>
-                                                
+
                                 <!--Phone-->
                                 <div class="form-group mb-4 mb-sm-0">
                                     <input type="tel" class="form-control" placeholder="Télefono Fijo"
@@ -178,7 +178,7 @@
                         <div class="row">
 
                             <!--Image-->
-                            <div class="col-md-3">
+                            <div class="col-md-3 mb-4 mb-sm-0">
                                 <input type="file" class="dropify" data-height="120" @change="setLogo($event)"
                                     data-default-file="@/../img/assets/logo.png" />
                                 <p class="text-center mt-1">Logo</p>
@@ -198,7 +198,7 @@
                                 </div>
 
                                 <!--Checks-->
-                                <div class="form-group">
+                                <div class="form-group mb-4 mb-sm-0">
 
                                     <!--Title-->
                                     <p class="mb-1">¿Donde brindas tus servicios? *</p>
@@ -260,7 +260,7 @@
                     <!--Service-->
                     <div class="col-md-3 mb-4 mb-sm-0">
                         <select class="form-control select2" v-model="this.servicio" @change="verifyService()"
-                            tabindex="15">
+                            tabindex="15" required>
                             <option disabled value="">Servicio*</option>
                             <option v-for="c in this.listaServicio" :value="c.id" v-bind:key="c.id">{{ c.nombre_rubro }}
                             </option>
@@ -275,7 +275,7 @@
                     <!--Experience-->
                     <div class="col-md-3 mb-4 mb-sm-0">
                         <select class="form-control select2" v-model="this.experiencia" @change="verifyService()"
-                            tabindex="16">
+                            tabindex="16" required>
                             <option disabled value="">Experiencia*</option>
                             <option value="Menos de un año">Menos de un año</option>
                             <option value="De uno a tres años">De uno a tres años</option>
@@ -411,10 +411,10 @@
 
                 </div>
 
-                <div class="row mb-5">
+                <div class="row mb-4 mb-sm-5">
 
                     <!--About-->
-                    <div class="col-md-6">
+                    <div class="col-md-6 mb-5 mb-sm-0">
 
                         <!--Title-->
                         <h6 class="mb-1">Verifica Tu Identidad</h6>
@@ -425,7 +425,7 @@
                             <div class="row">
 
                                 <!--Image-->
-                                <div class="col-md-6">
+                                <div class="col-md-6 mb-4 mb-sm-0">
                                     <input type="file" class="dropify" data-height="150" @change="setDoc1($event)"
                                         data-default-file="@/../img/assets/dui-frontal.png" />
                                     <p class="text-center mt-1">DUI parte frontal *</p>
@@ -445,14 +445,14 @@
                     <div class="col-md-6">
 
                         <!--Tags-->
-                        <div class="row ps-5">
+                        <div class="row ps-0 ps-sm-5">
 
                             <!--Title-->
                             <h6 class="mb-1">¿Cómo podemos encontrarte?</h6>
                             <p class="mb-3">Escribe palabras claves que faciliten encontrar tu perfil</p>
 
                             <!--Div-->
-                            <div class="col-md-8 mb-4 mb-sm-0 form-group mb-3">
+                            <div class="col-md-8 form-group">
                                 <input type="text" class="form-control" placeholder="Palabra Clave" @keyup="verifyTag()"
                                     v-model="this.tag">
                             </div>
@@ -464,7 +464,7 @@
                             </div>
 
                             <!--List tags-->
-                            <div class="col-md-8 mt-2">
+                            <div class="col-md-8 mt-3 mt-sm-2">
                                 <span class="tag mb-4 mb-sm-3 me-3" v-for="(tag, index) in this.listTag"
                                     v-bind:key="index">
                                     {{ tag }}<i class="fa-solid fa-xmark" @click="deleteTag(index)"></i>

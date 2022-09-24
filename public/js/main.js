@@ -28,15 +28,17 @@ $(window).on("load", function () {
 /* ============================================================*/
 /* Select2
 /* ============================================================*/
-$(window).on("load", function () {
-    $(".select2")
-        .select2()
-        .on("select2:select", e => {
-            const event = new Event("change", { bubbles: true, cancelable: true })
-            e.params.data.element.parentElement.dispatchEvent(event)
-        })
-        .on("select2:unselect", e => {
-            const event = new Event("change", { bubbles: true, cancelable: true })
-            e.params.data.element.parentElement.dispatchEvent(event)
-        })
-})
+if (screen.width >= 1024) {
+    $(window).on("load", function () {
+        $(".select2")
+            .select2()
+            .on("select2:select", e => {
+                const event = new Event("change", { bubbles: true, cancelable: true })
+                e.params.data.element.parentElement.dispatchEvent(event)
+            })
+            .on("select2:unselect", e => {
+                const event = new Event("change", { bubbles: true, cancelable: true })
+                e.params.data.element.parentElement.dispatchEvent(event)
+            })
+    })
+}
