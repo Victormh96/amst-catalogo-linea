@@ -876,10 +876,10 @@
 
 #location p {
   font-size: 0.7rem;
-    font-weight: 500;
-    color: var(--dark-white);
-    display: block;
-    margin: 0;
+  font-weight: 500;
+  color: var(--dark-white);
+  display: block;
+  margin: 0;
 }
 
 /* ============================================================*/
@@ -912,7 +912,7 @@
   color: var(--white);
   width: max-content;
   border-radius: 3px;
-  padding: 8px 30px;
+  padding: 6px 20px;
   display: inline-block;
 }
 
@@ -940,7 +940,7 @@
 }
 
 #registro .map {
-  height: 280px;
+  height: 300px;
 }
 
 /*===Phone===**/
@@ -1323,6 +1323,41 @@ html::-webkit-scrollbar-thumb,
 
 .swiper-slide img {
   border-radius: 5px;
+}
+
+/* ============================================================*/
+/* Date
+/* ============================================================*/
+input[type="date"]::before {
+  position: absolute;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--dark) !important;
+  opacity: .4 !important;
+  content: attr(placeholder);
+}
+
+input[type="date"] {
+  color: transparent;
+}
+
+input[type="date"]:focus::before,
+input[type="date"]:valid::before {
+  content: "" !important;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background: none;
+}
+
+/* ============================================================*/
+/* Select
+/* ============================================================*/
+select:required:invalid {
+  color: #00000066 !important;
+}
+
+option {
+  color: black !important;
 }
 
 /* ============================================================*/
