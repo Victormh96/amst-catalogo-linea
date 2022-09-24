@@ -876,10 +876,10 @@
 
 #location p {
   font-size: 0.7rem;
-    font-weight: 500;
-    color: var(--dark-white);
-    display: block;
-    margin: 0;
+  font-weight: 500;
+  color: var(--dark-white);
+  display: block;
+  margin: 0;
 }
 
 /* ============================================================*/
@@ -912,7 +912,7 @@
   color: var(--white);
   width: max-content;
   border-radius: 3px;
-  padding: 8px 30px;
+  padding: 6px 20px;
   display: inline-block;
 }
 
@@ -940,7 +940,7 @@
 }
 
 #registro .map {
-  height: 280px;
+  height: 300px;
 }
 
 /*===Phone===**/
