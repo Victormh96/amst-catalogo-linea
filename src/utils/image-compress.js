@@ -1,3 +1,4 @@
+
 const comprimirImagen = (imagenComoArchivo, porcentajeCalidad) => {
 
     return new Promise((resolve, reject) => {

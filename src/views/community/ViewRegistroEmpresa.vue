@@ -141,13 +141,7 @@
                                 <!--Landline-->
                                 <div class="form-group mb-4">
                                     <input type="tel" class="form-control" placeholder="Télefono Fijo"
-                                        v-mask="'####-####'" v-model="v$.form.telefonoFijo.$model">
-
-                                    <!--Error Message-->
-                                    <div class="input-errors err" v-for="(error, index) of v$.form.telefonoFijo.$errors"
-                                        :key="index">
-                                        <div class="error-msg">{{ error.$message }}</div>
-                                    </div>
+                                        v-mask="'####-####'" v-model="this.form.telefonoFijo">
                                 </div>
 
 
@@ -499,6 +493,7 @@ import "sweetalert2/dist/sweetalert2.min.css"
 import Navbar from "@/components/community/ComponentNavbar.vue"
 import Footer from "@/components/community/ComponentFooter.vue"
 import { helpers, required, email, url, minLength } from "@vuelidate/validators"
+import { ComprimirImagen} from "@/utils/image-compress"
 
 // Message
 const requeridMessage = helpers.withMessage('Campo Obligatorio', required)
@@ -603,10 +598,6 @@ export default {
                     nitMessage,
                 },
                 telefonoCelular: {
-                    requeridMessage,
-                    phoneMessage
-                },
-                telefonoFijo: {
                     requeridMessage,
                     phoneMessage
                 },
@@ -861,20 +852,22 @@ export default {
         },
 
         // Img
-        setImg(event) {
-            this.form.imagen = event.target.files[0]
+        async setImg(event) {
+            this.form.imagen  = await ComprimirImagen(event.target.files[0])
         },
 
-        setLogo(event) {
-            this.form.logo = event.target.files[0]
+        // Img
+        async setLogo(event) {
+            this.form.logo = await ComprimirImagen(event.target.files[0])
+        },
+
+        // Img
+        async setDoc1(event) {
+            this.form.doc1 = await ComprimirImagen(event.target.files[0])
         },
         // Img
-        setDoc1(event) {
-            this.form.doc1 = event.target.files[0]
-        },
-        // Img
-        setDoc2(event) {
-            this.form.doc2 = event.target.files[0]
+        async setDoc2(event) {
+            this.form.doc2 = await ComprimirImagen(event.target.files[0])
         },
 
         setTipoServicio() {
