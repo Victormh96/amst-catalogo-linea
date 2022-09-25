@@ -523,8 +523,7 @@ import "sweetalert2/dist/sweetalert2.min.css"
 import Navbar from "@/components/community/ComponentNavbar.vue"
 import Footer from "@/components/community/ComponentFooter.vue"
 import { helpers, required, email, minLength, url } from "@vuelidate/validators"
-import Compressor from 'compressorjs';
-
+import { ComprimirImagen} from "@/utils/image-compress"
 // Message
 const requeridMessage = helpers.withMessage('Campo Obligatorio', required)
 const phoneMessage = helpers.withMessage('Teléfono invalido', minLength(8))
@@ -891,34 +890,22 @@ export default {
         },
 
         // Img
-        setImg(event) {
-            this.form.imagen = event.target.files[0]
-            console.log(event.target.files[0]);
-            const file = event.target.files[0];
-                
-            new Compressor(file, {
-                    quality: 0.6,
-                success(result) {
-                    console.log(result);
-    },error(err) {
-      console.log(err.message);
-    },
-
-});
+        async setImg(event) {
+            this.form.imagen  = await ComprimirImagen(event.target.files[0])
         },
 
         // Img
-        setLogo(event) {
-            this.form.logo = event.target.files[0]
+        async setLogo(event) {
+            this.form.logo = await ComprimirImagen(event.target.files[0])
         },
 
         // Img
-        setDoc1(event) {
-            this.form.doc1 = event.target.files[0]
+        async setDoc1(event) {
+            this.form.doc1 = await ComprimirImagen(event.target.files[0])
         },
         // Img
-        setDoc2(event) {
-            this.form.doc2 = event.target.files[0]
+        async setDoc2(event) {
+            this.form.doc2 = await ComprimirImagen(event.target.files[0])
         },
 
         // Radio
