@@ -678,8 +678,8 @@ export default {
         showFail() {
             this.$swal.fire({
                 icon: 'error',
-                title: 'Error',
-                text: this.form.name + ' ' + this.form.lastName + ' tu formulario no pudo ser registrado.' + ' Error linea' + this.$store.state.community.registroservicio.line + 'mensaje' + this.$store.state.community.registroservicio.message,
+                title: 'Tu formulario no pudo ser registrado',
+                html: this.mensajeError(),
                 confirmButtonText: "Aceptar",
                 allowOutsideClick: false,
                 allowEscapeKey: false,
@@ -687,6 +687,16 @@ export default {
             }).then(resultado => {
                 console.log(resultado)
             })
+        },
+
+        mensajeError() {
+            let map = new Map(Object.entries(this.$store.state.community.registroservicio))
+            var text =  '<table class="table table-bordered">'         
+            for (let value of map.values()) {
+               text = text + '<tr><th>' + value + '</th></tr>'
+            }
+            text = text + '</table>'
+            return text
         },
 
         // Alert Error

@@ -80,8 +80,9 @@ export default {
             state.errorregistro = false
         },
 
-        MutationRegistroEmpresa(state) {
-            state.registroempresa = true
+        MutationRegistroEmpresa(state, data) {
+            state.registroempresa = data
+            state.errorregistro = false
         },
 
         MutationClearServicio(state, data) {
@@ -89,8 +90,9 @@ export default {
             state.errorregistro = true
         },
 
-        MutationClearEmpresa(state) {
-            state.registroempresa = false
+        MutationClearEmpresa(state, data) {
+            state.registroempresa = data
+            state.errorregistro = true
         },
 
         MutationEntidad(state, data) {
@@ -247,14 +249,12 @@ export default {
             await axios
                 .post(RegistroServicio(), body)
                 .then(response => {
-                    console.log('soy la respuesta', response)
                     if (response.status === 200) {
                         commit('MutationRegistroServicio', response)
                     }
                 })
                 .catch((err) => {
-                    commit('MutationClearServicio', err.response.data)
-                    console.log('fallo', err.response)
+                    commit('MutationClearServicio', err.response.data[0])
                 })
         },
 
@@ -263,12 +263,11 @@ export default {
                 .post(RegistroEmpresa(), body)
                 .then(response => {
                     if (response.status === 200) {
-                        commit('MutationRegistroEmpresa')
+                        commit('MutationRegistroEmpresa', response)
                     }
                 })
                 .catch((err) => {
-                    commit('MutationClearEmpresa')
-                    console.log('fallo', err)
+                    commit('MutationClearEmpresa', err.response.data[0])
                 })
         },
 
