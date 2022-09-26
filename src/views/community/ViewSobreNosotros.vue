@@ -18,7 +18,7 @@
                         <swiper :slides-per-view="1" :space-between="50" :autoplay="{ delay: 5000 }" :modules="modules"
                             :loop="true" :effect="'fade'">
                             <swiper-slide v-for="(p, index) in this.portada" v-bind:key="index">
-                                <img :src="this.url + `/storage/${ p.imagen }`" alt="adsdasd" />
+                                <img :src="this.url + `/storage/${ p.imagen }`" />
                             </swiper-slide>
                         </swiper>
                     </div>

@@ -48,7 +48,7 @@
                     </router-link>
                 </div>
 
-                <!--Options-->
+                <!--Items-->
                 <div class="col-12 col-md-8 col-lg-6 col-xl-5 col-xxl-5 d-none d-md-block">
                     <nav class="nav-menu">
                         <ul>

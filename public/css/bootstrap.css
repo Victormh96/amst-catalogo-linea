@@ -60,7 +60,6 @@
   --border: #ededed;
 }
 
-
 *,
 *::before,
 *::after {
@@ -2743,7 +2742,6 @@ textarea.form-control-lg {
   -moz-appearance: none;
   appearance: none;
   -webkit-print-color-adjust: exact;
-  color-adjust: exact;
   print-color-adjust: exact;
 }
 

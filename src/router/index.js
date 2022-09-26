@@ -1,7 +1,7 @@
 // Imports
 import { createRouter, createWebHistory } from "vue-router"
 
-// Routes Community 
+// Community 
 import { communityRoutes } from "@/router/community/communityRoutes"
 
 // Routes

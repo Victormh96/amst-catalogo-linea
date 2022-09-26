@@ -201,7 +201,7 @@ export default {
     data() {
         return {
             destacados: [],
-            skeleton: false,
+            skeleton: true,
             portadainicio: []
         }
     },

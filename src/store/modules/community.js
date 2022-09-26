@@ -1,20 +1,20 @@
 // Imports
 import axios from "axios"
 import {
+    Portada,
     BusquedaFallida,
     Tag,
     Categoria,
+    CategoriaRegistro,
     CategoriaDestacado,
     CategoriaClick,
     CatalogoCategoria,
     Cuenta,
     RegistroServicio,
     RegistroEmpresa,
+    Entidades,
     Publicidad,
-    PublicidadClick,
-    Portada,
-    CategoriaRegistro,
-    Entidades
+    PublicidadClick
 } from "../../services/paths"
 
 // Vuex
@@ -26,15 +26,15 @@ export default {
             tag: null,
             categoria: null,
             categoriadestacado: null,
-            catalogocategoria: null,
             cuenta: null,
+            catalogocategoria: null,
             registroservicio: null,
-            errorregistro: null,
             registroempresa: null,
+            errorregistro: null,
+            entidades: null,
             search: null,
             publicidad: null,
-            publicidadclick: null,
-            entidades: null,
+            publicidadclick: null
         }
     },
 
@@ -75,7 +75,7 @@ export default {
             state.cuenta = data
         },
 
-        MutationRegistroServicio(state,data) {
+        MutationRegistroServicio(state, data) {
             state.registroservicio = data
             state.errorregistro = false
         },
@@ -84,7 +84,7 @@ export default {
             state.registroempresa = true
         },
 
-        MutationClearServicio(state, data ) {
+        MutationClearServicio(state, data) {
             state.registroservicio = data
             state.errorregistro = true
         },
@@ -93,12 +93,12 @@ export default {
             state.registroempresa = false
         },
 
-        MutationPublicidad(state, data) {
-            state.publicidad = data
-        },
-
         MutationEntidad(state, data) {
             state.entidades = data
+        },
+
+        MutationPublicidad(state, data) {
+            state.publicidad = data
         },
 
         MutationPublicidadClick(state) {
@@ -249,11 +249,11 @@ export default {
                 .then(response => {
                     console.log('soy la respuesta', response)
                     if (response.status === 200) {
-                        commit('MutationRegistroServicio',response)
+                        commit('MutationRegistroServicio', response)
                     }
                 })
                 .catch((err) => {
-                   commit('MutationClearServicio',err.response.data)
+                    commit('MutationClearServicio', err.response.data)
                     console.log('fallo', err.response)
                 })
         },

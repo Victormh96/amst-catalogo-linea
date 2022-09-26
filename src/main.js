@@ -8,18 +8,17 @@ import VueSweetalert2 from 'vue-sweetalert2'
 import VueAwesomePaginate from "vue-awesome-paginate"
 
 // Css
+import "vue-awesome-paginate/dist/style.css"
 import "../public/css/bootstrap.css"
 import "./registerServiceWorker"
 import "../public/css/main.css"
 import "swiper/css"
-import "vue-awesome-paginate/dist/style.css";
 
 // Initialization
 const app = createApp(App)
 
 // Global
 app.config.globalProperties.url = process.env.VUE_APP_URL_BASE
-app.config.globalProperties.asd
 
 // Uses
 app.use(store)

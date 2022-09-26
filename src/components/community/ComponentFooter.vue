@@ -6,7 +6,11 @@
 
                 <!--Tickets-->
                 <div class="col-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+
+                    <!--Title-->
                     <h5><i class="fa-solid fa-cog fa-spin"></i>ENTRADAS</h5>
+
+                    <!--Items-->
                     <ul>
                         <li>
                             <router-link :to="{ name: 'Inicio' }">
@@ -24,7 +28,11 @@
 
                 <!--Services-->
                 <div class="col-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+
+                    <!--Title-->
                     <h5><i class="fa-solid fa-cog fa-spin"></i>Servicios</h5>
+
+                    <!--Items-->
                     <ul>
                         <li><a href="/">Iniciar sesión</a></li>
                         <li>
@@ -36,7 +44,11 @@
 
                 <!--Our Catalog-->
                 <div class="col-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+
+                    <!--Title-->
                     <h5><i class="fa-solid fa-cog fa-spin"></i>NUESTRO CATÁLOGO</h5>
+
+                    <!--Items-->
                     <ul>
                         <li><a href="/servicios-completos">Todos los servicios</a></li>
                     </ul>
@@ -44,7 +56,11 @@
 
                 <!--Follow Us-->
                 <div class="col-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3 redes">
+
+                    <!--Title-->
                     <h5><i class="fa-solid fa-cog fa-spin"></i>SÍGUENOS</h5>
+
+                    <!--Items-->
                     <ul>
                         <li>
                             <a href="https://es-la.facebook.com/SantaTeclaSV" target="_blank"><i
@@ -56,7 +72,11 @@
                         </li>
                     </ul>
                     <br>
+
+                    <!--Title-->
                     <h5><i class="fa-solid fa-cog fa-spin"></i>UBICACIÓN</h5>
+
+                    <!--Items-->
                     <ul>
                         <li><a href="https://goo.gl/maps/APB1fjrxkFhyAgfEA" target="_blank"><i
                                     class="fa-solid fa-location-dot"></i></a></li>
