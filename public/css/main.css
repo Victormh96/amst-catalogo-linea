@@ -563,11 +563,8 @@
 }
 
 #catalogo .card ul li:not(:last-child):after {
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  content: "\f142";
-  margin: 0 12px;
-  color: #99a3b4;
+  content: "";
+  margin: 0 10px;
 }
 
 #catalogo .card .delivery {
