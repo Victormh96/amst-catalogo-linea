@@ -33,7 +33,7 @@ const ComprimirImagen = async (img) => {
     }
 
     const archivo = img;
-    const blob = await comprimirImagen(archivo, 50)
+    const blob = await comprimirImagen(archivo, 45)
 
     const myFile = new File([blob], 'image.jpeg', {
         type: blob.type,

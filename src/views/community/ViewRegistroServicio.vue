@@ -19,7 +19,6 @@
                 </div>
             </div>
         </section>
-
         <!--Section-->
         <section id="registro">
             <div class="container mb-4 mb-sm-5">
@@ -287,7 +286,8 @@
                     <!--Description-->
                     <div class="col-xs-10 col-md-4">
                         <input type="text" class="form-control" placeholder="Describe tu Servicio*"
-                            v-model="this.descripcion" @keyup="verifyService()"  @keydown="verifyService()" @change="verifyService()" tabindex="17">
+                            v-model="this.descripcion" @keyup="verifyService()" @keydown="verifyService()"
+                            @change="verifyService()" tabindex="17">
                     </div>
 
                     <!--Add Service-->
@@ -454,7 +454,7 @@
                             <!--Div-->
                             <div class="col-md-8 form-group">
                                 <input type="text" class="form-control" placeholder="Palabra Clave" @keyup="verifyTag()"
-                                @keydown="verifyTag()" @change="verifyTag()" v-model="this.tag">
+                                    @keydown="verifyTag()" @change="verifyTag()" v-model="this.tag">
                             </div>
 
                             <!--Add Service-->
@@ -691,9 +691,9 @@ export default {
 
         mensajeError() {
             let map = new Map(Object.entries(this.$store.state.community.registroservicio))
-            var text =  '<table class="table table-bordered">'         
+            var text = '<table class="table table-bordered">'
             for (let value of map.values()) {
-               text = text + '<tr><th>' + value + '</th></tr>'
+                text = text + '<tr><th>' + value + '</th></tr>'
             }
             text = text + '</table>'
             return text
