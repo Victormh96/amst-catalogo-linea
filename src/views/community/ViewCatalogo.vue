@@ -58,7 +58,7 @@
               <div class="row">
 
                 <!--Img-->
-                <div class="col-md-4 mb-2 mb-sm-0">
+                <div class="col-md-3 mb-2 mb-sm-0">
                   <router-link :to="{ name: 'Cuenta', params: { slug: l.slug } }">
                     <img :src="this.url + `/storage/${ l.foto }`" :alt="`${ l.slug }`">
                   </router-link>
@@ -66,7 +66,7 @@
                
                   <!--Description-->
                   <div class="col-md-8">
-                    <a href="">
+            
                     <!--Title-->
                     <router-link :to="{ name: 'Cuenta', params: { slug: l.slug } }">
                       <h5 class="mb-1">
@@ -84,7 +84,7 @@
                     <p class="descripcion">
                       {{ l.descripcion }}
                     </p>
-                  </a>
+            
                   </div>
                 
               </div>
@@ -166,6 +166,7 @@
 <!--=======Script=======-->
 <script>
 import L from "leaflet"
+import "leaflet.fullscreen"
 import "leaflet.locatecontrol"
 import Navbar from "@/components/community/ComponentNavbar.vue"
 import Footer from "@/components/community/ComponentFooter.vue"
@@ -234,17 +235,19 @@ export default {
     filtrar() {
       this.lista = this.$store.state.community.catalogocategoria
 
+      // If
       if (this.domicilio == 1) {
         this.lista = this.lista.filter(categoria => {
           return categoria.servicio_domicilio == 1
         })
 
       }
+
+      // If
       if (this.domicilio == 2) {
         this.lista = this.lista.filter(categoria => {
           return categoria.servicio_domicilio == 0
         })
-
       }
 
       // Methods
@@ -256,17 +259,18 @@ export default {
     refresh(lista) {
 
       this.lista = lista
+      // If
       if (this.domicilio == 1) {
         this.lista = this.lista.filter(categoria => {
           return categoria.servicio_domicilio == 1
         })
-
       }
+
+      // If
       if (this.domicilio == 2) {
         this.lista = this.lista.filter(categoria => {
           return categoria.servicio_domicilio == 0
         })
-
       }
       this.map.remove()
       this.maps(lista)
@@ -280,7 +284,7 @@ export default {
       var url = this.url
       var pines = this.lista
 
-      // Pin
+      // If
       if (lista !== undefined) {
         pines = lista
       }
@@ -300,8 +304,18 @@ export default {
         }
       }).addTo(this.map)
 
+      // Full Screen
+      L.control.fullscreen({
+        position: 'topleft',
+        content: null,
+        forceSeparateButton: true,
+        forcePseudoFullscreen: true,
+        fullscreenElement: false
+      }).addTo(this.map);
+
       // Fixed
       L.Popup.prototype._animateZoom = function (e) {
+        // If
         if (!this._map) {
           return
         }
@@ -338,7 +352,8 @@ export default {
       return this.$store.state.community.catalogocategoria.filter(categoria => {
         return categoria.nombre_cuenta.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
           .toLowerCase().includes(this.buscar.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
-            .toLowerCase()) ||
+            .toLowerCase())
+          ||
           categoria.tags.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
             .toLowerCase().includes(this.buscar.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
               .toLowerCase())

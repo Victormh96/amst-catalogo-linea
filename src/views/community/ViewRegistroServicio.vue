@@ -460,7 +460,7 @@
                             <!--Add Service-->
                             <div class="col-xs-2 col-md-1 mt-4 mt-sm-0 d-flex align-items-center">
                                 <button type="button" class="btn-md" @click="addTag"
-                                    :disabled="nullTag">Agregar</button>
+                                    :disabled="nullTag || this.$store.state.community.loading">Agregar</button>
                             </div>
 
                             <!--List tags-->
@@ -498,7 +498,7 @@
 
                 <!--Submit-->
                 <div class="col-md-12 text-center mt-4">
-                    <button type="button" class="btn-lg" :disabled="v$.form.$invalid" @click="submit">Unirme</button>
+                    <button type="button"  class="btn-lg" :disabled="v$.form.$invalid || this.$store.state.community.loading" @click="submit">Unirme</button>
                 </div>
             </div>
         </section>
@@ -779,7 +779,7 @@ export default {
                 if (this.cuentaServicios.length > 0 && this.terminos == true && this.form.imagen != false && this.form.doc1 != false && this.form.doc2 != false) {
                     var Form = new FormData()
                     var tag = ''
-
+                    await this.$store.dispatch("Loading", true)
                     // Foreach
                     for (var paramName in this.form) {
                         Form.append(paramName, this.form[paramName])
