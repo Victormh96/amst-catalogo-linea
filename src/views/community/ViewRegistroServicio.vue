@@ -287,7 +287,7 @@
                     <!--Description-->
                     <div class="col-xs-10 col-md-4">
                         <input type="text" class="form-control" placeholder="Describe tu Servicio*"
-                            v-model="this.descripcion" @keyup="verifyService()" tabindex="17">
+                            v-model="this.descripcion" @keyup="verifyService()"  @keydown="verifyService()" @change="verifyService()" tabindex="17">
                     </div>
 
                     <!--Add Service-->
@@ -454,7 +454,7 @@
                             <!--Div-->
                             <div class="col-md-8 form-group">
                                 <input type="text" class="form-control" placeholder="Palabra Clave" @keyup="verifyTag()"
-                                    v-model="this.tag">
+                                @keydown="verifyTag()" @change="verifyTag()" v-model="this.tag">
                             </div>
 
                             <!--Add Service-->
