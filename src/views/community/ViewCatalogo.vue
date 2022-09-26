@@ -278,8 +278,25 @@ export default {
 
     // Map
     maps(lista) {
+
+      // Normal Layer
+      var normalBase = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        minZoom: 14,
+        Zoom: 16
+      })
+
+      // Satellite Layer
+      var satelliteBase = L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+        minZoom: 14,
+        Zoom: 16,
+        subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+      })
+
       // Initial
-      this.map = L.map('map').setView([13.675997400000004, -89.28905480533759], 15)
+      this.map = L.map('map', {
+        layers: [normalBase]
+      }).setView([13.675997400000004, -89.28905480533759], 15)
       var map = this.map
       var url = this.url
       var pines = this.lista
@@ -288,6 +305,14 @@ export default {
       if (lista !== undefined) {
         pines = lista
       }
+
+      // Layers
+      var baseMaps = {
+        "Normal": normalBase,
+        "Satelital": satelliteBase
+      }
+
+      L.control.layers(baseMaps).addTo(this.map)
 
       // Setting
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
