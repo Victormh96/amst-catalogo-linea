@@ -200,8 +200,8 @@ import Footer from "@/components/community/ComponentFooter.vue"
 export default {
     data() {
         return {
+            skeleton: false,
             destacados: [],
-            skeleton: true,
             portadainicio: []
         }
     },

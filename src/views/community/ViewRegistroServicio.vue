@@ -523,7 +523,7 @@ import "sweetalert2/dist/sweetalert2.min.css"
 import Navbar from "@/components/community/ComponentNavbar.vue"
 import Footer from "@/components/community/ComponentFooter.vue"
 import { helpers, required, email, minLength, url } from "@vuelidate/validators"
-import { ComprimirImagen} from "@/utils/image-compress"
+import { ComprimirImagen } from "@/utils/image-compress"
 // Message
 const requeridMessage = helpers.withMessage('Campo Obligatorio', required)
 const phoneMessage = helpers.withMessage('Teléfono invalido', minLength(8))
@@ -891,7 +891,7 @@ export default {
 
         // Img
         async setImg(event) {
-            this.form.imagen  = await ComprimirImagen(event.target.files[0])
+            this.form.imagen = await ComprimirImagen(event.target.files[0])
         },
 
         // Img

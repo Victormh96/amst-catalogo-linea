@@ -890,6 +890,7 @@
   background-position: center;
   background-size: cover;
   padding: 50px 0;
+  background-color: var(--dark-blue);
 }
 
 /* ============================================================*/
