@@ -37,7 +37,7 @@
                             <div class="col-md-3 mb-4">
                                 <input type="file" class="dropify" data-height="170" @change="setImg($event)"
                                     data-default-file="@/../img/assets/store.png">
-                                    <p class="text-center">Foto empresa *</p>
+                                <p class="text-center">Foto empresa *</p>
                             </div>
 
                             <!--Company Name-->
@@ -179,7 +179,7 @@
                             <div class="col-md-3 mb-4">
                                 <input type="file" class="dropify" data-height="120" @change="setLogo($event)"
                                     data-default-file="@/../img/assets/logo.png" />
-                                    <p class="text-center">Logo de la empresa *</p>
+                                <p class="text-center">Logo de la empresa *</p>
                             </div>
                             <div class="col-md-4 mt-1">
                                 <div class="form-group mb-4">
@@ -409,12 +409,12 @@
                                 <div class="col-md-6 mb-4">
                                     <input type="file" class="dropify" data-height="150" @change="setDoc1($event)"
                                         data-default-file="@/../img/assets/dui-frontal.png" />
-                                        <p class="text-center">Documento 1</p>
+                                    <p class="text-center">Documento 1</p>
                                 </div>
                                 <div class="col-md-6 mb-4">
                                     <input type="file" class="dropify" data-height="150" @change="setDoc2($event)"
                                         data-default-file="@/../img/assets/dui-dorso.png" />
-                                        <p class="text-center">Documento 2</p>
+                                    <p class="text-center">Documento 2</p>
                                 </div>
                             </div>
                         </div>
@@ -493,7 +493,7 @@ import "sweetalert2/dist/sweetalert2.min.css"
 import Navbar from "@/components/community/ComponentNavbar.vue"
 import Footer from "@/components/community/ComponentFooter.vue"
 import { helpers, required, email, url, minLength } from "@vuelidate/validators"
-import { ComprimirImagen} from "@/utils/image-compress"
+import { ComprimirImagen } from "@/utils/image-compress"
 
 // Message
 const requeridMessage = helpers.withMessage('Campo Obligatorio', required)
@@ -710,12 +710,27 @@ export default {
                 Zoom: 16,
             }).addTo(this.map)
 
+            // Controller
+            L.control.locate({
+                showPopup: false,
+                locateOptions: {
+                    maxZoom: 18
+                }
+            }).addTo(this.map)
+
             // Localization
-            L.marker([13.675997400000004, -89.28905480533759], {
+            const dinamicMarker = L.marker([0, 0], {
                 draggable: true,
                 autoPan: true
-            },).addTo(this.map)
-                .on("dragend", dragedMaker)
+            }).addTo(this.map).on("dragend", dragedMaker);
+
+            // Localization
+            this.map.on('click', function (e) {
+                const { lat = 0, lng = 0 } = e.latlng
+                localStorage.setItem('latitud', lat)
+                localStorage.setItem('longitud', lng)
+                dinamicMarker.setLatLng([lat, lng])
+            });
 
             // Assing
             function dragedMaker() {
@@ -756,7 +771,7 @@ export default {
                     this.showFailServicies('Agrega la foto de tu perfil')
                 } else if (this.form.doc1 == false || this.form.doc2 == false) {
                     this.showFailServicies('Agrega la foto de tus documentos')
-                }else {
+                } else {
                     this.showFailServicies('No has registrado tus servicios')
                 }
             }
@@ -853,7 +868,7 @@ export default {
 
         // Img
         async setImg(event) {
-            this.form.imagen  = await ComprimirImagen(event.target.files[0])
+            this.form.imagen = await ComprimirImagen(event.target.files[0])
         },
 
         // Img
