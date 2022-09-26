@@ -31,7 +31,7 @@
 
                             <!--Input-->
                             <input type="text" class="form-control" placeholder="Albañil, Farmacias, Pupuserias..."
-                                v-model="buscarTag" v-on:keyup.enter="verifyTag">
+                                v-model="buscarTag"  v-on:keyup.enter="verifyTag">
 
                             <!--Result-->
                             <ul v-if="searchTag.length">

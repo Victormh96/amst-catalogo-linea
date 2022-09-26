@@ -63,28 +63,30 @@
                     <img :src="this.url + `/storage/${ l.foto }`" :alt="`${ l.slug }`">
                   </router-link>
                 </div>
+               
+                  <!--Description-->
+                  <div class="col-md-8">
+                    <a href="">
+                    <!--Title-->
+                    <router-link :to="{ name: 'Cuenta', params: { slug: l.slug } }">
+                      <h5 class="mb-1">
+                        {{ l.nombre_cuenta }}
+                        <img src="@/../public/img/assets/shapex15.png" class="ms-1 verify" v-if="l.verificado == 1">
+                      </h5>
+                    </router-link>
 
-                <!--Description-->
-                <div class="col-md-8">
+                    <!--Service-->
+                    <span class="me-2 mb-2" v-for="(r, index) in l.servicio" v-bind:key="index">
+                      {{ r.rubro.nombre_rubro }}
+                    </span>
 
-                  <!--Title-->
-                  <router-link :to="{ name: 'Cuenta', params: { slug: l.slug } }">
-                    <h5 class="mb-1">
-                      {{ l.nombre_cuenta }}
-                      <img src="@/../public/img/assets/shapex15.png" class="ms-1 verify" v-if="l.verificado == 1">
-                    </h5>
-                  </router-link>
-
-                  <!--Service-->
-                  <span class="me-2 mb-2" v-for="(r, index) in l.servicio" v-bind:key="index">
-                    {{ r.rubro.nombre_rubro }}
-                  </span>
-
-                  <!--Info-->
-                  <p class="descripcion">
-                    {{ l.descripcion }}
-                  </p>
-                </div>
+                    <!--Info-->
+                    <p class="descripcion">
+                      {{ l.descripcion }}
+                    </p>
+                  </a>
+                  </div>
+                
               </div>
 
               <!--Options-->
@@ -252,6 +254,7 @@ export default {
 
     // Refresh
     refresh(lista) {
+
       this.lista = lista
       if (this.domicilio == 1) {
         this.lista = this.lista.filter(categoria => {

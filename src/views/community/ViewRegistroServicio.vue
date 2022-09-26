@@ -293,7 +293,7 @@
                     <!--Add Service-->
                     <div class="col-xs-2 col-md-2 mt-4 mt-sm-0 d-flex align-items-center">
                         <button type="button" class="btn-md" :disabled="errorServicio || nullServicio"
-                            @click="addServices"><i class="fa-solid fa-plus"></i></button>
+                            @click="addServices">Agregar Servicio</button>
                     </div>
 
                     <!--List Services-->
@@ -459,8 +459,8 @@
 
                             <!--Add Service-->
                             <div class="col-xs-2 col-md-1 mt-4 mt-sm-0 d-flex align-items-center">
-                                <button type="button" class="btn-md" @click="addTag" :disabled="nullTag"><i
-                                        class="fa-solid fa-plus"></i></button>
+                                <button type="button" class="btn-md" @click="addTag"
+                                    :disabled="nullTag">Agregar</button>
                             </div>
 
                             <!--List tags-->
@@ -506,7 +506,8 @@
 
     <!--Skeleton-->
     <main class="top" v-show="(!skeleton)">
-        <div id="skeleton"></div>
+        <div id="skeleton">
+        </div>
     </main>
 
     <!--Footer-->
@@ -586,6 +587,7 @@ export default {
 
     async mounted() {
         //Portada
+        await this.$store.dispatch("Loading", false)
         await this.$store.dispatch("Portada", 'Registro')
         this.portadaregistro = this.$store.state.community.portada[0]
 
@@ -596,12 +598,12 @@ export default {
         // Skeleton
         setTimeout(() => {
             this.skeleton = true
-        }, 950)
+        }, 900)
 
         // Leaflet
         setTimeout(() => {
             this.maps()
-        }, 950)
+        }, 900)
     },
 
     setup() {
@@ -772,44 +774,47 @@ export default {
 
         // Send
         async submit() {
+
             // If
-            if (this.cuentaServicios.length > 0 && this.terminos == true && this.form.imagen != false && this.form.doc1 != false && this.form.doc2 != false) {
-                var Form = new FormData()
-                var tag = ''
+                if (this.cuentaServicios.length > 0 && this.terminos == true && this.form.imagen != false && this.form.doc1 != false && this.form.doc2 != false) {
+                    var Form = new FormData()
+                    var tag = ''
 
-                // Foreach
-                for (var paramName in this.form) {
-                    Form.append(paramName, this.form[paramName])
-                }
-                this.listTag.forEach(t => tag = tag + ',' + t);
-
-                // Add
-                Form.append('latitud', localStorage.getItem('latitud'))
-                Form.append('longitud', localStorage.getItem('longitud'))
-                Form.append('servicios', JSON.stringify(this.cuentaServicios))
-                Form.append('tags', tag)
-
-                // Vuex
-                this.$store.dispatch("ClearServicio")
-                await this.$store.dispatch("RegistroServicio", Form).then(() => {
-                    // If
-                    if (this.$store.state.community.errorregistro == false) {
-                        this.showSucces()
-                    } else {
-                        this.showFail()
+                    // Foreach
+                    for (var paramName in this.form) {
+                        Form.append(paramName, this.form[paramName])
                     }
-                })
-            } else {
-                if (this.terminos === false) {
-                    this.showFailServicies('Acepta los terminos y condiciones')
-                } else if (this.form.imagen == false) {
-                    this.showFailServicies('Agrega la foto de tu perfil')
-                } else if (this.form.doc1 == false || this.form.doc2 == false) {
-                    this.showFailServicies('Agrega la foto de tu DUI')
+                    this.listTag.forEach(t => tag = tag + ',' + t);
+
+                    // Add
+                    Form.append('latitud', localStorage.getItem('latitud'))
+                    Form.append('longitud', localStorage.getItem('longitud'))
+                    Form.append('servicios', JSON.stringify(this.cuentaServicios))
+                    Form.append('tags', tag)
+
+                    // Vuex
+                    await this.$store.dispatch("RegistroServicio", Form).then(() => {
+                        // If
+                        if (this.$store.state.community.errorregistro == false) {
+                            this.showSucces()
+                        } else {
+                            this.showFail()
+                        }
+                    })
                 } else {
-                    this.showFailServicies('No has registrado tus servicios')
+                    if (this.terminos === false) {
+                        this.showFailServicies('Acepta los terminos y condiciones')
+                    } else if (this.form.imagen == false) {
+                        this.showFailServicies('Agrega la foto de tu perfil')
+                    } else if (this.form.doc1 == false || this.form.doc2 == false) {
+                        this.showFailServicies('Agrega la foto de tu DUI')
+                    } else {
+                        this.showFailServicies('No has registrado tus servicios')
+                    }
                 }
-            }
+     
+      
+
         },
 
         // Services
@@ -901,21 +906,21 @@ export default {
 
         // Img
         async setImg(event) {
-            this.form.imagen = await ComprimirImagen(event.target.files[0])
+            this.form.imagen = await ComprimirImagen(event.target.files[0], 40)
         },
 
         // Img
         async setLogo(event) {
-            this.form.logo = await ComprimirImagen(event.target.files[0])
+            this.form.logo = await ComprimirImagen(event.target.files[0], 35)
         },
 
         // Img
         async setDoc1(event) {
-            this.form.doc1 = await ComprimirImagen(event.target.files[0])
+            this.form.doc1 = await ComprimirImagen(event.target.files[0], 35)
         },
         // Img
         async setDoc2(event) {
-            this.form.doc2 = await ComprimirImagen(event.target.files[0])
+            this.form.doc2 = await ComprimirImagen(event.target.files[0], 30)
         },
 
         // Radio

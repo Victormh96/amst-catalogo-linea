@@ -14,7 +14,7 @@ import {
     RegistroEmpresa,
     Entidades,
     Publicidad,
-    PublicidadClick
+    PublicidadClick,
 } from "../../services/paths"
 
 // Vuex
@@ -34,7 +34,8 @@ export default {
             entidades: null,
             search: null,
             publicidad: null,
-            publicidadclick: null
+            publicidadclick: null,
+            loading:null
         }
     },
 
@@ -85,12 +86,12 @@ export default {
             state.errorregistro = false
         },
 
-        MutationClearServicio(state, data) {
+        MutationErrorServicio(state, data) {
             state.registroservicio = data
             state.errorregistro = true
         },
 
-        MutationClearEmpresa(state, data) {
+        MutationErrorEmpresa(state, data) {
             state.registroempresa = data
             state.errorregistro = true
         },
@@ -105,6 +106,10 @@ export default {
 
         MutationPublicidadClick(state) {
             state.publicidadclick = true
+        },
+
+        MutationLoading(state, data) {
+            state.loading = data
         }
     },
 
@@ -246,6 +251,7 @@ export default {
         },
 
         async RegistroServicio({ commit }, body) {
+            commit('MutationLoading', true)
             await axios
                 .post(RegistroServicio(), body)
                 .then(response => {
@@ -254,11 +260,14 @@ export default {
                     }
                 })
                 .catch((err) => {
-                    commit('MutationClearServicio', err.response.data[0])
+                    commit('MutationErrorServicio', err.response.data[0])
+                    commit('MutationLoading', false)
                 })
+            commit('MutationLoading', false)
         },
 
         async RegistroEmpresa({ commit }, body) {
+            commit('MutationLoading', true)
             await axios
                 .post(RegistroEmpresa(), body)
                 .then(response => {
@@ -267,8 +276,10 @@ export default {
                     }
                 })
                 .catch((err) => {
-                    commit('MutationClearEmpresa', err.response.data[0])
+                    commit('MutationErrorEmpresa', err.response.data[0])
+                    commit('MutationLoading', false)
                 })
+            commit('MutationLoading', false)
         },
 
         async Publicidad({ commit }) {
@@ -297,12 +308,9 @@ export default {
             commit('MutationSearch', body)
         },
 
-        ClearServicio({ commit }) {
-            commit('MutationClearServicio')
+        Loading({ commit }, data) {
+            commit('MutationLoading', data)
         },
 
-        ClearEmpresa({ commit }) {
-            commit('MutationClearEmpresa')
-        },
     },
 };

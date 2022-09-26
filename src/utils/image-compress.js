@@ -27,13 +27,13 @@ const comprimirImagen = (imagenComoArchivo, porcentajeCalidad) => {
 }
 
 // Result
-const ComprimirImagen = async (img) => {
+const ComprimirImagen = async (img, resolucion) => {
     if (img.length <= 0) {
         return
     }
 
     const archivo = img;
-    const blob = await comprimirImagen(archivo, 45)
+    const blob = await comprimirImagen(archivo, resolucion)
 
     const myFile = new File([blob], 'image.jpeg', {
         type: blob.type,

@@ -279,7 +279,7 @@
                     <!--Add Service-->
                     <div class="col-xs-2 col-md-2 mt-4 mt-sm-0 d-flex align-items-center">
                         <button type="button" class="btn-md" :disabled="errorServicio || nullServicio"
-                            @click="addServices"><i class="fa-solid fa-plus"></i></button>
+                            @click="addServices">Agregar Servicio</button>
                     </div>
 
                     <!--List Services-->
@@ -437,8 +437,8 @@
 
                             <!--Add Service-->
                             <div class="col-xs-2 col-md-1 mt-4 mt-sm-0 d-flex align-items-center">
-                                <button type="button" class="btn-md" @click="addTag" :disabled="nullTag"><i
-                                        class="fa-solid fa-plus"></i></button>
+                                <button type="button" class="btn-md" @click="addTag"
+                                    :disabled="nullTag">Agregar</button>
                             </div>
 
                             <!--List tags-->
@@ -558,6 +558,7 @@ export default {
 
     async mounted() {
         //Portada
+        await this.$store.dispatch("Loading", false)
         await this.$store.dispatch("Portada", 'Registro')
         this.portadaregistro = this.$store.state.community.portada[0]
 
@@ -767,7 +768,6 @@ export default {
                 Form.append('tags', tag)
 
                 // Vuex
-                this.$store.dispatch("ClearEmpresa")
                 await this.$store.dispatch("RegistroEmpresa", Form).then(() => {
                     if (this.$store.state.community.registroempresa) {
                         this.showSucces()
@@ -879,21 +879,21 @@ export default {
 
         // Img
         async setImg(event) {
-            this.form.imagen = await ComprimirImagen(event.target.files[0])
+            this.form.imagen = await ComprimirImagen(event.target.files[0], 45)
         },
 
         // Img
         async setLogo(event) {
-            this.form.logo = await ComprimirImagen(event.target.files[0])
+            this.form.logo = await ComprimirImagen(event.target.files[0], 40)
         },
 
         // Img
         async setDoc1(event) {
-            this.form.doc1 = await ComprimirImagen(event.target.files[0])
+            this.form.doc1 = await ComprimirImagen(event.target.files[0], 40)
         },
         // Img
         async setDoc2(event) {
-            this.form.doc2 = await ComprimirImagen(event.target.files[0])
+            this.form.doc2 = await ComprimirImagen(event.target.files[0], 40)
         },
 
         setTipoServicio() {
