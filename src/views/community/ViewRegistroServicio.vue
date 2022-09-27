@@ -597,6 +597,9 @@ export default {
         await this.$store.dispatch("CategoriaRegistro", '1')
         this.listaServicio = this.$store.state.community.categoria
 
+        localStorage.removeItem('latitud')
+        localStorage.removeItem('longitud')
+
         // Skeleton
         setTimeout(() => {
             this.skeleton = true
@@ -799,45 +802,48 @@ export default {
 
         // Send
         async submit() {
-                // If
-                if (this.cuentaServicios.length > 0 && this.terminos == true && this.form.imagen != false && this.form.doc1 != false && this.form.doc2 != false) {
-                    this.showLoading()
-                    var Form = new FormData()
-                    var tag = ''
-                    // Foreach
-                    for (var paramName in this.form) {
-                        Form.append(paramName, this.form[paramName])
-                    }
-                    this.listTag.forEach(t => tag = tag + ',' + t);
-
-                    // Add
-                    Form.append('latitud', localStorage.getItem('latitud'))
-                    Form.append('longitud', localStorage.getItem('longitud'))
-                    Form.append('servicios', JSON.stringify(this.cuentaServicios))
-                    Form.append('tags', tag.slice(1))
-
-                    // Vuex
-                    await this.$store.dispatch("RegistroServicio", Form).then(() => {
-                        this.loading = 1
-                        // If
-                        if (this.$store.state.community.errorregistro == false) {
-                            this.showSucces()
-                        } else {
-                            this.showFail()
-                        }
-                    })
-                } else {
-                    if (this.terminos === false) {
-                        this.showFailServicies('Acepta los terminos y condiciones')
-                    } else if (this.form.imagen == false) {
-                        this.showFailServicies('Agrega la foto de tu perfil')
-                    } else if (this.form.doc1 == false || this.form.doc2 == false) {
-                        this.showFailServicies('Agrega la foto de tu DUI')
-                    } else {
-                        this.showFailServicies('No has registrado tus servicios')
-                    }
+            this.latitud = localStorage.getItem('latitud')
+            this.longitud = localStorage.getItem('longitud')
+            // If
+            if (this.cuentaServicios.length > 0 && this.terminos == true && this.form.imagen != false && this.form.doc1 != false && this.form.doc2 != false && this.latitud != null) {
+                this.showLoading()
+                var Form = new FormData()
+                var tag = ''
+                // Foreach
+                for (var paramName in this.form) {
+                    Form.append(paramName, this.form[paramName])
                 }
+                this.listTag.forEach(t => tag = tag + ',' + t);
 
+                // Add
+                Form.append('latitud', this.latitud)
+                Form.append('longitud', this.longitud)
+                Form.append('servicios', JSON.stringify(this.cuentaServicios))
+                Form.append('tags', tag.slice(1))
+
+                // Vuex
+                await this.$store.dispatch("RegistroServicio", Form).then(() => {
+                    this.loading = 1
+                    // If
+                    if (this.$store.state.community.errorregistro == false) {
+                        this.showSucces()
+                        localStorage.removeItem('latitud')
+                        localStorage.removeItem('longitud')
+                    } else {
+                        this.showFail()
+                    }
+                })
+            } else {
+                if (this.terminos === false) {
+                    this.showFailServicies('Acepta los terminos y condiciones')
+                } else if (this.form.imagen == false) {
+                    this.showFailServicies('Agrega la foto de tu perfil')
+                } else if (this.form.doc1 == false || this.form.doc2 == false) {
+                    this.showFailServicies('Agrega la foto de tu DUI')
+                } else {
+                    this.showFailServicies('No has registrado tus servicios')
+                }
+            }
         },
 
         // Services

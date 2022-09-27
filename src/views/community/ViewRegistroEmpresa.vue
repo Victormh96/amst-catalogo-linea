@@ -488,6 +488,7 @@
 <!--========Script========-->
 <script>
 import L from "leaflet"
+import "leaflet.locatecontrol"
 import router from "@/router"
 import useVuelidate from "@vuelidate/core"
 import "sweetalert2/dist/sweetalert2.min.css"
@@ -562,7 +563,8 @@ export default {
         await this.$store.dispatch("Loading", false)
         await this.$store.dispatch("Portada", 'Registro')
         this.portadaregistro = this.$store.state.community.portada[0]
-
+        localStorage.removeItem('latitud')
+        localStorage.removeItem('longitud')
         //Servicios
         await this.$store.dispatch("CategoriaRegistro", '2')
         this.listaServicio = this.$store.state.community.categoria
@@ -775,9 +777,13 @@ export default {
             }
         },
 
+
         // Send
         async submit() {
-            if (this.cuentaServicios.length > 0 && this.terminos == true && this.form.imagen != false && this.form.doc1 != false && this.form.doc2 != false) {
+            this.latitud = localStorage.getItem('latitud')
+            this.longitud = localStorage.getItem('longitud')
+
+            if (this.cuentaServicios.length > 0 && this.terminos == true && this.form.imagen != false && this.form.doc1 != false && this.form.doc2 != false && this.latitud != null) {
                 this.showLoading()
                 var Form = new FormData()
                 var tag = ''
@@ -787,8 +793,8 @@ export default {
                 }
                 this.listTag.forEach(t => tag = tag + ',' + t);
                 // Add
-                Form.append('latitud', localStorage.getItem('latitud'))
-                Form.append('longitud', localStorage.getItem('longitud'))
+                Form.append('latitud', this.latitud)
+                Form.append('longitud', this.longitud)
                 Form.append('servicios', JSON.stringify(this.cuentaServicios))
                 Form.append('tags', tag.slice(1))
 
@@ -797,6 +803,8 @@ export default {
                     this.loading = 1
                     if (this.$store.state.community.registroempresa) {
                         this.showSucces()
+                        localStorage.removeItem('latitud');
+                        localStorage.removeItem('longitud');
                     } else {
                         this.showFail()
                     }
@@ -808,6 +816,8 @@ export default {
                     this.showFailServicies('Agrega la foto de tu perfil')
                 } else if (this.form.doc1 == false || this.form.doc2 == false) {
                     this.showFailServicies('Agrega la foto de tus documentos')
+                } else if (this.latitud == null) {
+                    this.showFailServicies('Posiciona tu ubicación en el mapa')
                 } else {
                     this.showFailServicies('No has registrado tus servicios')
                 }
