@@ -61,7 +61,9 @@
                             <li>
                                 <a v-bind:href="'/categoria/' + 'empresas'">Empresas</a>
                             </li>
-                            <li><a href="/">Iniciar sesión</a></li>
+                            <li>
+                                <router-link :to="{ name: 'Sobre-Nosotros' }">Sobre Nosotros</router-link>
+                            </li>
                         </ul>
                     </nav>
                 </div>

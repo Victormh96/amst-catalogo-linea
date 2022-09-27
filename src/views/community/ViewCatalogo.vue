@@ -19,6 +19,7 @@
             <!--Input-->
             <input type="text" class="form-control text-center mb-3 mb-xl-2"
               placeholder="Albañil, Farmacias, Pupuserias..." v-model="buscar" @keyup="refresh(listaFiltrada)">
+
             <!--Checks-->
             <div class="text-center">
 
@@ -141,7 +142,7 @@
           </div>
 
           <!--Error-->
-          <div class="col-12 col-md-12 col-lg-12 col-xl-5 mb-4 mb-sm-5 text-center" v-else>
+          <div class="col-12 col-md-12 col-lg-12 col-xl-5 text-center" v-else>
             <i class="fa-solid fa-triangle-exclamation fa-beat-fade"></i>
           </div>
 
@@ -240,7 +241,6 @@ export default {
         this.lista = this.lista.filter(categoria => {
           return categoria.servicio_domicilio == 1
         })
-
       }
 
       // If
@@ -259,6 +259,7 @@ export default {
     refresh(lista) {
 
       this.lista = lista
+
       // If
       if (this.domicilio == 1) {
         this.lista = this.lista.filter(categoria => {
@@ -272,31 +273,16 @@ export default {
           return categoria.servicio_domicilio == 0
         })
       }
+
+      // Methods
       this.map.remove()
       this.maps(lista)
     },
 
     // Map
     maps(lista) {
-
-      // Normal Layer
-      var normalBase = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        minZoom: 14,
-        Zoom: 16
-      })
-
-      // Satellite Layer
-      var satelliteBase = L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
-        minZoom: 14,
-        Zoom: 16,
-        subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
-      })
-
       // Initial
-      this.map = L.map('map', {
-        layers: [normalBase]
-      }).setView([13.675997400000004, -89.28905480533759], 15)
+      this.map = L.map('map').setView([13.675997400000004, -89.28905480533759], 15)
       var map = this.map
       var url = this.url
       var pines = this.lista
@@ -305,14 +291,6 @@ export default {
       if (lista !== undefined) {
         pines = lista
       }
-
-      // Layers
-      var baseMaps = {
-        "Normal": normalBase,
-        "Satelital": satelliteBase
-      }
-
-      L.control.layers(baseMaps).addTo(this.map)
 
       // Setting
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -351,7 +329,8 @@ export default {
 
       // Pin
       pines.map(function (element) {
-        L.marker([element.latitud, element.longitud],).bindPopup("<a href=/cuenta/" + element.slug + "><img src=" + url + "/storage/" + element.foto + "/></a>").addTo(map)
+        L.marker([element.latitud, element.longitud],)
+          .bindPopup("<a href=/cuenta/" + element.slug + "><img src=" + url + "/storage/" + element.foto + "/><center><span>" + element.nombre_cuenta + "</span></center></a>").addTo(map)
       })
 
       // Methods
