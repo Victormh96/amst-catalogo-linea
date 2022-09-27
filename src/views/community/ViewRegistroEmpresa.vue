@@ -552,7 +552,8 @@ export default {
             nullServicio: true,
             nullTag: true,
             errorServicio: true,
-            terminos: false
+            terminos: false,
+            loading: 9000,
         }
     },
 
@@ -681,6 +682,29 @@ export default {
             return text
         },
 
+        showLoading() {
+            let timerInterval
+            this.$swal.fire({
+                title: 'Cargando',
+                timer: this.loading,
+                timerProgressBar: true,
+                didOpen: () => {
+                    this.$swal.showLoading()
+                    const b = this.$swal.getHtmlContainer().querySelector('b')
+                    timerInterval = setInterval(() => {
+                        b.textContent = this.$swal.getTimerLeft()
+                    }, 100)
+                },
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+            }).then((result) => {
+                if (result.dismiss === this.$swal.DismissReason.timer) {
+                    console.log('I was closed by the timer')
+                }
+            })
+        },
+
         // Alert Error
         showFailServicies(msg) {
             this.$swal.fire({
@@ -754,6 +778,7 @@ export default {
         // Send
         async submit() {
             if (this.cuentaServicios.length > 0 && this.terminos == true && this.form.imagen != false && this.form.doc1 != false && this.form.doc2 != false) {
+                this.showLoading()
                 var Form = new FormData()
                 var tag = ''
                 // Foreach
@@ -765,10 +790,11 @@ export default {
                 Form.append('latitud', localStorage.getItem('latitud'))
                 Form.append('longitud', localStorage.getItem('longitud'))
                 Form.append('servicios', JSON.stringify(this.cuentaServicios))
-                Form.append('tags', tag)
+                Form.append('tags', tag.slice(1))
 
                 // Vuex
                 await this.$store.dispatch("RegistroEmpresa", Form).then(() => {
+                    this.loading = 1
                     if (this.$store.state.community.registroempresa) {
                         this.showSucces()
                     } else {

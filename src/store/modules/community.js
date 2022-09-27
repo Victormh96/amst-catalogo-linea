@@ -257,13 +257,13 @@ export default {
                 .then(response => {
                     if (response.status === 200) {
                         commit('MutationRegistroServicio', response)
+                        commit('MutationLoading', false)
                     }
                 })
                 .catch((err) => {
                     commit('MutationErrorServicio', err.response.data[0])
                     commit('MutationLoading', false)
                 })
-            commit('MutationLoading', false)
         },
 
         async RegistroEmpresa({ commit }, body) {
@@ -273,13 +273,13 @@ export default {
                 .then(response => {
                     if (response.status === 200) {
                         commit('MutationRegistroEmpresa', response)
+                        commit('MutationLoading', false)
                     }
                 })
                 .catch((err) => {
                     commit('MutationErrorEmpresa', err.response.data[0])
                     commit('MutationLoading', false)
                 })
-            commit('MutationLoading', false)
         },
 
         async Publicidad({ commit }) {

@@ -460,7 +460,7 @@
                             <!--Add Service-->
                             <div class="col-xs-2 col-md-1 mt-4 mt-sm-0 d-flex align-items-center">
                                 <button type="button" class="btn-md" @click="addTag"
-                                    :disabled="nullTag || this.$store.state.community.loading">Agregar</button>
+                                    :disabled="nullTag">Agregar</button>
                             </div>
 
                             <!--List tags-->
@@ -498,7 +498,9 @@
 
                 <!--Submit-->
                 <div class="col-md-12 text-center mt-4">
-                    <button type="button"  class="btn-lg" :disabled="v$.form.$invalid || this.$store.state.community.loading" @click="submit">Unirme</button>
+                    <button type="button" class="btn-lg"
+                        :disabled="v$.form.$invalid || this.$store.state.community.loading"
+                        @click="submit">Unirme</button>
                 </div>
             </div>
         </section>
@@ -582,12 +584,12 @@ export default {
             portadaregistro: [],
             cuentaServicios: [],
             errorServicio: true,
+            loading: 9000,
         }
     },
 
     async mounted() {
         //Portada
-        await this.$store.dispatch("Loading", false)
         await this.$store.dispatch("Portada", 'Registro')
         this.portadaregistro = this.$store.state.community.portada[0]
 
@@ -691,6 +693,29 @@ export default {
             })
         },
 
+        showLoading() {
+            let timerInterval
+            this.$swal.fire({
+                title: 'Cargando',
+                timer: this.loading,
+                timerProgressBar: true,
+                didOpen: () => {
+                    this.$swal.showLoading()
+                    const b = this.$swal.getHtmlContainer().querySelector('b')
+                    timerInterval = setInterval(() => {
+                        b.textContent = this.$swal.getTimerLeft()
+                    }, 100)
+                },
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+            }).then((result) => {
+                if (result.dismiss === this.$swal.DismissReason.timer) {
+                    console.log('I was closed by the timer')
+                }
+            })
+        },
+
         mensajeError() {
             let map = new Map(Object.entries(this.$store.state.community.registroservicio))
             var text = '<table class="table table-bordered">'
@@ -774,12 +799,11 @@ export default {
 
         // Send
         async submit() {
-
-            // If
+                // If
                 if (this.cuentaServicios.length > 0 && this.terminos == true && this.form.imagen != false && this.form.doc1 != false && this.form.doc2 != false) {
+                    this.showLoading()
                     var Form = new FormData()
                     var tag = ''
-                    await this.$store.dispatch("Loading", true)
                     // Foreach
                     for (var paramName in this.form) {
                         Form.append(paramName, this.form[paramName])
@@ -790,10 +814,11 @@ export default {
                     Form.append('latitud', localStorage.getItem('latitud'))
                     Form.append('longitud', localStorage.getItem('longitud'))
                     Form.append('servicios', JSON.stringify(this.cuentaServicios))
-                    Form.append('tags', tag)
+                    Form.append('tags', tag.slice(1))
 
                     // Vuex
                     await this.$store.dispatch("RegistroServicio", Form).then(() => {
+                        this.loading = 1
                         // If
                         if (this.$store.state.community.errorregistro == false) {
                             this.showSucces()
@@ -812,8 +837,6 @@ export default {
                         this.showFailServicies('No has registrado tus servicios')
                     }
                 }
-     
-      
 
         },
 
