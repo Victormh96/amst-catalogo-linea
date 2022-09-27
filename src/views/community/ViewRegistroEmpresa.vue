@@ -675,7 +675,7 @@ export default {
         },
 
         mensajeError() {
-            let map = new Map(Object.entries(this.$store.state.community.registroservicio))
+            let map = new Map(Object.entries(this.$store.state.community.registroempresa))
             var text = '<table class="table table-bordered">'
             for (let value of map.values()) {
                 text = text + '<tr><th>' + value + '</th></tr>'
@@ -724,7 +724,7 @@ export default {
             this.$swal.fire({
                 icon: 'success',
                 title: 'Formulario Enviado',
-                text: this.name + ' revisaremos tu solicitud y nos comunicaremos contigo.',
+                text: this.form.name + ' revisaremos tu solicitud y nos comunicaremos contigo.',
                 confirmButtonText: "Aceptar",
                 allowOutsideClick: false,
                 allowEscapeKey: false,
@@ -801,7 +801,7 @@ export default {
                 // Vuex
                 await this.$store.dispatch("RegistroEmpresa", Form).then(() => {
                     this.loading = 1
-                    if (this.$store.state.community.registroempresa) {
+                    if (this.$store.state.community.errorregistro == false) {
                         this.showSucces()
                         localStorage.removeItem('latitud');
                         localStorage.removeItem('longitud');
