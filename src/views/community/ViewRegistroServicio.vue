@@ -945,7 +945,7 @@ export default {
 
         // Img
         async setDoc1(event) {
-            this.form.doc1 = await ComprimirImagen(event.target.files[0], 35)
+            this.form.doc1 = await ComprimirImagen(event.target.files[0], 30)
         },
         // Img
         async setDoc2(event) {

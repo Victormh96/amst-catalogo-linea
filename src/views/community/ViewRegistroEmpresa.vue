@@ -915,21 +915,21 @@ export default {
 
         // Img
         async setImg(event) {
-            this.form.imagen = await ComprimirImagen(event.target.files[0], 45)
+            this.form.imagen = await ComprimirImagen(event.target.files[0], 40)
         },
 
         // Img
         async setLogo(event) {
-            this.form.logo = await ComprimirImagen(event.target.files[0], 40)
+            this.form.logo = await ComprimirImagen(event.target.files[0], 35)
         },
 
         // Img
         async setDoc1(event) {
-            this.form.doc1 = await ComprimirImagen(event.target.files[0], 40)
+            this.form.doc1 = await ComprimirImagen(event.target.files[0], 30)
         },
         // Img
         async setDoc2(event) {
-            this.form.doc2 = await ComprimirImagen(event.target.files[0], 40)
+            this.form.doc2 = await ComprimirImagen(event.target.files[0], 30)
         },
 
         setTipoServicio() {
