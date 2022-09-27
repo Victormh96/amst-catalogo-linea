@@ -545,17 +545,17 @@
 }
 
 #catalogo .card ul li a i {
-  font-size: 15px;
+  font-size: 14px;
   color: #99a3b4;
   transition: 0.3s;
 }
 
 #catalogo .card ul li a .phones {
-  font-size: 17px;
+  font-size: 16px;
 }
 
 #catalogo .card ul li a .others {
-  font-size: 18px;
+  font-size: 17px;
 }
 
 #catalogo .card ul li a:hover i {
@@ -634,13 +634,28 @@
 }
 
 #catalogo .leaflet-popup-content {
-  margin: 5px;
+  margin: 0;
+  width: 120px !important;
 }
 
 #catalogo .leaflet-popup-content img {
-  width: 110px;
+  width: 120px;
   height: 70px;
   object-fit: cover;
+}
+
+#catalogo .leaflet-popup-content span {
+  display: block;
+  width: 120px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--dark-blue);
+  text-transform: uppercase;
+  padding: 5px 0;
+}
+
+#catalogo .leaflet-popup-content-wrapper {
+  padding: 0;
 }
 
 /*============================================================================================*/
@@ -1343,6 +1358,7 @@ input[type="date"]:focus::before,
 input[type="date"]:valid::before {
   content: "" !important;
 }
+
 input[type="date"]::-webkit-calendar-picker-indicator {
   background: none;
 }

@@ -326,7 +326,8 @@ export default {
 
       // Pin
       pines.map(function (element) {
-        L.marker([element.latitud, element.longitud],).bindPopup("<a href=/cuenta/" + element.slug + "><img src=" + url + "/storage/" + element.foto + "/></a>").addTo(map)
+        L.marker([element.latitud, element.longitud],)
+          .bindPopup("<a href=/cuenta/" + element.slug + "><img src=" + url + "/storage/" + element.foto + "/><center><span>" + element.nombre_cuenta + "</span></center></a>").addTo(map)
       })
 
       // Methods
