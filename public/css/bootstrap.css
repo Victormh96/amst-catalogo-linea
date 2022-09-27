@@ -238,6 +238,11 @@ button:disabled {
   display: grid;
 }
 
+.d-grid-inline {
+  display: inline-grid;
+  width: 25%;
+}
+
 .fade-in {
   animation: fade-in-animation 2s;
 }

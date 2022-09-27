@@ -19,7 +19,6 @@
             <!--Input-->
             <input type="text" class="form-control text-center mb-3 mb-xl-2"
               placeholder="Albañil, Farmacias, Pupuserias..." v-model="buscar" @keyup="refresh(listaFiltrada)">
-
             <!--Checks-->
             <div class="text-center">
 
@@ -64,30 +63,28 @@
                     <img :src="this.url + `/storage/${ l.foto }`" :alt="`${ l.slug }`">
                   </router-link>
                 </div>
-               
-                  <!--Description-->
-                  <div class="col-md-8">
-            
-                    <!--Title-->
-                    <router-link :to="{ name: 'Cuenta', params: { slug: l.slug } }">
-                      <h5 class="mb-1">
-                        {{ l.nombre_cuenta }}
-                        <img src="@/../public/img/assets/shapex15.png" class="ms-1 verify" v-if="l.verificado == 1">
-                      </h5>
-                    </router-link>
 
-                    <!--Service-->
-                    <span class="me-2 mb-2" v-for="(r, index) in l.servicio" v-bind:key="index">
-                      {{ r.rubro.nombre_rubro }}
-                    </span>
+                <!--Description-->
+                <div class="col-md-9">
 
-                    <!--Info-->
-                    <p class="descripcion">
-                      {{ l.descripcion }}
-                    </p>
-            
-                  </div>
-                
+                  <!--Title-->
+                  <router-link :to="{ name: 'Cuenta', params: { slug: l.slug } }">
+                    <h5 class="mb-1">
+                      {{ l.nombre_cuenta }}
+                      <img src="@/../public/img/assets/shapex15.png" class="ms-1 verify" v-if="l.verificado == 1">
+                    </h5>
+                  </router-link>
+
+                  <!--Service-->
+                  <span class="me-2 mb-2" v-for="(r, index) in l.servicio" v-bind:key="index">
+                    {{ r.rubro.nombre_rubro }}
+                  </span>
+
+                  <!--Info-->
+                  <p class="descripcion">
+                    {{ l.descripcion }}
+                  </p>
+                </div>
               </div>
 
               <!--Options-->
@@ -142,7 +139,7 @@
           </div>
 
           <!--Error-->
-          <div class="col-12 col-md-12 col-lg-12 col-xl-5 text-center" v-else>
+          <div class="col-12 col-md-12 col-lg-12 col-xl-5 mb-4 mb-sm-5 text-center" v-else>
             <i class="fa-solid fa-triangle-exclamation fa-beat-fade"></i>
           </div>
 
@@ -197,6 +194,7 @@ export default {
       })
     }
 
+    // Function
     this.onClickHandler(1)
 
     // Skeleton
@@ -257,7 +255,6 @@ export default {
 
     // Refresh
     refresh(lista) {
-
       this.lista = lista
 
       // If
@@ -281,23 +278,42 @@ export default {
 
     // Map
     maps(lista) {
+      // Normal
+      var normalBase = new L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        minZoom: 14,
+        Zoom: 16
+      })
+
+      // Satellite
+      var satelliteBase = new L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+        minZoom: 14,
+        Zoom: 16,
+        subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+      })
+
       // Initial
-      this.map = L.map('map').setView([13.675997400000004, -89.28905480533759], 15)
-      var map = this.map
+      var map = new L.Map('map', {
+        tap: false,
+        layers: [normalBase]
+      }).setView([13.675997400000004, -89.28905480533759], 15)
+
+      // Const
+      this.map = map
       var url = this.url
       var pines = this.lista
+      var baseMaps = {
+        "Normal": normalBase,
+        "Satelital": satelliteBase
+      }
 
       // If
       if (lista !== undefined) {
         pines = lista
       }
 
-      // Setting
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        minZoom: 14,
-        Zoom: 16,
-      }).addTo(this.map)
+      // Layers
+      L.control.layers(baseMaps).addTo(map)
 
       // Controller
       L.control.locate({
@@ -305,7 +321,7 @@ export default {
         locateOptions: {
           maxZoom: 18
         }
-      }).addTo(this.map)
+      }).addTo(map)
 
       // Full Screen
       L.control.fullscreen({
@@ -314,18 +330,7 @@ export default {
         forceSeparateButton: true,
         forcePseudoFullscreen: true,
         fullscreenElement: false
-      }).addTo(this.map);
-
-      // Fixed
-      L.Popup.prototype._animateZoom = function (e) {
-        // If
-        if (!this._map) {
-          return
-        }
-        var pos = this._map._latLngToNewLayerPoint(this._latlng, e.zoom, e.center),
-          anchor = this._getAnchor()
-        L.DomUtil.setPosition(this._container, pos.add(anchor))
-      }
+      }).addTo(map);
 
       // Pin
       pines.map(function (element) {

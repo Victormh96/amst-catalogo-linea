@@ -109,15 +109,21 @@
   z-index: 9999;
 }
 
-#mobile a {
-  font-size: 21px;
+#mobile a i {
+  font-size: 20px;
   color: var(--white);
-  margin: 0 25px;
   transition: all 0.3s;
 }
 
-#mobile a:hover {
+#mobile a:hover i {
   color: var(--light-blue);
+}
+
+#mobile a span {
+  font-size: 9.5px;
+  font-weight: 300;
+  color: var(--white);
+  margin: 5px 0 0 0;
 }
 
 /* ============================================================*/
@@ -692,23 +698,23 @@
 
 #catalogo .leaflet-popup-content {
   margin: 0;
-  width: 120px !important;
+  width: 110px !important;
 }
 
 #catalogo .leaflet-popup-content img {
-  width: 120px;
-  height: 70px;
+  width: 110px;
+  height: 60px;
   object-fit: cover;
 }
 
 #catalogo .leaflet-popup-content span {
   display: block;
-  width: 120px;
+  width: 110px;
   font-size: 0.65rem;
   font-weight: 700;
   color: var(--dark-blue);
   text-transform: uppercase;
-  padding: 5px 0;
+  padding: 5px 3px;
 }
 
 #catalogo .leaflet-popup-content-wrapper {
@@ -839,6 +845,7 @@
   border-block-width: 3px;
   width: 100%;
 }
+
 #cuenta article .profile .logo {
   width: auto;
   height: 150px;
@@ -1364,6 +1371,14 @@ html::-webkit-scrollbar-thumb,
   border: none;
 }
 
+.dropify-wrapper.has-error {
+  border-color: #E5E5E5 !important;
+}
+
+.dropify-wrapper .dropify-errors-container {
+  background: rgb(0 0 0 / 60%) !important;
+}
+
 /* ============================================================*/
 /* Leaflet
 /* ============================================================*/
@@ -1400,31 +1415,6 @@ html::-webkit-scrollbar-thumb,
 
 .swiper-slide img {
   border-radius: 5px;
-}
-
-/* ============================================================*/
-/* Date
-/* ============================================================*/
-input[type="date"]::before {
-  position: absolute;
-  font-size: 13px;
-  font-weight: 400;
-  color: var(--dark) !important;
-  opacity: .4 !important;
-  content: attr(placeholder);
-}
-
-input[type="date"] {
-  color: transparent;
-}
-
-input[type="date"]:focus::before,
-input[type="date"]:valid::before {
-  content: "" !important;
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-  background: none;
 }
 
 /* ============================================================*/

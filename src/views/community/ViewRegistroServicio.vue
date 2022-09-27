@@ -19,6 +19,7 @@
                 </div>
             </div>
         </section>
+
         <!--Section-->
         <section id="registro">
             <div class="container mb-4 mb-sm-5">
@@ -38,7 +39,8 @@
                             <!--Image-->
                             <div class="col-md-3 mb-4 mb-sm-0">
                                 <input type="file" class="dropify" data-height="170" @change="setImg($event)"
-                                    data-default-file="@/../img/assets/perfil.png" />
+                                    data-default-file="@/../img/assets/perfil.png"
+                                    data-allowed-file-extensions="png jpg jpeg gif" />
                                 <p class="text-center mt-1">Foto perfil *</p>
                             </div>
 
@@ -101,8 +103,8 @@
 
                                 <!--Date Birth-->
                                 <div class="form-group mb-4">
-                                    <input type="date" class="form-control" placeholder="Fecha de Nacimiento*"
-                                        v-model="v$.form.fechaNacimiento.$model" tabindex="5" required>
+                                    <input type="text" class="form-control" placeholder="Fecha de Nacimiento*"
+                                        v-model="v$.form.fechaNacimiento.$model" tabindex="5" required  onfocus="(this.type='date')" onblur="(this.value == '' ? this.type='text' : this.type='date')">
 
                                     <!--Error Message-->
                                     <div class="input-errors err"
@@ -179,7 +181,8 @@
                             <!--Image-->
                             <div class="col-md-3 mb-4 mb-sm-0">
                                 <input type="file" class="dropify" data-height="120" @change="setLogo($event)"
-                                    data-default-file="@/../img/assets/logo.png" />
+                                    data-default-file="@/../img/assets/logo.png"
+                                    data-allowed-file-extensions="png jpg jpeg gif" />
                                 <p class="text-center mt-1">Logo</p>
                             </div>
 
@@ -408,7 +411,6 @@
                             <div class="error-msg">{{ error.$message }}</div>
                         </div>
                     </div>
-
                 </div>
 
                 <div class="row mb-4 mb-sm-5">
@@ -427,14 +429,16 @@
                                 <!--Image-->
                                 <div class="col-md-6 mb-4 mb-sm-0">
                                     <input type="file" class="dropify" data-height="150" @change="setDoc1($event)"
-                                        data-default-file="@/../img/assets/dui-frontal.png" />
+                                        data-default-file="@/../img/assets/dui-frontal.png"
+                                        data-allowed-file-extensions="png jpg jpeg gif" />
                                     <p class="text-center mt-1">DUI parte frontal *</p>
                                 </div>
 
                                 <!--Image-->
                                 <div class="col-md-6">
                                     <input type="file" class="dropify" data-height="150" @change="setDoc2($event)"
-                                        data-default-file="@/../img/assets/dui-dorso.png" />
+                                        data-default-file="@/../img/assets/dui-dorso.png"
+                                        data-allowed-file-extensions="png jpg jpeg gif" />
                                     <p class="text-center mt-1">DUI parte trasera *</p>
                                 </div>
                             </div>
@@ -519,6 +523,7 @@
 <!--========Script========-->
 <script>
 import L from "leaflet"
+import "leaflet.fullscreen"
 import router from "@/router"
 import "leaflet.locatecontrol"
 import useVuelidate from "@vuelidate/core"
@@ -527,6 +532,7 @@ import Navbar from "@/components/community/ComponentNavbar.vue"
 import Footer from "@/components/community/ComponentFooter.vue"
 import { helpers, required, email, minLength, url } from "@vuelidate/validators"
 import { ComprimirImagen } from "@/utils/image-compress"
+
 // Message
 const requeridMessage = helpers.withMessage('Campo Obligatorio', required)
 const phoneMessage = helpers.withMessage('Teléfono invalido', minLength(8))
@@ -541,7 +547,6 @@ export default {
                 name: '',
                 email: '',
                 local: '',
-                imagen: false,
                 logo: false,
                 marca: '',
                 genero: '',
@@ -553,14 +558,15 @@ export default {
                 facebook: '',
                 whatsapp: '',
                 linkedin: '',
+                imagen: false,
                 instagram: '',
                 documento: '',
                 direccion: '',
                 descripcion: '',
-                tipoServicio: '',
                 telefonofijo: '',
-                telefonoCelular: '',
+                tipoServicio: '',
                 fechaNacimiento: '',
+                telefonoCelular: '',
                 servicioDomicilio: '',
             },
 
@@ -574,6 +580,7 @@ export default {
             longitud: 0,
             listTag: [],
             servicio: '',
+            loading: 9000,
             nullTag: true,
             experiencia: '',
             descripcion: '',
@@ -584,7 +591,6 @@ export default {
             portadaregistro: [],
             cuentaServicios: [],
             errorServicio: true,
-            loading: 9000,
         }
     },
 
@@ -696,6 +702,7 @@ export default {
             })
         },
 
+        // Alert Loading
         showLoading() {
             let timerInterval
             this.$swal.fire({
@@ -713,15 +720,19 @@ export default {
                     clearInterval(timerInterval)
                 }
             }).then((result) => {
+                // If
                 if (result.dismiss === this.$swal.DismissReason.timer) {
                     console.log('I was closed by the timer')
                 }
             })
         },
 
+        // Alert Error
         mensajeError() {
             let map = new Map(Object.entries(this.$store.state.community.registroservicio))
             var text = '<table class="table table-bordered">'
+
+            // Foreach
             for (let value of map.values()) {
                 text = text + '<tr><th>' + value + '</th></tr>'
             }
@@ -779,6 +790,15 @@ export default {
                 }
             }).addTo(this.map)
 
+            // Full Screen
+            L.control.fullscreen({
+                position: 'topleft',
+                content: null,
+                forceSeparateButton: true,
+                forcePseudoFullscreen: true,
+                fullscreenElement: false
+            }).addTo(this.map);
+
             // Localization
             const dinamicMarker = L.marker([0, 0], {
                 draggable: true,
@@ -809,6 +829,7 @@ export default {
                 this.showLoading()
                 var Form = new FormData()
                 var tag = ''
+
                 // Foreach
                 for (var paramName in this.form) {
                     Form.append(paramName, this.form[paramName])
@@ -897,6 +918,7 @@ export default {
 
         // Add
         verifyTag() {
+            // If
             if (this.tag == '') {
                 this.nullTag = true
             } else {
@@ -947,6 +969,7 @@ export default {
         async setDoc1(event) {
             this.form.doc1 = await ComprimirImagen(event.target.files[0], 35)
         },
+
         // Img
         async setDoc2(event) {
             this.form.doc2 = await ComprimirImagen(event.target.files[0], 30)

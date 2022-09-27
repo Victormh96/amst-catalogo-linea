@@ -73,17 +73,21 @@
 
     <!--Div-->
     <div id="mobile" class="d-block d-sm-block d-md-none">
-        <router-link :to="{ name: 'Inicio' }">
+        <router-link :to="{ name: 'Inicio' }" class="d-grid-inline">
             <i class="fa-solid fa-qrcode"></i>
+            <span>Inicio</span>
         </router-link>
-        <a v-bind:href="'/categoria/' + 'servicios-profesionales'">
+        <a v-bind:href="'/categoria/' + 'servicios-profesionales'" class="d-grid-inline">
             <i class="fa-solid fa-wrench"></i>
+            <span>Servicios</span>
         </a>
-        <a v-bind:href="'/categoria/' + 'empresas'">
+        <a v-bind:href="'/categoria/' + 'empresas'" class="d-grid-inline">
             <i class="fa-solid fa-shop"></i>
+            <span>Empresas</span>
         </a>
-        <a href="/">
-            <i class="fa-solid fa-circle-user"></i>
-        </a>
+        <router-link :to="{ name: 'Sobre-Nosotros' }" class="d-grid-inline">
+            <i class="fa-solid fa-book-open-reader"></i>
+            <span>Nosotros</span>
+        </router-link>
     </div>
 </template>

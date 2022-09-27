@@ -22,6 +22,9 @@ $(window).on("load", function () {
             remove: "<i class='fa-solid fa-xmark'></i>",
             error: "",
         },
+        tpl: {
+            errorsContainer: '<div class="dropify-errors-container"></div>'
+        }
     })
 })
 
