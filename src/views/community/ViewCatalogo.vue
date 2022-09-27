@@ -140,7 +140,7 @@
           </div>
 
           <!--Error-->
-          <div class="col-12 col-md-12 col-lg-12 col-xl-5 mb-4 mb-sm-5 text-center" v-else>
+          <div class="col-12 col-md-12 col-lg-12 col-xl-5 text-center" v-else>
             <i class="fa-solid fa-triangle-exclamation fa-beat-fade"></i>
           </div>
 

@@ -35,9 +35,10 @@
                                 <a v-if="this.lista.verificado == true" :href="'mailto:'+ this.lista.email"
                                     class="mb-1 mt-1">{{ this.lista.email }}</a>
 
+                                <!--Phone-->
                                 <div v-for="(c, index) in this.lista.contacto" v-bind:key="index">
                                     <a :href="'tel:'+ c.descripcion"
-                                        v-if="(c.id_detalle_contacto == 7 || c.id_detalle_contacto == 8) && this.lista.verificado == true">
+                                        v-if="c.id_detalle_contacto == 7 && this.lista.verificado == true">
                                         {{c.descripcion}}
                                     </a>
                                 </div>
@@ -61,7 +62,7 @@
                                     </a>
 
                                     <!--Phone-->
-                                    <a :href="`tel:${ c.descripcion }`" target="_blank"
+                                    <a :href="`tel:${ c.descripcion }`"
                                         v-else-if="c.detallecontacto.id == 7 || c.detallecontacto.id == 8 ">
                                         <i class="ms-2 me-2" :class="c.detallecontacto.icon"></i>
                                     </a>
@@ -73,18 +74,19 @@
                                 </span>
                             </div>
 
-                            <!--Delivery-->
+                            <!--Verify-->
                             <span v-if="this.lista.verificado == true">
+
+                                <!--Delivery-->
                                 <p v-if="this.lista.servicio_domicilio == 1">A Domicilio</p>
                                 <p v-else>En El Lugar</p>
                             </span>
-
                         </div>
 
                         <!--Location-->
                         <div id="location" class="location mb-5 mb-sm-4"
                             v-if="this.lista.local == 1 && this.lista.verificado == true">
-                           
+
                             <!--Waze-->
                             <a :href="`https://www.waze.com/ul?ll=${ this.lista.latitud },${ this.lista.longitud }&navigate=yes&zoom=16`"
                                 target="_blank" class="me-4">
@@ -96,7 +98,6 @@
                                 target="_blank">
                                 <i class="fa-solid fa-street-view"></i>
                             </a>
-                            <p >Como llegar</p>
                         </div>
 
                         <!--Advertising-->
@@ -136,14 +137,18 @@
                             <!--Profile-->
                             <div class="profile" v-if="this.profile == true">
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <small>
-                                            <img v-if="this.lista.logo" class="img-fluid rounded mx-auto d-block"
+
+                                    <!--Img-->
+                                    <div class="col-md-12 col-lg-12 col-xl-3 mb-4 mb-xl-0">
+                                        <center>
+                                            <img v-if="this.lista.logo" class="logo"
                                                 :src="this.url + `/storage/${ this.lista.logo }`"
                                                 :alt="`${ this.lista.slug }`">
-                                        </small>
+                                        </center>
                                     </div>
-                                    <div class="col-md-8 box">
+
+                                    <!--Description-->
+                                    <div class="col-md-12 col-lg-12 col-xl-9 box">
                                         <h6 class="mb-2" v-if="this.lista.marca">{{ this.lista.marca }}</h6>
                                         <p>{{ this.lista.descripcion }}</p>
                                     </div>
@@ -162,7 +167,7 @@
                                 <!--Description-->
                                 <div class="row items ms-0 ms-lg-4">
                                     <div v-for="(servicio, index) in this.lista.servicio" v-bind:key="index"
-                                        class="col-12 col-md-12 col-lg-12 col-xl-6 mb-4 ps-0 pe-0 ps-sm-2 pe-sm-2">
+                                        class="col-12 col-md-12 col-lg-12 col-xl-12 col-xxl-6 mb-4 ps-0 pe-0 ps-sm-2 pe-sm-2">
                                         <div class="box">
                                             <div class="row">
 
@@ -191,7 +196,7 @@
 
                             <!--Horario-->
                             <div class="profile" v-if="this.horario == true">
-                                <div class="title mb-4 mt-4">
+                                <div class="title mb-4 mt-2">
 
                                     <!--Tittle-->
                                     <h4>
@@ -231,7 +236,7 @@
   
 <!--=======Script=======-->
 <script>
-import L from 'leaflet'
+import L from "leaflet"
 import "swiper/css/effect-fade"
 import { Disqus } from "vue-disqus"
 import { Autoplay, EffectFade } from "swiper"
