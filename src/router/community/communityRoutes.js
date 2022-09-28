@@ -26,6 +26,13 @@ const communityRoutes = [
     },
 
     {
+        path: '/catalogo-concepto/:slug',
+        name: 'CatalogoConcepto',
+        component: () => import("@/views/community/ViewCatalogoConcepto.vue"),
+        props: true
+    },
+
+    {
         path: '/cuenta/:slug',
         name: 'Cuenta',
         component: () => import("@/views/community/ViewCuenta.vue"),

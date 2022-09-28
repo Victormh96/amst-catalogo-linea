@@ -18,6 +18,8 @@ export const CategoriaClick = () => `${url_base}/api/categoria-click/`
 
 export const CatalogoCategoria = () => `${url_base}/api/catalogo/`
 
+export const CatalogoConcepto = () => `${url_base}/api/catalogo-concepto/`
+
 export const Cuenta = () => `${url_base}/api/cuenta/`
 
 export const RegistroServicio = () => `${url_base}/api/registro-servicio`

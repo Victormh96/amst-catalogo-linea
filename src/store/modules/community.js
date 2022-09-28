@@ -15,6 +15,7 @@ import {
     Entidades,
     Publicidad,
     PublicidadClick,
+    CatalogoConcepto
 } from "../../services/paths"
 
 // Vuex
@@ -231,6 +232,17 @@ export default {
         async CatalogoCategoria({ commit }, body) {
             await axios
                 .get(CatalogoCategoria() + body)
+                .then((response) => {
+                    commit('MutationCatalogoCategoria', response.data[0])
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        },
+
+        async CatalogoConcepto({ commit }, body) {
+            await axios
+                .get(CatalogoConcepto() + body)
                 .then((response) => {
                     commit('MutationCatalogoCategoria', response.data[0])
                 })
