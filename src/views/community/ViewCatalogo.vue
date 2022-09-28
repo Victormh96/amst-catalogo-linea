@@ -19,6 +19,7 @@
             <!--Input-->
             <input type="text" class="form-control text-center mb-3 mb-xl-2"
               placeholder="Albañil, Farmacias, Pupuserias..." v-model="buscar" @keyup="refresh(listaFiltrada)">
+
             <!--Checks-->
             <div class="text-center">
 
@@ -92,7 +93,7 @@
 
                 <!--Map-->
                 <li class="d-inline-flex align-items-center" v-if="l.local == 1">
-                  <button @click="marker(l.latitud, l.longitud)">
+                  <button @click="marker(l.latitud, l.longitud, l.nombre_cuenta, l.foto, l.slug)">
                     <i class="fa-solid fa-location-crosshairs"></i>
                   </button>
                 </li>
@@ -173,6 +174,7 @@ export default {
   data() {
     return {
       map: '',
+      popup: '',
       lista: [],
       buscar: '',
       skeleton: false,
@@ -249,6 +251,7 @@ export default {
       }
 
       // Methods
+      this.map.off()
       this.map.remove()
       this.maps()
     },
@@ -272,6 +275,7 @@ export default {
       }
 
       // Methods
+      this.map.off()
       this.map.remove()
       this.maps(lista)
     },
@@ -301,6 +305,7 @@ export default {
       this.map = map
       var url = this.url
       var pines = this.lista
+      var popup
       var baseMaps = {
         "Normal": normalBase,
         "Satelital": satelliteBase
@@ -333,16 +338,20 @@ export default {
 
       // Pin
       pines.map(function (element) {
-        L.marker([element.latitud, element.longitud],)
+        popup = L.marker([element.latitud, element.longitud],)
           .bindPopup("<a href=/cuenta/" + element.slug + "><img src=" + url + "/storage/" + element.foto + "/><center><span>" + element.nombre_cuenta + "</span></center></a>").addTo(map)
       })
+      this.popup = popup
 
       // Methods
       this.onClickHandler(1)
     },
 
     // Marker
-    marker(lat, long) {
+    marker(lat, long, nombre_cuenta, foto, slug) {
+      //Popup
+      this.popup.openPopup([lat, long]).bindPopup("<a href=/cuenta/" + slug + "><img src=" + this.url + "/storage/" + foto + "/><center><span>" + nombre_cuenta + "</span></center></a>");
+
       // Move
       this.map.setView([lat, long], 18)
 
