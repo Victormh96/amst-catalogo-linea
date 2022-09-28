@@ -294,7 +294,6 @@ export default {
 
       // Initial
       var map = new L.Map('map', {
-        tap: false,
         layers: [normalBase]
       }).setView([13.675997400000004, -89.28905480533759], 15)
 
