@@ -153,9 +153,10 @@ export default {
       var normalBase = new L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       })
+      
 
       // Satellite
-      var satelliteBase = new L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+      var satelliteBase = new L.tileLayer('http://tile.openstreetmap.org/{x}/{y}/{z}.png', {
 
         subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
       })
@@ -187,7 +188,7 @@ export default {
       L.control.locate({
         showPopup: false,
         locateOptions: {
-          maxZoom: 20
+          maxZoom: 18
         }
       }).addTo(map)
 
