@@ -9,14 +9,27 @@
   <main v-if="(skeleton)" class="top">
 
     <!--Section-->
-    <section id="catalogo">
+    <section id="concepto">
       <div class="container mb-4 mb-sm-5 mt-4 mt-sm-5">
 
         <!--Div-->
         <div class="row">
-
           <!--Maps-->
-          <div class="col-12 col-md-12 col-lg-12 col-xl-12 mt-4 mt-xl-0">
+          <div class="col-12 col-md-12 col-lg-12 col-xl-2 mt-4 mt-xl-0">
+            <div class="text-center mt-2">Filtrar Por Categorias</div>
+            <div v-for="(rubro, index) of this.rubro" :key="index" class="filtro">
+              <div class="form-check ps-5">
+                <input class="form-check-input " type="checkbox" :value="rubro.nombre_rubro" :id="rubro.id"
+                  @click="filtro(rubro.id)">
+                <label class="form-check-label" :for="rubro.id">
+                  <img :src="this.url + `/storage/${ rubro.imagen }`"> {{rubro.nombre_rubro}}
+                </label>
+              </div>
+
+            </div>
+          </div>
+          <!--Maps-->
+          <div class="col-12 col-md-12 col-lg-12 col-xl-10 mt-4 mt-xl-0">
             <div id="map"></div>
           </div>
         </div>
@@ -45,7 +58,10 @@ export default {
   data() {
     return {
       map: '',
+      rubro: [],
+      listaRubros: [],
       lista: [],
+      listafiltrada: [],
       buscar: '',
       skeleton: false,
       domicilio: false,
@@ -59,15 +75,8 @@ export default {
     await this.$store.dispatch("CatalogoConcepto", this.slug)
     this.lista = this.$store.state.community.catalogocategoria
 
-    // If
-    if (this.lista.length < 1) {
-      this.$router.push({
-        name: 'Servicios-Completos',
-      })
-    }
-
-    // Function
-    this.onClickHandler(1)
+    await this.$store.dispatch("CategoriaConcepto", this.slug)
+    this.rubro = this.$store.state.community.rubroconcepto
 
     // Skeleton
     setTimeout(() => {
@@ -86,66 +95,34 @@ export default {
   },
 
   methods: {
-    // Pagination
-    onClickHandler(page) {
-      this.listaPaginada = []
-      var inicio = (page * this.elementosPorPagina) - this.elementosPorPagina
-      var fin = (page * this.elementosPorPagina)
 
-      // Foreach
-      for (let index = inicio; index < fin; index++) {
-
-        // If
-        if (this.lista[index]) {
-          this.listaPaginada.push(this.lista[index])
-        }
+    //filtrar
+    filtro(value) {
+      if (this.listaRubros.includes(value)) {
+        this.listaRubros = this.listaRubros.filter((item) => item !== value)
+      } else {
+        this.listaRubros.push(value)
       }
-    },
-
-    // Filter
-    filtrar() {
       this.lista = this.$store.state.community.catalogocategoria
+      this.listafiltrada = []
 
-      // If
-      if (this.domicilio == 1) {
-        this.lista = this.lista.filter(categoria => {
-          return categoria.servicio_domicilio == 1
-        })
-      }
-
-      // If
-      if (this.domicilio == 2) {
-        this.lista = this.lista.filter(categoria => {
-          return categoria.servicio_domicilio == 0
-        })
-      }
-
+      this.listaRubros.forEach(rubro => {
+        this.lista.forEach(cuenta => {
+          cuenta.servicio.forEach(servicio => {
+            if (servicio.id_rubro == rubro) {
+              var cant = this.listafiltrada.filter((lista) => lista.id == cuenta.id)
+              if (cant.length == 0) {
+                this.listafiltrada.push(cuenta)
+              }
+            }
+          })
+        }
+        )
+      })
       // Methods
+      this.map.off()
       this.map.remove()
-      this.maps()
-    },
-
-    // Refresh
-    refresh(lista) {
-      this.lista = lista
-
-      // If
-      if (this.domicilio == 1) {
-        this.lista = this.lista.filter(categoria => {
-          return categoria.servicio_domicilio == 1
-        })
-      }
-
-      // If
-      if (this.domicilio == 2) {
-        this.lista = this.lista.filter(categoria => {
-          return categoria.servicio_domicilio == 0
-        })
-      }
-
-      // Methods
-      this.map.remove()
-      this.maps(lista)
+      this.maps(this.listafiltrada)
     },
 
     // Map
@@ -153,14 +130,14 @@ export default {
       // Normal
       var normalBase = new L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        minZoom: 16,
+        minZoom: 17,
         Zoom: 18
       })
 
       // Satellite
       var satelliteBase = new L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
-        minZoom: 16,
-        Zoom: 18,
+        minZoom: 17,
+        Zoom: 20,
         subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
       })
 
@@ -180,7 +157,7 @@ export default {
 
       var LeafIcon = L.Icon.extend({
         options: {
-          iconSize: [50,50],
+          iconSize: [50, 50],
           shadowSize: [50, 64],
           shadowAnchor: [4, 62],
           popupAnchor: [-3, -76],
@@ -200,7 +177,7 @@ export default {
       L.control.locate({
         showPopup: false,
         locateOptions: {
-          maxZoom: 18
+          maxZoom: 24
         }
       }).addTo(map)
 
@@ -221,8 +198,6 @@ export default {
         }
       })
 
-      // Methods
-      this.onClickHandler(1)
     },
 
     // Marker
@@ -234,20 +209,6 @@ export default {
       window.scrollTo({
         top: document.getElementById("map").offsetTop - 120,
         behavior: "smooth",
-      })
-    }
-  },
-  computed: {
-    // Search
-    listaFiltrada() {
-      return this.$store.state.community.catalogocategoria.filter(categoria => {
-        return categoria.nombre_cuenta.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
-          .toLowerCase().includes(this.buscar.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
-            .toLowerCase())
-          ||
-          categoria.tags.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
-            .toLowerCase().includes(this.buscar.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
-              .toLowerCase())
       })
     }
   },

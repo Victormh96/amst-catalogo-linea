@@ -15,7 +15,8 @@ import {
     Entidades,
     Publicidad,
     PublicidadClick,
-    CatalogoConcepto
+    CatalogoConcepto,
+    CategoriaConcepto
 } from "../../services/paths"
 
 // Vuex
@@ -30,6 +31,7 @@ export default {
             cuenta: null,
             catalogocategoria: null,
             registroservicio: null,
+            rubroconcepto: null,
             registroempresa: null,
             errorregistro: null,
             entidades: null,
@@ -71,6 +73,10 @@ export default {
 
         MutationCatalogoCategoria(state, data) {
             state.catalogocategoria = data
+        },
+
+        MutationCategoriaConcepto(state, data) {
+            state.rubroconcepto = data
         },
 
         MutationCuenta(state, data) {
@@ -201,6 +207,17 @@ export default {
                 .get(CategoriaRegistro() + body)
                 .then((response) => {
                     commit('MutationCategoria', response.data[0])
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        },
+
+        async CategoriaConcepto({ commit }, body) {
+            await axios
+                .get(CategoriaConcepto() + body)
+                .then((response) => {
+                    commit('MutationCategoriaConcepto', response.data[0])
                 })
                 .catch((err) => {
                     console.log(err)

@@ -14,6 +14,8 @@ export const CategoriaRegistro = () => `${url_base}/api/categoria-registro/`
 
 export const CategoriaDestacado = () => `${url_base}/api/categoria-destacado`
 
+export const CategoriaConcepto = () => `${url_base}/api/categoria-concepto/`
+
 export const CategoriaClick = () => `${url_base}/api/categoria-click/`
 
 export const CatalogoCategoria = () => `${url_base}/api/catalogo/`
