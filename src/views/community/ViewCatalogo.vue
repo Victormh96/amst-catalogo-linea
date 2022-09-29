@@ -19,6 +19,7 @@
             <!--Input-->
             <input type="text" class="form-control text-center mb-3 mb-xl-2"
               placeholder="Albañil, Farmacias, Pupuserias..." v-model="buscar" @keyup="refresh(listaFiltrada)">
+
             <!--Checks-->
             <div class="text-center">
 
@@ -53,7 +54,7 @@
           <div class="col-12 col-md-12 col-lg-9 col-xl-5 mx-auto" v-if="this.lista.length > 0">
             <div class="card mb-4" v-for="(l, index) in this.listaPaginada" v-bind:key="index">
 
-              <!--Info-->
+              <!--Group-->
               <small class="delivery">{{ l.servicio_domicilio == 1 ? 'A DOMICILIO' : 'EN EL LUGAR' }}</small>
               <div class="row">
 
@@ -64,13 +65,17 @@
                   </router-link>
                 </div>
 
-                <!--Description-->
+                <!--Group-->
                 <div class="col-md-9">
 
-                  <!--Title-->
+                  <!--Heading-->
                   <router-link :to="{ name: 'Cuenta', params: { slug: l.slug } }">
                     <h5 class="mb-1">
+
+                      <!--Title-->
                       {{ l.nombre_cuenta }}
+
+                      <!--Img-->
                       <img src="@/../public/img/assets/shapex15.png" class="ms-1 verify" v-if="l.verificado == 1">
                     </h5>
                   </router-link>
@@ -80,19 +85,19 @@
                     {{ r.rubro.nombre_rubro }}
                   </span>
 
-                  <!--Info-->
+                  <!--Description-->
                   <p class="descripcion">
                     {{ l.descripcion }}
                   </p>
                 </div>
               </div>
 
-              <!--Options-->
+              <!--Items-->
               <ul class="mt-2" v-if="l.verificado == true">
 
                 <!--Map-->
                 <li class="d-inline-flex align-items-center" v-if="l.local == 1">
-                  <button @click="marker(l.latitud, l.longitud)">
+                  <button @click="marker(l.latitud, l.longitud, l.nombre_cuenta, l.foto, l.slug)">
                     <i class="fa-solid fa-location-crosshairs"></i>
                   </button>
                 </li>
@@ -173,6 +178,7 @@ export default {
   data() {
     return {
       map: '',
+      popup: '',
       lista: [],
       buscar: '',
       skeleton: false,
@@ -249,6 +255,7 @@ export default {
       }
 
       // Methods
+      this.map.off()
       this.map.remove()
       this.maps()
     },
@@ -272,6 +279,7 @@ export default {
       }
 
       // Methods
+      this.map.off()
       this.map.remove()
       this.maps(lista)
     },
@@ -302,6 +310,7 @@ export default {
       this.map = map
       var url = this.url
       var pines = this.lista
+      var popup
       var baseMaps = {
         "Normal": normalBase,
         "Satelital": satelliteBase
@@ -335,18 +344,24 @@ export default {
       // Pin
       pines.map(function (element) {
         if (element.local != false) {
-          L.marker([element.latitud, element.longitud],)
+          popup = L.marker([element.latitud, element.longitud],)
             .bindPopup("<a href=/cuenta/" + element.slug + "><img src=" + url + "/storage/" + element.foto + "/><center><span>" + element.nombre_cuenta + "</span></center></a>").addTo(map)
 
         }
       })
+
+      // Const
+      this.popup = popup
 
       // Methods
       this.onClickHandler(1)
     },
 
     // Marker
-    marker(lat, long) {
+    marker(lat, long, nombre_cuenta, foto, slug) {
+      //Popup
+      this.popup.openPopup([lat, long]).bindPopup("<a href=/cuenta/" + slug + "><img src=" + this.url + "/storage/" + foto + "/><center><span>" + nombre_cuenta + "</span></center></a>");
+
       // Move
       this.map.setView([lat, long], 18)
 

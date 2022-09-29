@@ -219,10 +219,11 @@ button:disabled {
 .btn-md {
   background: var(--light-blue);
   color: var(--white);
-  font-size: .85rem;
-  padding: 9px 14px;
+  font-size: .7rem;
+  font-weight: 500;
+  padding: 12px 15px;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 5px;
 }
 
 .btn-lg {

@@ -12,14 +12,20 @@
 
                     <!--Items-->
                     <ul>
+
+                        <!--Home-->
                         <li>
                             <router-link :to="{ name: 'Inicio' }">
                                 Inicio
                             </router-link>
                         </li>
+
+                        <!--News-->
                         <li>
                             <a href="https://www.santatecla.gob.sv/noticias" target="_blank">Noticias</a>
                         </li>
+
+                        <!--Web-->
                         <li>
                             <a href="https://www.santatecla.gob.sv/" target="_blank">Alcaldia municipal santa tecla</a>
                         </li>
@@ -34,9 +40,13 @@
 
                     <!--Items-->
                     <ul>
+
+                        <!--About Us-->
                         <li>
                             <router-link :to="{ name: 'Sobre-Nosotros' }">Sobre Nosotros</router-link>
                         </li>
+
+                        <!--Terms and Conditions-->
                         <li><a href="/">Términos y condiciones</a></li>
                     </ul>
                 </div>

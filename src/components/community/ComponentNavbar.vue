@@ -52,15 +52,23 @@
                 <div class="col-12 col-md-8 col-lg-6 col-xl-5 col-xxl-5 d-none d-md-block">
                     <nav class="nav-menu">
                         <ul>
+
+                            <!--Home-->
                             <li>
                                 <router-link :to="{ name: 'Inicio' }">Inicio</router-link>
                             </li>
+
+                            <!--Services-->
                             <li>
                                 <a v-bind:href="'/categoria/' + 'servicios-profesionales'">Profesionales</a>
                             </li>
+
+                            <!--Companies-->
                             <li>
                                 <a v-bind:href="'/categoria/' + 'empresas'">Empresas</a>
                             </li>
+
+                            <!--About us-->
                             <li>
                                 <router-link :to="{ name: 'Sobre-Nosotros' }">Sobre Nosotros</router-link>
                             </li>
@@ -73,18 +81,26 @@
 
     <!--Div-->
     <div id="mobile" class="d-block d-sm-block d-md-none">
+
+        <!--Home-->
         <router-link :to="{ name: 'Inicio' }" class="d-grid-inline">
             <i class="fa-solid fa-qrcode"></i>
             <span>Inicio</span>
         </router-link>
+
+        <!--Services-->
         <a v-bind:href="'/categoria/' + 'servicios-profesionales'" class="d-grid-inline">
             <i class="fa-solid fa-wrench"></i>
             <span>Servicios</span>
         </a>
+
+        <!--Companies-->
         <a v-bind:href="'/categoria/' + 'empresas'" class="d-grid-inline">
             <i class="fa-solid fa-shop"></i>
             <span>Empresas</span>
         </a>
+
+        <!--About us-->
         <router-link :to="{ name: 'Sobre-Nosotros' }" class="d-grid-inline">
             <i class="fa-solid fa-book-open-reader"></i>
             <span>Nosotros</span>
