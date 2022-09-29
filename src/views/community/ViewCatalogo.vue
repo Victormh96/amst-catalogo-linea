@@ -294,6 +294,7 @@ export default {
 
       // Initial
       var map = new L.Map('map', {
+        tap: false,
         layers: [normalBase]
       }).setView([13.675997400000004, -89.28905480533759], 15)
 
@@ -336,6 +337,7 @@ export default {
         if (element.local != false) {
           L.marker([element.latitud, element.longitud],)
             .bindPopup("<a href=/cuenta/" + element.slug + "><img src=" + url + "/storage/" + element.foto + "/><center><span>" + element.nombre_cuenta + "</span></center></a>").addTo(map)
+
         }
       })
 
