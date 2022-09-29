@@ -25,7 +25,7 @@
                             ¡ubícalos!</p>
                     </div>
 
-                    <!--Search-->
+                    <!--Div-->
                     <div class="col-12 col-12 col-md-7 col-lg-5 m-auto">
                         <div class="position-relative">
 
@@ -70,9 +70,11 @@
                             Municipio de Santa Tecla </p>
                     </div>
                 </div>
+
+                <!--Div-->
                 <div class="row">
 
-                    <!--Step-->
+                    <!--Group-->
                     <div class="col-12 col-md-4 col-xl-4 mb-5 mb-sm-0">
                         <div class="card arrow">
 
@@ -88,7 +90,7 @@
                         </div>
                     </div>
 
-                    <!--Step-->
+                    <!--Group-->
                     <div class="col-12 col-md-4 col-xl-4 mb-5 mb-sm-0">
                         <div class="card arrow">
 
@@ -104,7 +106,7 @@
                         </div>
                     </div>
 
-                    <!--Step-->
+                    <!--Group-->
                     <div class="col-12 col-md-4 col-xl-4 mx-auto">
                         <div class="card">
 
@@ -133,9 +135,11 @@
                         <h3>LO MÁS BUSCADO</h3>
                     </div>
 
-                    <!--Heading-->
+                    <!--Div-->
                     <div class="col-md-12 text-center">
                         <div class="row">
+
+                            <!--Group-->
                             <div class="col-md-4 col-xl-2 mb-5" v-for="(s, index) in this.destacados"
                                 v-bind:key="index">
 
@@ -161,7 +165,7 @@
             <div class="container">
                 <div class="row row d-flex align-items-center">
 
-                    <!--Group-->
+                    <!--Div-->
                     <div class="col-md-6">
                         <div class="row">
 

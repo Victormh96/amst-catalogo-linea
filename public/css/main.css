@@ -1424,9 +1424,9 @@ html::-webkit-scrollbar-thumb,
 
 
 .burbuja {
-    border-radius: 50px;
-    object-fit: cover;
-    border: 2px solid var(--light-blue)
+  border-radius: 50px;
+  object-fit: cover;
+  border: 2px solid var(--light-blue)
 }
 
 /* ============================================================*/

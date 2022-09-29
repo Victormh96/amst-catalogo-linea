@@ -2178,10 +2178,11 @@ progress {
   --bs-table-hover-color: var(--bs-body-color);
   --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
   color: var(--bs-table-color);
   vertical-align: top;
   border-color: var(--bs-table-border-color);
+  font-size: .8rem;
 }
 
 .table> :not(caption)>*>* {

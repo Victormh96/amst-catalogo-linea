@@ -31,7 +31,7 @@
                     <h6 class="mb-1">Datos Personales</h6>
 
                     <!--Description-->
-                    <p class="mb-3 indicaciones">Completa la información de tu perfil personal</p>
+                    <p class="mb-3 indicaciones">Completa la información de tu perfil</p>
 
                     <!--Div-->
                     <div class="col-md-12 col-xl-12 mb-5">
@@ -49,8 +49,10 @@
                                 <p class="text-center mt-1">Foto perfil *</p>
                             </div>
 
-                            <!--Names-->
+                            <!--Div-->
                             <div class="col-md-3">
+
+                                <!--Names-->
                                 <div class="form-group mb-4">
                                     <input type="text" class="form-control" placeholder="Nombres*"
                                         v-model="v$.form.name.$model" tabindex="1">
@@ -109,12 +111,11 @@
                                 <!--Date Birth-->
                                 <div class="form-group mb-4">
                                     <input type="text" class="form-control" placeholder="Fecha de Nacimiento*"
-                                        v-model="v$.form.fechaNacimiento.$model" tabindex="5" required
-                                        v-mask="'##-##-####'">
+                                        v-model="v$.form.fecha.$model" tabindex="5" required v-mask="'####-##-##'">
 
                                     <!--Error Message-->
-                                    <div class="input-errors err"
-                                        v-for="(error, index) of v$.form.fechaNacimiento.$errors" :key="index">
+                                    <div class="input-errors err" v-for="(error, index) of v$.form.fecha.$errors"
+                                        :key="index">
                                         <div class="error-msg">{{ error.$message }}</div>
                                     </div>
                                 </div>
@@ -165,8 +166,8 @@
                     <!--Div-->
                     <div class="col-md-12 col-xl-12">
 
-                        <!--Tittle-->
-                        <p class="indicaciones text-center mb-2">Posiciona tu ubIcación en el mapa*</p>
+                        <!--Title-->
+                        <p class="indicaciones text-center mb-2">Posiciona tu ubIcación en el mapa *</p>
 
                         <!--Map-->
                         <div id="map" class="map"></div>
@@ -180,7 +181,7 @@
                     <h6 class="mb-1">Sobre la Marca</h6>
 
                     <!--Description-->
-                    <p class="mb-3">completa la información relacionada a tu comercio </p>
+                    <p class="mb-3">completa la información relacionada a tu comercio</p>
 
                     <!--Div-->
                     <div class="col-md-12 col-xl-12">
@@ -275,8 +276,8 @@
                     </div>
                 </div>
 
-                <!--Services-->
-                <div class="row mb-4">
+                <!--Div-->
+                <div class="row mb-0 mb-sm-4">
 
                     <!--Title-->
                     <h6 class="mb-1">Servicios a Brindar</h6>
@@ -287,10 +288,9 @@
 
                     <!--Service-->
                     <div class="col-md-3 mb-4 mb-sm-0">
-                        <select class="form-control select2" v-model="this.servicio" @change="verifyService()"
-                            tabindex="15" required>
+                        <select class="form-control select2" v-model="this.servicio" @change="verifyService()">
                             <option disabled value="">Servicio*</option>
-                            <option v-for="c in this.listaServicio" :value="c.id" v-bind:key="c.id">{{ c.nombre_rubro }}
+                            <option v-for="c in this.listaServicio" :key="c.id" :value="c.id">{{ c.nombre_rubro }}
                             </option>
                         </select>
 
@@ -302,8 +302,7 @@
 
                     <!--Experience-->
                     <div class="col-md-3 mb-4 mb-sm-0">
-                        <select class="form-control select2" v-model="this.experiencia" @change="verifyService()"
-                            tabindex="16" required>
+                        <select class="form-control select2" v-model="this.experiencia" @change="verifyService()">
                             <option disabled value="">Experiencia*</option>
                             <option value="Menos de un año">Menos de un año</option>
                             <option value="De uno a tres años">De uno a tres años</option>
@@ -326,9 +325,9 @@
                     </div>
 
                     <!--List Services-->
-                    <div class="col-md-12 mt-4">
-                        <span class="tag mb-4 me-3" v-for="(servicio, index) in this.cuentaServicios"
-                            data-toggle="tooltip" data-placement="top" v-bind:key="index"
+                    <div class="col-md-12 mt-4 mt-sm-3">
+                        <span class="tag mb-4 mb-sm-3 me-3" v-for="(servicio, index) in this.cuentaServicios"
+                            :key="servicio.idServicio" data-toggle="tooltip" data-placement="top"
                             :title="'Experiencia: ' + servicio.experiencia + ' Descripcion: ' + servicio.descripcion">
                             {{ servicio.name }}<i class="fa-solid fa-xmark" @click="deleteServices(index)"></i>
                         </span>
@@ -340,6 +339,8 @@
 
                     <!--Title-->
                     <h6 class="mb-1">Perfil Social</h6>
+
+                    <!--Description-->
                     <p class="mb-3 indicaciones">Coloca en enlace de tus redes sociales </p>
 
                     <!--Facebook-->
@@ -463,9 +464,8 @@
                     </div>
                 </div>
 
+                <!--About-->
                 <div class="row mb-4 mb-sm-5">
-
-                    <!--About-->
                     <div class="col-md-6 mb-5 mb-sm-0">
 
                         <!--Title-->
@@ -506,10 +506,10 @@
                     </div>
 
                     <!--Div-->
-                    <div class="col-md-6">
+                    <div class="col-md-6 mb-1 ps-2 mb-sm-4">
 
                         <!--Tags-->
-                        <div class="row ps-0 ps-sm-5">
+                        <div class="row ps-5 mb-xl-4 mb-5">
 
                             <!--Title-->
                             <h6 class="mb-1">¿Cómo podemos encontrarte?</h6>
@@ -600,8 +600,8 @@ import Footer from "@/components/community/ComponentFooter.vue"
 import { helpers, required, email, minLength, url } from "@vuelidate/validators"
 
 // Message
-const requeridMessage = helpers.withMessage('Campo Obligatorio', required)
 const phoneMessage = helpers.withMessage('Teléfono invalido', minLength(8))
+const requeridMessage = helpers.withMessage('Campo Obligatorio', required)
 const duiMessage = helpers.withMessage('DUI invalido', minLength(10))
 const emailMessage = helpers.withMessage('Correo invalido', email)
 const urlMessage = helpers.withMessage('Url invalida', url)
@@ -614,6 +614,7 @@ export default {
                 email: '',
                 local: '',
                 marca: '',
+                fecha: '',
                 genero: '',
                 pagweb: '',
                 logo: false,
@@ -631,7 +632,6 @@ export default {
                 descripcion: '',
                 telefonofijo: '',
                 tipoServicio: '',
-                fechaNacimiento: '',
                 telefonoCelular: '',
                 servicioDomicilio: '',
             },
@@ -660,11 +660,11 @@ export default {
     },
 
     async mounted() {
-        //Portada
+        // Vuex
         await this.$store.dispatch("Portada", 'Registro')
         this.portadaregistro = this.$store.state.community.portada[0]
 
-        //Categoria
+        // Vuex
         await this.$store.dispatch("CategoriaRegistro", '1')
         this.listaServicio = this.$store.state.community.categoria
 
@@ -722,7 +722,7 @@ export default {
                 tipoServicio: {
                     requeridMessage,
                 },
-                fechaNacimiento: {
+                fecha: {
                     requeridMessage,
                 },
                 descripcion: {
@@ -770,26 +770,12 @@ export default {
 
         // Alert Loading
         showLoading() {
-            let timerInterval
             this.$swal.fire({
                 title: 'Cargando',
                 timer: this.loading,
                 timerProgressBar: true,
-                didOpen: () => {
-                    this.$swal.showLoading()
-                    const b = this.$swal.getHtmlContainer().querySelector('b')
-                    timerInterval = setInterval(() => {
-                        b.textContent = this.$swal.getTimerLeft()
-                    }, 100)
-                },
-                willClose: () => {
-                    clearInterval(timerInterval)
-                }
             }).then((result) => {
-                // If
-                if (result.dismiss === this.$swal.DismissReason.timer) {
-                    console.log('I was closed by the timer')
-                }
+                console.log(result)
             })
         },
 
@@ -927,8 +913,8 @@ export default {
                     Form.append(paramName, this.form[paramName])
                 }
 
-                //Const
-                this.listTag.forEach(t => tag = tag + ',' + t);
+                // Const
+                this.listTag.forEach(t => tag = tag + ',' + t)
 
                 // Add
                 Form.append('latitud', this.latitud)
@@ -958,9 +944,9 @@ export default {
                     this.showFailServicies('Agrega la foto de tu perfil')
                 } else if (this.form.doc1 == false || this.form.doc2 == false) {
                     this.showFailServicies('Agrega la foto de tu DUI')
-                }else if (this.latitud == null) {
+                } else if (this.latitud == null) {
                     this.showFailServicies('Posiciona tu ubicación en el mapa')
-                }  else {
+                } else {
                     this.showFailServicies('No has registrado tus servicios')
                 }
             }
@@ -1048,6 +1034,7 @@ export default {
         searchName(id) {
             // Foreach
             this.listaServicio.forEach(elemento => {
+
                 // If
                 if (elemento.id === id) {
                     this.name = elemento.nombre_rubro;

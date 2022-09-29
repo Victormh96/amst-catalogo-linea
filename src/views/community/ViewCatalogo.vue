@@ -13,14 +13,14 @@
       <div class="container mb-4 mb-sm-5 mt-4 mt-sm-5">
         <div class="row">
 
-          <!--Search-->
+          <!--Div-->
           <div class="col-12 col-md-7 col-lg-5 col-xl-5 col-xxl-4 mx-auto mb-4 mb-xxl-5">
 
             <!--Input-->
             <input type="text" class="form-control text-center mb-3 mb-xl-2"
               placeholder="Albañil, Farmacias, Pupuserias..." v-model="buscar" @keyup="refresh(listaFiltrada)">
 
-            <!--Checks-->
+            <!--Group-->
             <div class="text-center">
 
               <!--All-->
@@ -50,12 +50,14 @@
         <!--Div-->
         <div class="row">
 
-          <!--Cards-->
+          <!--Group-->
           <div class="col-12 col-md-12 col-lg-9 col-xl-5 mx-auto" v-if="this.lista.length > 0">
             <div class="card mb-4" v-for="(l, index) in this.listaPaginada" v-bind:key="index">
 
-              <!--Group-->
+              <!--Title-->
               <small class="delivery">{{ l.servicio_domicilio == 1 ? 'A DOMICILIO' : 'EN EL LUGAR' }}</small>
+
+              <!--Div-->
               <div class="row">
 
                 <!--Img-->

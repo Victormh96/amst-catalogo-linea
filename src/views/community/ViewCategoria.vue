@@ -24,9 +24,11 @@
                             placeholder="Albañil, Farmacias, Pupuserias..." v-model="buscar">
                     </div>
 
-                    <!--Tags-->
+                    <!--Div-->
                     <div class="col-md-12 text-center mb--5" v-if="this.lista.length > 0">
                         <div class="row">
+
+                            <!--Group-->
                             <div class="col-12 col-md-4 col-lg-3 col-xl-3 col-xxl-2 mb-5"
                                 v-for="(l, index) in this.lista" v-bind:key="index">
 

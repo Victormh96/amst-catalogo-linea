@@ -13,7 +13,7 @@
             <div class="container mb-5 mt-4 mt-sm-5">
                 <div class="row">
 
-                    <!--Swiper-->
+                    <!--Div-->
                     <div class="col-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 mb-m-5 d-grid mb-4 mb-lg-0">
 
                         <!--Items-->
@@ -27,7 +27,7 @@
                         </swiper>
                     </div>
 
-                    <!--Group-->
+                    <!--Div-->
                     <div class="col-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
 
                         <!--Title-->
@@ -109,7 +109,7 @@
             <div class="container">
                 <div class="row row d-flex align-items-center">
 
-                    <!--Group-->
+                    <!--Div-->
                     <div class="col-md-6">
                         <div class="row">
 

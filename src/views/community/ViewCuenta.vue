@@ -182,7 +182,7 @@
                                     </h4>
                                 </div>
 
-                                <!--Description-->
+                                <!--Div-->
                                 <div class="row items ms-0 ms-lg-4">
                                     <div v-for="(servicio, index) in this.lista.servicio" v-bind:key="index"
                                         class="col-12 col-md-12 col-lg-12 col-xl-12 col-xxl-6 mb-4 ps-0 pe-0 ps-sm-2 pe-sm-2">

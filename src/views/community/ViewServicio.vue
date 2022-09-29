@@ -18,7 +18,7 @@
                         <h3>TODOS LOS SERVICIOS</h3>
                     </div>
 
-                    <!--Search-->
+                    <!--Div-->
                     <div class="col-12 col-md-7 col-lg-5 col-xl-5 col-xxl-4 mx-auto mb-4">
 
                         <!--Input-->
@@ -30,9 +30,11 @@
                             con estas categorias</h6>
                     </div>
 
-                    <!--Tags-->
+                    <!--Div-->
                     <div class="col-md-12 text-center mb--5" v-if="this.lista.length > 0">
                         <div class="row">
+
+                            <!--Group-->
                             <div class="col-12 col-md-4 col-lg-3 col-xl-3 col-xxl-2 mb-5"
                                 v-for="(l, index) in this.lista" v-bind:key="index">
 
