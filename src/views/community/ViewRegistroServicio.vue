@@ -959,7 +959,9 @@ export default {
                     this.showFailServicies('Agrega la foto de tu perfil')
                 } else if (this.form.doc1 == false || this.form.doc2 == false) {
                     this.showFailServicies('Agrega la foto de tu DUI')
-                } else {
+                }else if (this.latitud == null) {
+                    this.showFailServicies('Posiciona tu ubicación en el mapa')
+                }  else {
                     this.showFailServicies('No has registrado tus servicios')
                 }
             }

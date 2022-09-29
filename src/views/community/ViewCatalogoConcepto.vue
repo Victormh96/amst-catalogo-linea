@@ -182,7 +182,6 @@ export default {
         options: {
           iconSize: [50,50],
           shadowSize: [50, 64],
-          iconAnchor: [22, 94],
           shadowAnchor: [4, 62],
           popupAnchor: [-3, -76],
           className: 'burbuja'
