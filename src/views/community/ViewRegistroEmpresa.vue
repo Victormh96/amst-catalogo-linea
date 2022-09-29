@@ -109,9 +109,9 @@
 
                                 <!--Date Birth-->
                                 <div class="form-group mb-4">
-                                    <input type="date" class="form-control" placeholder="Fecha de Nacimiento*"
-                                        data-toggle="tooltip" data-placement="top" title="Fecha de Fundación"
-                                        v-model="v$.form.fechaNacimiento.$model">
+                                    <input type="text" class="form-control" placeholder="Fecha de Nacimiento*"
+                                        v-model="v$.form.fechaNacimiento.$model" tabindex="5" required
+                                        v-mask="'##-##-####'">
 
                                     <!--Error Message-->
                                     <div class="input-errors err"
