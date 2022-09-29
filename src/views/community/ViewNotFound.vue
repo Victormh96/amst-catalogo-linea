@@ -26,24 +26,12 @@
 <!--========Script========-->
 <script>
 import Navbar from "@/components/community/ComponentNavbar.vue"
-
 import Footer from "@/components/community/ComponentFooter.vue"
 
 export default {
-    components: {
-        Footer,
-        Navbar
-    },
-
     data() {
         return {
             skeleton: false,
-        }
-    },
-
-    methods: {
-        loading(item) {
-            this.skeleton = item
         }
     },
 
@@ -52,6 +40,18 @@ export default {
         setTimeout(() => {
             this.skeleton = true
         }, 950)
+    },
+
+    components: {
+        Footer,
+        Navbar
+    },
+
+    methods: {
+        // Loading
+        loading(item) {
+            this.skeleton = item
+        }
     },
 };
 </script>

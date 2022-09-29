@@ -24,9 +24,13 @@
                         <div class="card mb-5 mb-sm-4">
                             <div class="information ms-4 me-4">
 
-                                <!--Title-->
+                                <!--Items-->
                                 <small>
+
+                                    <!--Title-->
                                     {{ this.lista.nombre_cuenta }}
+
+                                    <!--Img-->
                                     <img src="@/../public/img/assets/shapex15.png" class="ms-1 verify"
                                         v-if="this.lista.verificado == 1">
                                 </small>
@@ -102,8 +106,12 @@
 
                         <!--Advertising-->
                         <div class="d-grid mb-5 mb-sm-4">
+
+                            <!--Items-->
                             <swiper :slides-per-view="1" :space-between="50" :autoplay="{ delay: 5000 }"
                                 :modules="modules" :loop="true" :effect="'fade'">
+
+                                <!--Img-->
                                 <swiper-slide v-for="(p, index) in this.publicidad" v-bind:key="index">
                                     <a :href="p.descripcion" target="_blank" v-on:click="clickcategoria(p.id)">
                                         <img :src="this.url + `/storage/${ p.imagen }`" />
@@ -123,10 +131,16 @@
 
                         <!--Tabs-->
                         <div class="tabs">
+
+                            <!--Tab #1-->
                             <span :class="[this.profile === 1 ? 'activeClass' : '']" v-on:click="validar(1,0,0)">
                                 MI PERFIL</span>
+
+                            <!--Tab #2-->
                             <span :class="[this.horario === 1 ? 'activeClass' : '']" v-on:click="validar(0,1,0)"
                                 v-if="this.lista.horario != null">HORARIO</span>
+
+                            <!--Tab #3-->
                             <span :class="[this.galeria === 1 ? 'activeClass' : '']" v-on:click="validar(0,0,1)"
                                 v-if="this.lista.galeria != ''">GALERIA</span>
                         </div>
@@ -147,9 +161,13 @@
                                         </center>
                                     </div>
 
-                                    <!--Description-->
+                                    <!--Info-->
                                     <div class="col-md-12 col-lg-12 col-xl-9 box">
+
+                                        <!--Title-->
                                         <h6 class="mb-2" v-if="this.lista.marca">{{ this.lista.marca }}</h6>
+
+                                        <!--Description-->
                                         <p>{{ this.lista.descripcion }}</p>
                                     </div>
                                 </div>
@@ -174,8 +192,12 @@
                                                 <!--Service-->
                                                 <div
                                                     class="col-12 col-md-12 col-lg-3 text-center d-none d-sm-none d-lg-block">
+
+                                                    <!--Img-->
                                                     <img :src="this.url + `/storage/${servicio.rubro.imagen}`"
                                                         class="mb-3 mb-sm-2">
+
+                                                    <!--Title-->
                                                     <span class="d-none d-md-none d-lg-block">
                                                         {{ servicio.rubro.nombre_rubro }}
                                                     </span>
@@ -183,9 +205,13 @@
 
                                                 <!--Info-->
                                                 <div class="col-12 col-md-12 col-lg-9 text-start">
+
+                                                    <!--Title-->
                                                     <h5 class="mb-2"><i class="fa-solid fa-bookmark me-2"></i>
                                                         {{ servicio.anios_experiencia }}
                                                     </h5>
+
+                                                    <!--Description-->
                                                     <small>{{ servicio.descripcion }}</small>
                                                 </div>
                                             </div>
@@ -204,7 +230,7 @@
                                         HORARIO
                                     </h4>
 
-                                    <!--Info-->
+                                    <!--Description-->
                                     <div class="box mt-4">
                                         <p>{{this.lista.horario}}</p>
                                     </div>
@@ -297,23 +323,40 @@ export default {
 
     methods: {
         maps() {
+            // Normal
+            var normalBase = new L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                zoom: 16,
+            })
+
+            // Satellite
+            var satelliteBase = new L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+                minZoom: 14,
+                Zoom: 16,
+                subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+            })
+
+            // Const
+            var baseMaps = {
+                "Normal": normalBase,
+                "Satelital": satelliteBase
+            }
+
             // Initial
-            this.map = L.map('map', {
+            var map = new L.Map('map', {
+                layers: [normalBase],
                 dragging: false,
                 zoomControl: false,
                 scrollWheelZoom: false,
                 closePopupOnClick: false
             }).setView([13.675997400000004, -89.28905480533759], 15)
 
-            // Setting
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-                zoom: 16,
-            }).addTo(this.map)
+            // Layers
+            L.control.layers(baseMaps).addTo(map)
 
             // Pin
-            L.popup().setLatLng([this.lista.latitud, this.lista.longitud]).setContent("<p>" + this.lista.direccion + "</p>").openOn(this.map)
-            this.map.setView([this.lista.latitud, this.lista.longitud], 18)
+            L.popup().setLatLng([this.lista.latitud, this.lista.longitud]).setContent("<p>" + this.lista.direccion + "</p>").openOn(map)
+            map.setView([this.lista.latitud, this.lista.longitud], 18)
         },
 
         // Tabs

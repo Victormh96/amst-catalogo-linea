@@ -423,6 +423,11 @@
   padding: 15px 25px;
   border-radius: 5px;
   display: inline-block;
+  transition: all 0.4s;
+}
+
+#inscribete a:hover {
+  filter: brightness(0.9);
 }
 
 /* ============================================================*/

@@ -104,7 +104,9 @@
                                 <!--Date Birth-->
                                 <div class="form-group mb-4">
                                     <input type="text" class="form-control" placeholder="Fecha de Nacimiento*"
-                                        v-model="v$.form.fechaNacimiento.$model" tabindex="5" required  onfocus="(this.type='date')" onblur="(this.value == '' ? this.type='text' : this.type='date')">
+                                        v-model="v$.form.fechaNacimiento.$model" tabindex="5" required
+                                        onfocus="(this.type='date')"
+                                        onblur="(this.value == '' ? this.type='text' : this.type='date')">
 
                                     <!--Error Message-->
                                     <div class="input-errors err"

@@ -20,8 +20,12 @@
 
                     <!--Search-->
                     <div class="col-12 col-md-7 col-lg-5 col-xl-5 col-xxl-4 mx-auto mb-4">
+
+                        <!--Input-->
                         <input type="text" class="form-control text-center mb-2"
                             placeholder="Albañil, Farmacias, Pupuserias..." v-model="buscar">
+
+                        <!--Title-->
                         <h6 v-if="cant == 0" class="mb-2">No se encontro ninguna coincidencia con "{{ text }}", prueba
                             con estas categorias</h6>
                     </div>
@@ -31,9 +35,15 @@
                         <div class="row">
                             <div class="col-12 col-md-4 col-lg-3 col-xl-3 col-xxl-2 mb-5"
                                 v-for="(l, index) in this.lista" v-bind:key="index">
+
+                                <!--Items-->
                                 <router-link :to="{ name: 'Catalogo', params: { slug: l.slug } }"
                                     @click="clickcategoria(l.id)">
+
+                                    <!--Img-->
                                     <img :src="this.url + `/storage/${ l.imagen }`">
+
+                                    <!--Title-->
                                     <p class="mt-3 mb-0">{{ l.nombre_rubro }}</p>
                                 </router-link>
                             </div>
@@ -74,10 +84,12 @@ export default {
     },
 
     async mounted() {
-        // Filter
+        // Const
         const { input, cant } = this.$store.state.community.search
         this.text = input
         this.cant = cant
+
+        //Vuex
         await this.$store.dispatch("CategoriasCompletas")
 
         // If

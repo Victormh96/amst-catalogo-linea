@@ -54,7 +54,7 @@
           <div class="col-12 col-md-12 col-lg-9 col-xl-5 mx-auto" v-if="this.lista.length > 0">
             <div class="card mb-4" v-for="(l, index) in this.listaPaginada" v-bind:key="index">
 
-              <!--Info-->
+              <!--Group-->
               <small class="delivery">{{ l.servicio_domicilio == 1 ? 'A DOMICILIO' : 'EN EL LUGAR' }}</small>
               <div class="row">
 
@@ -65,13 +65,17 @@
                   </router-link>
                 </div>
 
-                <!--Description-->
+                <!--Group-->
                 <div class="col-md-9">
 
-                  <!--Title-->
+                  <!--Heading-->
                   <router-link :to="{ name: 'Cuenta', params: { slug: l.slug } }">
                     <h5 class="mb-1">
+
+                      <!--Title-->
                       {{ l.nombre_cuenta }}
+
+                      <!--Img-->
                       <img src="@/../public/img/assets/shapex15.png" class="ms-1 verify" v-if="l.verificado == 1">
                     </h5>
                   </router-link>
@@ -81,14 +85,14 @@
                     {{ r.rubro.nombre_rubro }}
                   </span>
 
-                  <!--Info-->
+                  <!--Description-->
                   <p class="descripcion">
                     {{ l.descripcion }}
                   </p>
                 </div>
               </div>
 
-              <!--Options-->
+              <!--Items-->
               <ul class="mt-2" v-if="l.verificado == true">
 
                 <!--Map-->
@@ -343,6 +347,8 @@ export default {
             .bindPopup("<a href=/cuenta/" + element.slug + "><img src=" + url + "/storage/" + element.foto + "/><center><span>" + element.nombre_cuenta + "</span></center></a>").addTo(map)
         }
       })
+
+      // Const
       this.popup = popup
 
       // Methods

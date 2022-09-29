@@ -36,7 +36,7 @@ export default {
             search: null,
             publicidad: null,
             publicidadclick: null,
-            loading:null
+            loading: null
         }
     },
 

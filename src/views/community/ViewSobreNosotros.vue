@@ -13,26 +13,32 @@
             <div class="container mb-5 mt-4 mt-sm-5">
                 <div class="row">
 
-                    <!--Img-->
+                    <!--Swiper-->
                     <div class="col-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 mb-m-5 d-grid mb-4 mb-lg-0">
+
+                        <!--Items-->
                         <swiper :slides-per-view="1" :space-between="50" :autoplay="{ delay: 5000 }" :modules="modules"
                             :loop="true" :effect="'fade'">
+
+                            <!--Img-->
                             <swiper-slide v-for="(p, index) in this.portada" v-bind:key="index">
                                 <img :src="this.url + `/storage/${ p.imagen }`" />
                             </swiper-slide>
                         </swiper>
                     </div>
 
-                    <!--Description-->
+                    <!--Group-->
                     <div class="col-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
 
                         <!--Title-->
                         <h3 class="mb-4 text-center">Ubícalo en Tecla</h3>
 
-                        <!--Info-->
+                        <!--Description-->
                         <p class="mb-4 ps-0 ps-sm-4">Es una iniciativa del gobierno municipal de Santa Tecla que busca
                             potenciar la economía local, facilitando a la ciudadanía una herramienta tecnológica para
                             ubicar a tecleños emprendedores que ofertan sus servicios y productos en el municipio. </p>
+
+                        <!--Description-->
                         <p class="ps-0 ps-sm-4">Con este proyecto se busca impulsar a más de 1,000 emprendedores
                             tecleños en más de 200 categorías entre oficios y servicios profesionales, además de
                             visibilizar a las empresas que cumplen con su responsabilidad social en la ciudad. </p>
@@ -56,7 +62,7 @@
                             <!--Title-->
                             <h6 class="mb-3 mt-3 mb-m-0">+ 1000 Empresas Responsables</h6>
 
-                            <!--Info-->
+                            <!--Description-->
                             <p class="d-none d-sm-none d-lg-block">Empresas establecidas en el municipio de Santa Tecla,
                                 solventes y con responsabilidad social.
                             </p>
@@ -73,7 +79,7 @@
                             <!--Title-->
                             <h6 class="mb-3 mt-3 mb-m-0">+ 1000 Emprendedores</h6>
 
-                            <!--Info-->
+                            <!--Description-->
                             <p class="d-none d-sm-none d-lg-block">La red de emprendedores más grande en el municipio de
                                 Santa Tecla donde podrás encontrar lo que necesites.</p>
                         </div>
@@ -89,7 +95,7 @@
                             <!--Title-->
                             <h6 class="mb-3 mt-3 mb-m-0 espacio">+ 200 Categorías</h6>
 
-                            <!--Info-->
+                            <!--Description-->
                             <p class="d-none d-sm-none d-lg-block">productos como: artículos de primera necesidad,
                                 abarroterías, desechables, servicios de albañilería, etc.</p>
                         </div>
@@ -103,11 +109,11 @@
             <div class="container">
                 <div class="row row d-flex align-items-center">
 
-                    <!--Description-->
+                    <!--Group-->
                     <div class="col-md-6">
                         <div class="row">
 
-                            <!--title-->
+                            <!--Title-->
                             <div class="col-md-12 mb-3 text-left">
                                 <h2>¿Quieres ubicar tu producto, servicio en Santa Tecla?</h2>
                             </div>

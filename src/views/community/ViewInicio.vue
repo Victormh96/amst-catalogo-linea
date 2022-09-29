@@ -31,13 +31,19 @@
 
                             <!--Input-->
                             <input type="text" class="form-control" placeholder="Albañil, Farmacias, Pupuserias..."
-                                v-model="buscarTag"  v-on:keyup.enter="verifyTag">
+                                v-model="buscarTag" v-on:keyup.enter="verifyTag">
 
                             <!--Result-->
                             <ul v-if="searchTag.length">
+
+                                <!--Items-->
                                 <li v-for="tag in searchTag" :key="tag.nombre_rubro"
                                     @click="selectTag(tag); ClickCategoria(tag.id)">
+
+                                    <!--Img-->
                                     <img :src="this.url + `/storage/${ tag.imagen }`" class="me-2">
+
+                                    <!--Title-->
                                     {{ tag.nombre_rubro }}
                                 </li>
                             </ul>
@@ -76,7 +82,7 @@
                             <!--Title-->
                             <h4 class="mb-3">BUSCA TU SERVICIO</h4>
 
-                            <!--Info-->
+                            <!--Description-->
                             <span>En el buscador escribe el oficio, el servicio o palabras claves de lo que necesitas
                                 buscar.</span>
                         </div>
@@ -92,7 +98,7 @@
                             <!--Title-->
                             <h4 class="mb-3">REVISA SU PERFIL</h4>
 
-                            <!--Info-->
+                            <!--Description-->
                             <span>Puedes verificar el listado con la información relacionada a los servicios que
                                 ofrecen.</span>
                         </div>
@@ -108,7 +114,7 @@
                             <!--Title-->
                             <h4 class="mb-3">PONTE EN CONTÁCTO</h4>
 
-                            <!--Info-->
+                            <!--Description-->
                             <span>Podrás encontrar los datos de contacto de los profesionales y las empresas
                                 afiliadas.</span>
                         </div>
@@ -132,9 +138,15 @@
                         <div class="row">
                             <div class="col-md-4 col-xl-2 mb-5" v-for="(s, index) in this.destacados"
                                 v-bind:key="index">
+
+                                <!--Items-->
                                 <router-link :to="{ name: 'Catalogo', params: { slug: s.slug } }"
                                     @click="ClickCategoria(s.id)">
+
+                                    <!--Img-->
                                     <img :src="this.url + `/storage/${ s.imagen }`">
+
+                                    <!--Title-->
                                     <p class="mt-3 mb-0">{{ s.nombre_rubro }}</p>
                                 </router-link>
                             </div>
@@ -149,7 +161,7 @@
             <div class="container">
                 <div class="row row d-flex align-items-center">
 
-                    <!--Description-->
+                    <!--Group-->
                     <div class="col-md-6">
                         <div class="row">
 
@@ -226,6 +238,7 @@ export default {
     },
 
     setup() {
+        // Const
         let buscarTag = ref('')
         const store = useStore()
         const router = useRouter()
@@ -237,7 +250,11 @@ export default {
             if (buscarTag.value === '') {
                 return []
             }
+
+            // Const
             let matches = 0
+
+            // Tag
             return store.state.community.tag.filter(tag => {
                 // If
                 if (
