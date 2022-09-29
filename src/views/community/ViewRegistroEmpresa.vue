@@ -409,12 +409,12 @@
                                 <!--Image-->
                                 <div class="col-md-6 mb-4">
                                     <input type="file" class="dropify" data-height="150" @change="setDoc1($event)"
-                                        data-default-file="@/../img/assets/dui-frontal.png" />
+                                        data-default-file="@/../img/assets/frontal.png" />
                                     <p class="text-center">Documento 1</p>
                                 </div>
                                 <div class="col-md-6 mb-4">
                                     <input type="file" class="dropify" data-height="150" @change="setDoc2($event)"
-                                        data-default-file="@/../img/assets/dui-dorso.png" />
+                                        data-default-file="@/../img/assets/dorso.png" />
                                     <p class="text-center">Documento 2</p>
                                 </div>
                             </div>

@@ -331,8 +331,7 @@ export default {
 
             // Satellite
             var satelliteBase = new L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
-                minZoom: 14,
-                Zoom: 16,
+                zoom: 16,
                 subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
             })
 
