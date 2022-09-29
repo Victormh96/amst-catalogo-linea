@@ -153,19 +153,21 @@ export default {
       // Normal
       var normalBase = new L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        minZoom: 16,
+        Zoom: 18
       })
 
       // Satellite
       var satelliteBase = new L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
-
+        minZoom: 16,
+        Zoom: 18,
         subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
       })
 
       // Initial
       var map = new L.Map('map', {
-        tap: false,
         layers: [normalBase]
-      })
+      }).setView([13.675997400000004, -89.28905480533759], 15)
 
       // Const
       this.map = map
@@ -175,6 +177,16 @@ export default {
         "Normal": normalBase,
         "Satelital": satelliteBase
       }
+
+      var LeafIcon = L.Icon.extend({
+        options: {
+          iconSize: [50,50],
+          shadowSize: [50, 64],
+          shadowAnchor: [4, 62],
+          popupAnchor: [-3, -76],
+          className: 'burbuja'
+        }
+      });
 
       // If
       if (lista !== undefined) {
@@ -188,7 +200,7 @@ export default {
       L.control.locate({
         showPopup: false,
         locateOptions: {
-          maxZoom: 20
+          maxZoom: 18
         }
       }).addTo(map)
 
@@ -201,10 +213,10 @@ export default {
         fullscreenElement: false
       }).addTo(map);
 
-      // Pin
       pines.map(function (element) {
+        var icon = new LeafIcon({ iconUrl: url + "/storage/" + element.foto });
         if (element.local != false) {
-          L.marker([element.latitud, element.longitud],)
+          L.marker([element.latitud, element.longitud], { icon: icon })
             .bindPopup("<a href=/cuenta/" + element.slug + "><img src=" + url + "/storage/" + element.foto + "/><center><span>" + element.nombre_cuenta + "</span></center></a>").addTo(map)
         }
       })
@@ -225,7 +237,6 @@ export default {
       })
     }
   },
-
   computed: {
     // Search
     listaFiltrada() {

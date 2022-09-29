@@ -1422,6 +1422,13 @@ html::-webkit-scrollbar-thumb,
   border-radius: 5px;
 }
 
+
+.burbuja {
+    border-radius: 50px;
+    object-fit: cover;
+    border: 2px solid var(--light-blue)
+}
+
 /* ============================================================*/
 /* Select
 /* ============================================================*/
