@@ -77,7 +77,7 @@
   text-align: end;
 }
 
-#header .nav-menu>ul>li {
+#header .nav-menu > ul > li {
   position: relative;
   white-space: nowrap;
   display: inline-block;
@@ -395,10 +395,12 @@
 }
 
 #inscribete {
-  background: linear-gradient(121deg,
-      rgba(20, 41, 78, 1) 2%,
-      rgba(27, 54, 101, 1) 29%,
-      rgba(62, 121, 194, 1) 91%);
+  background: linear-gradient(
+    121deg,
+    rgba(20, 41, 78, 1) 2%,
+    rgba(27, 54, 101, 1) 29%,
+    rgba(62, 121, 194, 1) 91%
+  );
   padding: 50px 0;
 }
 
@@ -927,7 +929,7 @@
 }
 
 #cuenta article .profile .box p {
-  font-size: 0.80rem;
+  font-size: 0.8rem;
   font-weight: 400;
   color: #7686a3;
   line-height: 1.9;
@@ -1284,13 +1286,13 @@ html::-webkit-scrollbar-thumb,
 
 .swal2-styled.swal2-confirm {
   background-color: var(--light-blue) !important;
-  font-size: .85em !important;
+  font-size: 0.85em !important;
   width: 150px !important;
 }
 
 .swal2-footer a {
   color: var(--light-blue) !important;
-  font-size: .85em !important;
+  font-size: 0.85em !important;
   font-weight: 600 !important;
 }
 
@@ -1341,7 +1343,9 @@ html::-webkit-scrollbar-thumb,
   width: 100% !important;
 }
 
-.select2-container--default .select2-selection--single .select2-selection__rendered {
+.select2-container--default
+  .select2-selection--single
+  .select2-selection__rendered {
   color: #b0b4b7;
   line-height: 41px;
 }
@@ -1352,7 +1356,8 @@ html::-webkit-scrollbar-thumb,
   background: #f2f6fb;
 }
 
-.select2-container--default .select2-results__option--highlighted[aria-selected] {
+.select2-container--default
+  .select2-results__option--highlighted[aria-selected] {
   background-color: var(--light-blue);
 }
 
@@ -1377,7 +1382,7 @@ html::-webkit-scrollbar-thumb,
 }
 
 .dropify-wrapper.has-error {
-  border-color: #E5E5E5 !important;
+  border-color: #e5e5e5 !important;
 }
 
 .dropify-wrapper .dropify-errors-container {
@@ -1422,11 +1427,14 @@ html::-webkit-scrollbar-thumb,
   border-radius: 5px;
 }
 
-
 .burbuja {
   border-radius: 50px;
   object-fit: cover;
+<<<<<<< HEAD
   border: 2px solid var(--light-blue)
+=======
+  border: 2px solid var(--light-blue);
+>>>>>>> 4e2023cbf091cf04d376e65a34343d18f5a4a026
 }
 
 /* ============================================================*/
@@ -1454,5 +1462,24 @@ option {
 
   100% {
     transform: translatey(0px);
+  }
+}
+
+#concepto img {
+  width: 30px;
+}
+
+#concepto .filtro {
+  height: 50px;
+}
+
+@media (min-width: 1400px) {
+  #concepto .container-xxl,
+  #concepto .container-xl,
+  #concepto .container-lg,
+  #concepto .container-md,
+  #concepto .container-sm,
+  #concepto .container {
+    max-width: 1650px;
   }
 }
