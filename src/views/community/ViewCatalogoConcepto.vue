@@ -11,10 +11,14 @@
     <!--Section-->
     <section id="concepto">
       <div class="container mb-4 mb-sm-5 mt-4 mt-sm-5">
+<<<<<<< HEAD
 
         <!--Title-->
         <h3 class="text-center">{{this.concepto}}</h3>
 
+=======
+        <h3 class="text-center mb-5">{{this.concepto}}</h3>
+>>>>>>> 44e38dab72fe3c4fc1ae12545244444719a2cf42
         <!--Div-->
         <div class="row">
 
@@ -94,7 +98,10 @@ export default {
       })
     }
 
+<<<<<<< HEAD
     // Vuex
+=======
+>>>>>>> 44e38dab72fe3c4fc1ae12545244444719a2cf42
     this.concepto = this.$store.state.community.concepto.descripcion
 
     // Vuex
