@@ -72,9 +72,15 @@ export default {
     // Vuex
     await this.$store.dispatch("CatalogoConcepto", this.slug)
     this.lista = this.$store.state.community.catalogocategoria
-    this.concepto = this.$store.state.community.concepto
 
-
+    // If
+    if (this.lista.length < 1) {
+      this.$router.push({
+        name: 'Servicios-Completos',
+      })
+    }
+    
+    this.concepto = this.$store.state.community.concepto.descripcion
     await this.$store.dispatch("CategoriaConcepto", this.slug)
     this.rubro = this.$store.state.community.rubroconcepto
 
