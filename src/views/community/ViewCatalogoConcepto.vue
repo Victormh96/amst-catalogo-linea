@@ -11,7 +11,7 @@
     <!--Section-->
     <section id="concepto">
       <div class="container mb-4 mb-sm-5 mt-4 mt-sm-5">
-        <h3 class="text-center">{{this.concepto}}</h3>
+        <h3 class="text-center mb-5">{{this.concepto}}</h3>
         <!--Div-->
         <div class="row">
           <!--Maps-->
@@ -79,7 +79,7 @@ export default {
         name: 'Servicios-Completos',
       })
     }
-    
+
     this.concepto = this.$store.state.community.concepto.descripcion
     await this.$store.dispatch("CategoriaConcepto", this.slug)
     this.rubro = this.$store.state.community.rubroconcepto
