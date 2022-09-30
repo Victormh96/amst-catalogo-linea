@@ -1429,12 +1429,6 @@ html::-webkit-scrollbar-thumb,
   border-radius: 5px;
 }
 
-.burbuja {
-  border-radius: 50px;
-  object-fit: cover;
-  border: 2px solid var(--light-blue);
-}
-
 /* ============================================================*/
 /* Select
 /* ============================================================*/
@@ -1463,6 +1457,8 @@ option {
   }
 }
 
+
+
 #concepto img {
   width: 30px;
 }
@@ -1486,4 +1482,10 @@ option {
   #concepto .container {
     max-width: 1650px;
   }
+}
+
+.burbuja {
+  border-radius: 50px;
+  object-fit: cover;
+  border: 2px solid var(--light-blue);
 }

@@ -11,24 +11,38 @@
     <!--Section-->
     <section id="concepto">
       <div class="container mb-4 mb-sm-5 mt-4 mt-sm-5">
+
+        <!--Title-->
         <h3 class="text-center">{{this.concepto}}</h3>
+
         <!--Div-->
         <div class="row">
+
           <!--Maps-->
           <div class="col-12 col-md-12 col-lg-12 col-xl-2 mt-4 mt-xl-0">
+
+            <!--Title-->
             <div class="text-center mt-2">Filtrar Por Categorias</div>
+
+            <!--Div-->
             <div v-for="(rubro, index) of this.rubro" :key="index" class="filtro">
+
+              <!--Group-->
               <div class="form-check ps-5">
+
+                <!--Input-->
                 <input class="form-check-input " type="checkbox" :value="rubro.nombre_rubro" :id="rubro.id"
                   @click="filtro(rubro.id)"
                   :checked="rubro.id == '13' || rubro.id == '18'|| rubro.id == '19'? true:false">
+
+                <!--Img-->
                 <label class="form-check-label" :for="rubro.id">
-                  <img :src="this.url + `/storage/${ rubro.imagen }`"> {{rubro.nombre_rubro}}
+                  <img :src="this.url + `/storage/${ rubro.imagen }`">{{rubro.nombre_rubro}}
                 </label>
               </div>
-
             </div>
           </div>
+
           <!--Maps-->
           <div class="col-12 col-md-12 col-lg-12 col-xl-10 mt-4 mt-xl-0">
             <div id="map"></div>
@@ -60,11 +74,11 @@ export default {
     return {
       map: '',
       rubro: [],
-      listaRubros: ['13', '18', '19'],
       lista: [],
-      listafiltrada: [],
+      concepto: '',
       skeleton: false,
-      concepto: ''
+      listafiltrada: [],
+      listaRubros: ['13', '18', '19']
     }
   },
 
@@ -76,14 +90,18 @@ export default {
     // If
     if (this.lista.length < 1) {
       this.$router.push({
-        name: 'Servicios-Completos',
+        name: 'Servicios-Completos'
       })
     }
-    
+
+    // Vuex
     this.concepto = this.$store.state.community.concepto.descripcion
+
+    // Vuex
     await this.$store.dispatch("CategoriaConcepto", this.slug)
     this.rubro = this.$store.state.community.rubroconcepto
 
+    // Method
     this.llenarLista()
 
     // Skeleton
@@ -103,37 +121,47 @@ export default {
   },
 
   methods: {
-
-    //filtrar
+    // Filtrar
     filtro(value) {
+      // If
       if (this.listaRubros.includes(value)) {
         this.listaRubros = this.listaRubros.filter((item) => item !== value)
       } else {
         this.listaRubros.push(value)
       }
-      this.llenarLista()
+
       // Methods
+      this.llenarLista()
       this.map.off()
       this.map.remove()
       this.maps(this.listafiltrada)
     },
 
     llenarLista() {
+      // Const
       this.lista = this.$store.state.community.catalogocategoria
       this.listafiltrada = []
 
+      // Foreach
       this.listaRubros.forEach(rubro => {
+
+        // Foreach
         this.lista.forEach(cuenta => {
+
+          // Foreach
           cuenta.servicio.forEach(servicio => {
+
+            // If
             if (servicio.id_rubro == rubro) {
               var cant = this.listafiltrada.filter((lista) => lista.id == cuenta.id)
+
+              // If
               if (cant.length == 0) {
                 this.listafiltrada.push(cuenta)
               }
             }
           })
-        }
-        )
+        })
       })
     },
 
@@ -167,16 +195,14 @@ export default {
         "Satelital": satelliteBase
       }
 
+      // Icon
       var LeafIcon = L.Icon.extend({
         options: {
           iconSize: [50, 50],
-          shadowSize: [50, 64],
-          shadowAnchor: [4, 62],
-          iconAnchor: [22, 94],
-          popupAnchor: [-3, -76],
+          popupAnchor: [0, -16],
           className: 'burbuja'
         }
-      });
+      })
 
       // If
       if (lista !== undefined) {
@@ -203,31 +229,21 @@ export default {
         fullscreenElement: false
       }).addTo(map);
 
+      // Pines
       pines.map(function (element) {
-        var icon = new LeafIcon({ iconUrl: url + "/storage/" + element.foto });
+
+        // Const
+        var icon = new LeafIcon({ iconUrl: url + "/storage/" + element.foto })
+
+        // If
         if (element.local != false) {
           L.marker([element.concepto[0].latitud, element.concepto[0].longitud], { icon: icon })
             .bindPopup("<a href=/cuenta/" + element.slug + "><img src=" + url + "/storage/" + element.foto + "/><center><span>" + element.nombre_cuenta + "</span></center></a>").addTo(map)
         }
       })
-
     },
-
-    // Marker
-    marker(lat, long) {
-      // Move
-      this.map.setView([lat, long], 18)
-
-      // Scroll
-      window.scrollTo({
-        top: document.getElementById("map").offsetTop - 120,
-        behavior: "smooth",
-      })
-    }
   },
 
   props: ["slug"]
 };
 </script>
-
-

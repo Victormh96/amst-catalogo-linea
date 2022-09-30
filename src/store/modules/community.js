@@ -268,7 +268,7 @@ export default {
                 .then((response) => {
                     commit('MutationConcepto', response.data[1][0])
                     commit('MutationCatalogoCategoria', response.data[0])
-                    
+
                 })
                 .catch((err) => {
                     console.log(err)

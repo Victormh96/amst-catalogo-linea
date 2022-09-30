@@ -59,7 +59,16 @@
 
                     <!--Items-->
                     <ul>
-                        <li><a href="/servicios-completos">Todos los servicios</a></li>
+
+                        <!--All the services-->
+                        <li>
+                            <router-link :to="{ name: 'Servicios-Completos' }">Todos los servicios</router-link>
+                        </li>
+
+                        <!--I walk the Carmen-->
+                        <li>
+                            <a v-bind:href="'/catalogo-concepto/' + 'paseo-el-carmen'">Paseo el Carmen</a>
+                        </li>
                     </ul>
                 </div>
 

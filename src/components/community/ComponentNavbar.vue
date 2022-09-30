@@ -67,7 +67,7 @@
                             <li>
                                 <a v-bind:href="'/categoria/' + 'empresas'">Empresas</a>
                             </li>
-
+                            
                             <!--About us-->
                             <li>
                                 <router-link :to="{ name: 'Sobre-Nosotros' }">Sobre Nosotros</router-link>
