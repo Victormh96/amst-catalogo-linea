@@ -73,7 +73,7 @@ export default {
   async mounted() {
     // Vuex
     await this.$store.dispatch("CatalogoConcepto", this.slug)
-    this.lista = this.$store.state.community.catalogocategoria
+    this.lista = this.$store.state.community.catalogocategoria[0]
 
     await this.$store.dispatch("CategoriaConcepto", this.slug)
     this.rubro = this.$store.state.community.rubroconcepto
@@ -160,6 +160,7 @@ export default {
           iconSize: [50, 50],
           shadowSize: [50, 64],
           shadowAnchor: [4, 62],
+          iconAnchor:   [22, 94],
           popupAnchor: [-3, -76],
           className: 'burbuja'
         }
@@ -193,7 +194,7 @@ export default {
       pines.map(function (element) {
         var icon = new LeafIcon({ iconUrl: url + "/storage/" + element.foto });
         if (element.local != false) {
-          L.marker([element.latitud, element.longitud], { icon: icon })
+          L.marker([element.concepto[0].latitud, element.concepto[0].longitud], { icon: icon })
             .bindPopup("<a href=/cuenta/" + element.slug + "><img src=" + url + "/storage/" + element.foto + "/><center><span>" + element.nombre_cuenta + "</span></center></a>").addTo(map)
         }
       })

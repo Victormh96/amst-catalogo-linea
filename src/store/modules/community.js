@@ -261,7 +261,7 @@ export default {
             await axios
                 .get(CatalogoConcepto() + body)
                 .then((response) => {
-                    commit('MutationCatalogoCategoria', response.data[0])
+                    commit('MutationCatalogoCategoria', response.data)
                 })
                 .catch((err) => {
                     console.log(err)

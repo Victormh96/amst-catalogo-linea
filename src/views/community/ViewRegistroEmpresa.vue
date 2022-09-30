@@ -132,7 +132,6 @@
 
                             <!--Category-->
                             <div class="col-md-3">
-
                                 <!--Category-->
                                 <div class="form-group mb-4">
                                     <select class="form-control select2" v-model="v$.form.entidad.$model">
@@ -674,7 +673,7 @@ export default {
 
         // Vuex
         await this.$store.dispatch("Entidad")
-        this.entidades = this.$store.state.community.entidades
+        this.entidades = this.$store.state.community.entidad
 
         // LocalStorage
         localStorage.removeItem('latitud')
