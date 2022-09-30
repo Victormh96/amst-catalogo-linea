@@ -103,7 +103,7 @@ export default {
         // Search
         lista() {
             return this.$store.state.community.categoria.filter(categoria => {
-                return categoria.tags.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
+                return categoria.tag.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
                     .toLowerCase().includes(this.buscar.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
                         .toLowerCase())
             })

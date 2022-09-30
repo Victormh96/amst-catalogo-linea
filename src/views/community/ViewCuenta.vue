@@ -48,7 +48,7 @@
                                 </div>
                             </div>
 
-                            <!--Tags-->
+                            <!--Tag-->
                             <div class="tag ms-4 me-4" v-if="this.lista.verificado == true">
                                 <span class="me-2 mb-1" v-for="(r, index) in this.lista.servicio" v-bind:key="index">
                                     {{ r.rubro.nombre_rubro }}

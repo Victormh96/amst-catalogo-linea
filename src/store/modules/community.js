@@ -12,7 +12,7 @@ import {
     Cuenta,
     RegistroServicio,
     RegistroEmpresa,
-    Entidades,
+    Entidad,
     Publicidad,
     PublicidadClick,
     CatalogoConcepto,
@@ -34,7 +34,7 @@ export default {
             rubroconcepto: null,
             registroempresa: null,
             errorregistro: null,
-            entidades: null,
+            entidad: null,
             search: null,
             publicidad: null,
             publicidadclick: null,
@@ -104,7 +104,7 @@ export default {
         },
 
         MutationEntidad(state, data) {
-            state.entidades = data
+            state.entidad = data
         },
 
         MutationPublicidad(state, data) {
@@ -150,7 +150,7 @@ export default {
                 .get(Tag())
                 .then((response) => {
                     response.data[0].forEach(tag => {
-                        let sinonimos = tag.tags.split(',')
+                        let sinonimos = tag.tag.split(',')
                         sinonimos.forEach(nombre => {
                             const data = {
                                 id: tag.id,
@@ -180,9 +180,9 @@ export default {
                 })
         },
 
-        async Entidades({ commit }) {
+        async Entidad({ commit }) {
             await axios
-                .get(Entidades())
+                .get(Entidad())
                 .then((response) => {
                     commit('MutationEntidad', response.data[0])
                 })

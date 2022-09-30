@@ -28,7 +28,7 @@ export const RegistroServicio = () => `${url_base}/api/registro-servicio`
 
 export const RegistroEmpresa = () => `${url_base}/api/registro-empresa`
 
-export const Entidades = () => `${url_base}/api/entidades`
+export const Entidad = () => `${url_base}/api/entidad`
 
 export const Publicidad = () => `${url_base}/api/publicidad`
 

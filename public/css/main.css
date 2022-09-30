@@ -1430,11 +1430,7 @@ html::-webkit-scrollbar-thumb,
 .burbuja {
   border-radius: 50px;
   object-fit: cover;
-<<<<<<< HEAD
-  border: 2px solid var(--light-blue)
-=======
   border: 2px solid var(--light-blue);
->>>>>>> 4e2023cbf091cf04d376e65a34343d18f5a4a026
 }
 
 /* ============================================================*/

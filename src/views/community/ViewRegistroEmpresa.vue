@@ -118,12 +118,13 @@
 
                                 <!--Date Birth-->
                                 <div class="form-group mb-4 mb-sm-0">
-                                    <input type="text" class="form-control" placeholder="Fecha de Fundacion*"
-                                        v-model="v$.form.fecha.$model" tabindex="5" required v-mask="'####-##-##'">
+                                    <input type="text" class="form-control" placeholder="Fecha Fundación*"
+                                        v-model="v$.form.fechaFundacion.$model" tabindex="5" required
+                                        v-mask="'####-##-##'">
 
                                     <!--Error Message-->
-                                    <div class="input-errors err" v-for="(error, index) of v$.form.fecha.$errors"
-                                        :key="index">
+                                    <div class="input-errors err"
+                                        v-for="(error, index) of v$.form.fechaFundacion.$errors" :key="index">
                                         <div class="error-msg">{{ error.$message }}</div>
                                     </div>
                                 </div>
@@ -513,7 +514,7 @@
                     <!--Div-->
                     <div class="col-md-6 mb-1 ps-2 mb-sm-4">
 
-                        <!--Tags-->
+                        <!--Tag-->
                         <div class="row ps-5 mb-xl-4 mb-5">
 
                             <!--Title-->
@@ -534,7 +535,7 @@
                                     :disabled="nullTag">AGREGAR</button>
                             </div>
 
-                            <!--List tags-->
+                            <!--List tag-->
                             <div class="col-md-8 mt-3">
                                 <span class="tag mb-4 mb-sm-3 me-3" v-for="(tag, index) in this.listTag"
                                     v-bind:key="index">
@@ -615,7 +616,7 @@ export default {
             form: {
                 name: '',
                 email: '',
-                fecha: '',
+                fechaFundacion: '',
                 pagweb: '',
                 logo: false,
                 horario: '',
@@ -672,7 +673,7 @@ export default {
         this.listaServicio = this.$store.state.community.categoria
 
         // Vuex
-        await this.$store.dispatch("Entidades")
+        await this.$store.dispatch("Entidad")
         this.entidades = this.$store.state.community.entidades
 
         // LocalStorage
@@ -712,7 +713,7 @@ export default {
                     requeridMessage,
                     phoneMessage
                 },
-                fecha: {
+                fechaFundacion: {
                     requeridMessage,
                 },
                 whatsapp: {
@@ -932,7 +933,7 @@ export default {
                 Form.append('latitud', this.latitud)
                 Form.append('longitud', this.longitud)
                 Form.append('servicios', JSON.stringify(this.cuentaServicios))
-                Form.append('tags', tag.slice(1))
+                Form.append('tag', tag.slice(1))
 
                 // Vuex
                 await this.$store.dispatch("RegistroEmpresa", Form).then(() => {

@@ -383,7 +383,7 @@ export default {
           .toLowerCase().includes(this.buscar.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
             .toLowerCase())
           ||
-          categoria.tags.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
+          categoria.tag.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
             .toLowerCase().includes(this.buscar.normalize("NFD").replace(/[\u0300-\u036f]/g, '')
               .toLowerCase())
       })
