@@ -11,7 +11,7 @@
     <!--Section-->
     <section id="concepto">
       <div class="container mb-4 mb-sm-5 mt-4 mt-sm-5">
-
+        <h3 class="text-center">{{this.concepto}}</h3>
         <!--Div-->
         <div class="row">
           <!--Maps-->
@@ -20,7 +20,8 @@
             <div v-for="(rubro, index) of this.rubro" :key="index" class="filtro">
               <div class="form-check ps-5">
                 <input class="form-check-input " type="checkbox" :value="rubro.nombre_rubro" :id="rubro.id"
-                  @click="filtro(rubro.id)">
+                  @click="filtro(rubro.id)"
+                  :checked="rubro.id == '13' || rubro.id == '18'|| rubro.id == '19'? true:false">
                 <label class="form-check-label" :for="rubro.id">
                   <img :src="this.url + `/storage/${ rubro.imagen }`"> {{rubro.nombre_rubro}}
                 </label>
@@ -59,24 +60,25 @@ export default {
     return {
       map: '',
       rubro: [],
-      listaRubros: [],
+      listaRubros: ['13', '18', '19'],
       lista: [],
       listafiltrada: [],
-      buscar: '',
       skeleton: false,
-      domicilio: false,
-      listaPaginada: [],
-      elementosPorPagina: 5
+      concepto: ''
     }
   },
 
   async mounted() {
     // Vuex
     await this.$store.dispatch("CatalogoConcepto", this.slug)
-    this.lista = this.$store.state.community.catalogocategoria[0]
+    this.lista = this.$store.state.community.catalogocategoria
+    this.concepto = this.$store.state.community.concepto
+
 
     await this.$store.dispatch("CategoriaConcepto", this.slug)
     this.rubro = this.$store.state.community.rubroconcepto
+
+    this.llenarLista()
 
     // Skeleton
     setTimeout(() => {
@@ -85,7 +87,7 @@ export default {
 
     // Leaflet
     setTimeout(() => {
-      this.maps()
+      this.maps(this.listafiltrada)
     }, 950)
   },
 
@@ -103,6 +105,14 @@ export default {
       } else {
         this.listaRubros.push(value)
       }
+      this.llenarLista()
+      // Methods
+      this.map.off()
+      this.map.remove()
+      this.maps(this.listafiltrada)
+    },
+
+    llenarLista() {
       this.lista = this.$store.state.community.catalogocategoria
       this.listafiltrada = []
 
@@ -119,10 +129,6 @@ export default {
         }
         )
       })
-      // Methods
-      this.map.off()
-      this.map.remove()
-      this.maps(this.listafiltrada)
     },
 
     // Map
@@ -160,7 +166,7 @@ export default {
           iconSize: [50, 50],
           shadowSize: [50, 64],
           shadowAnchor: [4, 62],
-          iconAnchor:   [22, 94],
+          iconAnchor: [22, 94],
           popupAnchor: [-3, -76],
           className: 'burbuja'
         }
