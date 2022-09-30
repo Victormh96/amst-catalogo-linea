@@ -897,6 +897,7 @@ export default {
 
         // Submit
         async submit() {
+            this.loading = 9000
             // LocalStorage
             this.latitud = localStorage.getItem('latitud')
             this.longitud = localStorage.getItem('longitud')
@@ -926,7 +927,7 @@ export default {
                 // Vuex
                 await this.$store.dispatch("RegistroServicio", Form).then(() => {
                     // Const
-                    this.loading = 1
+                    this.loading = 5
 
                     // If
                     if (this.$store.state.community.errorregistro == false) {

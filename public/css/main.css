@@ -1469,6 +1469,11 @@ option {
   height: 50px;
 }
 
+#concepto .form-check-label {
+  color: #99a3b4;
+  font-size: 0.8rem;
+}
+
 @media (min-width: 1400px) {
   #concepto .container-xxl,
   #concepto .container-xl,
