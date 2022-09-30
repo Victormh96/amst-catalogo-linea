@@ -111,12 +111,11 @@
                                 <!--Date Birth-->
                                 <div class="form-group mb-4">
                                     <input type="text" class="form-control" placeholder="Fecha de Nacimiento*"
-                                        v-model="v$.form.fechaNacimiento.$model" tabindex="5" required
-                                        v-mask="'####-##-##'">
+                                        v-model="v$.form.fecha.$model" tabindex="5" required v-mask="'####-##-##'">
 
                                     <!--Error Message-->
-                                    <div class="input-errors err"
-                                        v-for="(error, index) of v$.form.fechaNacimiento.$errors" :key="index">
+                                    <div class="input-errors err" v-for="(error, index) of v$.form.fecha.$errors"
+                                        :key="index">
                                         <div class="error-msg">{{ error.$message }}</div>
                                     </div>
                                 </div>
@@ -509,7 +508,7 @@
                     <!--Div-->
                     <div class="col-md-6 mb-1 ps-2 mb-sm-4">
 
-                        <!--Tag-->
+                        <!--Tags-->
                         <div class="row ps-5 mb-xl-4 mb-5">
 
                             <!--Title-->
@@ -530,7 +529,7 @@
                                     :disabled="nullTag">AGREGAR</button>
                             </div>
 
-                            <!--List tag-->
+                            <!--List tags-->
                             <div class="col-md-8 mt-3">
                                 <span class="tag mb-4 mb-sm-3 me-3" v-for="(tag, index) in this.listTag"
                                     v-bind:key="index">
@@ -615,7 +614,7 @@ export default {
                 email: '',
                 local: '',
                 marca: '',
-                fechaNacimiento: '',
+                fecha: '',
                 genero: '',
                 pagweb: '',
                 logo: false,
@@ -723,7 +722,7 @@ export default {
                 tipoServicio: {
                     requeridMessage,
                 },
-                fechaNacimiento: {
+                fecha: {
                     requeridMessage,
                 },
                 descripcion: {
@@ -897,7 +896,6 @@ export default {
 
         // Submit
         async submit() {
-            this.loading = 9000
             // LocalStorage
             this.latitud = localStorage.getItem('latitud')
             this.longitud = localStorage.getItem('longitud')
@@ -922,12 +920,12 @@ export default {
                 Form.append('latitud', this.latitud)
                 Form.append('longitud', this.longitud)
                 Form.append('servicios', JSON.stringify(this.cuentaServicios))
-                Form.append('tag', tag.slice(1))
+                Form.append('tags', tag.slice(1))
 
                 // Vuex
                 await this.$store.dispatch("RegistroServicio", Form).then(() => {
                     // Const
-                    this.loading = 5
+                    this.loading = 1
 
                     // If
                     if (this.$store.state.community.errorregistro == false) {

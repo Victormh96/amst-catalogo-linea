@@ -909,7 +909,7 @@ export default {
         // Submit
         async submit() {
 
-            console.log(this.form)
+            
             // LocalStorage
             this.latitud = localStorage.getItem('latitud')
             this.longitud = localStorage.getItem('longitud')

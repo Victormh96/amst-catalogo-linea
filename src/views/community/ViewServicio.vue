@@ -19,14 +19,14 @@
                     </div>
 
                     <!--Div-->
-                    <div class="col-12 col-md-7 col-lg-5 col-xl-5 col-xxl-4 mx-auto mb-4">
+                    <div class="col-12 col-md-7 col-lg-5 col-xl-5 col-xxl-4 mx-auto mb-5">
 
                         <!--Input-->
                         <input type="text" class="form-control text-center mb-2"
                             placeholder="Albañil, Farmacias, Pupuserias..." v-model="buscar">
 
                         <!--Title-->
-                        <h6 v-if="cant == 0" class="mb-2">No se encontro ninguna coincidencia con "{{ text }}", prueba
+                        <h6 v-if="cant == 0">No se encontro ninguna coincidencia con "{{ text }}", prueba
                             con estas categorias</h6>
                     </div>
 
