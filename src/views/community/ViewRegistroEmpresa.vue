@@ -908,8 +908,12 @@ export default {
 
         // Submit
         async submit() {
+<<<<<<< HEAD
 
             
+=======
+            this.loading = 9000
+>>>>>>> 1bea17e04af431c5a3242fe9c5f86437d6bd3dba
             // LocalStorage
             this.latitud = localStorage.getItem('latitud')
             this.longitud = localStorage.getItem('longitud')

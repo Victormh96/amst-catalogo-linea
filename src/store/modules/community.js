@@ -29,6 +29,7 @@ export default {
             categoria: null,
             categoriadestacado: null,
             cuenta: null,
+            concepto: null,
             catalogocategoria: null,
             registroservicio: null,
             rubroconcepto: null,
@@ -117,6 +118,10 @@ export default {
 
         MutationLoading(state, data) {
             state.loading = data
+        },
+
+        MutationConcepto(state, data) {
+            state.concepto = data
         }
     },
 
@@ -261,7 +266,9 @@ export default {
             await axios
                 .get(CatalogoConcepto() + body)
                 .then((response) => {
-                    commit('MutationCatalogoCategoria', response.data)
+                    commit('MutationConcepto', response.data[1][0])
+                    commit('MutationCatalogoCategoria', response.data[0])
+                    
                 })
                 .catch((err) => {
                     console.log(err)
