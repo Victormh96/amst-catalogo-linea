@@ -19,32 +19,32 @@
         <div class="row">
 
           <!--Maps-->
-          <div class="col-12 col-md-12 col-lg-12 col-xl-2 mt-4 mt-xl-0">
+          <div class="col-12 col-md-12 col-lg-12 col-xl-3 mt-4 mt-xl-0">
 
             <!--Title-->
             <div class="text-center mt-2">Filtrar Por Categorias</div>
 
             <!--Div-->
-            <div v-for="(rubro, index) of this.rubro" :key="index" class="filtro">
+            <div class="filtro">
 
               <!--Group-->
-              <div class="form-check ps-5">
+              <div v-for="(rubro, index) of this.rubro" :key="index" class="mb-3">
 
                 <!--Input-->
-                <input class="form-check-input " type="checkbox" :value="rubro.nombre_rubro" :id="rubro.id"
-                  @click="filtro(rubro.id)"
+                <input type="checkbox" :value="rubro.nombre_rubro" :id="rubro.id" @click="filtro(rubro.id)"
                   :checked="rubro.id == '13' || rubro.id == '18'|| rubro.id == '19'? true:false">
 
                 <!--Img-->
-                <label class="form-check-label" :for="rubro.id">
+                <label :for="rubro.id">
                   <img :src="this.url + `/storage/${ rubro.imagen }`">{{rubro.nombre_rubro}}
                 </label>
               </div>
+
             </div>
           </div>
 
           <!--Maps-->
-          <div class="col-12 col-md-12 col-lg-12 col-xl-10 mt-4 mt-xl-0">
+          <div class="col-12 col-md-12 col-lg-12 col-xl-9 mt-4 mt-xl-0">
             <div id="map"></div>
           </div>
         </div>

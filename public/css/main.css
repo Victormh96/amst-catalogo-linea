@@ -1457,14 +1457,15 @@ option {
   }
 }
 
-
+#concepto .filtro {
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 450px;
+  padding: 0 15px;
+}
 
 #concepto img {
   width: 30px;
-}
-
-#concepto .filtro {
-  height: 40px;
 }
 
 #concepto .form-check-label {
@@ -1472,20 +1473,65 @@ option {
   font-size: 0.8rem;
 }
 
-@media (min-width: 1400px) {
-
-  #concepto .container-xxl,
-  #concepto .container-xl,
-  #concepto .container-lg,
-  #concepto .container-md,
-  #concepto .container-sm,
-  #concepto .container {
-    max-width: 1650px;
-  }
-}
-
-.burbuja {
+#concepto .burbuja {
   border-radius: 50px;
   object-fit: cover;
-  border: 2px solid var(--light-blue);
+  border: 3px solid var(--white);
+  transition: all 0.4s;
+}
+
+#concepto .burbuja:hover {
+  width: 80px !important;
+  height: 80px !important;
+  z-index: 9999 !important;
+}
+
+#concepto .filtro::-webkit-scrollbar {
+  width: 8px;
+}
+
+#concepto .filtro::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+#concepto .filtro::-webkit-scrollbar-thumb {
+  background: #c5c8ce;
+  border-radius: 2px;
+}
+
+#concepto .filtro::-webkit-scrollbar-thumb:hover {
+  background: #a8afb7;
+}
+
+/*============================================================================================*/
+/* Radio
+/*============================================================================================*/
+input[type="checkbox"]+label {
+  padding: 9px 11px;
+  width: 100%;
+  background-color: #f9f9f9;
+  border: 1px solid #e5e5e5;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"]+label {
+  font-size: 0.7rem;
+  color: #5e676e;
+  font-weight: 600;
+  margin: 2px 1px;
+  text-align: center;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked+label,
+input:checked,
+select:focus,
+select:active {
+  background-color: #081828;
+  color: #fff;
+  border-color: #081828;
 }
