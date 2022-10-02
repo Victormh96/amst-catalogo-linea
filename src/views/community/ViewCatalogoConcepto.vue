@@ -12,40 +12,53 @@
     <section id="concepto">
       <div class="container mb-4 mb-sm-5 mt-4 mt-sm-5">
 
-        <!--Title-->
-        <h3 class="text-center mb-5">{{this.concepto}}</h3>
-
         <!--Div-->
         <div class="row">
 
-          <!--Maps-->
-          <div class="col-12 col-md-12 col-lg-12 col-xl-3 mt-4 mt-xl-0">
+          <!--Div-->
+          <div class="col-12 col-md-12 col-lg-12 col-xl-2 col-xxl-2">
 
             <!--Title-->
-            <div class="text-center mt-2">Filtrar Por Categorias</div>
+            <P class="text-center mb-3 mb-xl-2">Filtrar Categorías</P>
 
-            <!--Div-->
+            <!--Filtro-->
             <div class="filtro">
 
-              <!--Group-->
-              <div v-for="(rubro, index) of this.rubro" :key="index" class="mb-3">
+              <!--Div-->
+              <div class="row">
 
-                <!--Input-->
-                <input type="checkbox" :value="rubro.nombre_rubro" :id="rubro.id" @click="filtro(rubro.id)"
-                  :checked="rubro.id == '13' || rubro.id == '18'|| rubro.id == '19'? true:false">
+                <!--Group-->
+                <div v-for="(rubro, index) of this.rubro" :key="index" class="col-6 col-md-4 col-lg-3 col-xl-12 mb-3">
 
-                <!--Img-->
-                <label :for="rubro.id">
-                  <img :src="this.url + `/storage/${ rubro.imagen }`">{{rubro.nombre_rubro}}
-                </label>
+                  <!--Tag-->
+                  <div class="d-flex ">
+
+                    <!--Img-->
+                    <img :src="this.url + `/storage/${ rubro.imagen }`" class="icono me-2">
+
+                    <!--Input-->
+                    <input type="checkbox" :value="rubro.nombre_rubro" :id="rubro.id" @click="filtro(rubro.id)"
+                      :checked="rubro.id == '2' ? true:false">
+
+                    <!--Title-->
+                    <label :for="rubro.id">
+                      {{rubro.nombre_rubro}}
+                    </label>
+                  </div>
+                </div>
               </div>
-
             </div>
           </div>
 
-          <!--Maps-->
-          <div class="col-12 col-md-12 col-lg-12 col-xl-9 mt-4 mt-xl-0">
-            <div id="map"></div>
+          <!--Div-->
+          <div class="col-12 col-md-12 col-lg-12 col-xl-10 col-xxl-10 mt-4 mt-xl-0">
+
+            <!--Group-->
+            <div id="map">
+
+              <!--Title-->
+              <div class="titulo">{{this.concepto}}</div>
+            </div>
           </div>
         </div>
       </div>
@@ -78,7 +91,7 @@ export default {
       concepto: '',
       skeleton: false,
       listafiltrada: [],
-      listaRubros: ['13', '18', '19']
+      listaRubros: ['2']
     }
   },
 
@@ -198,7 +211,7 @@ export default {
       // Icon
       var LeafIcon = L.Icon.extend({
         options: {
-          iconSize: [50, 50],
+          iconSize: [40, 40],
           popupAnchor: [0, -16],
           className: 'burbuja'
         }
