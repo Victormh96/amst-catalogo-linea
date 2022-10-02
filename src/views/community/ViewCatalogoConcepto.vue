@@ -251,7 +251,7 @@ export default {
         // If
         if (element.local != false) {
           L.marker([element.concepto[0].latitud, element.concepto[0].longitud], { icon: icon })
-            .bindPopup("<a href=/cuenta/" + element.slug + "><img src=" + url + "/storage/" + element.foto + "/><center><span>" + element.nombre_cuenta + "</span></center></a>").addTo(map)
+            .bindPopup("<a href=/cuenta/" + element.slug + "><center><span>" + element.nombre_cuenta + "</span></center></a>").addTo(map)
         }
       })
     },
