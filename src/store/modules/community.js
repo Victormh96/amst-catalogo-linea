@@ -39,7 +39,6 @@ export default {
             search: null,
             publicidad: null,
             publicidadclick: null,
-            loading: null
         }
     },
 
@@ -114,10 +113,6 @@ export default {
 
         MutationPublicidadClick(state) {
             state.publicidadclick = true
-        },
-
-        MutationLoading(state, data) {
-            state.loading = data
         },
 
         MutationConcepto(state, data) {
@@ -293,12 +288,10 @@ export default {
                 .then(response => {
                     if (response.status === 200) {
                         commit('MutationRegistroServicio', response)
-                        commit('MutationLoading', false)
                     }
                 })
                 .catch((err) => {
                     commit('MutationErrorServicio', err.response.data[0])
-                    commit('MutationLoading', false)
                 })
         },
 
@@ -309,12 +302,10 @@ export default {
                 .then(response => {
                     if (response.status === 200) {
                         commit('MutationRegistroEmpresa', response)
-                        commit('MutationLoading', false)
                     }
                 })
                 .catch((err) => {
                     commit('MutationErrorEmpresa', err.response.data[0])
-                    commit('MutationLoading', false)
                 })
         },
 

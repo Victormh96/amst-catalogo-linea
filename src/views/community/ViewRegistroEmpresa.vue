@@ -573,7 +573,7 @@
                 <!--Submit-->
                 <div class="col-md-12 text-center mt-4">
                     <button type="button" class="btn-lg"
-                        :disabled="v$.form.$invalid || this.$store.state.community.loading"
+                        :disabled="v$.form.$invalid"
                         @click="submit">Unirme</button>
                 </div>
             </div>
@@ -780,17 +780,6 @@ export default {
             })
         },
 
-        // Alert Loading
-        showLoading() {
-            this.$swal.fire({
-                title: 'Cargando',
-                timer: this.loading,
-                timerProgressBar: true,
-            }).then((result) => {
-                console.log(result)
-            })
-        },
-
         // Alert Error
         mensajeError() {
             let map = new Map(Object.entries(this.$store.state.community.registroempresa))
@@ -914,7 +903,7 @@ export default {
 
             // If
             if (this.cuentaServicios.length > 0 && this.terminos == true && this.form.imagen != false && this.form.doc1 != false && this.form.doc2 != false && this.latitud != null) {
-                this.showLoading()
+                this.skeleton = false
 
                 // Const
                 var Form = new FormData()
@@ -936,8 +925,10 @@ export default {
 
                 // Vuex
                 await this.$store.dispatch("RegistroEmpresa", Form).then(() => {
-                    // Const
-                    this.loading = 1
+                    // Skeleton
+                    setTimeout(() => {
+                        this.skeleton = true
+                    }, 400)
 
                     // If
                     if (this.$store.state.community.errorregistro == false) {
@@ -947,6 +938,10 @@ export default {
                     } else {
                         this.showFail()
                     }
+                }).catch(() => {
+                    // Skeleton
+                    this.skeleton = true
+                    this.showFailServicies('Error Interno del servidor')
                 })
             } else {
                 // If
