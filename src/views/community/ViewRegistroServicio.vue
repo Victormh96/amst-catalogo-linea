@@ -111,10 +111,10 @@
                                 <!--Date Birth-->
                                 <div class="form-group mb-4">
                                     <input type="text" class="form-control" placeholder="Fecha de Nacimiento*"
-                                        v-model="v$.form.fecha.$model" tabindex="5" required v-mask="'####-##-##'">
+                                        v-model="v$.form.fechaNacimiento.$model" tabindex="5" required v-mask="'####-##-##'">
 
                                     <!--Error Message-->
-                                    <div class="input-errors err" v-for="(error, index) of v$.form.fecha.$errors"
+                                    <div class="input-errors err" v-for="(error, index) of v$.form.fechaNacimiento.$errors"
                                         :key="index">
                                         <div class="error-msg">{{ error.$message }}</div>
                                     </div>
@@ -569,7 +569,7 @@
                 <!--Submit-->
                 <div class="col-md-12 text-center mt-4">
                     <button type="button" class="btn-lg"
-                        :disabled="v$.form.$invalid || this.$store.state.community.loading"
+                        :disabled="v$.form.$invalid"
                         @click="submit">Unirme</button>
                 </div>
             </div>
@@ -614,7 +614,7 @@ export default {
                 email: '',
                 local: '',
                 marca: '',
-                fecha: '',
+                fechaNacimiento: '',
                 genero: '',
                 pagweb: '',
                 logo: false,
@@ -667,6 +667,7 @@ export default {
         // Vuex
         await this.$store.dispatch("CategoriaRegistro", '1')
         this.listaServicio = this.$store.state.community.categoria
+
 
         // LocalStorage
         localStorage.removeItem('latitud')
@@ -722,7 +723,7 @@ export default {
                 tipoServicio: {
                     requeridMessage,
                 },
-                fecha: {
+                fechaNacimiento: {
                     requeridMessage,
                 },
                 descripcion: {
@@ -768,6 +769,11 @@ export default {
             })
         },
 
+
+        showss() {
+            this.skeleton = false
+        },
+
         // Alert Loading
         showLoading() {
             this.$swal.fire({
@@ -778,7 +784,7 @@ export default {
                 console.log(result)
             })
         },
-        
+
         // Alert Error
         mensajeError() {
             let map = new Map(Object.entries(this.$store.state.community.registroservicio))
@@ -896,15 +902,14 @@ export default {
 
         // Submit
         async submit() {
-            this.loading = 10000
+
             // LocalStorage
             this.latitud = localStorage.getItem('latitud')
             this.longitud = localStorage.getItem('longitud')
 
             // If
             if (this.cuentaServicios.length > 0 && this.terminos == true && this.form.imagen != false && this.form.doc1 != false && this.form.doc2 != false && this.latitud != null) {
-                this.showLoading()
-
+                this.skeleton = false
                 // Const
                 var Form = new FormData()
                 var tag = ''
@@ -921,13 +926,15 @@ export default {
                 Form.append('latitud', this.latitud)
                 Form.append('longitud', this.longitud)
                 Form.append('servicios', JSON.stringify(this.cuentaServicios))
-                Form.append('tags', tag.slice(1))
+                Form.append('tag', tag.slice(1))
 
                 // Vuex
                 await this.$store.dispatch("RegistroServicio", Form).then(() => {
-                    // Const
-                    this.loading = 1000
-                     
+                    // Skeleton
+                    setTimeout(() => {
+                        this.skeleton = true
+                    }, 400)
+
                     // If
                     if (this.$store.state.community.errorregistro == false) {
                         this.showSucces()
@@ -936,6 +943,10 @@ export default {
                     } else {
                         this.showFail()
                     }
+                }).catch(() => {
+                    // Skeleton
+                    this.skeleton = true
+                    this.showFailServicies('Error Interno del servidor')
                 })
             } else {
                 // If
@@ -996,6 +1007,7 @@ export default {
                 this.descripcion = ''
                 this.errorServicio = true
             }
+
         },
 
         // Delete
