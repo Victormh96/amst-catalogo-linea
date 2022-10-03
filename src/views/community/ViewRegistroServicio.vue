@@ -645,7 +645,7 @@ export default {
             longitud: 0,
             listTag: [],
             servicio: '',
-            loading: 9000,
+            loading: 299000,
             nullTag: true,
             experiencia: '',
             descripcion: '',
@@ -896,6 +896,7 @@ export default {
 
         // Submit
         async submit() {
+            this.loading = 10000
             // LocalStorage
             this.latitud = localStorage.getItem('latitud')
             this.longitud = localStorage.getItem('longitud')
@@ -925,8 +926,8 @@ export default {
                 // Vuex
                 await this.$store.dispatch("RegistroServicio", Form).then(() => {
                     // Const
-                    this.loading = 1
-
+                    this.loading = 1000
+                     
                     // If
                     if (this.$store.state.community.errorregistro == false) {
                         this.showSucces()
