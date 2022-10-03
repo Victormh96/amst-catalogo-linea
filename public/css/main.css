@@ -1179,6 +1179,12 @@
   }
 }
 
+@media (min-width: 1600px) {
+  #concepto .container {
+    max-width: 1660px;
+  }
+}
+
 #concepto p {
   font-size: 0.85rem;
   font-weight: 500;
@@ -1189,7 +1195,7 @@
   overflow-x: hidden;
   overflow-y: auto;
   height: calc(100vh - 240px);
-  padding: 0 10px;
+  padding: 0 12px;
 }
 
 /*===Phone===**/
@@ -1225,7 +1231,7 @@
 }
 
 #concepto input[type="checkbox"]+label {
-  padding: 6px 10px;
+  padding: 9px 10px;
   width: 100%;
   background-color: #f9f9f9;
   border: 1px solid #e5e5e5;
@@ -1240,7 +1246,7 @@
   color: #5e676e;
   font-weight: 600;
   text-align: center;
-  border-radius: 2px;
+  border-radius: 20px;
   cursor: pointer;
 }
 
@@ -1251,16 +1257,6 @@
   background-color: var(--light-blue);
   color: #fff;
   border-color: var(--light-blue);
-}
-
-#concepto .icono {
-  width: 31px;
-  height: auto;
-  padding: 3px 3px;
-  background-color: #f9f9f9;
-  border: 1px solid #e5e5e5;
-  object-fit: contain;
-  border-radius: 2px;
 }
 
 #concepto .filtro::-webkit-scrollbar {
@@ -1310,6 +1306,7 @@
 
 #concepto .leaflet-container .titulo {
   position: absolute;
+  top: 15px;
   left: 0;
   right: 0;
   font-size: .85rem;
@@ -1318,8 +1315,11 @@
   background: var(--dark-blue);
   text-align: center;
   text-transform: uppercase;
-  padding: 5px 0;
   z-index: 999;
+  width: max-content;
+  padding: 8px 25px;
+  margin: auto;
+  border-radius: 5px;
   opacity: .9;
 }
 

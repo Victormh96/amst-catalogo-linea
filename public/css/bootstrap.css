@@ -11684,14 +11684,21 @@ fieldset:disabled .btn {
   background-color: #ffffff;
   color: #353535;
   transform: none !important;
-  width: 350px;
-  height: 250px;
+  width: 300px;
+  height: max-content;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   margin: auto;
   border-radius: 5px;
+}
+
+/*===Phone===**/
+@media (max-width: 575.98px) {
+  .control-window {
+    width: 80%;
+  }
 }
 
 .leaflet-control-window .titlebar {
@@ -11720,7 +11727,7 @@ fieldset:disabled .btn {
   transition-duration: 0.2s;
   transition-timing-function: linear;
   color: #e4e4e4;
-  font-size: 22pt;
+  font-size: 25px;
   text-align: center;
   line-height: 0.9em;
 }
@@ -11746,6 +11753,20 @@ fieldset:disabled .btn {
   border-radius: 3px;
   text-transform: uppercase;
   display: inline-block;
+}
+
+.leaflet-control-window .content a {
+  font-size: 15px;
+  color: #9caabf;
+  transition: 0.3s;
+}
+
+.leaflet-control-window .content a .others {
+  font-size: 18px;
+}
+
+.leaflet-control-window .content a:hover {
+  color: var(--light-blue);
 }
 
 .leaflet-control-window .promptButtons {

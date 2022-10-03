@@ -15,7 +15,7 @@
         <!--Div-->
         <div class="row">
 
-          <!--Div-->
+          <!--Group-->
           <div class="col-12 col-md-12 col-lg-12 col-xl-2 col-xxl-2">
 
             <!--Title-->
@@ -32,9 +32,6 @@
 
                   <!--Tag-->
                   <div class="d-flex ">
-
-                    <!--Img-->
-                    <img :src="this.url + `/storage/${ rubro.imagen }`" class="icono me-2">
 
                     <!--Input-->
                     <input type="checkbox" :value="rubro.nombre_rubro" :id="rubro.id" @click="filtro(rubro.id)"
@@ -213,7 +210,6 @@ export default {
       var LeafIcon = L.Icon.extend({
         options: {
           iconSize: [40, 40],
-          popupAnchor: [0, -16],
           className: 'burbuja'
         }
       })
@@ -257,11 +253,28 @@ export default {
 
             // Modal
             L.control.window(map, { modal: true })
-              .title("<img src=" + url + "/storage/" + element.foto + "/>")
-              .content("<h5 class='mb-2'>" + element.nombre_cuenta + "</h5>" +
-                element.servicio.map(function (ds) {
-                  console.log(ds.rubro.nombre_rubro)
-                  return "<span class='me-2 mb-2'>" + ds.rubro.nombre_rubro + "</span>"
+              .title("<a href=/cuenta/" + element.slug + "><img src=" + url + "/storage/" + element.foto + "/></a>")
+              .content(
+                // Name  
+                "<a href=/cuenta/" + element.slug + "><h5 class='mb-2'>" + element.nombre_cuenta + "</h5></a>"
+                +
+
+                // Rubro
+                element.servicio.map(function (sv) {
+                  return "<span class='me-2 mb-2'>" + sv.rubro.nombre_rubro + "</span>"
+                })
+
+                + "<br>" +
+
+                // Waze
+                "<a href='https://www.waze.com/ul?ll=" + element.latitud + "," + element.longitud + "&navigate=yes&zoom=16' class='me-3' target='_blank'><i class='fab fa-waze waze others'></i></a>" +
+
+                // Google
+                "<a href='https://www.google.com/maps/dir//" + element.latitud + "," + element.longitud + "' class='me-3' target='_blank'><i class='fa-brands fa-google'></i></a>" +
+
+                // whatsapp
+                element.contacto.map(function (ct) {
+                  return "<a href='https://api.whatsapp.com/send?phone=503" + ct.descripcion + "&text=¡Hola " + element.nombre_cuenta + "! Quisiera mas información de tus servicios. 📢📢" + "' target='_blank'><i class='fa-brands fa-whatsapp others'></i></a>"
                 })
               ).show()
           })
