@@ -4,6 +4,7 @@ import createPersistedState from 'vuex-persistedstate'
 
 // Community
 import community from './modules/community'
+import verify from './modules/verify'
 
 export default createStore({
     state: {
@@ -21,7 +22,8 @@ export default createStore({
     },
 
     modules: {
-        community
+        community,
+        verify
     },
 
     plugins: [createLogger(), createPersistedState()]

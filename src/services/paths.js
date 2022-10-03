@@ -33,3 +33,10 @@ export const Entidad = () => `${url_base}/api/entidad`
 export const Publicidad = () => `${url_base}/api/publicidad`
 
 export const PublicidadClick = () => `${url_base}/api/publicidad-click/`
+
+// Routes Verify
+export const RegistroConcepto = () => `${url_base}/api/verify/registro-concepto`
+
+export const Concepto = () => `${url_base}/api/verify/concepto`
+
+export const CuentaVerify = () => `${url_base}/api/verify/estado-cuenta/`

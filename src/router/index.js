@@ -4,9 +4,13 @@ import { createRouter, createWebHistory } from "vue-router"
 // Community 
 import { communityRoutes } from "@/router/community/communityRoutes"
 
+// Verify
+import { verifyRoutes } from "@/router/verify/verifyRoutes"
+
 // Routes
 const routes = [
     ...communityRoutes,
+    ...verifyRoutes,
     {
         path: "/:pathMatch(.*)*",
         name: "Notfound",
