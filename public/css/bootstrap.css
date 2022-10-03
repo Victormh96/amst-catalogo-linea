@@ -11734,6 +11734,7 @@ fieldset:disabled .btn {
   overflow: auto;
   padding: 10px 15px;
   text-align: center;
+  color: white;
 }
 
 .leaflet-control-window .content span {

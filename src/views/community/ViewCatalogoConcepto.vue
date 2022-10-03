@@ -260,6 +260,7 @@ export default {
               .title("<img src=" + url + "/storage/" + element.foto + "/>")
               .content("<h5 class='mb-2'>" + element.nombre_cuenta + "</h5>" +
                 element.servicio.map(function (ds) {
+                  console.log(ds.rubro.nombre_rubro)
                   return "<span class='me-2 mb-2'>" + ds.rubro.nombre_rubro + "</span>"
                 })
               ).show()

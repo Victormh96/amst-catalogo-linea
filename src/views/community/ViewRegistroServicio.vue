@@ -645,7 +645,7 @@ export default {
             longitud: 0,
             listTag: [],
             servicio: '',
-            loading: 299000,
+            loading: false,
             nullTag: true,
             experiencia: '',
             descripcion: '',
@@ -778,7 +778,7 @@ export default {
                 console.log(result)
             })
         },
-
+        
         // Alert Error
         mensajeError() {
             let map = new Map(Object.entries(this.$store.state.community.registroservicio))
