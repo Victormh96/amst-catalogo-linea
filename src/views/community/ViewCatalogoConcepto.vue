@@ -79,6 +79,7 @@
 import L from "leaflet"
 import "leaflet.fullscreen"
 import "leaflet.locatecontrol"
+import "leaflet-control-window"
 import Navbar from "@/components/community/ComponentNavbar.vue"
 import Footer from "@/components/community/ComponentFooter.vue"
 
@@ -250,8 +251,19 @@ export default {
 
         // If
         if (element.local != false) {
-          L.marker([element.concepto[0].latitud, element.concepto[0].longitud], { icon: icon })
-            .bindPopup("<a href=/cuenta/" + element.slug + "><center><span>" + element.nombre_cuenta + "</span></center></a>").addTo(map)
+
+          // Marker
+          L.marker([element.concepto[0].latitud, element.concepto[0].longitud], { icon: icon }).addTo(map).on('click', function () {
+
+            // Modal
+            L.control.window(map, { modal: true })
+              .title("<img src=" + url + "/storage/" + element.foto + "/>")
+              .content("<h5 class='mb-2'>" + element.nombre_cuenta + "</h5>" +
+                element.servicio.map(function (ds) {
+                  return "<span class='me-2 mb-2'>" + ds.rubro.nombre_rubro + "</span>"
+                })
+              ).show()
+          })
         }
       })
     },

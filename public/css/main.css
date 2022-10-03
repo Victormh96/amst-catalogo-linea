@@ -1356,7 +1356,7 @@
 }
 
 #concepto .burbuja {
-  border-radius: 50px;
+  border-radius: 5px;
   object-fit: cover;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   background-color: #f9f9f9;
@@ -1365,8 +1365,8 @@
 }
 
 #concepto .burbuja:hover {
-  width: 80px !important;
-  height: 80px !important;
+  width: 70px !important;
+  height: 70px !important;
   z-index: 9999 !important;
 }
 
