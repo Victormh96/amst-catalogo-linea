@@ -140,7 +140,7 @@
             <div id="paginacion" class="paginacion text-center mb-4 mb-xxl-0" v-if="lista.length > elementosPorPagina">
               <vue-awesome-paginate :total-items="lista.length" :on-click="onClickHandler"
                 prev-button-content="Anterior" :current-page="1" :items-per-page="elementosPorPagina"
-                :max-pages-shown="5" next-button-content="Siguiente">
+                :max-pages-shown="2" next-button-content="Siguiente">
               </vue-awesome-paginate>
             </div>
           </div>

@@ -1546,6 +1546,17 @@ html::-webkit-scrollbar-thumb,
   background: var(--light-blue) !important;
 }
 
+/*===Phone===**/
+@media (max-width: 575.98px) {
+  .starting-breakpoint-button {
+    display: none !important;
+  }
+
+  .ending-breakpoint-button {
+    display: none !important;
+  }
+}
+
 /* ============================================================*/
 /* Select2
 /* ============================================================*/
