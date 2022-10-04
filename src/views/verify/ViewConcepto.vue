@@ -14,7 +14,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-md-7 col-xl-5 col-xxl-4 m-auto text-center">
-                        <h2>CONCEPTOS</h2>
+                        <h2>CONCEPTOS POR CATEGORIA</h2>
                     </div>
                 </div>
             </div>
@@ -28,10 +28,10 @@
                 <div class="row mb-5">
 
                     <!--Title-->
-                    <h6 class="mb-1">Agregar Usuarios a Conceptos</h6>
+                    <h6 class="mb-1">Conceptos Por Categoria</h6>
 
                     <!--Description-->
-                    <p class="mb-3 indicaciones">Busca una cuenta para iniciar el proceso</p>
+                    <p class="mb-3 indicaciones">Selecciona una categoria</p>
 
                     <!--Div-->
                     <div class="col-md-12 col-xl-9 mb-3">
