@@ -96,8 +96,10 @@
 
                     <!--Items-->
                     <ul>
-                        <li><a href="https://goo.gl/maps/APB1fjrxkFhyAgfEA" target="_blank"><i
-                                    class="fa-solid fa-location-dot"></i></a></li>
+                        <li>
+                            <a href="https://goo.gl/maps/APB1fjrxkFhyAgfEA" target="_blank"><i
+                                    class="fa-solid fa-location-dot"></i></a>
+                        </li>
                     </ul>
                 </div>
             </div>

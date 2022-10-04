@@ -338,6 +338,5 @@ export default {
         Loading({ commit }, data) {
             commit('MutationLoading', data)
         },
-
     },
 };

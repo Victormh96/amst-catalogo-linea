@@ -1023,6 +1023,21 @@
   font-size: 0.8rem;
 }
 
+#registro .ititle {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  font-size: .75rem;
+  background: var(--dark-blue);
+  color: var(--white);
+  width: max-content;
+  padding: 3px 10px;
+  margin: auto;
+  border-radius: 20px;
+  z-index: 999;
+}
+
 #registro .form-check-label {
   color: #99a3b4;
   font-size: 0.8rem;
@@ -1159,7 +1174,7 @@
 /*===Ipad===**/
 @media (min-width: 559px) and (max-width: 991.98px) {
   #beneficios .espacio {
-    width: 90%;
+    width: 88%;
     margin: auto;
   }
 }

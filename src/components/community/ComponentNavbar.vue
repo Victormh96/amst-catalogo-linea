@@ -42,7 +42,7 @@
             <div class="row align-items-center">
 
                 <!--Img-->
-                <div class="col-12 col-md-4 col-lg-6 col-xl-7 col-xxl-7">
+                <div class="col-12 col-md-4 col-lg-6 col-xl-7 col-xxl-7 text-center text-sm-start">
                     <router-link :to="{ name: 'Inicio' }">
                         <img src="@/../public/icon.png" alt="Alcaldia Municipal Santa Tecla" class="img-fluid">
                     </router-link>
@@ -67,7 +67,7 @@
                             <li>
                                 <a v-bind:href="'/categoria/' + 'empresas'">Empresas</a>
                             </li>
-                            
+
                             <!--About us-->
                             <li>
                                 <router-link :to="{ name: 'Sobre-Nosotros' }">Sobre Nosotros</router-link>
@@ -90,13 +90,13 @@
 
         <!--Services-->
         <a v-bind:href="'/categoria/' + 'servicios-profesionales'" class="d-grid-inline">
-            <i class="fa-solid fa-wrench"></i>
+            <i class="fa-solid fa-handshake"></i>
             <span>Servicios</span>
         </a>
 
         <!--Companies-->
         <a v-bind:href="'/categoria/' + 'empresas'" class="d-grid-inline">
-            <i class="fa-solid fa-shop"></i>
+            <i class="fa-solid fa-building"></i>
             <span>Empresas</span>
         </a>
 

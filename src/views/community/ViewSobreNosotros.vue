@@ -60,7 +60,7 @@
                             <img src="@/../public/img/assets/shapex7.png" class="mx-auto d-block" alt="Busqueda AMST">
 
                             <!--Title-->
-                            <h6 class="mb-3 mt-3 mb-m-0">+ 1000 Empresas Responsables</h6>
+                            <h6 class="mb-3 mt-3 mb-m-0 espacio">+ 1000 Empresas</h6>
 
                             <!--Description-->
                             <p class="d-none d-sm-none d-lg-block">Empresas establecidas en el municipio de Santa Tecla,

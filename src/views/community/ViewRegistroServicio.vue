@@ -38,7 +38,7 @@
                         <div class="row ">
 
                             <!--Group-->
-                            <div class="col-md-3 mb-4 mb-sm-0">
+                            <div class="col-md-3 mb-4 mb-sm-0 position-relative">
 
                                 <!--Input-->
                                 <input type="file" class="dropify" data-height="165" @change="setImg($event)"
@@ -46,7 +46,7 @@
                                     data-allowed-file-extensions="png jpg jpeg gif" />
 
                                 <!--Title-->
-                                <p class="text-center mt-1">Foto perfil *</p>
+                                <p class="text-center ititle">Foto perfil *</p>
                             </div>
 
                             <!--Div-->
@@ -110,12 +110,14 @@
 
                                 <!--Date Birth-->
                                 <div class="form-group mb-4">
-                                    <input type="text" class="form-control" placeholder="Fecha de Nacimiento*"
-                                        v-model="v$.form.fechaNacimiento.$model" tabindex="5" required v-mask="'####-##-##'">
+                                    <input type="text" class="form-control"
+                                        placeholder="Fecha de Nacimiento | 0000-00-00*"
+                                        v-model="v$.form.fechaNacimiento.$model" tabindex="5" required
+                                        v-mask="'####-##-##'">
 
                                     <!--Error Message-->
-                                    <div class="input-errors err" v-for="(error, index) of v$.form.fechaNacimiento.$errors"
-                                        :key="index">
+                                    <div class="input-errors err"
+                                        v-for="(error, index) of v$.form.fechaNacimiento.$errors" :key="index">
                                         <div class="error-msg">{{ error.$message }}</div>
                                     </div>
                                 </div>
@@ -188,7 +190,7 @@
                         <div class="row">
 
                             <!--Group-->
-                            <div class="col-md-3 mb-4 mb-sm-0">
+                            <div class="col-md-3 mb-4 mb-sm-0 position-relative">
 
                                 <!--Input-->
                                 <input type="file" class="dropify" data-height="120" @change="setLogo($event)"
@@ -196,7 +198,7 @@
                                     data-allowed-file-extensions="png jpg jpeg gif" />
 
                                 <!--Title-->
-                                <p class="text-center mt-1">Logo</p>
+                                <p class="text-center ititle">Logo</p>
                             </div>
 
                             <!--Brand Name-->
@@ -277,7 +279,7 @@
                 </div>
 
                 <!--Div-->
-                <div class="row mb-0 mb-sm-4">
+                <div class="row mb-4 mb-sm-4">
 
                     <!--Title-->
                     <h6 class="mb-1">Servicios a Brindar</h6>
@@ -325,7 +327,7 @@
                     </div>
 
                     <!--List Services-->
-                    <div class="col-md-12 mt-4 mt-sm-3">
+                    <div class="col-md-12 mt-4">
                         <span class="tag mb-4 mb-sm-3 me-3" v-for="(servicio, index) in this.cuentaServicios"
                             :key="servicio.idServicio" data-toggle="tooltip" data-placement="top"
                             :title="'Experiencia: ' + servicio.experiencia + ' Descripcion: ' + servicio.descripcion">
@@ -479,7 +481,7 @@
                             <div class="row">
 
                                 <!--Group-->
-                                <div class="col-md-6 mb-4 mb-sm-0">
+                                <div class="col-md-6 mb-4 mb-sm-0 position-relative">
 
                                     <!--Input-->
                                     <input type="file" class="dropify" data-height="150" @change="setDoc1($event)"
@@ -487,11 +489,11 @@
                                         data-allowed-file-extensions="png jpg jpeg gif" />
 
                                     <!--Title-->
-                                    <p class="text-center mt-1">DUI parte frontal *</p>
+                                    <p class="text-center ititle">DUI parte frontal *</p>
                                 </div>
 
                                 <!--Group-->
-                                <div class="col-md-6">
+                                <div class="col-md-6 position-relative">
 
                                     <!--Input-->
                                     <input type="file" class="dropify" data-height="150" @change="setDoc2($event)"
@@ -499,17 +501,17 @@
                                         data-allowed-file-extensions="png jpg jpeg gif" />
 
                                     <!--Title-->
-                                    <p class="text-center mt-1">DUI parte trasera *</p>
+                                    <p class="text-center ititle">DUI parte trasera *</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!--Div-->
-                    <div class="col-md-6 mb-1 ps-2 mb-sm-4">
+                    <div class="col-md-6 ps-2">
 
                         <!--Tags-->
-                        <div class="row ps-5 mb-xl-4 mb-5">
+                        <div class="row ps-0 ps-sm-5 mb-xl-4">
 
                             <!--Title-->
                             <h6 class="mb-1">¿Cómo podemos encontrarte?</h6>
@@ -530,7 +532,7 @@
                             </div>
 
                             <!--List tags-->
-                            <div class="col-md-8 mt-3">
+                            <div class="col-md-8 mt-4 mt-sm-3">
                                 <span class="tag mb-4 mb-sm-3 me-3" v-for="(tag, index) in this.listTag"
                                     v-bind:key="index">
                                     {{ tag }}<i class="fa-solid fa-xmark" @click="deleteTag(index)"></i>
@@ -568,9 +570,7 @@
 
                 <!--Submit-->
                 <div class="col-md-12 text-center mt-4">
-                    <button type="button" class="btn-lg"
-                        :disabled="v$.form.$invalid"
-                        @click="submit">Unirme</button>
+                    <button type="button" class="btn-lg" :disabled="v$.form.$invalid" @click="submit">Unirme</button>
                 </div>
             </div>
         </section>
@@ -614,7 +614,6 @@ export default {
                 email: '',
                 local: '',
                 marca: '',
-                fechaNacimiento: '',
                 genero: '',
                 pagweb: '',
                 logo: false,
@@ -632,6 +631,7 @@ export default {
                 descripcion: '',
                 telefonofijo: '',
                 tipoServicio: '',
+                fechaNacimiento: '',
                 telefonoCelular: '',
                 servicioDomicilio: '',
             },
@@ -769,7 +769,7 @@ export default {
             })
         },
 
-       // Alert Error
+        // Alert Error
         mensajeError() {
             let map = new Map(Object.entries(this.$store.state.community.registroservicio))
             var text = '<table class="table table-bordered">'
@@ -991,7 +991,6 @@ export default {
                 this.descripcion = ''
                 this.errorServicio = true
             }
-
         },
 
         // Delete
