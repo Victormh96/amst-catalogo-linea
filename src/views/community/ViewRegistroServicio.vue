@@ -769,23 +769,7 @@ export default {
             })
         },
 
-
-        showss() {
-            this.skeleton = false
-        },
-
-        // Alert Loading
-        showLoading() {
-            this.$swal.fire({
-                title: 'Cargando',
-                timer: this.loading,
-                timerProgressBar: true,
-            }).then((result) => {
-                console.log(result)
-            })
-        },
-
-        // Alert Error
+       // Alert Error
         mensajeError() {
             let map = new Map(Object.entries(this.$store.state.community.registroservicio))
             var text = '<table class="table table-bordered">'

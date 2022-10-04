@@ -60,7 +60,7 @@
 
                             <!--Services-->
                             <li>
-                                <a v-bind:href="'/categoria/' + 'servicios-profesionales'">Profesionales</a>
+                                <a v-bind:href="'/categoria/' + 'servicios-profesionales'">Servicios</a>
                             </li>
 
                             <!--Companies-->

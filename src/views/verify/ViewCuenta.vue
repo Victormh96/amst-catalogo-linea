@@ -42,12 +42,11 @@
                                 <!--Phone-->
                                 <div v-for="(c, index) in this.lista.contacto" v-bind:key="index">
                                     <a :href="'tel:'+ c.descripcion"
-                                        v-if="(c.id_detalle_contacto == 7 || c.id_detalle_contacto == 8 ) && this.lista.verificado == true">
+                                        v-if="c.id_detalle_contacto == 7 && this.lista.verificado == true">
                                         {{c.descripcion}}
                                     </a>
                                 </div>
-                            </div> 
-
+                            </div>
 
                             <!--Tag-->
                             <div class="tag ms-4 me-4" v-if="this.lista.verificado == true">
@@ -66,8 +65,14 @@
                                         <i class="ms-2 me-2" :class="c.detallecontacto.icon"></i>
                                     </a>
 
+                                    <!--Phone-->
+                                    <a :href="`tel:${ c.descripcion }`"
+                                        v-else-if="c.detallecontacto.id == 7 || c.detallecontacto.id == 8 ">
+                                        <i class="ms-2 me-2" :class="c.detallecontacto.icon"></i>
+                                    </a>
+
                                     <!--Others-->
-                                    <a :href="c.descripcion" v-else-if="c.detallecontacto.id != 7 && c.detallecontacto.id != 8 " target="_blank">
+                                    <a :href="c.descripcion" v-else target="_blank">
                                         <i class="ms-2 me-2" :class="c.detallecontacto.icon"></i>
                                     </a>
                                 </span>
@@ -97,7 +102,6 @@
                                 target="_blank">
                                 <i class="fa-solid fa-street-view"></i>
                             </a>
-                            <p>Como llegar</p>
                         </div>
 
                         <!--Advertising-->
