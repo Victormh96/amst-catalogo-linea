@@ -46,7 +46,7 @@
                                         {{c.descripcion}}
                                     </a>
                                 </div>
-                            </div> 
+                            </div>
 
 
                             <!--Tag-->
@@ -67,7 +67,9 @@
                                     </a>
 
                                     <!--Others-->
-                                    <a :href="c.descripcion" v-else-if="c.detallecontacto.id != 7 && c.detallecontacto.id != 8 " target="_blank">
+                                    <a :href="c.descripcion"
+                                        v-else-if="c.detallecontacto.id != 7 && c.detallecontacto.id != 8 "
+                                        target="_blank">
                                         <i class="ms-2 me-2" :class="c.detallecontacto.icon"></i>
                                     </a>
                                 </span>
