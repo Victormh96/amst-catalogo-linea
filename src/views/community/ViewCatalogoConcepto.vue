@@ -11,11 +11,9 @@
     <!--Section-->
     <section id="concepto">
       <div class="container mb-4 mb-sm-5 mt-4 mt-sm-5">
-
-        <!--Div-->
         <div class="row">
 
-          <!--Group-->
+          <!--Div-->
           <div class="col-12 col-md-12 col-lg-12 col-xl-2 col-xxl-2">
 
             <!--Title-->

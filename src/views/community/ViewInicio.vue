@@ -20,7 +20,7 @@
                     </div>
 
                     <!--Description-->
-                    <div class="col-lg-8 col-xl-8 m-auto mb-4">
+                    <div class="col-md-11 col-lg-8 col-xl-8 m-auto mb-4">
                         <p>Más de 1,000 Tecleños con espíritu emprendedor ofertan aquí sus productos y servicios
                             ¡ubícalos!</p>
                     </div>
@@ -64,7 +64,7 @@
                     </div>
 
                     <!--Description-->
-                    <div class="col-md-7 m-auto mb-5 d-none d-md-none d-lg-block">
+                    <div class="col-lg-7 col-xl-6 m-auto mb-5 d-none d-md-none d-lg-block">
                         <p>Puedes seguir estos pasos para encontrar el listado de diversos servicios que se ofrecen en
                             el
                             Municipio de Santa Tecla </p>
@@ -98,10 +98,10 @@
                             <img src="@/../public/img/assets/shapex3.png" class="mb-3" alt="Perfil AMST">
 
                             <!--Title-->
-                            <h4 class="mb-3">REVISA SU PERFIL</h4>
+                            <h4 class="mb-3 menos">REVISA SU PERFIL</h4>
 
                             <!--Description-->
-                            <span>Puedes verificar el listado con la información relacionada a los servicios que
+                            <span>Puedes verificar el listado con información relacionada a los servicios que
                                 ofrecen.</span>
                         </div>
                     </div>
@@ -216,8 +216,8 @@ import Footer from "@/components/community/ComponentFooter.vue"
 export default {
     data() {
         return {
-            skeleton: false,
             destacados: [],
+            skeleton: false,
             portadainicio: []
         }
     },

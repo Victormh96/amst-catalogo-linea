@@ -7672,7 +7672,7 @@ fieldset:disabled .btn {
 }
 
 .mb-3 {
-  margin-bottom: 1rem;
+  margin-bottom: 1rem !important;
 }
 
 .mb-4 {
@@ -11635,6 +11635,30 @@ fieldset:disabled .btn {
 
   .d-print-none {
     display: none !important;
+  }
+}
+
+.waz {
+  color: #056a82 !important;
+}
+
+.goo {
+  color: #b3352a !important;
+}
+
+.mob {
+  color: #e7ab00 !important;
+}
+
+.wha {
+  color: #075E54 !important;
+}
+
+/*===Ipad===**/
+@media (min-width: 559px) and (max-width: 991.98px) {
+  .menos {
+    width: 90%;
+    margin: auto;
   }
 }
 
