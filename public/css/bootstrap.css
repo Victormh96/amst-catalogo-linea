@@ -11638,22 +11638,6 @@ fieldset:disabled .btn {
   }
 }
 
-.waz {
-  color: #056a82 !important;
-}
-
-.goo {
-  color: #b3352a !important;
-}
-
-.mob {
-  color: #e7ab00 !important;
-}
-
-.wha {
-  color: #075E54 !important;
-}
-
 /*===Ipad===**/
 @media (min-width: 559px) and (max-width: 991.98px) {
   .menos {

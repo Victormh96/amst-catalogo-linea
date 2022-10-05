@@ -246,7 +246,7 @@
                     <Disqus lang="es_MX" :pageConfig="pageConfig" shortname="promedicus724" />
                 </div>
             </div>
-        </section>
+        </section> 
     </main>
 
     <!--Skeleton-->

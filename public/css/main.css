@@ -572,57 +572,57 @@
 /*===Phone===**/
 @media (max-width: 575.98px) {
   #catalogo .card button {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   #catalogo .card ul li a i {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   #catalogo .card ul li a .phones {
-    font-size: 17px;
+    font-size: 18px;
   }
 
   #catalogo .card ul li a .others {
-    font-size: 18px;
+    font-size: 19px;
   }
 }
 
 /*===Ipad===**/
 @media (min-width: 559px) and (max-width: 991.98px) {
   #catalogo .card button {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   #catalogo .card ul li a i {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   #catalogo .card ul li a .phones {
-    font-size: 17px;
+    font-size: 18px;
   }
 
   #catalogo .card ul li a .others {
-    font-size: 18px;
+    font-size: 19px;
   }
 }
 
 /*===Ipad Pro===**/
 @media (min-width: 992px) and (max-width: 1199.98px) {
   #catalogo .card button {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   #catalogo .card ul li a i {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   #catalogo .card ul li a .phones {
-    font-size: 17px;
+    font-size: 18px;
   }
 
   #catalogo .card ul li a .others {
-    font-size: 18px;
+    font-size: 19px;
   }
 }
 

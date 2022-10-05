@@ -108,7 +108,7 @@
                 <li class="d-inline-flex align-items-center" v-if="l.local == 1">
                   <a :href="`https://www.google.com/maps/dir//${ l.latitud },${ l.longitud }`" target="_blank"
                     class="d-flex">
-                    <i class="fa-brands fa-google goo"></i>
+                    <i class="fa-brands fa-google"></i>
                   </a>
                 </li>
 
@@ -116,7 +116,7 @@
                 <li class="d-inline-flex align-items-center" v-if="l.local == 1">
                   <a :href="`https://www.waze.com/ul?ll=${ l.latitud },${ l.longitud }&navigate=yes&zoom=16`"
                     target="_blank" class="d-flex">
-                    <i class="fab fa-waze waze others waz"></i>
+                    <i class="fab fa-waze waze others"></i>
                   </a>
                 </li>
 
@@ -125,14 +125,13 @@
                   <a v-if="c.id_detalle_contacto == 5"
                     :href="`https://api.whatsapp.com/send?phone=503${ c.descripcion }&text=¡Hola ${ l.nombre_cuenta }! Quisiera mas información de tus servicios. 📢📢`"
                     target="_blank" class="d-flex">
-                    <i class="fa-brands fa-whatsapp others wha"></i>
+                    <i class="fa-brands fa-whatsapp others"></i>
                   </a>
 
                   <!--Or-->
                   <a v-if="c.id_detalle_contacto == 7" :href="`tel:${ c.descripcion }`" class="d-flex">
-                    <i class="fa-solid fa-phone phones mob"></i>
+                    <i class="fa-solid fa-mobile-screen-button"></i>
                   </a>
-
                 </li>
               </ul>
             </div>
