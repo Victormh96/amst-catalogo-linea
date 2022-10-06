@@ -16,106 +16,111 @@
                     <!--Aside-->
                     <aside class="col-12 col-md-5 col-lg-4 col-xl-4 col-xxl-3">
 
-                        <!--Img-->
-                        <img :src="this.url + `/storage/${ this.lista.foto }`" :alt="`${ this.lista.slug }`"
-                            v-if="this.lista.foto">
+                        <!--Group-->
+                        <div class="pegajoso">
 
-                        <!--Profile-->
-                        <div class="card mb-5 mb-sm-4">
-                            <div class="information ms-4 me-4">
+                            <!--Img-->
+                            <img :src="this.url + `/storage/${ this.lista.foto }`" :alt="`${ this.lista.slug }`"
+                                v-if="this.lista.foto">
+
+                            <!--Profile-->
+                            <div class="card mb-4">
+                                <div class="information ms-4 me-4">
+
+                                    <!--Items-->
+                                    <small>
+
+                                        <!--Title-->
+                                        {{ this.lista.nombre_cuenta }}
+
+                                        <!--Img-->
+                                        <img src="@/../public/img/assets/shapex15.png" class="ms-1 verify"
+                                            v-if="this.lista.verificado == 1">
+                                    </small>
+
+                                    <!--Info-->
+                                    <a v-if="this.lista.verificado == true" :href="'mailto:'+ this.lista.email"
+                                        class="mb-1 mt-1">{{ this.lista.email }}</a>
+
+                                    <!--Phone-->
+                                    <div v-for="(c, index) in this.lista.contacto" v-bind:key="index">
+                                        <a :href="'tel:'+ c.descripcion"
+                                            v-if="(c.id_detalle_contacto == 7 || c.id_detalle_contacto == 8 ) && this.lista.verificado == true">
+                                            {{c.descripcion}}
+                                        </a>
+                                    </div>
+                                </div>
+
+
+                                <!--Tag-->
+                                <div class="tag ms-4 me-4" v-if="this.lista.verificado == true">
+                                    <span class="me-2 mb-1" v-for="(r, index) in this.lista.servicio"
+                                        v-bind:key="index">
+                                        {{ r.rubro.nombre_rubro }}
+                                    </span>
+                                </div>
+
+                                <!--Networks-->
+                                <div class="networks mb-2" v-if="this.lista.verificado == true">
+                                    <span v-for="(c, index) in this.lista.contacto" :key="index">
+
+                                        <!--Whatsapp-->
+                                        <a :href="`https://api.whatsapp.com/send?phone=503${ c.descripcion }&text=¡Hola ${ this.lista.nombre_cuenta }! Quisiera mas información de tus servicios. 📢📢`"
+                                            v-if="c.detallecontacto.id == 5" target="_blank">
+                                            <i class="ms-2 me-2" :class="c.detallecontacto.icon"></i>
+                                        </a>
+
+                                        <!--Others-->
+                                        <a :href="c.descripcion"
+                                            v-else-if="c.detallecontacto.id != 7 && c.detallecontacto.id != 8 "
+                                            target="_blank">
+                                            <i class="ms-2 me-2" :class="c.detallecontacto.icon"></i>
+                                        </a>
+                                    </span>
+                                </div>
+
+                                <!--Verify-->
+                                <span v-if="this.lista.verificado == true">
+
+                                    <!--Delivery-->
+                                    <p v-if="this.lista.servicio_domicilio == 1">A Domicilio</p>
+                                    <p v-else>En El Lugar</p>
+                                </span>
+                            </div>
+
+                            <!--Location-->
+                            <div id="location" class="location mb-5 mb-sm-4"
+                                v-if="this.lista.local == 1 && this.lista.verificado == true">
+
+                                <!--Waze-->
+                                <a :href="`https://www.waze.com/ul?ll=${ this.lista.latitud },${ this.lista.longitud }&navigate=yes&zoom=16`"
+                                    target="_blank" class="me-4">
+                                    <i class="fab fa-waze waze"></i>
+                                </a>
+
+                                <!--Gmail-->
+                                <a :href="`https://www.google.com/maps/dir//${ this.lista.latitud },${ this.lista.longitud }`"
+                                    target="_blank">
+                                    <i class="fa-brands fa-google google"></i>
+                                </a>
+                                <p class="opacity-50 pt-2 mt-1 llegar">LOCALIZACIÓN</p>
+                            </div>
+
+                            <!--Advertising-->
+                            <div class="d-grid mb-5 mb-sm-0">
 
                                 <!--Items-->
-                                <small>
-
-                                    <!--Title-->
-                                    {{ this.lista.nombre_cuenta }}
+                                <swiper :slides-per-view="1" :space-between="50" :autoplay="{ delay: 5000 }"
+                                    :modules="modules" :loop="true" :effect="'fade'">
 
                                     <!--Img-->
-                                    <img src="@/../public/img/assets/shapex15.png" class="ms-1 verify"
-                                        v-if="this.lista.verificado == 1">
-                                </small>
-
-                                <!--Info-->
-                                <a v-if="this.lista.verificado == true" :href="'mailto:'+ this.lista.email"
-                                    class="mb-1 mt-1">{{ this.lista.email }}</a>
-
-                                <!--Phone-->
-                                <div v-for="(c, index) in this.lista.contacto" v-bind:key="index">
-                                    <a :href="'tel:'+ c.descripcion"
-                                        v-if="(c.id_detalle_contacto == 7 || c.id_detalle_contacto == 8 ) && this.lista.verificado == true">
-                                        {{c.descripcion}}
-                                    </a>
-                                </div>
+                                    <swiper-slide v-for="(p, index) in this.publicidad" v-bind:key="index">
+                                        <a :href="p.descripcion" target="_blank" v-on:click="clickcategoria(p.id)">
+                                            <img :src="this.url + `/storage/${ p.imagen }`" />
+                                        </a>
+                                    </swiper-slide>
+                                </swiper>
                             </div>
-
-
-                            <!--Tag-->
-                            <div class="tag ms-4 me-4" v-if="this.lista.verificado == true">
-                                <span class="me-2 mb-1" v-for="(r, index) in this.lista.servicio" v-bind:key="index">
-                                    {{ r.rubro.nombre_rubro }}
-                                </span>
-                            </div>
-
-                            <!--Networks-->
-                            <div class="networks mb-2" v-if="this.lista.verificado == true">
-                                <span v-for="(c, index) in this.lista.contacto" :key="index">
-
-                                    <!--Whatsapp-->
-                                    <a :href="`https://api.whatsapp.com/send?phone=503${ c.descripcion }&text=¡Hola ${ this.lista.nombre_cuenta }! Quisiera mas información de tus servicios. 📢📢`"
-                                        v-if="c.detallecontacto.id == 5" target="_blank">
-                                        <i class="ms-2 me-2" :class="c.detallecontacto.icon"></i>
-                                    </a>
-
-                                    <!--Others-->
-                                    <a :href="c.descripcion"
-                                        v-else-if="c.detallecontacto.id != 7 && c.detallecontacto.id != 8 "
-                                        target="_blank">
-                                        <i class="ms-2 me-2" :class="c.detallecontacto.icon"></i>
-                                    </a>
-                                </span>
-                            </div>
-
-                            <!--Verify-->
-                            <span v-if="this.lista.verificado == true">
-
-                                <!--Delivery-->
-                                <p v-if="this.lista.servicio_domicilio == 1">A Domicilio</p>
-                                <p v-else>En El Lugar</p>
-                            </span>
-                        </div>
-
-                        <!--Location-->
-                        <div id="location" class="location mb-5 mb-sm-4"
-                            v-if="this.lista.local == 1 && this.lista.verificado == true">
-
-                            <!--Waze-->
-                            <a :href="`https://www.waze.com/ul?ll=${ this.lista.latitud },${ this.lista.longitud }&navigate=yes&zoom=16`"
-                                target="_blank" class="me-4">
-                                <i class="fab fa-waze waze"></i>
-                            </a>
-
-                            <!--Gmail-->
-                            <a :href="`https://www.google.com/maps/dir//${ this.lista.latitud },${ this.lista.longitud }`"
-                                target="_blank">
-                                <i class="fa-solid fa-street-view"></i>
-                            </a>
-                            <p>Como llegar</p>
-                        </div>
-
-                        <!--Advertising-->
-                        <div class="d-grid mb-5 mb-sm-4">
-
-                            <!--Items-->
-                            <swiper :slides-per-view="1" :space-between="50" :autoplay="{ delay: 5000 }"
-                                :modules="modules" :loop="true" :effect="'fade'">
-
-                                <!--Img-->
-                                <swiper-slide v-for="(p, index) in this.publicidad" v-bind:key="index">
-                                    <a :href="p.descripcion" target="_blank" v-on:click="clickcategoria(p.id)">
-                                        <img :src="this.url + `/storage/${ p.imagen }`" />
-                                    </a>
-                                </swiper-slide>
-                            </swiper>
                         </div>
                     </aside>
 
@@ -144,7 +149,7 @@
                         </div>
 
                         <!--Card-->
-                        <div class="card mb-5">
+                        <div class="card">
 
                             <!--Profile-->
                             <div class="profile" v-if="this.profile == true">
@@ -194,11 +199,6 @@
                                                     <!--Img-->
                                                     <img :src="this.url + `/storage/${servicio.rubro.imagen}`"
                                                         class="mb-3 mb-sm-2">
-
-                                                    <!--Title-->
-                                                    <span class="d-none d-md-none d-lg-block">
-                                                        {{ servicio.rubro.nombre_rubro }}
-                                                    </span>
                                                 </div>
 
                                                 <!--Info-->
@@ -243,10 +243,10 @@
                     </article>
 
                     <!--Comment-->
-                    <Disqus lang="es_MX" :pageConfig="pageConfig" shortname="promedicus724" />
+                    <Disqus lang="es_MX" :pageConfig="pageConfig" shortname="promedicus724" class="mt-5 mt-sm-4" />
                 </div>
             </div>
-        </section> 
+        </section>
     </main>
 
     <!--Skeleton-->

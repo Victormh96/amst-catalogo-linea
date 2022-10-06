@@ -40,13 +40,17 @@
                             <!--Group-->
                             <div class="col-md-3 mb-4 mb-sm-0">
 
-                                <!--Input-->
-                                <input type="file" class="dropify" data-height="165" @change="setImg($event)"
-                                    data-default-file="@/../img/assets/perfil.png"
-                                    data-allowed-file-extensions="png jpg jpeg gif" />
+                                <!--position-->
+                                <div class="position-relative">
 
-                                <!--Title-->
-                                <p class="text-center mt-1">Foto perfil *</p>
+                                    <!--Input-->
+                                    <input type="file" class="dropify" data-height="165" @change="setImg($event)"
+                                        data-default-file="@/../img/assets/store.png"
+                                        data-allowed-file-extensions="png jpg jpeg gif" />
+
+                                    <!--Title-->
+                                    <p class="text-center ititle">Foto perfil *</p>
+                                </div>
                             </div>
 
                             <!--Div-->
@@ -118,7 +122,7 @@
 
                                 <!--Date Birth-->
                                 <div class="form-group mb-4 mb-sm-0">
-                                    <input type="text" class="form-control" placeholder="Fecha Fundación*"
+                                    <input type="text" class="form-control" placeholder="Fecha Fundación | 0000-00-00**"
                                         v-model="v$.form.fechaFundacion.$model" tabindex="5" required
                                         v-mask="'####-##-##'">
 
@@ -134,7 +138,7 @@
                             <div class="col-md-3">
                                 <!--Category-->
                                 <div class="form-group mb-4">
-                                    <select class="form-control select2" v-model="v$.form.entidad.$model">
+                                    <select class="form-control select2" v-model="v$.form.entidad.$model" required>
                                         <option disabled value="">Categoria*</option>
                                         <option v-for="(e, index) of this.entidades" :key="index" :value="e.id">
                                             {{e.nombre_entidad}}</option>
@@ -154,7 +158,7 @@
                                 </div>
 
                                 <!--Address-->
-                                <div class="form-group mb-4 mb-sm-0">
+                                <div class="form-group">
                                     <input type="text" class="form-control" placeholder="N° de casa / Local / Piso*"
                                         v-model="v$.form.direccion.$model">
 
@@ -193,19 +197,23 @@
                         <div class="row">
 
                             <!--Group-->
-                            <div class="col-md-3 mb-4">
+                            <div class="col-md-3 mb-4 mb-sm-0">
 
-                                <!--Input-->
-                                <input type="file" class="dropify" data-height="120" @change="setLogo($event)"
-                                    data-default-file="@/../img/assets/logo.png"
-                                    data-allowed-file-extensions="png jpg jpeg gif" />
+                                <!--position-->
+                                <div class="position-relative">
 
-                                <!--Title-->
-                                <p class="text-center mt-1">Logo *</p>
+                                    <!--Input-->
+                                    <input type="file" class="dropify" data-height="120" @change="setLogo($event)"
+                                        data-default-file="@/../img/assets/logo.png"
+                                        data-allowed-file-extensions="png jpg jpeg gif" />
+
+                                    <!--Title-->
+                                    <p class="text-center ititle">Logo</p>
+                                </div>
                             </div>
 
                             <!--Schedule-->
-                            <div class="col-md-4 mt-1">
+                            <div class="col-md-4">
                                 <div class="form-group mb-4">
                                     <input type="text" class="form-control" placeholder="Horarios de Atención*"
                                         v-model="v$.form.horario.$model">
@@ -282,7 +290,7 @@
                 </div>
 
                 <!--Div-->
-                <div class="row mb-0 mb-sm-4">
+                <div class="row mb-4 mb-sm-4">
 
                     <!--Title-->
                     <h6 class="mb-1">Servicios a Brindar</h6>
@@ -293,7 +301,7 @@
 
                     <!--Service-->
                     <div class="col-md-3 mb-4 mb-sm-0">
-                        <select class="form-control select2" v-model="this.servicio" @change="verifyService()">
+                        <select class="form-control select2" v-model="this.servicio" @change="verifyService()" required>
                             <option disabled value="">Servicio*</option>
                             <option v-for="c in this.listaServicio" :key="c.id" :value="c.id">{{ c.nombre_rubro }}
                             </option>
@@ -307,7 +315,7 @@
 
                     <!--Experience-->
                     <div class="col-md-3 mb-4 mb-sm-0">
-                        <select class="form-control select2" v-model="this.experiencia" @change="verifyService()">
+                        <select class="form-control select2" v-model="this.experiencia" @change="verifyService()" required>
                             <option disabled value="">Experiencia*</option>
                             <option value="Menos de un año">Menos de un año</option>
                             <option value="De uno a tres años">De uno a tres años</option>
@@ -326,11 +334,11 @@
                     <!--Add Service-->
                     <div class="col-xs-2 col-md-2 mt-4 mt-sm-0 d-flex align-items-center">
                         <button type="button" class="btn-md" :disabled="errorServicio || nullServicio"
-                            @click="addServices">AGREGAR SERVICIO</button>
+                            @click="addServices">AGREGAR</button>
                     </div>
 
                     <!--List Services-->
-                    <div class="col-md-12 mt-4 mt-sm-3">
+                    <div class="col-md-12 mt-4">
                         <span class="tag mb-4 mb-sm-3 me-3" v-for="(servicio, index) in this.cuentaServicios"
                             :key="servicio.idServicio" data-toggle="tooltip" data-placement="top"
                             :title="'Experiencia: ' + servicio.experiencia + ' Descripcion: ' + servicio.descripcion">
@@ -470,8 +478,8 @@
                 </div>
 
                 <!--About-->
-                <div class="row">
-                    <div class="col-md-6 mb-1 mb-sm-4">
+                <div class="row mb-4 mb-sm-5">
+                    <div class="col-md-6 mb-5 mb-sm-0">
 
                         <!--Title-->
                         <h6 class="mb-1">Verifica Tu Identidad</h6>
@@ -484,37 +492,45 @@
                             <div class="row">
 
                                 <!--Group-->
-                                <div class="col-md-6 mb-4">
+                                <div class="col-md-6 mb-4 mb-sm-0">
 
-                                    <!--Input-->
-                                    <input type="file" class="dropify" data-height="150" @change="setDoc1($event)"
-                                        data-default-file="@/../img/assets/frontal.png"
-                                        data-allowed-file-extensions="png jpg jpeg gif" />
+                                    <!--position-->
+                                    <div class="position-relative">
 
-                                    <!--Title-->
-                                    <p class="text-center mt-1">Documento 1</p>
+                                        <!--Input-->
+                                        <input type="file" class="dropify" data-height="150" @change="setDoc1($event)"
+                                            data-default-file="@/../img/assets/frontal.png"
+                                            data-allowed-file-extensions="png jpg jpeg gif" />
+
+                                        <!--Title-->
+                                        <p class="text-center ititle">Documento*</p>
+                                    </div>
                                 </div>
 
                                 <!--Group-->
-                                <div class="col-md-6 mb-4">
+                                <div class="col-md-6">
 
-                                    <!--Input-->
-                                    <input type="file" class="dropify" data-height="150" @change="setDoc2($event)"
-                                        data-default-file="@/../img/assets/dorso.png"
-                                        data-allowed-file-extensions="png jpg jpeg gif" />
+                                    <!--position-->
+                                    <div class="position-relative">
 
-                                    <!--Title-->
-                                    <p class="text-center mt-1">Documento 2</p>
+                                        <!--Input-->
+                                        <input type="file" class="dropify" data-height="150" @change="setDoc2($event)"
+                                            data-default-file="@/../img/assets/dorso.png"
+                                            data-allowed-file-extensions="png jpg jpeg gif" />
+
+                                        <!--Title-->
+                                        <p class="text-center ititle">Documento*</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!--Div-->
-                    <div class="col-md-6 mb-1 ps-2 mb-sm-4">
+                    <div class="col-md-6 ps-2">
 
-                        <!--Tag-->
-                        <div class="row ps-5 mb-xl-4 mb-5">
+                        <!--Tags-->
+                        <div class="row ps-0 ps-sm-5 mb-xl-4">
 
                             <!--Title-->
                             <h6 class="mb-1">¿Cómo podemos encontrarte?</h6>
@@ -534,8 +550,8 @@
                                     :disabled="nullTag">AGREGAR</button>
                             </div>
 
-                            <!--List tag-->
-                            <div class="col-md-8 mt-3">
+                            <!--List tags-->
+                            <div class="col-md-8 mt-4 mt-sm-3">
                                 <span class="tag mb-4 mb-sm-3 me-3" v-for="(tag, index) in this.listTag"
                                     v-bind:key="index">
                                     {{ tag }}<i class="fa-solid fa-xmark" @click="deleteTag(index)"></i>
@@ -556,7 +572,8 @@
 
                         <!--Terms and Conditions-->
                         <textarea readonly style="resize: none;" class="form-control mb-3"
-                            rows="5">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum. Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.</textarea>
+                            rows="5">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum. Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, 
+        sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.</textarea>
 
                         <!--Accept-->
                         <div class="form-check">
@@ -572,9 +589,7 @@
 
                 <!--Submit-->
                 <div class="col-md-12 text-center mt-4">
-                    <button type="button" class="btn-lg"
-                        :disabled="v$.form.$invalid"
-                        @click="submit">Unirme</button>
+                    <button type="button" class="btn-lg" :disabled="v$.form.$invalid" @click="submit">Unirme</button>
                 </div>
             </div>
         </section>
@@ -615,7 +630,6 @@ export default {
             form: {
                 name: '',
                 email: '',
-                fechaFundacion: '',
                 pagweb: '',
                 logo: false,
                 horario: '',
@@ -634,6 +648,7 @@ export default {
                 telefonoFijo: '',
                 tipoServicio: '',
                 representante: '',
+                fechaFundacion: '',
                 telefonoCelular: '',
                 servicioDomicilio: '',
             },

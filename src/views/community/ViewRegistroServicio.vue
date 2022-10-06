@@ -38,15 +38,19 @@
                         <div class="row ">
 
                             <!--Group-->
-                            <div class="col-md-3 mb-4 mb-sm-0 position-relative">
+                            <div class="col-md-3 mb-4 mb-sm-0">
 
-                                <!--Input-->
-                                <input type="file" class="dropify" data-height="165" @change="setImg($event)"
-                                    data-default-file="@/../img/assets/perfil.png"
-                                    data-allowed-file-extensions="png jpg jpeg gif" />
+                                <!--position-->
+                                <div class="position-relative">
 
-                                <!--Title-->
-                                <p class="text-center ititle">Foto perfil *</p>
+                                    <!--Input-->
+                                    <input type="file" class="dropify" data-height="165" @change="setImg($event)"
+                                        data-default-file="@/../img/assets/perfil.png"
+                                        data-allowed-file-extensions="png jpg jpeg gif" />
+
+                                    <!--Title-->
+                                    <p class="text-center ititle">Foto perfil *</p>
+                                </div>
                             </div>
 
                             <!--Div-->
@@ -192,13 +196,17 @@
                             <!--Group-->
                             <div class="col-md-3 mb-4 mb-sm-0 position-relative">
 
-                                <!--Input-->
-                                <input type="file" class="dropify" data-height="120" @change="setLogo($event)"
-                                    data-default-file="@/../img/assets/logo.png"
-                                    data-allowed-file-extensions="png jpg jpeg gif" />
+                                <!--position-->
+                                <div class="position-relative">
 
-                                <!--Title-->
-                                <p class="text-center ititle">Logo</p>
+                                    <!--Input-->
+                                    <input type="file" class="dropify" data-height="120" @change="setLogo($event)"
+                                        data-default-file="@/../img/assets/logo.png"
+                                        data-allowed-file-extensions="png jpg jpeg gif" />
+
+                                    <!--Title-->
+                                    <p class="text-center ititle">Logo</p>
+                                </div>
                             </div>
 
                             <!--Brand Name-->
@@ -323,7 +331,7 @@
                     <!--Add Service-->
                     <div class="col-xs-2 col-md-2 mt-4 mt-sm-0 d-flex align-items-center">
                         <button type="button" class="btn-md" :disabled="errorServicio || nullServicio"
-                            @click="addServices">AGREGAR SERVICIO</button>
+                            @click="addServices">AGREGAR</button>
                     </div>
 
                     <!--List Services-->
@@ -481,27 +489,35 @@
                             <div class="row">
 
                                 <!--Group-->
-                                <div class="col-md-6 mb-4 mb-sm-0 position-relative">
+                                <div class="col-md-6 mb-4 mb-sm-0">
 
-                                    <!--Input-->
-                                    <input type="file" class="dropify" data-height="150" @change="setDoc1($event)"
-                                        data-default-file="@/../img/assets/frontal.png"
-                                        data-allowed-file-extensions="png jpg jpeg gif" />
+                                    <!--position-->
+                                    <div class="position-relative">
 
-                                    <!--Title-->
-                                    <p class="text-center ititle">DUI parte frontal *</p>
+                                        <!--Input-->
+                                        <input type="file" class="dropify" data-height="150" @change="setDoc1($event)"
+                                            data-default-file="@/../img/assets/frontal.png"
+                                            data-allowed-file-extensions="png jpg jpeg gif" />
+
+                                        <!--Title-->
+                                        <p class="text-center ititle">DUI parte frontal *</p>
+                                    </div>
                                 </div>
 
                                 <!--Group-->
-                                <div class="col-md-6 position-relative">
+                                <div class="col-md-6">
 
-                                    <!--Input-->
-                                    <input type="file" class="dropify" data-height="150" @change="setDoc2($event)"
-                                        data-default-file="@/../img/assets/dorso.png"
-                                        data-allowed-file-extensions="png jpg jpeg gif" />
+                                    <!--position-->
+                                    <div class="position-relative">
 
-                                    <!--Title-->
-                                    <p class="text-center ititle">DUI parte trasera *</p>
+                                        <!--Input-->
+                                        <input type="file" class="dropify" data-height="150" @change="setDoc2($event)"
+                                            data-default-file="@/../img/assets/dorso.png"
+                                            data-allowed-file-extensions="png jpg jpeg gif" />
+
+                                        <!--Title-->
+                                        <p class="text-center ititle">DUI parte trasera *</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

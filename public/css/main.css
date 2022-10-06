@@ -818,6 +818,28 @@
   color: var(--light-blue);
 }
 
+/*===Phone===**/
+@media (max-width: 575.98px) {
+  #cuenta aside .card .networks a {
+    font-size: 21px;
+  }
+}
+
+/*===Ipad===**/
+@media (min-width: 559px) and (max-width: 991.98px) {
+  #cuenta aside .card .networks a {
+    font-size: 21px;
+  }
+}
+
+/*===Ipad Pro===**/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  #cuenta aside .card .networks a {
+    font-size: 21px;
+  }
+}
+
+
 #cuenta aside .card p {
   font-size: 0.8rem;
   font-weight: 500;
@@ -834,14 +856,58 @@
   text-align: center;
 }
 
+/*===Phone===**/
+@media (max-width: 575.98px) {
+  #cuenta aside .location {
+    padding: 10px 0;
+  }
+}
+
 #cuenta aside .location a {
-  font-size: 21px;
+  font-size: 20px;
   color: #9caabf;
   transition: 0.3s;
 }
 
 #cuenta aside .location a:hover {
   color: var(--light-blue);
+}
+
+#cuenta aside .location .google {
+  font-size: 17px !important;
+}
+
+/*===Phone===**/
+@media (max-width: 575.98px) {
+  #cuenta aside .location a {
+    font-size: 21px;
+  }
+
+  #cuenta aside .location .google {
+    font-size: 18px !important;
+  }
+}
+
+/*===Ipad===**/
+@media (min-width: 559px) and (max-width: 991.98px) {
+  #cuenta aside .location a {
+    font-size: 21px;
+  }
+
+  #cuenta aside .location .google {
+    font-size: 18px !important;
+  }
+}
+
+/*===Ipad Pro===**/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  #cuenta aside .location a {
+    font-size: 21px;
+  }
+
+  #cuenta aside .location .google {
+    font-size: 18px !important;
+  }
 }
 
 #cuenta article .profile hr {
@@ -941,14 +1007,8 @@
 }
 
 #cuenta article .profile .items img {
-  width: 50px;
-  height: 50px;
-}
-
-#cuenta article .profile .items span {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--dark-blue);
+  width: 60px;
+  height: 60px;
 }
 
 #cuenta article .profile .items i {
@@ -968,6 +1028,11 @@
   color: var(--dark-white);
   display: block;
   margin: 0;
+}
+
+#cuenta .llegar {
+  border-top: solid #dce2e9 2px;
+  font-weight: 600;
 }
 
 /* ============================================================*/
@@ -1246,7 +1311,7 @@
 }
 
 #concepto input[type="checkbox"]+label {
-  padding: 9px 10px;
+  padding: 10px;
   width: 100%;
   background-color: #f9f9f9;
   border: 1px solid #e5e5e5;
@@ -1261,7 +1326,7 @@
   color: #5e676e;
   font-weight: 600;
   text-align: center;
-  border-radius: 20px;
+  border-radius: 10px;
   cursor: pointer;
 }
 
