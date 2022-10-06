@@ -29,7 +29,7 @@
                         <div class="row">
 
                             <!--Group-->
-                            <div class="col-12 col-md-4 col-lg-3 col-xl-3 col-xxl-2 mb-5"
+                            <div class="col-12 col-md-4 col-lg-3 col-xl-3 col-xxl-2 mb-5 d-flex justify-content-center"
                                 v-for="(l, index) in this.lista" v-bind:key="index">
 
                                 <!--Items-->
@@ -37,7 +37,7 @@
                                     @click="clickcategoria(l.id)">
 
                                     <!--Img-->
-                                    <img :src="this.url + `/storage/${ l.imagen }`">
+                                    <img :src="this.url + `/storage/${ l.imagen }`" class="svgcolor">
 
                                     <!--Description-->
                                     <p class="mt-3 mb-0">{{ l.nombre_rubro }}</p>

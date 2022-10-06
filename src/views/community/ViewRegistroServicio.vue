@@ -115,7 +115,7 @@
                                 <!--Date Birth-->
                                 <div class="form-group mb-4">
                                     <input type="text" class="form-control"
-                                        placeholder="Fecha de Nacimiento | 0000-00-00*"
+                                        placeholder="Fecha de Nacimiento | YYYY-MM-DD*"
                                         v-model="v$.form.fechaNacimiento.$model" tabindex="5" required
                                         v-mask="'####-##-##'">
 
@@ -298,7 +298,8 @@
 
                     <!--Service-->
                     <div class="col-md-3 mb-4 mb-sm-0">
-                        <select class="form-control select2" v-model="this.servicio" @change="verifyService()">
+                        <select class="form-control select2" v-model="this.servicio" @change="verifyService()"
+                            tabindex="15">
                             <option disabled value="">Servicio*</option>
                             <option v-for="c in this.listaServicio" :key="c.id" :value="c.id">{{ c.nombre_rubro }}
                             </option>
@@ -312,7 +313,8 @@
 
                     <!--Experience-->
                     <div class="col-md-3 mb-4 mb-sm-0">
-                        <select class="form-control select2" v-model="this.experiencia" @change="verifyService()">
+                        <select class="form-control select2" v-model="this.experiencia" @change="verifyService()"
+                            tabindex="16">
                             <option disabled value="">Experiencia*</option>
                             <option value="Menos de un año">Menos de un año</option>
                             <option value="De uno a tres años">De uno a tres años</option>
@@ -364,7 +366,7 @@
 
                             <!--Input-->
                             <input type="text" class="form-control" placeholder="Facebook"
-                                v-model="v$.form.facebook.$model">
+                                v-model="v$.form.facebook.$model" tabindex="18">
                         </div>
 
                         <!--Error Message-->
@@ -384,7 +386,7 @@
 
                             <!--Input-->
                             <input type="text" class="form-control" placeholder="Instagram"
-                                v-model="v$.form.instagram.$model">
+                                v-model="v$.form.instagram.$model" tabindex="19">
                         </div>
 
                         <!--Error Message-->
@@ -404,7 +406,7 @@
 
                             <!--Input-->
                             <input type="text" class="form-control" placeholder="WhatsApp" v-mask="'####-####'"
-                                v-model="v$.form.whatsapp.$model">
+                                v-model="v$.form.whatsapp.$model" tabindex="20">
                         </div>
 
                         <!--Error Message-->
@@ -424,7 +426,7 @@
 
                             <!--Input-->
                             <input type="text" class="form-control" placeholder="Linkedin"
-                                v-model="v$.form.linkedin.$model">
+                                v-model="v$.form.linkedin.$model" tabindex="21">
                         </div>
 
                         <!--Error Message-->
@@ -444,7 +446,7 @@
 
                             <!--Input-->
                             <input type="text" class="form-control" placeholder="Twitter"
-                                v-model="v$.form.twitter.$model">
+                                v-model="v$.form.twitter.$model" tabindex="22">
                         </div>
 
                         <!--Error Message-->
@@ -464,7 +466,7 @@
 
                             <!--Input-->
                             <input type="text" class="form-control" placeholder="Página Web"
-                                v-model="v$.form.pagweb.$model">
+                                v-model="v$.form.pagweb.$model" tabindex="23">
                         </div>
 
                         <!--Error Message-->
@@ -538,7 +540,7 @@
                             <!--Div-->
                             <div class="col-md-8 form-group">
                                 <input type="text" class="form-control" placeholder="Palabra Clave" @keyup="verifyTag()"
-                                    @keydown="verifyTag()" @change="verifyTag()" v-model="this.tag">
+                                    @keydown="verifyTag()" @change="verifyTag()" v-model="this.tag" tabindex="24">
                             </div>
 
                             <!--Add Service-->
@@ -576,7 +578,8 @@
                         <div class="form-check">
 
                             <!--Input-->
-                            <input class="form-check-input" type="checkbox" id="terms" v-model="this.terminos">
+                            <input class="form-check-input" type="checkbox" id="terms" v-model="this.terminos"
+                                tabindex="25">
 
                             <!--Title-->
                             <label class="form-check-label" for="terms">Acepto Los terminos y Condiciones*</label>

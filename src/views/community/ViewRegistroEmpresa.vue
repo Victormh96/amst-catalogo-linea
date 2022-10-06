@@ -59,7 +59,7 @@
                                 <!--Company Name-->
                                 <div class="form-group mb-4">
                                     <input type="text" class="form-control" placeholder="Nombre de la Empresa*"
-                                        v-model="v$.form.name.$model">
+                                        v-model="v$.form.name.$model" tabindex="1">
 
                                     <!--Error Message-->
                                     <div class="input-errors err" v-for="(error, index) of v$.form.name.$errors"
@@ -71,7 +71,7 @@
                                 <!--Email-->
                                 <div class="form-group mb-4">
                                     <input type="email" class="form-control" placeholder="Correo*"
-                                        v-model="v$.form.email.$model">
+                                        v-model="v$.form.email.$model" tabindex="4">
 
                                     <!--Error Message-->
                                     <div class="input-errors err" v-for="(error, index) of v$.form.email.$errors"
@@ -83,7 +83,7 @@
                                 <!--Documento-->
                                 <div class="form-group mb-4 mb-sm-0">
                                     <input type="tel" class="form-control" placeholder="NIT*"
-                                        v-mask="'####-######-###-#'" v-model="v$.form.documento.$model">
+                                        v-mask="'####-######-###-#'" v-model="v$.form.documento.$model" tabindex="7">
 
                                     <!--Error Message-->
                                     <div class="input-errors err" v-for="(error, index) of v$.form.documento.$errors"
@@ -99,7 +99,7 @@
                                 <!--Representative-->
                                 <div class="form-group mb-4">
                                     <input type="text" class="form-control" placeholder="Representante*"
-                                        v-model="v$.form.representante.$model">
+                                        v-model="v$.form.representante.$model" tabindex="2">
 
                                     <!--Error Message-->
                                     <div class="input-errors err"
@@ -111,7 +111,7 @@
                                 <!--Cell Phone-->
                                 <div class="form-group mb-4">
                                     <input type="tel" step=any class="form-control" placeholder="Teléfono celular*"
-                                        v-mask="'####-####'" v-model="v$.form.telefonoCelular.$model">
+                                        v-mask="'####-####'" v-model="v$.form.telefonoCelular.$model" tabindex="5">
 
                                     <!--Error Message-->
                                     <div class="input-errors err"
@@ -122,8 +122,8 @@
 
                                 <!--Date Birth-->
                                 <div class="form-group mb-4 mb-sm-0">
-                                    <input type="text" class="form-control" placeholder="Fecha Fundación | 0000-00-00**"
-                                        v-model="v$.form.fechaFundacion.$model" tabindex="5" required
+                                    <input type="text" class="form-control" placeholder="Fecha Fundación | YYYY-MM-DD*"
+                                        v-model="v$.form.fechaFundacion.$model" tabindex="8" required
                                         v-mask="'####-##-##'">
 
                                     <!--Error Message-->
@@ -138,7 +138,8 @@
                             <div class="col-md-3">
                                 <!--Category-->
                                 <div class="form-group mb-4">
-                                    <select class="form-control select2" v-model="v$.form.entidad.$model" required>
+                                    <select class="form-control select2" v-model="v$.form.entidad.$model" required
+                                        tabindex="3">
                                         <option disabled value="">Categoria*</option>
                                         <option v-for="(e, index) of this.entidades" :key="index" :value="e.id">
                                             {{e.nombre_entidad}}</option>
@@ -154,13 +155,13 @@
                                 <!--Landline-->
                                 <div class="form-group mb-4">
                                     <input type="tel" class="form-control" placeholder="Télefono Fijo"
-                                        v-mask="'####-####'" v-model="this.form.telefonoFijo">
+                                        v-mask="'####-####'" v-model="this.form.telefonoFijo" tabindex="6">
                                 </div>
 
                                 <!--Address-->
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="N° de casa / Local / Piso*"
-                                        v-model="v$.form.direccion.$model">
+                                        v-model="v$.form.direccion.$model" tabindex="9">
 
                                     <!--Error Message-->
                                     <div class="input-errors err" v-for="(error, index) of v$.form.direccion.$errors"
@@ -216,7 +217,7 @@
                             <div class="col-md-4">
                                 <div class="form-group mb-4">
                                     <input type="text" class="form-control" placeholder="Horarios de Atención*"
-                                        v-model="v$.form.horario.$model">
+                                        v-model="v$.form.horario.$model" tabindex="10">
 
                                     <!--Error Message-->
                                     <div class="input-errors err" v-for="(error, index) of v$.form.horario.$errors"
@@ -275,8 +276,8 @@
 
                                     <!--Company Description-->
                                     <textarea style="resize: none;" class="form-control"
-                                        placeholder="Describe tu empresa*" v-model="v$.form.descripcion.$model"
-                                        rows="5"></textarea>
+                                        placeholder="Describe tu empresa*" v-model="v$.form.descripcion.$model" rows="5"
+                                        tabindex="14"></textarea>
 
                                     <!--Error Message-->
                                     <div class="input-errors err" v-for="(error, index) of v$.form.descripcion.$errors"
@@ -301,7 +302,8 @@
 
                     <!--Service-->
                     <div class="col-md-3 mb-4 mb-sm-0">
-                        <select class="form-control select2" v-model="this.servicio" @change="verifyService()" required>
+                        <select class="form-control select2" v-model="this.servicio" @change="verifyService()" required
+                            tabindex="15">
                             <option disabled value="">Servicio*</option>
                             <option v-for="c in this.listaServicio" :key="c.id" :value="c.id">{{ c.nombre_rubro }}
                             </option>
@@ -315,7 +317,8 @@
 
                     <!--Experience-->
                     <div class="col-md-3 mb-4 mb-sm-0">
-                        <select class="form-control select2" v-model="this.experiencia" @change="verifyService()" required>
+                        <select class="form-control select2" v-model="this.experiencia" @change="verifyService()"
+                            required tabindex="16">
                             <option disabled value="">Experiencia*</option>
                             <option value="Menos de un año">Menos de un año</option>
                             <option value="De uno a tres años">De uno a tres años</option>
@@ -367,7 +370,7 @@
 
                             <!--Input-->
                             <input type="text" class="form-control" placeholder="Facebook"
-                                v-model="v$.form.facebook.$model">
+                                v-model="v$.form.facebook.$model" tabindex="18">
                         </div>
 
                         <!--Error Message-->
@@ -387,7 +390,7 @@
 
                             <!--Input-->
                             <input type="text" class="form-control" placeholder="Instagram"
-                                v-model="v$.form.instagram.$model">
+                                v-model="v$.form.instagram.$model" tabindex="19">
                         </div>
 
                         <!--Error Message-->
@@ -407,7 +410,7 @@
 
                             <!--Input-->
                             <input type="text" class="form-control" placeholder="WhatsApp" v-mask="'####-####'"
-                                v-model="v$.form.whatsapp.$model">
+                                v-model="v$.form.whatsapp.$model" tabindex="20">
                         </div>
 
                         <!--Error Message-->
@@ -427,7 +430,7 @@
 
                             <!--Input-->
                             <input type="text" class="form-control" placeholder="Linkedin"
-                                v-model="v$.form.linkedin.$model">
+                                v-model="v$.form.linkedin.$model" tabindex="21">
                         </div>
 
                         <!--Error Message-->
@@ -447,7 +450,7 @@
 
                             <!--Input-->
                             <input type="text" class="form-control" placeholder="Twitter"
-                                v-model="v$.form.twitter.$model">
+                                v-model="v$.form.twitter.$model" tabindex="22">
                         </div>
 
                         <!--Error Message-->
@@ -467,7 +470,7 @@
 
                             <!--Input-->
                             <input type="text" class="form-control" placeholder="Página Web"
-                                v-model="v$.form.pagweb.$model">
+                                v-model="v$.form.pagweb.$model" tabindex="23">
                         </div>
 
                         <!--Error Message-->
@@ -499,7 +502,7 @@
 
                                         <!--Input-->
                                         <input type="file" class="dropify" data-height="150" @change="setDoc1($event)"
-                                            data-default-file="@/../img/assets/frontal.png"
+                                            data-default-file="@/../img/assets/dorso.png"
                                             data-allowed-file-extensions="png jpg jpeg gif" />
 
                                         <!--Title-->
@@ -541,7 +544,7 @@
                             <!--Div-->
                             <div class="col-md-8 form-group">
                                 <input type="text" class="form-control" placeholder="Palabra Clave" @keyup="verifyTag()"
-                                    @keydown="verifyTag()" @change="verifyTag()" v-model="this.tag">
+                                    @keydown="verifyTag()" @change="verifyTag()" v-model="this.tag" tabindex="24">
                             </div>
 
                             <!--Add Service-->
@@ -573,13 +576,14 @@
                         <!--Terms and Conditions-->
                         <textarea readonly style="resize: none;" class="form-control mb-3"
                             rows="5">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum. Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, 
-        sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.</textarea>
+                                    sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.</textarea>
 
                         <!--Accept-->
                         <div class="form-check">
 
                             <!--Input-->
-                            <input class="form-check-input" type="checkbox" id="terms" v-model="this.terminos">
+                            <input class="form-check-input" type="checkbox" id="terms" v-model="this.terminos"
+                                tabindex="25">
 
                             <!--Title-->
                             <label class="form-check-label" for="terms">Acepto Los terminos y Condiciones*</label>
