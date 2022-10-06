@@ -29,7 +29,7 @@
                 <div v-for="(rubro, index) of this.rubro" :key="index" class="col-6 col-md-4 col-lg-3 col-xl-12 mb-3">
 
                   <!--Tag-->
-                  <div class="d-flex ">
+                  <div class="d-flex">
 
                     <!--Input-->
                     <input type="checkbox" :value="rubro.nombre_rubro" :id="rubro.id" @click="filtro(rubro.id)"

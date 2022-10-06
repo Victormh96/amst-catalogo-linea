@@ -368,13 +368,6 @@ a:not([href]):not([class]):hover {
   }
 }
 
-/*===Phone Landscape===**/
-@media (max-width: 920px) and (orientation: landscape) {
-  a {
-    cursor: none;
-  }
-}
-
 /*===Ipad===**/
 @media (min-width: 559px) and (max-width: 991.98px) {
   a {
@@ -415,6 +408,30 @@ code {
   font-size: 0.875em;
   color: var(--bs-code-color);
   word-wrap: break-word;
+}
+
+/*===Ipad===**/
+@media (min-width: 559px) and (max-width: 991.98px) {
+  .pegajoso {
+    position: sticky;
+    top: 130px;
+  }
+}
+
+/*===Ipad Pro===**/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .pegajoso {
+    position: sticky;
+    top: 130px;
+  }
+}
+
+/*===Ipad Pro Landscape===**/
+@media only screen and (min-width: 1024px) and (max-height: 1366px) and (-webkit-min-device-pixel-ratio: 1.5) {
+  .pegajoso {
+    position: sticky;
+    top: 130px;
+  }
 }
 
 a>code {
@@ -11636,22 +11653,6 @@ fieldset:disabled .btn {
   .d-print-none {
     display: none !important;
   }
-}
-
-.waz {
-  color: #056a82 !important;
-}
-
-.goo {
-  color: #b3352a !important;
-}
-
-.mob {
-  color: #e7ab00 !important;
-}
-
-.wha {
-  color: #075E54 !important;
 }
 
 /*===Ipad===**/
