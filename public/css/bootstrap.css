@@ -11880,6 +11880,10 @@ fieldset:disabled .btn {
   border: 7px solid #fafafa
 }
 
+.svgcolor{
+  filter: invert(50%) sepia(50%) saturate(848%) hue-rotate(177deg) brightness(83%) contrast(88%);
+}
+
 @keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);

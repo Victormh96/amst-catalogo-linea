@@ -148,7 +148,7 @@
                                     @click="ClickCategoria(s.id)">
 
                                     <!--Img-->
-                                    <img :src="this.url + `/storage/${ s.imagen }`">
+                                    <img class="svgcolor" :src="this.url + `/storage/${ s.imagen }`">
 
                                     <!--Title-->
                                     <p class="mt-3 mb-0">{{ s.nombre_rubro }}</p>

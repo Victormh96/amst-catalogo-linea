@@ -197,8 +197,8 @@
                                                     class="col-12 col-md-12 col-lg-3 text-center d-none d-sm-none d-lg-block">
 
                                                     <!--Img-->
-                                                    <img :src="this.url + `/storage/${servicio.rubro.imagen}`"
-                                                        class="mb-3 mb-sm-2">
+                                                    <img  :src="this.url + `/storage/${servicio.rubro.imagen}`"
+                                                        class="mb-3 mb-sm-2 svgcolor">
                                                 </div>
 
                                                 <!--Info-->
