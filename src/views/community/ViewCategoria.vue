@@ -15,13 +15,13 @@
 
                     <!--Title-->
                     <div class="col-12 text-center mb-5">
-                        <h3>{{ slug == 'empresas' ? "EMPRESAS" : "SERVICIOS PROFESIONALES" }}</h3>
+                        <h3>{{ this.titulo }}</h3>
                     </div>
 
                     <!--Search-->
                     <div class="col-12 col-md-7 col-lg-5 col-xl-5 col-xxl-4 mx-auto mb-5">
                         <input type="text" class="form-control text-center"
-                            placeholder="Albañil, Farmacias, Pupuserias..." v-model="buscar">
+                            :placeholder="this.buscador" v-model="buscar">
                     </div>
 
                     <!--Div-->
@@ -40,7 +40,7 @@
                                     <img :src="this.url + `/storage/${ l.imagen }`" class="svgcolor">
 
                                     <!--Description-->
-                                    <p class="mt-3 mb-0">{{ l.nombre_rubro }}</p>
+                                    <p class="mt-3 mb-0">{{ l.nombre_rubro[idioma] }}</p>
                                 </router-link>
                             </div>
                         </div>
@@ -73,13 +73,27 @@ export default {
     data() {
         return {
             buscar: '',
-            skeleton: false
+            skeleton: false,
+            idioma: null,
+            categoria: [],
+            titulo:'',
+            buscador:''
         }
     },
 
     async mounted() {
         // Vuex
         await this.$store.dispatch("Categoria", this.slug)
+
+        this.$store.state.community.categoria.forEach(categoria => {
+            categoria.nombre_rubro = categoria.nombre_rubro.split(',')
+            this.categoria.push(categoria)
+        })
+        this.$store.state.community.categoria = this.categoria
+
+        this.idioma = this.$store.state.community.idioma
+
+        this.CambiarIdioma()
 
         // Skeleton
         setTimeout(() => {
@@ -97,6 +111,19 @@ export default {
         async clickcategoria(id) {
             await this.$store.dispatch("CategoriaClick", id)
         },
+
+        CambiarIdioma() {
+            if (this.idioma === 0) {
+                this.idioma = 1
+                this.titulo = this.slug == 'empresas' ?  "COMPANIES" : "PROFESSIONAL SERVICES"
+                this.buscador = 'Search'
+                
+            } else {
+                this.idioma = 0
+                this.titulo = this.slug == 'empresas' ?  "EMPRESAS" : "SERVICIOS PROFESIONALES"
+                this.buscador = 'Albañil, Farmacias, Pupuserias...'
+            }
+        }
     },
 
     computed: {

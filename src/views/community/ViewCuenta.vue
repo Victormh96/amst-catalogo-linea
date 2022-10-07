@@ -56,7 +56,7 @@
                                 <div class="tag ms-4 me-4" v-if="this.lista.verificado == true">
                                     <span class="me-2 mb-1" v-for="(r, index) in this.lista.servicio"
                                         v-bind:key="index">
-                                        {{ r.rubro.nombre_rubro }}
+                                        {{ r.rubro.nombre_rubro[this.idioma] }}
                                     </span>
                                 </div>
 
@@ -278,6 +278,7 @@ export default {
             galeria: 0,
             publicidad: [],
             skeleton: false,
+            idioma:null,
             pageConfig: {
                 identifier: this.$route.params.url
             }
@@ -287,7 +288,16 @@ export default {
     async mounted() {
         // Vuex
         await this.$store.dispatch("Cuenta", this.slug)
+        var servicios = []
+        this.$store.state.community.cuenta.servicio.forEach(servicio => {
+            servicio.rubro.nombre_rubro = servicio.rubro.nombre_rubro.split(',')
+            servicios.push(servicio)
+        })
+        this.$store.state.community.cuenta.servicio = servicios
+
         this.lista = this.$store.state.community.cuenta
+
+        this.idioma = this.$store.state.community.idioma
 
         // Vuex
         await this.$store.dispatch("Publicidad")

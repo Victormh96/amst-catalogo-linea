@@ -301,7 +301,7 @@
                         <select class="form-control select2" v-model="this.servicio" @change="verifyService()"
                             tabindex="15">
                             <option disabled value="">Servicio*</option>
-                            <option v-for="c in this.listaServicio" :key="c.id" :value="c.id">{{ c.nombre_rubro }}
+                            <option v-for="c in this.listaServicio" :key="c.id" :value="c.id">{{ c.nombre_rubro[0] }}
                             </option>
                         </select>
 
@@ -685,8 +685,12 @@ export default {
 
         // Vuex
         await this.$store.dispatch("CategoriaRegistro", '1')
-        this.listaServicio = this.$store.state.community.categoria
 
+        this.$store.state.community.categoria.forEach(categoria => {
+            categoria.nombre_rubro = categoria.nombre_rubro.split(',')
+            this.listaServicio.push(categoria)
+        })
+        this.$store.state.community.categoria = this.listaServicio
 
         // LocalStorage
         localStorage.removeItem('latitud')

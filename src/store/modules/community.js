@@ -39,6 +39,7 @@ export default {
             search: null,
             publicidad: null,
             publicidadclick: null,
+            idioma: 0
         }
     },
 
@@ -117,6 +118,10 @@ export default {
 
         MutationConcepto(state, data) {
             state.concepto = data
+        },
+
+        MutationIdioma(state) {
+            state.idioma === 0 ? state.idioma = 1 : state.idioma = 0
         }
     },
 
@@ -333,6 +338,10 @@ export default {
 
         Search({ commit }, body) {
             commit('MutationSearch', body)
+        },
+
+        CambiarIdioma({ commit }) {
+            commit('MutationIdioma')
         },
 
         Loading({ commit }, data) {

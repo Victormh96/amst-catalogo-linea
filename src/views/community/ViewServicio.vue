@@ -46,7 +46,7 @@
                                     <img :src="this.url + `/storage/${ l.imagen }`" class="svgcolor">
 
                                     <!--Title-->
-                                    <p class="mt-3 mb-0">{{ l.nombre_rubro }}</p>
+                                    <p class="mt-3 mb-0">{{ l.nombre_rubro[this.idioma] }}</p>
                                 </router-link>
                             </div>
                         </div>
@@ -81,7 +81,8 @@ export default {
             cant: '',
             text: '',
             buscar: '',
-            skeleton: false
+            skeleton: false,
+            idioma: null
         }
     },
 
@@ -90,10 +91,18 @@ export default {
         const { input, cant } = this.$store.state.community.search
         this.text = input
         this.cant = cant
-
+        var rubro = []
         //Vuex
         await this.$store.dispatch("CategoriasCompletas")
 
+        this.$store.state.community.tag.forEach(categoria => {
+            categoria.nombre_rubro = categoria.nombre_rubro.split(',')
+            rubro.push(categoria)
+        })
+        this.$store.state.community.categoria = rubro
+
+        this.idioma = this.$store.state.community.idioma
+        
         // If
         if (cant > 0) {
             input ? this.buscar = input : this.buscar = '';

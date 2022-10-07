@@ -46,7 +46,7 @@
                                     </span>
 
                                     <!--Title-->
-                                    {{ tag.nombre_rubro }}
+                                    {{ tag.nombre_rubro}}
                                 </li>
                             </ul>
                         </div>
@@ -153,7 +153,7 @@
                                     <img :src="this.url + `/storage/${ s.imagen }`" class="svgcolor">
 
                                     <!--Title-->
-                                    <p class="mt-3 mb-0">{{ s.nombre_rubro }}</p>
+                                    <p class="mt-3 mb-0">{{ s.nombre_rubro[this.idioma] }}</p>
                                 </router-link>
                             </div>
                         </div>
@@ -220,7 +220,9 @@ export default {
         return {
             destacados: [],
             skeleton: false,
-            portadainicio: []
+            portadainicio: [],
+            categoria: [],
+            idioma:null
         }
     },
 
@@ -228,10 +230,13 @@ export default {
         // Vuex
         await this.$store.dispatch("Portada", 'Inicio')
         this.portadainicio = this.$store.state.community.portada[0]
-
+        this.idioma = this.$store.state.community.idioma
         // Vuex
         await this.$store.dispatch("CategoriaDestacado")
-        this.destacados = this.$store.state.community.categoriadestacado
+        this.$store.state.community.categoriadestacado.forEach(categoria => {
+            categoria.nombre_rubro = categoria.nombre_rubro.split(',')
+            this.destacados.push(categoria)
+        })
 
         // Vuex
         await this.$store.dispatch("Tag")

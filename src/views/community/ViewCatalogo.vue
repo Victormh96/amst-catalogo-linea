@@ -84,7 +84,7 @@
 
                   <!--Service-->
                   <span class="me-2 mb-2" v-for="(r, index) in l.servicio" v-bind:key="index">
-                    {{ r.rubro.nombre_rubro }}
+                    {{ r.rubro.nombre_rubro[this.idioma] }}
                   </span>
 
                   <!--Description-->
@@ -186,14 +186,23 @@ export default {
       skeleton: false,
       domicilio: false,
       listaPaginada: [],
-      elementosPorPagina: 5
+      elementosPorPagina: 5,
+      idioma:null
     }
   },
 
   async mounted() {
     // Vuex
     await this.$store.dispatch("CatalogoCategoria", this.slug)
-    this.lista = this.$store.state.community.catalogocategoria
+    this.$store.state.community.catalogocategoria.forEach(categoria => {
+      categoria.servicio.forEach(servicio => {
+          servicio.rubro.nombre_rubro = servicio.rubro.nombre_rubro.split(',')
+      })
+      this.lista.push(categoria)
+    })
+    this.$store.state.community.catalogocategoria = this.lista
+
+    this.idioma = this.$store.state.community.idioma
 
     // If
     if (this.lista.length < 1) {

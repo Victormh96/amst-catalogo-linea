@@ -32,11 +32,11 @@
                   <div class="d-flex">
 
                     <!--Input-->
-                    <input type="checkbox" :value="rubro.nombre_rubro" :id="rubro.id" @click="filtro(rubro.id)">
+                    <input type="checkbox" :value="rubro.nombre_rubro[0]" :id="rubro.id" @click="filtro(rubro.id)">
 
                     <!--Title-->
                     <label :for="rubro.id">
-                      {{rubro.nombre_rubro}}
+                      {{rubro.nombre_rubro[this.idioma]}}
                     </label>
                   </div>
                 </div>
@@ -86,14 +86,23 @@ export default {
       concepto: '',
       skeleton: false,
       listaRubros: [],
-      listafiltrada: []
+      listafiltrada: [],
+      idioma:null
     }
   },
 
   async mounted() {
     // Vuex
     await this.$store.dispatch("CatalogoConcepto", this.slug)
-    this.lista = this.$store.state.community.catalogocategoria
+    this.$store.state.community.catalogocategoria.forEach(categoria => {
+      categoria.servicio.forEach(servicio => {
+          servicio.rubro.nombre_rubro = servicio.rubro.nombre_rubro.split(',')
+      })
+      this.lista.push(categoria)
+    })
+    this.$store.state.community.catalogocategoria = this.lista
+
+    this.idioma = this.$store.state.community.idioma
 
     // If
     if (this.lista.length < 1) {
@@ -107,7 +116,11 @@ export default {
 
     // Vuex
     await this.$store.dispatch("CategoriaConcepto", this.slug)
-    this.rubro = this.$store.state.community.rubroconcepto
+    this.$store.state.community.rubroconcepto.forEach(categoria => {
+            categoria.nombre_rubro = categoria.nombre_rubro.split(',')
+            this.rubro.push(categoria)
+        })
+        this.$store.state.community.rubroconcepto = this.rubro
 
     // Method
     this.llenarLista()
@@ -142,7 +155,7 @@ export default {
       this.llenarLista()
       this.map.off()
       this.map.remove()
-      this.maps(this.listafiltrada)
+      this.maps(this.listafiltrada,this.idioma)
     },
 
     llenarLista() {
@@ -174,7 +187,7 @@ export default {
     },
 
     // Map
-    maps(lista) {
+    maps(lista,idioma) {
       // Normal
       var normalBase = new L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -258,7 +271,7 @@ export default {
 
                 // Rubro
                 element.servicio.map(function (sv) {
-                  return "<span class='me-2 mb-2'>" + sv.rubro.nombre_rubro + "</span>"
+                  return "<span class='me-2 mb-2'>" + sv.rubro.nombre_rubro[idioma] + "</span>"
                 })
 
                 + "<br>" +
