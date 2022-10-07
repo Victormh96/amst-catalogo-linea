@@ -243,7 +243,7 @@
                     </article>
 
                     <!--Comment-->
-                    <Disqus lang="es_MX" :pageConfig="pageConfig" shortname="promedicus724" class="mt-5 mt-sm-4" />
+                    <Disqus lang="es_MX" :pageConfig="pageConfig" shortname="ubicaloentecla" class="mt-5 mt-sm-4 t" />
                 </div>
             </div>
         </section>
@@ -382,5 +382,3 @@ export default {
     props: ["slug"]
 };
 </script>
-  
-  
