@@ -32,8 +32,7 @@
                   <div class="d-flex">
 
                     <!--Input-->
-                    <input type="checkbox" :value="rubro.nombre_rubro" :id="rubro.id" @click="filtro(rubro.id)"
-                      :checked="rubro.id == '2' ? true:false">
+                    <input type="checkbox" :value="rubro.nombre_rubro" :id="rubro.id" @click="filtro(rubro.id)">
 
                     <!--Title-->
                     <label :for="rubro.id">
@@ -86,8 +85,8 @@ export default {
       lista: [],
       concepto: '',
       skeleton: false,
-      listafiltrada: [],
-      listaRubros: ['2']
+      listaRubros: [],
+      listafiltrada: []
     }
   },
 

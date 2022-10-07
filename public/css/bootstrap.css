@@ -11655,6 +11655,10 @@ fieldset:disabled .btn {
   }
 }
 
+.svgcolor {
+  filter: invert(20%) sepia(14%) saturate(2662%) hue-rotate(179deg) brightness(98%) contrast(97%);
+}
+
 /*===Ipad===**/
 @media (min-width: 559px) and (max-width: 991.98px) {
   .menos {
@@ -11878,10 +11882,6 @@ fieldset:disabled .btn {
 
 #skeleton:after {
   border: 7px solid #fafafa
-}
-
-.svgcolor{
-  filter: invert(50%) sepia(50%) saturate(848%) hue-rotate(177deg) brightness(83%) contrast(88%);
 }
 
 @keyframes spin {

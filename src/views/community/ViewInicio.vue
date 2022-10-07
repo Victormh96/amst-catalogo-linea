@@ -41,7 +41,9 @@
                                     @click="selectTag(tag); ClickCategoria(tag.id)">
 
                                     <!--Img-->
-                                    <img :src="this.url + `/storage/${ tag.imagen }`" class="me-2">
+                                    <span class="me-2">
+                                        <img :src="this.url + `/storage/${ tag.imagen }`" class="svgcolor">
+                                    </span>
 
                                     <!--Title-->
                                     {{ tag.nombre_rubro }}
@@ -140,15 +142,15 @@
                         <div class="row">
 
                             <!--Group-->
-                            <div class="col-md-4 col-xl-2 mb-5" v-for="(s, index) in this.destacados"
-                                v-bind:key="index">
+                            <div class="col-md-4 col-xl-2 mb-5 d-flex justify-content-center"
+                                v-for="(s, index) in this.destacados" v-bind:key="index">
 
                                 <!--Items-->
                                 <router-link :to="{ name: 'Catalogo', params: { slug: s.slug } }"
                                     @click="ClickCategoria(s.id)">
 
                                     <!--Img-->
-                                    <img class="svgcolor" :src="this.url + `/storage/${ s.imagen }`">
+                                    <img :src="this.url + `/storage/${ s.imagen }`" class="svgcolor">
 
                                     <!--Title-->
                                     <p class="mt-3 mb-0">{{ s.nombre_rubro }}</p>
