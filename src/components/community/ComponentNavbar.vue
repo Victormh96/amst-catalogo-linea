@@ -107,3 +107,18 @@
         </router-link>
     </div>
 </template>
+
+<!--=======Script=======-->
+<script>
+
+export default {
+
+    methods: {
+        cambiarIdioma() {
+            this.$store.dispatch("CambiarIdioma")
+        }
+    }
+
+
+};
+</script>

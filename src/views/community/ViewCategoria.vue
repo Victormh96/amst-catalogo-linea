@@ -93,6 +93,7 @@ export default {
 
         this.idioma = this.$store.state.community.idioma
 
+
         this.CambiarIdioma()
 
         // Skeleton
@@ -114,12 +115,10 @@ export default {
 
         CambiarIdioma() {
             if (this.idioma === 0) {
-                this.idioma = 1
                 this.titulo = this.slug == 'empresas' ?  "COMPANIES" : "PROFESSIONAL SERVICES"
                 this.buscador = 'Search'
                 
             } else {
-                this.idioma = 0
                 this.titulo = this.slug == 'empresas' ?  "EMPRESAS" : "SERVICIOS PROFESIONALES"
                 this.buscador = 'Albañil, Farmacias, Pupuserias...'
             }

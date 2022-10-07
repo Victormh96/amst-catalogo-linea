@@ -335,7 +335,9 @@ export default {
                     name: 'Servicios-Completos',
                 })
             }
-        }
+        },
+
+
     },
 };
 </script>
