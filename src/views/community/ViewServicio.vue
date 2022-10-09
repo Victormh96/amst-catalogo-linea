@@ -102,7 +102,7 @@ export default {
         this.$store.state.community.categoria = rubro
 
         this.idioma = this.$store.state.community.idioma
-        
+
         // If
         if (cant > 0) {
             input ? this.buscar = input : this.buscar = '';
