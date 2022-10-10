@@ -183,11 +183,11 @@ export default {
       popup: '',
       lista: [],
       buscar: '',
+      idioma: null,
       skeleton: false,
       domicilio: false,
       listaPaginada: [],
-      elementosPorPagina: 5,
-      idioma:null
+      elementosPorPagina: 5
     }
   },
 
@@ -196,12 +196,15 @@ export default {
     await this.$store.dispatch("CatalogoCategoria", this.slug)
     this.$store.state.community.catalogocategoria.forEach(categoria => {
       categoria.servicio.forEach(servicio => {
-          servicio.rubro.nombre_rubro = servicio.rubro.nombre_rubro.split(',')
+        servicio.rubro.nombre_rubro = servicio.rubro.nombre_rubro.split(',')
       })
       this.lista.push(categoria)
     })
+
+    // Vuex
     this.$store.state.community.catalogocategoria = this.lista
 
+    // Language
     this.idioma = this.$store.state.community.idioma
 
     // If
@@ -357,7 +360,6 @@ export default {
         if (element.local != false) {
           popup = L.marker([element.latitud, element.longitud],)
             .bindPopup("<a href=/cuenta/" + element.slug + "><img src=" + url + "/storage/" + element.foto + "/><center><span>" + element.nombre_cuenta + "</span></center></a>").addTo(map)
-
         }
       })
 

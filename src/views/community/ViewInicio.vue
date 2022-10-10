@@ -218,11 +218,11 @@ import Footer from "@/components/community/ComponentFooter.vue"
 export default {
     data() {
         return {
+            idioma: null,
+            categoria: [],
             destacados: [],
             skeleton: false,
-            portadainicio: [],
-            categoria: [],
-            idioma:null
+            portadainicio: []
         }
     },
 
@@ -230,13 +230,16 @@ export default {
         // Vuex
         await this.$store.dispatch("Portada", 'Inicio')
         this.portadainicio = this.$store.state.community.portada[0]
-        this.idioma = this.$store.state.community.idioma
+
         // Vuex
         await this.$store.dispatch("CategoriaDestacado")
         this.$store.state.community.categoriadestacado.forEach(categoria => {
             categoria.nombre_rubro = categoria.nombre_rubro.split(',')
             this.destacados.push(categoria)
         })
+
+        // Language
+        this.idioma = this.$store.state.community.idioma
 
         // Vuex
         await this.$store.dispatch("Tag")
@@ -283,7 +286,7 @@ export default {
             router.push({
                 name: "Catalogo",
                 params: { slug: tag.slug }
-            });
+            })
             buscarTag.value = ''
         }
 
@@ -291,7 +294,7 @@ export default {
         return {
             buscarTag,
             searchTag,
-            selectTag,
+            selectTag
         }
     },
 
@@ -336,8 +339,6 @@ export default {
                 })
             }
         },
-
-
     },
 };
 </script>

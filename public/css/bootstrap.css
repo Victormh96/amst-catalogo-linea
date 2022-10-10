@@ -11655,6 +11655,10 @@ fieldset:disabled .btn {
   }
 }
 
+.color-white {
+  background: url(../img//assets/shapex16.png);
+}
+
 .svgcolor {
   filter: invert(20%) sepia(14%) saturate(2662%) hue-rotate(179deg) brightness(98%) contrast(97%);
 }

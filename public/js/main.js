@@ -32,8 +32,8 @@ $(window).on("load", function () {
 /* Dropify Delete
 /* ============================================================*/
 $(window).on("load", function () {
-    $(".dropify-wrapper").removeClass("touch-fallback");
-});
+    $(".dropify-wrapper").removeClass("touch-fallback")
+})
 
 /* ============================================================*/
 /* Select2

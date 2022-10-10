@@ -20,8 +20,8 @@
 
                     <!--Search-->
                     <div class="col-12 col-md-7 col-lg-5 col-xl-5 col-xxl-4 mx-auto mb-5">
-                        <input type="text" class="form-control text-center"
-                            :placeholder="this.buscador" v-model="buscar">
+                        <input type="text" class="form-control text-center" :placeholder="this.buscador"
+                            v-model="buscar">
                     </div>
 
                     <!--Div-->
@@ -73,27 +73,27 @@ export default {
     data() {
         return {
             buscar: '',
-            skeleton: false,
+            titulo: '',
+            buscador: '',
             idioma: null,
             categoria: [],
-            titulo:'',
-            buscador:''
+            skeleton: false
         }
     },
 
     async mounted() {
         // Vuex
         await this.$store.dispatch("Categoria", this.slug)
-
         this.$store.state.community.categoria.forEach(categoria => {
             categoria.nombre_rubro = categoria.nombre_rubro.split(',')
             this.categoria.push(categoria)
         })
         this.$store.state.community.categoria = this.categoria
 
+        // Language
         this.idioma = this.$store.state.community.idioma
 
-
+        // Methods
         this.CambiarIdioma()
 
         // Skeleton
@@ -114,13 +114,13 @@ export default {
         },
 
         CambiarIdioma() {
-            if (this.idioma === 0) {
-                this.titulo = this.slug == 'empresas' ?  "COMPANIES" : "PROFESSIONAL SERVICES"
-                this.buscador = 'Search'
-                
-            } else {
-                this.titulo = this.slug == 'empresas' ?  "EMPRESAS" : "SERVICIOS PROFESIONALES"
+            // If
+            if (this.idioma == 0) {
+                this.titulo = this.slug == 'empresas' ? "EMPRESAS" : "SERVICIOS PROFESIONALES"
                 this.buscador = 'Albañil, Farmacias, Pupuserias...'
+            } else {
+                this.titulo = this.slug == 'empresas' ? "COMPANIES" : "PROFESSIONAL SERVICES"
+                this.buscador = 'Bricklayer, Pharmacy, pupuserias...'
             }
         }
     },

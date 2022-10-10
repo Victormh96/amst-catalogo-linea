@@ -81,8 +81,8 @@ export default {
             cant: '',
             text: '',
             buscar: '',
-            skeleton: false,
-            idioma: null
+            idioma: null,
+            skeleton: false
         }
     },
 
@@ -92,15 +92,16 @@ export default {
         this.text = input
         this.cant = cant
         var rubro = []
-        //Vuex
-        await this.$store.dispatch("CategoriasCompletas")
 
+        // Vuex
+        await this.$store.dispatch("CategoriasCompletas")
         this.$store.state.community.tag.forEach(categoria => {
             categoria.nombre_rubro = categoria.nombre_rubro.split(',')
             rubro.push(categoria)
         })
         this.$store.state.community.categoria = rubro
 
+        // Language
         this.idioma = this.$store.state.community.idioma
 
         // If

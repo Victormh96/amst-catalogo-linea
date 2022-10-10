@@ -83,11 +83,11 @@ export default {
       map: '',
       rubro: [],
       lista: [],
+      idioma: null,
       concepto: '',
       skeleton: false,
       listaRubros: [],
-      listafiltrada: [],
-      idioma:null
+      listafiltrada: []
     }
   },
 
@@ -96,12 +96,15 @@ export default {
     await this.$store.dispatch("CatalogoConcepto", this.slug)
     this.$store.state.community.catalogocategoria.forEach(categoria => {
       categoria.servicio.forEach(servicio => {
-          servicio.rubro.nombre_rubro = servicio.rubro.nombre_rubro.split(',')
+        servicio.rubro.nombre_rubro = servicio.rubro.nombre_rubro.split(',')
       })
       this.lista.push(categoria)
     })
+
+    // Vuex
     this.$store.state.community.catalogocategoria = this.lista
 
+    // Language
     this.idioma = this.$store.state.community.idioma
 
     // If
@@ -117,10 +120,10 @@ export default {
     // Vuex
     await this.$store.dispatch("CategoriaConcepto", this.slug)
     this.$store.state.community.rubroconcepto.forEach(categoria => {
-            categoria.nombre_rubro = categoria.nombre_rubro.split(',')
-            this.rubro.push(categoria)
-        })
-        this.$store.state.community.rubroconcepto = this.rubro
+      categoria.nombre_rubro = categoria.nombre_rubro.split(',')
+      this.rubro.push(categoria)
+    })
+    this.$store.state.community.rubroconcepto = this.rubro
 
     // Method
     this.llenarLista()
@@ -155,7 +158,7 @@ export default {
       this.llenarLista()
       this.map.off()
       this.map.remove()
-      this.maps(this.listafiltrada,this.idioma)
+      this.maps(this.listafiltrada, this.idioma)
     },
 
     llenarLista() {
@@ -187,7 +190,7 @@ export default {
     },
 
     // Map
-    maps(lista,idioma) {
+    maps(lista, idioma) {
       // Normal
       var normalBase = new L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -285,8 +288,7 @@ export default {
                 // whatsapp
                 element.contacto.map(function (ct) {
                   return "<a href='https://api.whatsapp.com/send?phone=503" + ct.descripcion + "&text=¡Hola " + element.nombre_cuenta + "! Quisiera mas información de tus servicios. 📢📢" + "' target='_blank'><i class='fa-brands fa-whatsapp others'></i></a>"
-                })
-              ).show()
+                })).show()
           })
         }
       })

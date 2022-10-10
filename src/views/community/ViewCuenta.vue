@@ -156,7 +156,7 @@
                                 <div class="row">
 
                                     <!--Img-->
-                                    <div class="col-md-12 col-lg-12 col-xl-3 mb-4 mb-xl-0">
+                                    <div class="col-md-12 col-lg-12 col-xl-3 mb-4 mb-xl-0 color-white">
                                         <center>
                                             <img v-if="this.lista.logo" class="logo"
                                                 :src="this.url + `/storage/${ this.lista.logo }`"
@@ -276,9 +276,9 @@ export default {
             profile: 1,
             horario: 0,
             galeria: 0,
+            idioma: null,
             publicidad: [],
             skeleton: false,
-            idioma:null,
             pageConfig: {
                 identifier: this.$route.params.url
             }
@@ -295,8 +295,10 @@ export default {
         })
         this.$store.state.community.cuenta.servicio = servicios
 
+        // Vuex
         this.lista = this.$store.state.community.cuenta
 
+        // Language
         this.idioma = this.$store.state.community.idioma
 
         // Vuex

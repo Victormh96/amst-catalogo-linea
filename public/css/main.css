@@ -39,6 +39,20 @@
   }
 }
 
+#sub-header img {
+  width: 22px;
+  height: auto;
+  cursor: pointer;
+  opacity: .8;
+}
+
+/*===Phone===**/
+@media (max-width: 575.98px) {
+  #sub-header img {
+    width: 20px;
+  }
+}
+
 /* ============================================================*/
 /* Header
 /* ============================================================*/

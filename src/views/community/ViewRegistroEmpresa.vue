@@ -688,15 +688,11 @@ export default {
 
         // Vuex
         await this.$store.dispatch("CategoriaRegistro", '2')
-
-        this.listaServicio = this.$store.state.community.categoria
-
         this.$store.state.community.categoria.forEach(categoria => {
             categoria.nombre_rubro = categoria.nombre_rubro.split(',')
             this.listaServicio.push(categoria)
         })
         this.$store.state.community.categoria = this.listaServicio
-
 
         // Vuex
         await this.$store.dispatch("Entidad")

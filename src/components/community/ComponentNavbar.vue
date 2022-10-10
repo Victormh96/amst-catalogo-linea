@@ -32,6 +32,11 @@
                         <i class="fa-brands fa-instagram"></i>
                     </a>
                 </div>
+
+                <!--language-->
+                <div class="col-8 col-md-4 col-lg-5 col-xl-3 col-xxl-5 text-end">
+                    <img src="@/../public/img/assets/language.png" alt="Idioma" @click="language()">
+                </div>
             </div>
         </div>
     </div>
@@ -110,15 +115,12 @@
 
 <!--=======Script=======-->
 <script>
-
 export default {
-
     methods: {
-        cambiarIdioma() {
-            this.$store.dispatch("CambiarIdioma")
+        async language() {
+            await this.$store.dispatch("CambiarIdioma")
+            location.reload()
         }
-    }
-
-
+    },
 };
 </script>
