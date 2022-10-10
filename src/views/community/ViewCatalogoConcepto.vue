@@ -32,7 +32,8 @@
                   <div class="d-flex">
 
                     <!--Input-->
-                    <input type="checkbox" :value="rubro.nombre_rubro[0]" :id="rubro.id" @click="filtro(rubro.id)">
+                    <input type="checkbox" :value="rubro.nombre_rubro[0]" :id="rubro.id" @click="filtro(rubro.id)"
+                      :checked="index == 0 ? true : false">
 
                     <!--Title-->
                     <label :for="rubro.id">
@@ -136,6 +137,7 @@ export default {
     // Leaflet
     setTimeout(() => {
       this.maps(this.listafiltrada)
+      this.filtro(this.rubro[0].id)
     }, 950)
   },
 
@@ -194,14 +196,14 @@ export default {
       // Normal
       var normalBase = new L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        minZoom: 17,
-        Zoom: 18
+        minZoom: 16,
+        Zoom: 17
       })
 
       // Satellite
       var satelliteBase = new L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
-        minZoom: 17,
-        Zoom: 20,
+        minZoom: 16,
+        Zoom: 17,
         subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
       })
 
