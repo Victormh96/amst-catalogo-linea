@@ -5,10 +5,10 @@ module.exports = defineConfig({
 
   pwa: {
     display: "standalone",
-    theme_color: "#ffffff",
+    themeColor: "#ffffff",
     name: "Ubícalo en Tecla",
-    background_color: "#ffffff",
     manifestOptions: {
+      background_color: "#ffffff",
       screenshots: [
         {
           src: "./img/icons/home.png",
