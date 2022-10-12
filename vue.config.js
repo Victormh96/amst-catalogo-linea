@@ -7,6 +7,7 @@ module.exports = defineConfig({
     display: "standalone",
     themeColor: "#ffffff",
     name: "Ubícalo en Tecla",
+
     manifestOptions: {
       background_color: "#ffffff",
       screenshots: [
@@ -33,6 +34,12 @@ module.exports = defineConfig({
           sizes: "750x1334",
           type: "image/png"
         }
+      ]
+    },
+
+    workboxOptions: {
+      exclude: [
+        ".htaccess"
       ]
     }
   }

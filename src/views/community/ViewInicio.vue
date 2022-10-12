@@ -6,7 +6,7 @@
     <Navbar />
 
     <!--Main-->
-    <main v-if="(skeleton)" class="top-inicio">
+    <main v-if="(skeleton)" class="top">
 
         <!--Section-->
         <section id="portada" class="d-flex align-items-center"
@@ -14,21 +14,20 @@
             <div class="container z-index">
                 <div class="row">
 
-                    <!--Title-->
-                    <div class="col-md-12">
-                        <!--<h1>¡Ubícalo en Tecla!</h1>-->
-                        <img src="@/../public/img/assets/ubicalo-en-tecla.png" class="mt-2 mb-4 img-fluid" alt="">
+                    <!--Img-->
+                    <div class="col-md-12 mb-3 mb-xxl-4 text-center">
+                        <img src="@/../public/img/assets/ubicalo-en-tecla.png" class="ubicalo-en-tecla">
                     </div>
 
                     <!--Description-->
-                    <div class="col-md-11 col-lg-8 col-xl-8 m-auto mb-4 mt-3">
+                    <div class="col-md-11 col-lg-8 col-xl-8 m-auto mb-4">
                         <p>Más de 1,000 Tecleños con espíritu emprendedor ofertan aquí sus productos y servicios
                             ¡ubícalos!</p>
                     </div>
 
                     <!--Div-->
-                    <div class="col-12 col-12 col-md-7 col-lg-5 m-auto mt-2">
-                        <div class="position-relative">
+                    <div class="col-12 col-12 col-md-7 col-lg-5 m-auto">
+                        <div class="position-relative search">
 
                             <!--Input-->
                             <input type="text" class="form-control" placeholder="Albañil, Farmacias, Pupuserias..."
@@ -274,7 +273,7 @@ export default {
                 // If
                 if (
                     tag.nombre_rubro.toLowerCase().includes(buscarTag.value.toLowerCase())
-                    && matches < 4
+                    && matches < 2
                 ) {
                     matches++
                     return tag

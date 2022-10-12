@@ -61,8 +61,7 @@ const communityRoutes = [
         path: '/404',
         name: 'Error',
         component: () => import("@/views/community/ViewNotFound.vue"),
-    },
-
+    }
 ]
 
 // Exports
