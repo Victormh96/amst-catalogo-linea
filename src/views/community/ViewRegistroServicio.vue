@@ -570,12 +570,8 @@
                         <p class="text-center mb-2">Terminos y Condiciones</p>
 
                         <!--Terms and Conditions-->
-                        <textarea readonly style="resize: none;" class="form-control mb-3"
-                            rows="5">
-                        
-                        </textarea>
+                        <div v-html="this.tyc" class="tyc mb-3"></div>
 
-                        
                         <!--Accept-->
                         <div class="form-check">
 
@@ -614,11 +610,13 @@ import "leaflet.fullscreen"
 import router from "@/router"
 import "leaflet.locatecontrol"
 import useVuelidate from "@vuelidate/core"
+import json from "../../../public/Tyc.json"
 import "sweetalert2/dist/sweetalert2.min.css"
 import { ComprimirImagen } from "@/utils/image-compress"
 import Navbar from "@/components/community/ComponentNavbar.vue"
 import Footer from "@/components/community/ComponentFooter.vue"
 import { helpers, required, email, minLength, url } from "@vuelidate/validators"
+
 
 // Message
 const phoneMessage = helpers.withMessage('Teléfono invalido', minLength(8))
@@ -677,6 +675,7 @@ export default {
             portadaregistro: [],
             cuentaServicios: [],
             errorServicio: true,
+            tyc: json.letters[0].espanol
         }
     },
 
