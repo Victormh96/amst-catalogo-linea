@@ -6,7 +6,7 @@
     <Navbar />
 
     <!--Main-->
-    <main v-if="(skeleton)" class="top">
+    <main v-if="(skeleton)" class="top-inicio">
 
         <!--Section-->
         <section id="portada" class="d-flex align-items-center"
@@ -15,18 +15,19 @@
                 <div class="row">
 
                     <!--Title-->
-                    <div class="col-md-12 mb-3 mb-xxl-4">
-                        <h1>¡Ubícalo en Tecla!</h1>
+                    <div class="col-md-12">
+                        <!--<h1>¡Ubícalo en Tecla!</h1>-->
+                        <img src="@/../public/img/assets/ubicalo-en-tecla.png" class="mt-2 mb-4 img-fluid" alt="">
                     </div>
 
                     <!--Description-->
-                    <div class="col-md-11 col-lg-8 col-xl-8 m-auto mb-4">
+                    <div class="col-md-11 col-lg-8 col-xl-8 m-auto mb-4 mt-3">
                         <p>Más de 1,000 Tecleños con espíritu emprendedor ofertan aquí sus productos y servicios
                             ¡ubícalos!</p>
                     </div>
 
                     <!--Div-->
-                    <div class="col-12 col-12 col-md-7 col-lg-5 m-auto">
+                    <div class="col-12 col-12 col-md-7 col-lg-5 m-auto mt-2">
                         <div class="position-relative">
 
                             <!--Input-->
