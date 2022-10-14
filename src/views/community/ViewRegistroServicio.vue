@@ -341,7 +341,7 @@
                         <span class="tag mb-4 mb-sm-3 me-3" v-for="(servicio, index) in this.cuentaServicios"
                             :key="servicio.idServicio" data-toggle="tooltip" data-placement="top"
                             :title="'Experiencia: ' + servicio.experiencia + ' Descripcion: ' + servicio.descripcion">
-                            {{ servicio.name }}<i class="fa-solid fa-xmark" @click="deleteServices(index)"></i>
+                            {{ servicio.name[0] }}<i class="fa-solid fa-xmark" @click="deleteServices(index)"></i>
                         </span>
                     </div>
                 </div>
