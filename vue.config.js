@@ -7,7 +7,7 @@ module.exports = defineConfig({
     display: "standalone",
     themeColor: "#ffffff",
     name: "Ubícalo en Tecla",
-    appleMobileWebAppCapable: "yes",   
+    appleMobileWebAppCapable: "yes",
 
     manifestOptions: {
       background_color: "#ffffff",

@@ -155,15 +155,15 @@
 @media (max-width: 575.98px) {
   #portada {
     min-height: 450px;
-    height: calc(100vh - 210px);
+    height: calc(100vh - 220px);
   }
 }
 
 /*===Phone Landscape===**/
 @media (max-width: 920px) and (orientation: landscape) {
   #portada {
-    min-height: 450px !important;
-    height: calc(100vh - 110px) !important;
+    min-height: 490px !important;
+    height: calc(100vh - 100px) !important;
   }
 }
 
@@ -171,15 +171,15 @@
 @media (min-width: 559px) and (max-width: 991.98px) {
   #portada {
     min-height: 600px;
-    height: calc(100vh - 140px);
+    height: calc(100vh - 146px);
   }
 }
 
 /*===Ipad Pro===**/
 @media (min-width: 992px) and (max-width: 1199.98px) {
   #portada {
-    min-height: 600px;
-    height: calc(100vh - 140px);
+    min-height: 590px;
+    height: calc(100vh - 146px);
   }
 }
 
@@ -188,7 +188,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgb(0 0 0 / 44%);
+  background: rgb(0 0 0 / 45%);
 }
 
 #portada .ubicalo-en-tecla {
@@ -1800,6 +1800,15 @@ select:required:invalid {
 
 option {
   color: black !important;
+}
+
+/* ============================================================*/
+/* Pwa
+/* ============================================================*/
+@media (max-width: 575.98px) and (display-mode: standalone) {
+  #portada {
+    height: calc(100vh - 164px);
+  }
 }
 
 /* ============================================================*/

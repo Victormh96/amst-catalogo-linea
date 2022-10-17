@@ -14,9 +14,9 @@
 
                 <!--Email-->
                 <div class="col-12 col-md-4 col-lg-3 col-xl-3 col-xxl-2 d-none d-sm-none d-md-block">
-                    <a href="mailto:info@sanatecla.gob.sv">
+                    <a href="mailto:info@ubicaloentecla.com">
                         <i class="fa-solid fa-envelope"></i>
-                        <span>info@sanatecla.gob.sv</span>
+                        <span>info@ubicaloentecla.com</span>
                     </a>
                 </div>
 
