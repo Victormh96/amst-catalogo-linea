@@ -115,7 +115,7 @@
 
                                     <!--Img-->
                                     <swiper-slide v-for="(p, index) in this.publicidad" v-bind:key="index">
-                                        <a :href="p.descripcion" target="_blank" v-on:click="clickcategoria(p.id)">
+                                        <a :href="p.descripcion" target="_blank" v-on:click="clickpublicidad(p.id)">
                                             <img :src="this.url + `/storage/${ p.imagen }`" />
                                         </a>
                                     </swiper-slide>
