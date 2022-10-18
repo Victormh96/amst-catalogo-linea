@@ -154,7 +154,7 @@
 /*===Phone===**/
 @media (max-width: 575.98px) {
   #portada {
-    min-height: 450px;
+    min-height: 540px;
     height: calc(100vh - 220px);
   }
 }
