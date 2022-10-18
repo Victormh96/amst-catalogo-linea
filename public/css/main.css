@@ -118,9 +118,12 @@
   bottom: 0;
   background: var(--dark-blue);
   width: 100%;
-  padding: 8px 0;
   text-align: center;
   z-index: 9999;
+}
+
+#mobile a {
+  padding: 8px 0;
 }
 
 #mobile a i {
@@ -129,8 +132,12 @@
   transition: all 0.3s;
 }
 
-#mobile a:hover i {
-  color: var(--light-blue);
+#mobile a:hover {
+  background: #346bae;
+}
+
+#mobile .router-link-active {
+  background: #346bae;
 }
 
 #mobile a span {
@@ -138,6 +145,7 @@
   font-weight: 300;
   color: var(--white);
   margin: 3px 0 0 0;
+  opacity: .8;
 }
 
 /* ============================================================*/

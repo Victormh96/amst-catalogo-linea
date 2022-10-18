@@ -94,13 +94,15 @@
         </router-link>
 
         <!--Services-->
-        <a v-bind:href="'/categoria/' + 'servicios-profesionales'" class="d-grid-inline">
+        <a v-bind:href="'/categoria/' + 'servicios-profesionales'"
+            :class="this.url === '/categoria/servicios-profesionales' ? 'router-link-active d-grid-inline' : 'd-grid-inline'">
             <i class="fa-solid fa-handshake"></i>
             <span>Servicios</span>
         </a>
 
         <!--Companies-->
-        <a v-bind:href="'/categoria/' + 'empresas'" class="d-grid-inline">
+        <a v-bind:href="'/categoria/' + 'empresas'"
+            :class="this.url === '/categoria/empresas' ? 'router-link-active d-grid-inline' : 'd-grid-inline'">
             <i class="fa-solid fa-building"></i>
             <span>Empresas</span>
         </a>
@@ -116,6 +118,12 @@
 <!--=======Script=======-->
 <script>
 export default {
+    data() {
+        return {
+            url: window.location.pathname,
+        }
+    },
+
     methods: {
         async language() {
             await this.$store.dispatch("CambiarIdioma")
