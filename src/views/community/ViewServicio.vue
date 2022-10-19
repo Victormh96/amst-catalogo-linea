@@ -1,6 +1,6 @@
 <template>
     <!--Title-->
-    <title>Alcaldia Municipal Santa Tecla</title>
+    <title>Ubícalo En Tecla</title>
 
     <!--Navbar-->
     <Navbar />
@@ -43,7 +43,8 @@
                                     @click="clickcategoria(l.id)">
 
                                     <!--Img-->
-                                    <img :src="this.url + `/storage/${ l.imagen }`" class="svgcolor">
+                                    <img :src="this.url + `/storage/${ l.imagen }`" class="svgcolor"
+                                        :alt="`${ l.slug }`">
 
                                     <!--Title-->
                                     <p class="mt-3 mb-0">{{ l.nombre_rubro[this.idioma] }}</p>

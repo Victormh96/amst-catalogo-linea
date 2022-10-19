@@ -1,6 +1,6 @@
 <template>
     <!--Title-->
-    <title>Alcaldia Municipal Santa Tecla</title>
+    <title>Ubícalo En Tecla</title>
 
     <!--Navbar-->
     <Navbar />
@@ -20,8 +20,12 @@
                         <div class="pegajoso">
 
                             <!--Img-->
-                            <img :src="this.url + `/storage/${ this.lista.foto }`" :alt="`${ this.lista.slug }`"
-                                v-if="this.lista.foto">
+                            <div class="lightGallery lightgallery-without-thumb">
+                                <a :href="this.url + `/storage/${ this.lista.foto }`">
+                                    <img :src="this.url + `/storage/${ this.lista.foto }`" :alt="`${ this.lista.slug }`"
+                                        v-if="this.lista.foto">
+                                </a>
+                            </div>
 
                             <!--Profile-->
                             <div class="card mb-4">

@@ -1,6 +1,6 @@
 <template>
   <!--Title-->
-  <title>Alcaldia Municipal Santa Tecla</title>
+  <title>Ubícalo En Tecla</title>
 
   <!--Navbar-->
   <Navbar />
