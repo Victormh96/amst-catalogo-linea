@@ -11841,6 +11841,9 @@ fieldset:disabled .btn {
   pointer-events: none;
 }
 
+.gallery-item {
+  cursor: zoom-in;
+}
 
 /* ============================================================*/
 /* Preloader

@@ -52,26 +52,3 @@ if (screen.width >= 1024) {
             })
     })
 }
-
-/* ============================================================*/
-/* LightGallery
-/* ============================================================*/
-$(window).on("load", function () {
-    $(".lightgallery-without-thumb").lightGallery({
-        escKey: false,
-        closable: false,
-        thumbnail: false,
-        animateThumb: false,
-        showThumbByDefault: false,
-        googlePlus: false,
-        pinterest: false,
-        actualSize: false,
-        fullScreen: false,
-        hash: true,
-        flipHorizontal: false,
-        flipVertical: false,
-        autoplayControls: false,
-        mode: "lg-zoom-in-out",
-        iframeMaxWidth: "90%",
-    })
-})

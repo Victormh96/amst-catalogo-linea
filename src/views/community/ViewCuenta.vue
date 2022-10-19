@@ -20,12 +20,12 @@
                         <div class="pegajoso">
 
                             <!--Img-->
-                            <div class="lightGallery lightgallery-without-thumb">
-                                <a :href="this.url + `/storage/${ this.lista.foto }`">
-                                    <img :src="this.url + `/storage/${ this.lista.foto }`" :alt="`${ this.lista.slug }`"
-                                        v-if="this.lista.foto">
+                            <lightgallery :settings="{ speed: 500, plugins: plugins }">
+                                <a class="gallery-item" :src="this.url + `/storage/${ this.lista.foto }`">
+                                    <img :src="this.url + `/storage/${ this.lista.foto }`"
+                                        :alt="`${ this.lista.slug }`">
                                 </a>
-                            </div>
+                            </lightgallery>
 
                             <!--Profile-->
                             <div class="card mb-4">
@@ -54,7 +54,6 @@
                                         </a>
                                     </div>
                                 </div>
-
 
                                 <!--Tag-->
                                 <div class="tag ms-4 me-4" v-if="this.lista.verificado == true">
@@ -162,9 +161,15 @@
                                     <!--Img-->
                                     <div class="col-md-12 col-lg-12 col-xl-3 mb-4 mb-xl-0 color-white">
                                         <center>
-                                            <img v-if="this.lista.logo" class="logo"
-                                                :src="this.url + `/storage/${ this.lista.logo }`"
-                                                :alt="`${ this.lista.slug }`">
+                                            <lightgallery :settings="{ speed: 500, plugins: plugins }">
+                                                <a class="gallery-item"
+                                                    :src="this.url + `/storage/${ this.lista.logo }`">
+
+                                                    <img :src="this.url + `/storage/${ this.lista.logo }`"
+                                                        :alt="`${ this.lista.slug }`" v-if="this.lista.logo"
+                                                        class="logo">
+                                                </a>
+                                            </lightgallery>
                                         </center>
                                     </div>
 
@@ -267,8 +272,11 @@
 import L from "leaflet"
 import "swiper/css/effect-fade"
 import { Disqus } from "vue-disqus"
+import Lightgallery from "lightgallery/vue"
 import { Autoplay, EffectFade } from "swiper"
+import lgZoom from "lightgallery/plugins/zoom"
 import { Swiper, SwiperSlide } from "swiper/vue"
+import lgRotate from "lightgallery/plugins/rotate"
 import Navbar from "@/components/community/ComponentNavbar.vue"
 import Footer from "@/components/community/ComponentFooter.vue"
 
@@ -283,6 +291,7 @@ export default {
             idioma: null,
             publicidad: [],
             skeleton: false,
+            plugins: [lgZoom, lgRotate],
             pageConfig: {
                 identifier: this.$route.params.url
             }
@@ -332,7 +341,8 @@ export default {
         Footer,
         Swiper,
         Disqus,
-        SwiperSlide
+        SwiperSlide,
+        Lightgallery
     },
 
     methods: {
