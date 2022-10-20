@@ -11845,6 +11845,32 @@ fieldset:disabled .btn {
   cursor: zoom-in;
 }
 
+.Toastify__toast {
+  font-size: .85rem !important;
+  margin-bottom: 8px !important;
+  min-height: 50px !important;
+}
+
+.Toastify__toast-container--bottom-right {
+  bottom: 0 !important;
+}
+
+.Toastify__close-button {
+  display: none !important;
+}
+
+.Toastify__toast svg {
+  filter: brightness(0.8);
+}
+
+.Toastify__progress-bar--error {
+  filter: brightness(0.8);
+}
+
+.Toastify__toast-body>div:last-child {
+  padding-top: 2px !important;
+}
+
 /* ============================================================*/
 /* Preloader
 /* ============================================================*/

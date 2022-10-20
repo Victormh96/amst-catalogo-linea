@@ -315,6 +315,7 @@ export default {
 
             // Filter
             this.$store.state.community.tag.forEach(elemento => {
+
                 // If
                 if (elemento.nombre_rubro.toLowerCase() === this.buscarTag.toLowerCase()) {
                     match = 1

@@ -1,5 +1,6 @@
 // Imports
 import axios from "axios"
+import { toast } from "vue3-toastify"
 import {
     Portada,
     BusquedaFallida,
@@ -134,6 +135,12 @@ export default {
                 })
                 .catch((err) => {
                     console.log(err)
+                    toast("Error Interno de Servidor", {
+                        type: toast.TYPE.ERROR,
+                        position: toast.POSITION.TOP_CENTER,
+                        transition: toast.TRANSITIONS.ZOOM,
+                        autoClose: false,
+                    })
                 })
         },
 
@@ -204,6 +211,12 @@ export default {
                 })
                 .catch((err) => {
                     console.log(err)
+                    toast("Error Interno de Servidor", {
+                        type: toast.TYPE.ERROR,
+                        position: toast.POSITION.TOP_CENTER,
+                        transition: toast.TRANSITIONS.ZOOM,
+                        autoClose: false,
+                    })
                 })
         },
 
@@ -215,6 +228,12 @@ export default {
                 })
                 .catch((err) => {
                     console.log(err)
+                    toast("Error Interno de Servidor", {
+                        type: toast.TYPE.ERROR,
+                        position: toast.POSITION.TOP_CENTER,
+                        transition: toast.TRANSITIONS.ZOOM,
+                        autoClose: false,
+                    })
                 })
         },
 
@@ -259,6 +278,12 @@ export default {
                 })
                 .catch((err) => {
                     console.log(err)
+                    toast("Error Interno de Servidor", {
+                        type: toast.TYPE.ERROR,
+                        position: toast.POSITION.TOP_CENTER,
+                        transition: toast.TRANSITIONS.ZOOM,
+                        autoClose: false,
+                    })
                 })
         },
 
@@ -283,6 +308,12 @@ export default {
                 })
                 .catch((err) => {
                     console.log(err)
+                    toast("Error Interno de Servidor", {
+                        type: toast.TYPE.ERROR,
+                        position: toast.POSITION.TOP_CENTER,
+                        transition: toast.TRANSITIONS.ZOOM,
+                        autoClose: false,
+                    })
                 })
         },
 
@@ -322,6 +353,12 @@ export default {
                 })
                 .catch((err) => {
                     console.log(err)
+                    toast("Error Interno de Servidor", {
+                        type: toast.TYPE.ERROR,
+                        position: toast.POSITION.TOP_CENTER,
+                        transition: toast.TRANSITIONS.ZOOM,
+                        autoClose: false,
+                    })
                 })
         },
 

@@ -149,6 +149,7 @@ export default {
   methods: {
     // Filtrar
     filtro(value) {
+
       // If
       if (this.listaRubros.includes(value)) {
         this.listaRubros = this.listaRubros.filter((item) => item !== value)
@@ -270,6 +271,7 @@ export default {
             L.control.window(map, { modal: true })
               .title("<a href=/cuenta/" + element.slug + "><img src=" + url + "/storage/" + element.foto + "/></a>")
               .content(
+
                 // Name  
                 "<a href=/cuenta/" + element.slug + "><h5 class='mb-2'>" + element.nombre_cuenta + "</h5></a>"
                 +

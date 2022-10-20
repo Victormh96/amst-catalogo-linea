@@ -9,6 +9,7 @@ import VueAwesomePaginate from "vue-awesome-paginate"
 
 // Css
 import "vue-awesome-paginate/dist/style.css"
+import "vue3-toastify/dist/index.css"
 import "../public/css/bootstrap.css"
 import "./registerServiceWorker"
 import "../public/css/main.css"

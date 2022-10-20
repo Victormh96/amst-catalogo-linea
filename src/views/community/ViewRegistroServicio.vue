@@ -114,7 +114,7 @@
 
                                 <!--Date Birth-->
                                 <div class="form-group mb-4">
-                                    <input type="text" class="form-control"
+                                    <input type="tel" class="form-control"
                                         placeholder="Fecha de Nacimiento | YYYY-MM-DD*"
                                         v-model="v$.form.fechaNacimiento.$model" tabindex="5" required
                                         v-mask="'####-##-##'">
@@ -609,6 +609,7 @@ import L from "leaflet"
 import "leaflet.fullscreen"
 import router from "@/router"
 import "leaflet.locatecontrol"
+import { toast } from "vue3-toastify"
 import useVuelidate from "@vuelidate/core"
 import json from "../../../public/Tyc.json"
 import "sweetalert2/dist/sweetalert2.min.css"
@@ -616,7 +617,6 @@ import { ComprimirImagen } from "@/utils/image-compress"
 import Navbar from "@/components/community/ComponentNavbar.vue"
 import Footer from "@/components/community/ComponentFooter.vue"
 import { helpers, required, email, minLength, url } from "@vuelidate/validators"
-
 
 // Message
 const phoneMessage = helpers.withMessage('Teléfono invalido', minLength(8))
@@ -809,18 +809,6 @@ export default {
             return text
         },
 
-        // Alert Error
-        showFailServicies(msg) {
-            this.$swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: msg,
-                confirmButtonText: "Aceptar",
-                allowOutsideClick: false,
-                allowEscapeKey: false,
-            })
-        },
-
         // Alert Succes
         showSucces() {
             this.$swal.fire({
@@ -832,6 +820,7 @@ export default {
                 allowEscapeKey: false,
                 footer: '<a href="/sobre-nosotros">Preguntas Frecuentes</a>'
             }).then(resultado => {
+
                 // If
                 if (resultado.value) {
                     router.push("/")
@@ -909,7 +898,6 @@ export default {
 
         // Submit
         async submit() {
-
             // LocalStorage
             this.latitud = localStorage.getItem('latitud')
             this.longitud = localStorage.getItem('longitud')
@@ -917,6 +905,7 @@ export default {
             // If
             if (this.cuentaServicios.length > 0 && this.terminos == true && this.form.imagen != false && this.form.doc1 != false && this.form.doc2 != false && this.latitud != null) {
                 this.skeleton = false
+
                 // Const
                 var Form = new FormData()
                 var tag = ''
@@ -937,6 +926,7 @@ export default {
 
                 // Vuex
                 await this.$store.dispatch("RegistroServicio", Form).then(() => {
+
                     // Skeleton
                     setTimeout(() => {
                         this.skeleton = true
@@ -951,22 +941,24 @@ export default {
                         this.showFail()
                     }
                 }).catch(() => {
+
                     // Skeleton
                     this.skeleton = true
-                    this.showFailServicies('Error Interno del servidor')
+                    this.toastr("Error Interno de Servidor", toast.TYPE.ERROR)
                 })
             } else {
+
                 // If
                 if (this.terminos === false) {
-                    this.showFailServicies('Acepta los terminos y condiciones')
+                    this.toastr("Acepta los terminos y condiciones", toast.TYPE.WARNING)
                 } else if (this.form.imagen == false) {
-                    this.showFailServicies('Agrega la foto de tu perfil')
+                    this.toastr("Agrega foto de tu perfil", toast.TYPE.WARNING)
                 } else if (this.form.doc1 == false || this.form.doc2 == false) {
-                    this.showFailServicies('Agrega la foto de tu DUI')
+                    this.toastr("Agrega la foto de tu DUI", toast.TYPE.WARNING)
                 } else if (this.latitud == null) {
-                    this.showFailServicies('Posiciona tu ubicación en el mapa')
+                    this.toastr("Posiciona tu ubicación en el mapa", toast.TYPE.WARNING)
                 } else {
-                    this.showFailServicies('No has registrado tus servicios')
+                    this.toastr("No has registrado tus servicios", toast.TYPE.WARNING)
                 }
             }
         },
@@ -998,7 +990,7 @@ export default {
         addServices() {
             // If
             if (this.cuentaServicios.length > 3) {
-                this.showFailServicies('Solo puedes registrar 4 servicios, elimina uno para agregarlo')
+                this.toastr("Solo puedes registrar 4 servicios", toast.TYPE.WARNING)
             } else {
                 const serv = {
                     idServicio: this.servicio,
@@ -1035,8 +1027,9 @@ export default {
         addTag() {
             // If
             if (this.listTag.length > 3) {
-                this.showFailServicies('Solo puedes registrar 4 etiquetas, elimina uno para agregarlo')
+                this.toastr("Solo puedes registrar 5 etiquetas", toast.TYPE.WARNING)
             } else {
+
                 // Push
                 this.listTag.push(this.tag)
                 this.tag = ''
@@ -1095,6 +1088,16 @@ export default {
                 this.form.servicioDomicilio = true
                 this.form.local = true
             }
+        },
+
+        // Toastr
+        toastr(message, error) {
+            toast(message, {
+                type: error,
+                position: toast.POSITION.TOP_CENTER,
+                transition: toast.TRANSITIONS.ZOOM,
+                autoClose: 5000,
+            })
         }
     },
 };
