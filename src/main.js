@@ -13,7 +13,6 @@ import "vue3-toastify/dist/index.css"
 import "../public/css/bootstrap.css"
 import "./registerServiceWorker"
 import "../public/css/main.css"
-import "swiper/css"
 
 // Initialization
 const app = createApp(App)

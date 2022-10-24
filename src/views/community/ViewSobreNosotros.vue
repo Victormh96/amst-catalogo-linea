@@ -16,15 +16,31 @@
                     <!--Div-->
                     <div class="col-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 mb-m-5 d-grid mb-4 mb-lg-0">
 
-                        <!--Items-->
-                        <swiper :slides-per-view="1" :space-between="50" :autoplay="{ delay: 5000 }" :modules="modules"
-                            :loop="true" :effect="'fade'">
+                        <!--Group-->
+                        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
 
-                            <!--Img-->
-                            <swiper-slide v-for="(p, index) in this.portada" v-bind:key="index">
-                                <img :src="this.url + `/storage/${ p.imagen }`" />
-                            </swiper-slide>
-                        </swiper>
+                            <!--Sleeve-->
+                            <div class="carousel-inner">
+
+                                <!--Items-->
+                                <div :class="index == 0 ? 'carousel-item active' : 'carousel-item'"
+                                    v-for="(p, index) in this.portada" v-bind:key="index">
+
+                                    <!--Video-->
+                                    <video autoplay loop muted v-if="p.imagen.substr(-3, 3) == 'mp4'">
+                                        <source :src="this.url + `/storage/${p.imagen}`" type="video/mp4" />
+                                    </video>
+
+                                    <!--Img-->
+                                    <img :src="this.url + `/storage/${p.imagen}`" v-else />
+                                </div>
+                            </div>
+
+                            <!--Button-->
+                            <button class="carousel-control-next d-none" data-bs-target="#carouselExampleFade"
+                                data-bs-slide="next">
+                            </button>
+                        </div>
                     </div>
 
                     <!--Div-->
@@ -151,9 +167,7 @@
 
 <!--=======Script=======-->
 <script>
-import "swiper/css/effect-fade"
-import { Autoplay, EffectFade } from "swiper"
-import { Swiper, SwiperSlide } from "swiper/vue"
+import $ from "jquery"
 import Navbar from "@/components/community/ComponentNavbar.vue"
 import Footer from "@/components/community/ComponentFooter.vue"
 
@@ -174,20 +188,16 @@ export default {
         setTimeout(() => {
             this.skeleton = true
         }, 950)
-    },
 
-    setup() {
-        // Modules
-        return {
-            modules: [Autoplay, EffectFade]
-        }
+        // Carousel
+        setTimeout(() => {
+            $(".carousel-control-next").trigger('click')
+        }, 6000)
     },
 
     components: {
         Navbar,
-        Footer,
-        Swiper,
-        SwiperSlide
+        Footer
     },
 };
 </script>

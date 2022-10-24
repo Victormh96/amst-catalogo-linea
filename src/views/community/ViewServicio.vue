@@ -22,8 +22,8 @@
                     <div class="col-12 col-md-7 col-lg-5 col-xl-5 col-xxl-4 mx-auto mb-5">
 
                         <!--Input-->
-                        <input type="text" class="form-control text-center mb-2"
-                            placeholder="Albañil, Farmacias, Pupuserias..." v-model="buscar">
+                        <input type="text" class="form-control text-center mb-2" :placeholder="placeholder() + '...'"
+                            v-model="buscar">
 
                         <!--Title-->
                         <h6 v-if="cant == 0">No se encontro ninguna coincidencia con "{{ text }}", prueba
@@ -43,8 +43,7 @@
                                     @click="clickcategoria(l.id)">
 
                                     <!--Img-->
-                                    <img :src="this.url + `/storage/${ l.imagen }`" class="svgcolor"
-                                        :alt="`${ l.slug }`">
+                                    <img :src="this.url + `/storage/${l.imagen}`" class="svgcolor" :alt="`${l.slug}`">
 
                                     <!--Title-->
                                     <p class="mt-3 mb-0">{{ l.nombre_rubro[this.idioma] }}</p>
@@ -129,6 +128,18 @@ export default {
         // Vuex
         async clickcategoria(id) {
             await this.$store.dispatch("CategoriaClick", id)
+        },
+
+        // Placeholder
+        placeholder() {
+            const place = this.$store.state.community.categoria.sort(() => Math.random()).slice(0, 3)
+
+            // If
+            if (this.$store.state.community.idioma == 0) {
+                return place[0].nombre_rubro[0] + ', ' + place[1].nombre_rubro[0] + ', ' + place[2].nombre_rubro[0]
+            } else {
+                return place[0].nombre_rubro[1] + ', ' + place[1].nombre_rubro[1] + ', ' + place[2].nombre_rubro[1]
+            }
         },
     },
 

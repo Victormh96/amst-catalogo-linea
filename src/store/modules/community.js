@@ -123,7 +123,16 @@ export default {
 
         MutationIdioma(state) {
             state.idioma === 0 ? state.idioma = 1 : state.idioma = 0
-        }
+        },
+
+        MutationErrorServer() {
+            toast("Error Interno de Servidor", {
+                type: toast.TYPE.ERROR,
+                position: toast.POSITION.TOP_CENTER,
+                transition: toast.TRANSITIONS.ZOOM,
+                autoClose: false,
+            })
+        },
     },
 
     actions: {
@@ -135,12 +144,7 @@ export default {
                 })
                 .catch((err) => {
                     console.log(err)
-                    toast("Error Interno de Servidor", {
-                        type: toast.TYPE.ERROR,
-                        position: toast.POSITION.TOP_CENTER,
-                        transition: toast.TRANSITIONS.ZOOM,
-                        autoClose: false,
-                    })
+                    commit('MutationErrorServer')
                 })
         },
 
@@ -211,12 +215,7 @@ export default {
                 })
                 .catch((err) => {
                     console.log(err)
-                    toast("Error Interno de Servidor", {
-                        type: toast.TYPE.ERROR,
-                        position: toast.POSITION.TOP_CENTER,
-                        transition: toast.TRANSITIONS.ZOOM,
-                        autoClose: false,
-                    })
+                    commit('MutationErrorServer')
                 })
         },
 
@@ -228,12 +227,7 @@ export default {
                 })
                 .catch((err) => {
                     console.log(err)
-                    toast("Error Interno de Servidor", {
-                        type: toast.TYPE.ERROR,
-                        position: toast.POSITION.TOP_CENTER,
-                        transition: toast.TRANSITIONS.ZOOM,
-                        autoClose: false,
-                    })
+                    commit('MutationErrorServer')
                 })
         },
 
@@ -245,6 +239,7 @@ export default {
                 })
                 .catch((err) => {
                     console.log(err)
+                    commit('MutationErrorServer')
                 })
         },
 
@@ -278,12 +273,7 @@ export default {
                 })
                 .catch((err) => {
                     console.log(err)
-                    toast("Error Interno de Servidor", {
-                        type: toast.TYPE.ERROR,
-                        position: toast.POSITION.TOP_CENTER,
-                        transition: toast.TRANSITIONS.ZOOM,
-                        autoClose: false,
-                    })
+                    commit('MutationErrorServer')
                 })
         },
 
@@ -297,6 +287,7 @@ export default {
                 })
                 .catch((err) => {
                     console.log(err)
+                    commit('MutationErrorServer')
                 })
         },
 
@@ -308,12 +299,7 @@ export default {
                 })
                 .catch((err) => {
                     console.log(err)
-                    toast("Error Interno de Servidor", {
-                        type: toast.TYPE.ERROR,
-                        position: toast.POSITION.TOP_CENTER,
-                        transition: toast.TRANSITIONS.ZOOM,
-                        autoClose: false,
-                    })
+                    commit('MutationErrorServer')
                 })
         },
 
@@ -353,12 +339,6 @@ export default {
                 })
                 .catch((err) => {
                     console.log(err)
-                    toast("Error Interno de Servidor", {
-                        type: toast.TYPE.ERROR,
-                        position: toast.POSITION.TOP_CENTER,
-                        transition: toast.TRANSITIONS.ZOOM,
-                        autoClose: false,
-                    })
                 })
         },
 

@@ -20,7 +20,7 @@
 
                     <!--Search-->
                     <div class="col-12 col-md-7 col-lg-5 col-xl-5 col-xxl-4 mx-auto mb-5">
-                        <input type="text" class="form-control text-center" :placeholder="this.buscador"
+                        <input type="text" class="form-control text-center" :placeholder="placeholder() + '...'"
                             v-model="buscar">
                     </div>
 
@@ -37,8 +37,7 @@
                                     @click="clickcategoria(l.id)">
 
                                     <!--Img-->
-                                    <img :src="this.url + `/storage/${ l.imagen }`" :alt="`${ l.slug }`"
-                                        class="svgcolor">
+                                    <img :src="this.url + `/storage/${l.imagen}`" :alt="`${l.slug}`" class="svgcolor">
 
                                     <!--Description-->
                                     <p class="mt-3 mb-0">{{ l.nombre_rubro[idioma] }}</p>
@@ -75,7 +74,6 @@ export default {
         return {
             buscar: '',
             titulo: '',
-            buscador: '',
             idioma: null,
             categoria: [],
             skeleton: false
@@ -118,12 +116,22 @@ export default {
             // If
             if (this.idioma == 0) {
                 this.titulo = this.slug == 'empresas' ? "EMPRESAS" : "SERVICIOS PROFESIONALES"
-                this.buscador = 'Albañil, Farmacias, Pupuserias...'
             } else {
                 this.titulo = this.slug == 'empresas' ? "COMPANIES" : "PROFESSIONAL SERVICES"
-                this.buscador = 'Bricklayer, Pharmacy, pupuserias...'
             }
-        }
+        },
+
+        // Placeholder
+        placeholder() {
+            const place = this.$store.state.community.categoria.sort(() => Math.random()).slice(0, 3)
+
+            // If
+            if (this.$store.state.community.idioma == 0) {
+                return place[0].nombre_rubro[0] + ', ' + place[1].nombre_rubro[0] + ', ' + place[2].nombre_rubro[0]
+            } else {
+                return place[0].nombre_rubro[1] + ', ' + place[1].nombre_rubro[1] + ', ' + place[2].nombre_rubro[1]
+            }
+        },
     },
 
     computed: {

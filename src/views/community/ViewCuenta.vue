@@ -19,11 +19,14 @@
                         <!--Group-->
                         <div class="pegajoso">
 
-                            <!--Img-->
+                            <!--Group-->
                             <lightgallery :settings="{ speed: 500, plugins: plugins }">
-                                <a class="gallery-item" :src="this.url + `/storage/${ this.lista.foto }`">
-                                    <img :src="this.url + `/storage/${ this.lista.foto }`"
-                                        :alt="`${ this.lista.slug }`">
+
+                                <!--Enlace-->
+                                <a class="gallery-item" :src="this.url + `/storage/${this.lista.foto}`">
+
+                                    <!--Img-->
+                                    <img :src="this.url + `/storage/${this.lista.foto}`" :alt="`${this.lista.slug}`">
                                 </a>
                             </lightgallery>
 
@@ -43,14 +46,14 @@
                                     </small>
 
                                     <!--Info-->
-                                    <a v-if="this.lista.verificado == true" :href="'mailto:'+ this.lista.email"
+                                    <a v-if="this.lista.verificado == true" :href="'mailto:' + this.lista.email"
                                         class="mb-1 mt-1">{{ this.lista.email }}</a>
 
                                     <!--Phone-->
                                     <div v-for="(c, index) in this.lista.contacto" v-bind:key="index">
-                                        <a :href="'tel:'+ c.descripcion"
-                                            v-if="(c.id_detalle_contacto == 7 || c.id_detalle_contacto == 8 ) && this.lista.verificado == true">
-                                            {{c.descripcion}}
+                                        <a :href="'tel:' + c.descripcion"
+                                            v-if="(c.id_detalle_contacto == 7 || c.id_detalle_contacto == 8) && this.lista.verificado == true">
+                                            {{ c.descripcion }}
                                         </a>
                                     </div>
                                 </div>
@@ -68,14 +71,14 @@
                                     <span v-for="(c, index) in this.lista.contacto" :key="index">
 
                                         <!--Whatsapp-->
-                                        <a :href="`https://api.whatsapp.com/send?phone=503${ c.descripcion }&text=¡Hola ${ this.lista.nombre_cuenta }! Quisiera mas información de tus servicios. 📢📢`"
+                                        <a :href="`https://api.whatsapp.com/send?phone=503${c.descripcion}&text=¡Hola ${this.lista.nombre_cuenta}! Quisiera mas información de tus servicios. 📢📢`"
                                             v-if="c.detallecontacto.id == 5" target="_blank">
                                             <i class="ms-2 me-2" :class="c.detallecontacto.icon"></i>
                                         </a>
 
                                         <!--Others-->
                                         <a :href="c.descripcion"
-                                            v-else-if="c.detallecontacto.id != 7 && c.detallecontacto.id != 8 "
+                                            v-else-if="c.detallecontacto.id != 7 && c.detallecontacto.id != 8"
                                             target="_blank">
                                             <i class="ms-2 me-2" :class="c.detallecontacto.icon"></i>
                                         </a>
@@ -96,33 +99,45 @@
                                 v-if="this.lista.local == 1 && this.lista.verificado == true">
 
                                 <!--Waze-->
-                                <a :href="`https://www.waze.com/ul?ll=${ this.lista.latitud },${ this.lista.longitud }&navigate=yes&zoom=16`"
+                                <a :href="`https://www.waze.com/ul?ll=${this.lista.latitud},${this.lista.longitud}&navigate=yes&zoom=16`"
                                     target="_blank" class="me-4">
                                     <i class="fab fa-waze waze"></i>
                                 </a>
 
                                 <!--Gmail-->
-                                <a :href="`https://www.google.com/maps/dir//${ this.lista.latitud },${ this.lista.longitud }`"
+                                <a :href="`https://www.google.com/maps/dir//${this.lista.latitud},${this.lista.longitud}`"
                                     target="_blank">
                                     <i class="fa-brands fa-google google"></i>
                                 </a>
                                 <p class="opacity-50 pt-2 mt-1 llegar">LOCALIZACIÓN</p>
                             </div>
 
-                            <!--Advertising-->
+                            <!--Div-->
                             <div class="d-grid mb-5 mb-sm-0">
 
-                                <!--Items-->
-                                <swiper :slides-per-view="1" :space-between="50" :autoplay="{ delay: 5000 }"
-                                    :modules="modules" :loop="true" :effect="'fade'">
+                                <!--Group-->
+                                <div id="carouselExampleFade" class="carousel slide carousel-fade"
+                                    data-bs-ride="carousel">
 
-                                    <!--Img-->
-                                    <swiper-slide v-for="(p, index) in this.publicidad" v-bind:key="index">
-                                        <a :href="p.descripcion" target="_blank" v-on:click="clickpublicidad(p.id)">
-                                            <img :src="this.url + `/storage/${ p.imagen }`" />
-                                        </a>
-                                    </swiper-slide>
-                                </swiper>
+                                    <!--Advertising-->
+                                    <div class="carousel-inner">
+
+                                        <!--Items-->
+                                        <div :class="index == 0 ? 'carousel-item active' : 'carousel-item'"
+                                            v-for="(p, index) in this.publicidad" v-bind:key="index">
+
+                                            <!--Img-->
+                                            <a :href="p.descripcion" target="_blank" v-on:click="clickpublicidad(p.id)">
+                                                <img :src="this.url + `/storage/${p.imagen}`" />
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <!--Button-->
+                                    <button class="carousel-control-next d-none" data-bs-target="#carouselExampleFade"
+                                        data-bs-slide="next">
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </aside>
@@ -139,15 +154,15 @@
                         <div class="tabs">
 
                             <!--Tab #1-->
-                            <span :class="[this.profile === 1 ? 'activeClass' : '']" v-on:click="validar(1,0,0)">
+                            <span :class="[this.profile === 1 ? 'activeClass' : '']" v-on:click="validar(1, 0, 0)">
                                 MI PERFIL</span>
 
                             <!--Tab #2-->
-                            <span :class="[this.horario === 1 ? 'activeClass' : '']" v-on:click="validar(0,1,0)"
+                            <span :class="[this.horario === 1 ? 'activeClass' : '']" v-on:click="validar(0, 1, 0)"
                                 v-if="this.lista.horario != null">HORARIO</span>
 
                             <!--Tab #3-->
-                            <span :class="[this.galeria === 1 ? 'activeClass' : '']" v-on:click="validar(0,0,1)"
+                            <span :class="[this.galeria === 1 ? 'activeClass' : '']" v-on:click="validar(0, 0, 1)"
                                 v-if="this.lista.galeria != ''">GALERIA</span>
                         </div>
 
@@ -158,19 +173,20 @@
                             <div class="profile" v-if="this.profile == true">
                                 <div class="row">
 
-                                    <!--Img-->
-                                    <div class="col-md-12 col-lg-12 col-xl-3 mb-4 mb-xl-0 color-white">
-                                        <center>
-                                            <lightgallery :settings="{ speed: 500, plugins: plugins }">
-                                                <a class="gallery-item"
-                                                    :src="this.url + `/storage/${ this.lista.logo }`">
+                                    <!--Group-->
+                                    <div class="col-md-12 col-lg-12 col-xl-3 mb-4 mb-xl-0 color-white text-center">
 
-                                                    <img :src="this.url + `/storage/${ this.lista.logo }`"
-                                                        :alt="`${ this.lista.slug }`" v-if="this.lista.logo"
-                                                        class="logo">
-                                                </a>
-                                            </lightgallery>
-                                        </center>
+                                        <!--Lightgallery-->
+                                        <lightgallery :settings="{ speed: 500, plugins: plugins }">
+
+                                            <!--Enlace-->
+                                            <a class="gallery-item" :src="this.url + `/storage/${this.lista.logo}`">
+
+                                                <!--Img-->
+                                                <img :src="this.url + `/storage/${this.lista.logo}`"
+                                                    :alt="`${this.lista.slug}`" v-if="this.lista.logo" class="logo">
+                                            </a>
+                                        </lightgallery>
                                     </div>
 
                                     <!--Info-->
@@ -239,14 +255,26 @@
 
                                     <!--Description-->
                                     <div class="box mt-4">
-                                        <p>{{this.lista.horario}}</p>
+                                        <p>{{ this.lista.horario }}</p>
                                     </div>
                                 </div>
                             </div>
 
                             <!--Galery-->
-                            <div class="galery" v-if="this.galeria == true">
-                                <h4>Proximamente</h4>
+                            <div class="galery mt-2 mb-2" v-if="this.galeria == true">
+
+                                <!--Lightgallery-->
+                                <lightgallery :settings="{ speed: 500, plugins: plugins }" class="row">
+
+                                    <!--Enlace-->
+                                    <a class="col-6 col-md-6 col-lg-4" :src="this.url + `/storage/${g.imagen}`"
+                                        v-for="(g, index) in this.lista.galeria" v-bind:key="index">
+
+                                        <!--Img-->
+                                        <img :src="this.url + `/storage/${g.imagen}`" v-if="g.imagen"
+                                            :alt="`${this.lista.slug}`">
+                                    </a>
+                                </lightgallery>
                             </div>
                         </div>
                     </article>
@@ -269,13 +297,11 @@
   
 <!--=======Script=======-->
 <script>
+import $ from "jquery"
 import L from "leaflet"
-import "swiper/css/effect-fade"
 import { Disqus } from "vue-disqus"
 import Lightgallery from "lightgallery/vue"
-import { Autoplay, EffectFade } from "swiper"
 import lgZoom from "lightgallery/plugins/zoom"
-import { Swiper, SwiperSlide } from "swiper/vue"
 import lgRotate from "lightgallery/plugins/rotate"
 import Navbar from "@/components/community/ComponentNavbar.vue"
 import Footer from "@/components/community/ComponentFooter.vue"
@@ -326,22 +352,18 @@ export default {
         // Maps
         setTimeout(() => {
             this.maps()
-        }, 950)
-    },
+        }, 950),
 
-    setup() {
-        // Modules
-        return {
-            modules: [Autoplay, EffectFade]
-        }
+            // Carousel
+            setTimeout(() => {
+                $(".carousel-control-next").trigger('click')
+            }, 6000)
     },
 
     components: {
         Navbar,
         Footer,
-        Swiper,
         Disqus,
-        SwiperSlide,
         Lightgallery
     },
 

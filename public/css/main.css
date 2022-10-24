@@ -218,11 +218,9 @@
   text-align: center;
 }
 
-#portada .search::after {
-  content: "\f002";
+#portada .search {
   font-size: 17px;
   font-weight: 900;
-  font-family: "Font Awesome 5 Free";
   position: absolute;
   top: 0;
   bottom: 0;
@@ -231,6 +229,7 @@
   height: max-content;
   color: var(--dark-white);
   z-index: 999;
+  cursor: pointer;
 }
 
 #portada ul {
@@ -1087,6 +1086,41 @@
   font-weight: 600;
 }
 
+#cuenta .galery img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  cursor: zoom-in;
+}
+
+#cuenta .galery a:nth-last-child(n+4) {
+  margin: 0 0 12px 0 !important;
+}
+
+/*===Phone===**/
+@media (max-width: 575.98px) {
+  #cuenta .galery a:nth-last-child(-n+2) {
+    margin: 0 !important;
+  }
+
+  #cuenta .galery img {
+    height: 100px;
+    object-fit: cover;
+  }
+}
+
+/*===Ipad===**/
+@media (min-width: 559px) and (max-width: 991.98px) {
+  #cuenta .galery a:nth-last-child(-n+2) {
+    margin: 0 !important;
+  }
+
+  #cuenta .galery img {
+    height: 100px;
+    object-fit: cover;
+  }
+}
+
 /* ============================================================*/
 /* Banner
 /* ============================================================*/
@@ -1231,6 +1265,15 @@
   height: 310px;
   object-fit: cover;
   filter: brightness(0.7);
+  border-radius: 10px;
+}
+
+#nosotros video {
+  width: 100%;
+  height: 310px;
+  object-fit: cover;
+  filter: brightness(0.9);
+  border-radius: 10px;
 }
 
 /*===Phone===**/
@@ -1238,11 +1281,19 @@
   #nosotros img {
     height: 200px;
   }
+
+  #nosotros video {
+    height: 200px;
+  }
 }
 
 /*===Ipad Pro===**/
 @media (min-width: 992px) and (max-width: 1199.98px) {
   #nosotros img {
+    height: 340px;
+  }
+
+  #nosotros video {
     height: 340px;
   }
 }
@@ -1785,18 +1836,6 @@ html::-webkit-scrollbar-thumb,
 
 .leaflet-popup-close-button {
   display: none;
-}
-
-/* ============================================================*/
-/* Swiper
-/* ============================================================*/
-.swiper {
-  width: 100%;
-  border-radius: 5px;
-}
-
-.swiper-slide img {
-  border-radius: 5px;
 }
 
 /* ============================================================*/
