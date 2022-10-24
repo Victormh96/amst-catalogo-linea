@@ -37,7 +37,7 @@
 
                     <!--Title-->
                     <label :for="rubro.id">
-                      {{rubro.nombre_rubro[this.idioma]}}
+                      {{ rubro.nombre_rubro[this.idioma] }}
                     </label>
                   </div>
                 </div>
@@ -52,7 +52,7 @@
             <div id="map">
 
               <!--Title-->
-              <div class="titulo">{{this.concepto}}</div>
+              <div class="titulo">{{ this.concepto }}</div>
             </div>
           </div>
         </div>

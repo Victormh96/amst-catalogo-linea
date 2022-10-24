@@ -1086,23 +1086,23 @@
   font-weight: 600;
 }
 
+#cuenta .galery {
+  margin: 0 0 -4px 0;
+}
+
 #cuenta .galery img {
   width: 100%;
   height: 100%;
-  border-radius: 10px;
+  border-radius: 5px;
   cursor: zoom-in;
 }
 
-#cuenta .galery a:nth-last-child(n+4) {
+#cuenta .galery a {
   margin: 0 0 12px 0 !important;
 }
 
 /*===Phone===**/
 @media (max-width: 575.98px) {
-  #cuenta .galery a:nth-last-child(-n+2) {
-    margin: 0 !important;
-  }
-
   #cuenta .galery img {
     height: 100px;
     object-fit: cover;
@@ -1111,10 +1111,6 @@
 
 /*===Ipad===**/
 @media (min-width: 559px) and (max-width: 991.98px) {
-  #cuenta .galery a:nth-last-child(-n+2) {
-    margin: 0 !important;
-  }
-
   #cuenta .galery img {
     height: 100px;
     object-fit: cover;

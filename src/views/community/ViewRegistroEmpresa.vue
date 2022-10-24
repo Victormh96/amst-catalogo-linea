@@ -142,7 +142,7 @@
                                         tabindex="3">
                                         <option disabled value="">Categoria*</option>
                                         <option v-for="(e, index) of this.entidades" :key="index" :value="e.id">
-                                            {{e.nombre_entidad}}</option>
+                                            {{ e.nombre_entidad }}</option>
                                     </select>
 
                                     <!--Error Message-->

@@ -261,7 +261,7 @@
                             </div>
 
                             <!--Galery-->
-                            <div class="galery mt-2 mb-2" v-if="this.galeria == true">
+                            <div class="galery mt-2" v-if="this.galeria == true">
 
                                 <!--Lightgallery-->
                                 <lightgallery :settings="{ speed: 500, plugins: plugins }" class="row">
