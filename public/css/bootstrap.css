@@ -11877,8 +11877,44 @@ fieldset:disabled .btn {
   }
 }
 
+.content-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lg-next:hover:not(.disabled),
+.lg-prev:hover:not(.disabled) {
+  background: none !important;
+}
+
 .color-white {
-  background: url(../img//assets/shapex16.png);
+  background: var(--white);
+}
+
+.radius {
+  border-radius: 0 5px 5px 0 !important;
+}
+
+/*===Phone===**/
+@media (max-width: 575.98px) {
+  .radius {
+    border-radius: 5px !important;
+  }
+}
+
+/*===Ipad===**/
+@media (min-width: 559px) and (max-width: 991.98px) {
+  .radius {
+    border-radius: 5px !important;
+  }
+}
+
+/*===Ipad Pro===**/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .radius {
+    border-radius: 5px !important;
+  }
 }
 
 .svgcolor {

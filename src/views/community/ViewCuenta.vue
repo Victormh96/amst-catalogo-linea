@@ -174,7 +174,12 @@
                                 <div class="row">
 
                                     <!--Group-->
-                                    <div class="col-md-12 col-lg-12 col-xl-3 mb-4 mb-xl-0 color-white text-center">
+                                    <div
+                                        class="col-md-12 col-lg-12 col-xl-3 mb-4 mb-xl-0 color-white text-center position-relative content-center">
+
+                                        <!--Blur-->
+                                        <img :src="this.url + `/storage/${this.lista.logo}`" v-if="this.lista.logo"
+                                            class="blur">
 
                                         <!--Lightgallery-->
                                         <lightgallery :settings="{ speed: 500, plugins: plugins }">
@@ -190,7 +195,7 @@
                                     </div>
 
                                     <!--Info-->
-                                    <div class="col-md-12 col-lg-12 col-xl-9 box">
+                                    <div class="col-md-12 col-lg-12 col-xl-9 box radius">
 
                                         <!--Title-->
                                         <h6 class="mb-2" v-if="this.lista.marca">{{ this.lista.marca }}</h6>
