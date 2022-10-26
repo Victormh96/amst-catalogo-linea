@@ -1,7 +1,4 @@
 <template>
-    <!--Title-->
-    <title>Ubícalo En Tecla</title>
-
     <!--Navbar-->
     <Navbar />
 
@@ -27,7 +24,8 @@
                                     v-for="(p, index) in this.portada" v-bind:key="index">
 
                                     <!--Video-->
-                                    <video autoplay loop muted v-if="p.imagen.substr(-3, 3) == 'mp4'" poster="@/../public/img/assets/shapex16.png">
+                                    <video autoplay loop muted v-if="p.imagen.substr(-3, 3) == 'mp4'"
+                                        poster="@/../public/img/assets/shapex16.png">
                                         <source :src="this.url + `/storage/${p.imagen}`" type="video/mp4" />
                                     </video>
 

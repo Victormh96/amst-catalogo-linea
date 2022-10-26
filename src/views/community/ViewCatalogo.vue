@@ -1,7 +1,4 @@
 <template>
-  <!--Title-->
-  <title>Ubícalo En Tecla</title>
-
   <!--Navbar-->
   <Navbar />
 

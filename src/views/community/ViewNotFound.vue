@@ -1,7 +1,4 @@
 <template>
-    <!--Title-->
-    <title>Página No Encontrada</title>
-
     <!--Navbar-->
     <Navbar />
 
