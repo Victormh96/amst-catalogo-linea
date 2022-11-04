@@ -68,7 +68,7 @@
                                     <span v-for="(c, index) in this.lista.contacto" :key="index">
 
                                         <!--Whatsapp-->
-                                        <a :href="`https://api.whatsapp.com/send?phone=503${c.descripcion}&text=¡Hola ${this.lista.nombre_cuenta}! Quisiera mas información de tus servicios. 📢📢`"
+                                        <a :href="`https://api.whatsapp.com/send?phone=503${c.descripcion}&text=¡Hola ${this.lista.nombre_cuenta.replace('&', ',')}! Quisiera mas información de tus servicios. 📢📢`"
                                             v-if="c.detallecontacto.id == 5" target="_blank">
                                             <i class="ms-2 me-2" :class="c.detallecontacto.icon"></i>
                                         </a>

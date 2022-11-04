@@ -288,7 +288,7 @@ export default {
 
                 // whatsapp
                 element.contacto.map(function (ct) {
-                  return "<a href='https://api.whatsapp.com/send?phone=503" + ct.descripcion + "&text=¡Hola " + element.nombre_cuenta + "! Quisiera mas información de tus servicios. 📢📢" + "' target='_blank'><i class='fa-brands fa-whatsapp others'></i></a>"
+                  return "<a href='https://api.whatsapp.com/send?phone=503" + ct.descripcion + "&text=¡Hola " + element.nombre_cuenta.replace('&', ',') + "! Quisiera mas información de tus servicios. 📢📢" + "' target='_blank'><i class='fa-brands fa-whatsapp others'></i></a>"
                 })).show()
           })
         }

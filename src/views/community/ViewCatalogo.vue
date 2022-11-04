@@ -120,7 +120,7 @@
                 <!--Whatsapp Or Mobile-->
                 <li class="d-inline-flex align-items-center" v-for="(c, index) in l.contacto" v-bind:key="index">
                   <a v-if="c.id_detalle_contacto == 5"
-                    :href="`https://api.whatsapp.com/send?phone=503${c.descripcion}&text=¡Hola ${l.nombre_cuenta}! Quisiera mas información de tus servicios. 📢📢`"
+                    :href="`https://api.whatsapp.com/send?phone=503${c.descripcion}&text=¡Hola ${l.nombre_cuenta.replace('&', ',')}! Quisiera mas información de tus servicios. 📢📢`"
                     target="_blank" class="d-flex">
                     <i class="fa-brands fa-whatsapp others"></i>
                   </a>
