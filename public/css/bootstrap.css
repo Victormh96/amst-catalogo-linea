@@ -11888,6 +11888,11 @@ fieldset:disabled .btn {
   background: none !important;
 }
 
+.lg-next:focus,
+.lg-prev:focus {
+  background: none !important;
+}
+
 .color-white {
   background: var(--white);
 }

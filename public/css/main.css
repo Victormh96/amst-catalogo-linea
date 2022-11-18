@@ -1002,11 +1002,12 @@
 }
 
 #cuenta article .leaflet-popup-content p {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 500;
   color: var(--dark-blue);
   margin: 0;
   text-align: center;
+  text-transform: uppercase;
 }
 
 #cuenta article .disabledMap::before {
